@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">ত্রুটি</string>
+    <string name="detected_videos_unexpected_error">কিছু একটা ভুল হয়েছে, আবার চেষ্টা করুন।</string>
+    <string name="browser_back_exit_hint">অ্যাপ থেকে বের হতে আবার Back চাপুন</string>
+    <string name="proxies_invalid_host_port">হোস্ট বা পোর্ট অবৈধ</string>
+    <string name="browser_open_in_new_tab">নতুন ট্যাবে খুলুন</string>
+    <string name="share_via">এর মাধ্যমে শেয়ার করুন</string>
+    <string name="player_download_only_title">শুধু ডাউনলোড</string>
+    <string name="player_download_only_message">এই ভিডিও কেবল ডাউনলোড সমর্থন করে।</string>
+    <string name="download_status_preparing">প্রস্তুত হচ্ছে</string>
+    <string name="download_status_pending">অপেক্ষমাণ</string>
+    <string name="download_status_downloading">ডাউনলোড হচ্ছে</string>
+    <string name="download_status_paused">বিরতিতে</string>
+    <string name="download_status_success">সফল</string>
+    <string name="download_status_failed">ব্যর্থ</string>
+    <string name="download_status_canceled">বাতিল</string>
+    <string name="download_status_unknown">অজানা অবস্থা</string>
+    <string name="notification_failed_with_reason">ব্যর্থ: %1$s</string>
+    <string name="proxy_service_notification_title">প্রক্সি সার্ভিস</string>
+    <string name="proxy_service_notification_message">লোকাল প্রক্সি চলছে...</string>
+    <string name="video_sort_label_name">নাম</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">শেষ সম্পাদনা</string>
+    <string name="video_sort_label_latest_first">(সর্বশেষ আগে)</string>
+    <string name="video_sort_label_latest_last">(সবচেয়ে পুরোনো আগে)</string>
+    <string name="video_sort_label_file_size">ফাইলের আকার</string>
+    <string name="video_sort_label_largest_to_smallest">(বড় থেকে ছোট)</string>
+    <string name="video_sort_label_smallest_to_largest">(ছোট থেকে বড়)</string>
+</resources>

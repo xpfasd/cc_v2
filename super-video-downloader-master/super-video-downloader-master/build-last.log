@@ -1,0 +1,476 @@
+
+> Configure project :app
+Go executable 'go' not found. Skipping downloader native proxy artifacts.
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :app:dataBindingTriggerDebug UP-TO-DATE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:generateDebugRFile UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+
+> Task :app:compileDebugJavaWithJavac FAILED
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\AutoCompleteTextViewBinding.java:5: 错误: 程序包com.myAllVideoBrowser.data.local.model不存在
+import com.myAllVideoBrowser.data.local.model.Suggestion;
+                                             ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\AutoCompleteTextViewBinding.java:6: 错误: 程序包com.myAllVideoBrowser.data.local.room.entity不存在
+import com.myAllVideoBrowser.data.local.room.entity.HistoryItem;
+                                                   ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\AutoCompleteTextViewBinding.java:7: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.SuggestionAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\AutoCompleteTextViewBinding.java:8: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.TabSuggestionAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\AutoCompleteTextViewBinding.java:16: 错误: 找不到符号
+    public static void setSuggestions(AutoCompleteTextView view, List<Suggestion> items) {
+                                                                      ^
+  符号:   类 Suggestion
+  位置: 类 AutoCompleteTextViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\AutoCompleteTextViewBinding.java:23: 错误: 找不到符号
+    public static void setTabSuggestions(AutoCompleteTextView view, List<HistoryItem> items) {
+                                                                         ^
+  符号:   类 HistoryItem
+  位置: 类 AutoCompleteTextViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\CustomViewPager2Binding.java:4: 错误: 程序包com.myAllVideoBrowser.ui.main.home.browser不存在
+import com.myAllVideoBrowser.ui.main.home.browser.BrowserFragment;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\CustomViewPager2Binding.java:5: 错误: 程序包com.myAllVideoBrowser.ui.main.home.browser不存在
+import com.myAllVideoBrowser.ui.main.home.browser.CustomViewPager2;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\CustomViewPager2Binding.java:6: 错误: 程序包com.myAllVideoBrowser.ui.main.home.browser.webTab不存在
+import com.myAllVideoBrowser.ui.main.home.browser.webTab.WebTab;
+                                                        ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\CustomViewPager2Binding.java:14: 错误: 找不到符号
+    public static void setWebItems(CustomViewPager2 view, List<WebTab> currentItems) {
+                                   ^
+  符号:   类 CustomViewPager2
+  位置: 类 CustomViewPager2Binding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\CustomViewPager2Binding.java:14: 错误: 找不到符号
+    public static void setWebItems(CustomViewPager2 view, List<WebTab> currentItems) {
+                                                               ^
+  符号:   类 WebTab
+  位置: 类 CustomViewPager2Binding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\CustomViewPager2Binding.java:21: 错误: 找不到符号
+    public static void setOffScreenPageLimit(CustomViewPager2 view, Integer pageLimit) {
+                                             ^
+  符号:   类 CustomViewPager2
+  位置: 类 CustomViewPager2Binding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\CustomViewPager2Binding.java:26: 错误: 找不到符号
+    public static void setCurrentItem(CustomViewPager2 view, Integer currentItemPosition) {
+                                      ^
+  符号:   类 CustomViewPager2
+  位置: 类 CustomViewPager2Binding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\GridViewBinding.java:5: 错误: 程序包com.myAllVideoBrowser.data.local.room.entity不存在
+import com.myAllVideoBrowser.data.local.room.entity.PageInfo;
+                                                   ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\GridViewBinding.java:6: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.TopPageAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\GridViewBinding.java:14: 错误: 找不到符号
+    public static void setTopPages(GridView view, List<PageInfo> items) {
+                                                       ^
+  符号:   类 PageInfo
+  位置: 类 GridViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:5: 错误: 程序包com.myAllVideoBrowser.data.local.model不存在
+import com.myAllVideoBrowser.data.local.model.LocalVideo;
+                                             ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:6: 错误: 程序包com.myAllVideoBrowser.data.local.model不存在
+import com.myAllVideoBrowser.data.local.model.Proxy;
+                                             ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:7: 错误: 程序包com.myAllVideoBrowser.data.local.room.entity不存在
+import com.myAllVideoBrowser.data.local.room.entity.HistoryItem;
+                                                   ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:8: 错误: 程序包com.myAllVideoBrowser.data.local.room.entity不存在
+import com.myAllVideoBrowser.data.local.room.entity.PageInfo;
+                                                   ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:9: 错误: 程序包com.myAllVideoBrowser.data.local.room.entity不存在
+import com.myAllVideoBrowser.data.local.room.entity.ProgressInfo;
+                                                   ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:10: 错误: 程序包com.myAllVideoBrowser.data.local.room.entity不存在
+import com.myAllVideoBrowser.data.local.room.entity.VideoInfo;
+                                                   ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:11: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.BookmarksAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:12: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.HistoryAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:13: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.HistorySearchAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:14: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.ProgressAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:15: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.ProxiesAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:16: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.TopPageAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:17: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.VideoAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:18: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.VideoInfoAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:19: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.WebTabsAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:20: 错误: 程序包com.myAllVideoBrowser.ui.main.home.browser.webTab不存在
+import com.myAllVideoBrowser.ui.main.home.browser.webTab.WebTab;
+                                                        ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:30: 错误: 找不到符号
+    public static void setWebTabs(RecyclerView view, List<WebTab> tabs) {
+                                                          ^
+  符号:   类 WebTab
+  位置: 类 RecyclerViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:37: 错误: 找不到符号
+    public static void setProgressInfos(RecyclerView view, List<ProgressInfo> items) {
+                                                                ^
+  符号:   类 ProgressInfo
+  位置: 类 RecyclerViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:44: 错误: 找不到符号
+    public static void setProxiesList(RecyclerView view, List<Proxy> items) {
+                                                              ^
+  符号:   类 Proxy
+  位置: 类 RecyclerViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:51: 错误: 找不到符号
+    public static void setVideoInfos(RecyclerView view, List<LocalVideo> items) {
+                                                             ^
+  符号:   类 LocalVideo
+  位置: 类 RecyclerViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:58: 错误: 找不到符号
+    public static void setHistoryItems(RecyclerView view, List<HistoryItem> items) {
+                                                               ^
+  符号:   类 HistoryItem
+  位置: 类 RecyclerViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:69: 错误: 找不到符号
+    public static void setDetectedVideoInfos(RecyclerView view, List<VideoInfo> items) {
+                                                                     ^
+  符号:   类 VideoInfo
+  位置: 类 RecyclerViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:76: 错误: 找不到符号
+    public static void setDetectedVideoInfosSet(RecyclerView view, Set<VideoInfo> items) {
+                                                                       ^
+  符号:   类 VideoInfo
+  位置: 类 RecyclerViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\RecyclerViewBinding.java:83: 错误: 找不到符号
+    public static void setBookmarks(RecyclerView view, List<PageInfo> items) {
+                                                            ^
+  符号:   类 PageInfo
+  位置: 类 RecyclerViewBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\ViewPager2Binding.java:5: 错误: 程序包com.myAllVideoBrowser.ui.main.home.browser不存在
+import com.myAllVideoBrowser.ui.main.home.browser.BrowserFragment;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\ViewPager2Binding.java:6: 错误: 程序包com.myAllVideoBrowser.ui.main.home.browser.webTab不存在
+import com.myAllVideoBrowser.ui.main.home.browser.webTab.WebTab;
+                                                        ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\src\main\java\com\myAllVideoBrowser\ui\component\binding\ViewPager2Binding.java:14: 错误: 找不到符号
+    public static void setWebItems(ViewPager2 view, List<WebTab> currentItems) {
+                                                         ^
+  符号:   类 WebTab
+  位置: 类 ViewPager2Binding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\ActivityMainBinding.java:17: 错误: 程序包com.myAllVideoBrowser.ui.main.home不存在
+import com.myAllVideoBrowser.ui.main.home.MainViewModel;
+                                         ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\ActivityMainBinding.java:38: 错误: 找不到符号
+  protected MainViewModel mViewModel;
+            ^
+  符号:   类 MainViewModel
+  位置: 类 ActivityMainBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\ActivityMainBinding.java:52: 错误: 找不到符号
+  public abstract void setViewModel(@Nullable MainViewModel viewModel);
+                                              ^
+  符号:   类 MainViewModel
+  位置: 类 ActivityMainBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\ActivityMainBinding.java:55: 错误: 找不到符号
+  public MainViewModel getViewModel() {
+         ^
+  符号:   类 MainViewModel
+  位置: 类 ActivityMainBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\ActivitySplashBinding.java:17: 错误: 程序包com.myAllVideoBrowser.ui.main.splash不存在
+import com.myAllVideoBrowser.ui.main.splash.SplashViewModel;
+                                           ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\ActivitySplashBinding.java:35: 错误: 找不到符号
+  protected SplashViewModel mViewModel;
+            ^
+  符号:   类 SplashViewModel
+  位置: 类 ActivitySplashBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\ActivitySplashBinding.java:46: 错误: 找不到符号
+  public abstract void setViewModel(@Nullable SplashViewModel viewModel);
+                                              ^
+  符号:   类 SplashViewModel
+  位置: 类 ActivitySplashBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\ActivitySplashBinding.java:49: 错误: 找不到符号
+  public SplashViewModel getViewModel() {
+         ^
+  符号:   类 SplashViewModel
+  位置: 类 ActivitySplashBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:18: 错误: 程序包com.myAllVideoBrowser.data.local.room.entity不存在
+import com.myAllVideoBrowser.data.local.room.entity.VideoInfo;
+                                                   ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:19: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.DownloadDialogListener;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:20: 错误: 程序包com.myAllVideoBrowser.ui.main.home不存在
+import com.myAllVideoBrowser.ui.main.home.MainViewModel;
+                                         ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:44: 错误: 找不到符号
+  protected DownloadDialogListener mDialogListener;
+            ^
+  符号:   类 DownloadDialogListener
+  位置: 类 DialogDownloadVideoBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:50: 错误: 找不到符号
+  protected MainViewModel mMainViewModel;
+            ^
+  符号:   类 MainViewModel
+  位置: 类 DialogDownloadVideoBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:53: 错误: 找不到符号
+  protected VideoInfo mVideInfo;
+            ^
+  符号:   类 VideoInfo
+  位置: 类 DialogDownloadVideoBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:71: 错误: 找不到符号
+  public abstract void setDialogListener(@Nullable DownloadDialogListener dialogListener);
+                                                   ^
+  符号:   类 DownloadDialogListener
+  位置: 类 DialogDownloadVideoBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:74: 错误: 找不到符号
+  public DownloadDialogListener getDialogListener() {
+         ^
+  符号:   类 DownloadDialogListener
+  位置: 类 DialogDownloadVideoBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:85: 错误: 找不到符号
+  public abstract void setMainViewModel(@Nullable MainViewModel mainViewModel);
+                                                  ^
+  符号:   类 MainViewModel
+  位置: 类 DialogDownloadVideoBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:88: 错误: 找不到符号
+  public MainViewModel getMainViewModel() {
+         ^
+  符号:   类 MainViewModel
+  位置: 类 DialogDownloadVideoBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:92: 错误: 找不到符号
+  public abstract void setVideInfo(@Nullable VideoInfo videInfo);
+                                             ^
+  符号:   类 VideoInfo
+  位置: 类 DialogDownloadVideoBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DialogDownloadVideoBinding.java:95: 错误: 找不到符号
+  public VideoInfo getVideInfo() {
+         ^
+  符号:   类 VideoInfo
+  位置: 类 DialogDownloadVideoBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DownloadCandidateItemBinding.java:15: 错误: 程序包com.myAllVideoBrowser.data.local.room.entity不存在
+import com.myAllVideoBrowser.data.local.room.entity.VideoInfo;
+                                                   ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DownloadCandidateItemBinding.java:16: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.CandidateFormatListener;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DownloadCandidateItemBinding.java:31: 错误: 找不到符号
+  protected CandidateFormatListener mListener;
+            ^
+  符号:   类 CandidateFormatListener
+  位置: 类 DownloadCandidateItemBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DownloadCandidateItemBinding.java:40: 错误: 找不到符号
+  protected VideoInfo mVideoInfo;
+            ^
+  符号:   类 VideoInfo
+  位置: 类 DownloadCandidateItemBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DownloadCandidateItemBinding.java:50: 错误: 找不到符号
+  public abstract void setListener(@Nullable CandidateFormatListener listener);
+                                             ^
+  符号:   类 CandidateFormatListener
+  位置: 类 DownloadCandidateItemBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DownloadCandidateItemBinding.java:53: 错误: 找不到符号
+  public CandidateFormatListener getListener() {
+         ^
+  符号:   类 CandidateFormatListener
+  位置: 类 DownloadCandidateItemBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DownloadCandidateItemBinding.java:71: 错误: 找不到符号
+  public abstract void setVideoInfo(@Nullable VideoInfo videoInfo);
+                                              ^
+  符号:   类 VideoInfo
+  位置: 类 DownloadCandidateItemBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\DownloadCandidateItemBinding.java:74: 错误: 找不到符号
+  public VideoInfo getVideoInfo() {
+         ^
+  符号:   类 VideoInfo
+  位置: 类 DownloadCandidateItemBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserBinding.java:18: 错误: 程序包com.myAllVideoBrowser.ui.main.home.browser不存在
+import com.myAllVideoBrowser.ui.main.home.browser.BrowserViewModel;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserBinding.java:19: 错误: 程序包com.myAllVideoBrowser.ui.main.home.browser不存在
+import com.myAllVideoBrowser.ui.main.home.browser.CustomViewPager2;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserBinding.java:43: 错误: 找不到符号
+  public final CustomViewPager2 viewPager;
+               ^
+  符号:   类 CustomViewPager2
+  位置: 类 FragmentBrowserBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserBinding.java:46: 错误: 找不到符号
+  protected BrowserViewModel mViewModel;
+            ^
+  符号:   类 BrowserViewModel
+  位置: 类 FragmentBrowserBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserBinding.java:51: 错误: 找不到符号
+      TextView tabsOverviewTitle, CustomViewPager2 viewPager) {
+                                  ^
+  符号:   类 CustomViewPager2
+  位置: 类 FragmentBrowserBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserBinding.java:62: 错误: 找不到符号
+  public abstract void setViewModel(@Nullable BrowserViewModel viewModel);
+                                              ^
+  符号:   类 BrowserViewModel
+  位置: 类 FragmentBrowserBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserBinding.java:65: 错误: 找不到符号
+  public BrowserViewModel getViewModel() {
+         ^
+  符号:   类 BrowserViewModel
+  位置: 类 FragmentBrowserBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserHomeBinding.java:20: 错误: 程序包com.myAllVideoBrowser.ui.main.home不存在
+import com.myAllVideoBrowser.ui.main.home.MainViewModel;
+                                         ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserHomeBinding.java:21: 错误: 程序包com.myAllVideoBrowser.ui.main.home.browser.homeTab不存在
+import com.myAllVideoBrowser.ui.main.home.browser.homeTab.BrowserHomeViewModel;
+                                                         ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserHomeBinding.java:69: 错误: 找不到符号
+  protected BrowserHomeViewModel mViewModel;
+            ^
+  符号:   类 BrowserHomeViewModel
+  位置: 类 FragmentBrowserHomeBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserHomeBinding.java:72: 错误: 找不到符号
+  protected MainViewModel mMainVModel;
+            ^
+  符号:   类 MainViewModel
+  位置: 类 FragmentBrowserHomeBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserHomeBinding.java:97: 错误: 找不到符号
+  public abstract void setViewModel(@Nullable BrowserHomeViewModel viewModel);
+                                              ^
+  符号:   类 BrowserHomeViewModel
+  位置: 类 FragmentBrowserHomeBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserHomeBinding.java:100: 错误: 找不到符号
+  public BrowserHomeViewModel getViewModel() {
+         ^
+  符号:   类 BrowserHomeViewModel
+  位置: 类 FragmentBrowserHomeBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserHomeBinding.java:104: 错误: 找不到符号
+  public abstract void setMainVModel(@Nullable MainViewModel mainVModel);
+                                               ^
+  符号:   类 MainViewModel
+  位置: 类 FragmentBrowserHomeBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentBrowserHomeBinding.java:107: 错误: 找不到符号
+  public MainViewModel getMainVModel() {
+         ^
+  符号:   类 MainViewModel
+  位置: 类 FragmentBrowserHomeBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentHistoryBinding.java:20: 错误: 程序包com.myAllVideoBrowser.ui.main.history不存在
+import com.myAllVideoBrowser.ui.main.history.HistoryViewModel;
+                                            ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentHistoryBinding.java:89: 错误: 找不到符号
+  protected HistoryViewModel mViewModel;
+            ^
+  符号:   类 HistoryViewModel
+  位置: 类 FragmentHistoryBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentHistoryBinding.java:126: 错误: 找不到符号
+  public abstract void setViewModel(@Nullable HistoryViewModel viewModel);
+                                              ^
+  符号:   类 HistoryViewModel
+  位置: 类 FragmentHistoryBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentHistoryBinding.java:129: 错误: 找不到符号
+  public HistoryViewModel getViewModel() {
+         ^
+  符号:   类 HistoryViewModel
+  位置: 类 FragmentHistoryBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentPlayerBinding.java:16: 错误: 程序包com.myAllVideoBrowser.ui.main.player不存在
+import com.myAllVideoBrowser.ui.main.player.VideoPlayerViewModel;
+                                           ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentPlayerBinding.java:31: 错误: 找不到符号
+  protected VideoPlayerViewModel mViewModel;
+            ^
+  符号:   类 VideoPlayerViewModel
+  位置: 类 FragmentPlayerBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentPlayerBinding.java:41: 错误: 找不到符号
+  public abstract void setViewModel(@Nullable VideoPlayerViewModel viewModel);
+                                              ^
+  符号:   类 VideoPlayerViewModel
+  位置: 类 FragmentPlayerBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentPlayerBinding.java:44: 错误: 找不到符号
+  public VideoPlayerViewModel getViewModel() {
+         ^
+  符号:   类 VideoPlayerViewModel
+  位置: 类 FragmentPlayerBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentProgressBinding.java:19: 错误: 程序包com.myAllVideoBrowser.ui.component.adapter不存在
+import com.myAllVideoBrowser.ui.component.adapter.ProgressAdapter;
+                                                 ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentProgressBinding.java:20: 错误: 程序包com.myAllVideoBrowser.ui.main.home不存在
+import com.myAllVideoBrowser.ui.main.home.MainViewModel;
+                                         ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentProgressBinding.java:21: 错误: 程序包com.myAllVideoBrowser.ui.main.progress不存在
+import com.myAllVideoBrowser.ui.main.progress.ProgressViewModel;
+                                             ^
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentProgressBinding.java:63: 错误: 找不到符号
+  protected ProgressViewModel mViewModel;
+            ^
+  符号:   类 ProgressViewModel
+  位置: 类 FragmentProgressBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentProgressBinding.java:66: 错误: 找不到符号
+  protected MainViewModel mMainViewModel;
+            ^
+  符号:   类 MainViewModel
+  位置: 类 FragmentProgressBinding
+F:\my\downloader\super-video-downloader-master\super-video-downloader-master\app\build\generated\data_binding_base_class_source_out\debug\out\com\myAllVideoBrowser\databinding\FragmentProgressBinding.java:69: 错误: 找不到符号
+  protected ProgressAdapter mAdapter;
+            ^
+  符号:   类 ProgressAdapter
+  位置: 类 FragmentProgressBinding
+警告: Binding adapter AK(android.widget.ImageView, java.lang.String) already exists for android:src! Overriding androidx.databinding.adapters.ImageViewBindingAdapter#setImageUri with com.myAllVideoBrowser.ui.component.binding.ImageBinding#setImageUri
+警告: Binding adapter AK(android.widget.ImageView, android.net.Uri) already exists for android:src! Overriding androidx.databinding.adapters.ImageViewBindingAdapter#setImageUri with com.myAllVideoBrowser.ui.component.binding.ImageBinding#setImageUri
+警告: Binding adapter AK(android.widget.ImageView, android.graphics.drawable.Drawable) already exists for android:src! Overriding androidx.databinding.adapters.ImageViewBindingAdapter#setImageDrawable with com.myAllVideoBrowser.ui.component.binding.ImageBinding#setImageDrawable
+System.Management.Automation.RemoteException
+FAILURE: Build failed with an exception.
+System.Management.Automation.RemoteException
+* What went wrong:
+Execution failed for task ':app:compileDebugJavaWithJavac'.
+> android.databinding.tool.util.LoggedErrorException: Found data binding error(s):
+  
+  ERROR: Cannot resolve type 'dialogListener' file://app\src\main\res\layout\dialog_download_video.xml Line:80
+  ERROR: Cannot resolve type 'viewModel' file://app\src\main\res\layout\fragment_browser_home.xml Line:132
+  ERROR: Cannot resolve type 'listener' file://app\src\main\res\layout\item_tab_suggestion.xml Line:30
+  ERROR: Cannot resolve type 'viewModel' file://app\src\main\res\layout\fragment_player.xml Line:50
+  ERROR: Cannot resolve type 'tabListener' file://app\src\main\res\layout\item_web_tab_button.xml Line:23
+  ERROR: Cannot resolve type 'localVideo' file://app\src\main\res\layout\item_video.xml Line:60
+  ERROR: Cannot resolve type 'progressListener' file://app\src\main\res\layout\item_progress.xml Line:92
+  ERROR: Cannot resolve type 'viewModel' file://app\src\main\res\layout\fragment_settings.xml Line:71
+  ERROR: Cannot resolve type 'listener' file://app\src\main\res\layout\download_candidate_item.xml Line:33
+  ERROR: Cannot resolve type 'listener' file://app\src\main\res\layout\fragment_proxies.xml Line:62
+  ERROR: Cannot resolve type 'historyListener' file://app\src\main\res\layout\item_history.xml Line:28
+  ERROR: Cannot resolve type 'viewModel' file://app\src\main\res\layout\fragment_history.xml Line:60
+  ERROR: Cannot resolve type 'listener' file://app\src\main\res\layout\item_top_page.xml Line:24
+  ERROR: Cannot resolve type 'viewModel' file://app\src\main\res\layout\fragment_video.xml Line:252
+  ERROR: Cannot resolve type 'viewModel' file://app\src\main\res\layout\activity_main.xml Line:28
+  ERROR: Cannot resolve type 'viewModel' file://app\src\main\res\layout\fragment_progress.xml Line:207
+  ERROR: Cannot resolve type 'bookmarksListener' file://app\src\main\res\layout\item_bookmark.xml Line:29
+  ERROR: Cannot resolve type 'historyListener' file://app\src\main\res\layout\item_history_search.xml Line:28
+  ERROR: Cannot resolve type 'proxiesListener' file://app\src\main\res\layout\item_proxies.xml Line:82
+  ERROR: Cannot resolve type 'listener' file://app\src\main\res\layout\item_suggestion.xml Line:33
+  ERROR: Cannot resolve type 'viewModel' file://app\src\main\res\layout\fragment_browser.xml Line:22
+  ERROR: Cannot resolve type 'browserMenuListener' file://app\src\main\res\layout\fragment_web_tab.xml Line:71
+System.Management.Automation.RemoteException
+System.Management.Automation.RemoteException
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+System.Management.Automation.RemoteException
+BUILD FAILED in 4s
+13 actionable tasks: 1 executed, 12 up-to-date

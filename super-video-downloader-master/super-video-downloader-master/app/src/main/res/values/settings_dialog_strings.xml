@@ -1,0 +1,23 @@
+<resources>
+    <string name="settings_dialog_permission_title">Allow protected content</string>
+    <string name="settings_dialog_permission_message">This feature is needed when a site requires DRM-protected playback. Do you want to allow it?</string>
+    <string name="settings_dialog_allow">Allow</string>
+    <string name="settings_dialog_block">Block</string>
+
+    <string name="settings_dialog_rating_title">How would you rate the app?</string>
+    <string name="settings_dialog_rating_message">Your rating helps us improve the downloader and fix the rough edges faster.</string>
+    <string name="settings_dialog_rating_continue">Continue</string>
+    <string name="settings_dialog_later">Later</string>
+
+    <string name="settings_dialog_feedback_title">Send feedback</string>
+    <string name="settings_dialog_feedback_message">Tell us what is missing, what broke, or what should feel better.</string>
+    <string name="settings_dialog_feedback_hint">Write your feedback here</string>
+    <string name="settings_dialog_send">Send</string>
+    <string name="settings_dialog_cancel">Cancel</string>
+
+    <string name="settings_dialog_positive_review_title">Thanks for the good review</string>
+    <string name="settings_dialog_positive_review_message">Would you like to leave a public review too?</string>
+    <string name="settings_dialog_leave_review">Leave review</string>
+    <string name="settings_dialog_done">Done</string>
+</resources>
+

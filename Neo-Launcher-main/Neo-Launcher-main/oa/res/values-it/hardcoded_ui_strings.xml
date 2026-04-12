@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Errore</string>
+    <string name="detected_videos_unexpected_error">Qualcosa è andato storto. Riprova.</string>
+    <string name="browser_back_exit_hint">Premi di nuovo Indietro per uscire</string>
+    <string name="proxies_invalid_host_port">Host o porta non validi</string>
+    <string name="browser_open_in_new_tab">Apri in una nuova scheda</string>
+    <string name="share_via">Condividi tramite</string>
+    <string name="player_download_only_title">Solo download</string>
+    <string name="player_download_only_message">Questo video supporta solo il download.</string>
+    <string name="download_status_preparing">Preparazione</string>
+    <string name="download_status_pending">In attesa</string>
+    <string name="download_status_downloading">Download in corso</string>
+    <string name="download_status_paused">In pausa</string>
+    <string name="download_status_success">Completato</string>
+    <string name="download_status_failed">Non riuscito</string>
+    <string name="download_status_canceled">Annullato</string>
+    <string name="download_status_unknown">Stato sconosciuto</string>
+    <string name="notification_failed_with_reason">Non riuscito: %1$s</string>
+    <string name="proxy_service_notification_title">Servizio proxy</string>
+    <string name="proxy_service_notification_message">Il proxy locale è in esecuzione...</string>
+    <string name="video_sort_label_name">Nome</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Ultima modifica</string>
+    <string name="video_sort_label_latest_first">(Più recenti prima)</string>
+    <string name="video_sort_label_latest_last">(Meno recenti prima)</string>
+    <string name="video_sort_label_file_size">Dimensione file</string>
+    <string name="video_sort_label_largest_to_smallest">(Dal più grande al più piccolo)</string>
+    <string name="video_sort_label_smallest_to_largest">(Dal più piccolo al più grande)</string>
+</resources>

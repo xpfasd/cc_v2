@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Erro</string>
+    <string name="detected_videos_unexpected_error">Algo deu errado. Tente novamente.</string>
+    <string name="browser_back_exit_hint">Pressione Voltar novamente para sair</string>
+    <string name="proxies_invalid_host_port">Host ou porta inválidos</string>
+    <string name="browser_open_in_new_tab">Abrir em nova guia</string>
+    <string name="share_via">Compartilhar via</string>
+    <string name="player_download_only_title">Somente download</string>
+    <string name="player_download_only_message">Este vídeo suporta apenas download.</string>
+    <string name="download_status_preparing">Preparando</string>
+    <string name="download_status_pending">Pendente</string>
+    <string name="download_status_downloading">Baixando</string>
+    <string name="download_status_paused">Pausado</string>
+    <string name="download_status_success">Concluído</string>
+    <string name="download_status_failed">Falhou</string>
+    <string name="download_status_canceled">Cancelado</string>
+    <string name="download_status_unknown">Status desconhecido</string>
+    <string name="notification_failed_with_reason">Falhou: %1$s</string>
+    <string name="proxy_service_notification_title">Serviço de proxy</string>
+    <string name="proxy_service_notification_message">O proxy local está em execução...</string>
+    <string name="video_sort_label_name">Nome</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Última edição</string>
+    <string name="video_sort_label_latest_first">(Mais recentes primeiro)</string>
+    <string name="video_sort_label_latest_last">(Mais antigos primeiro)</string>
+    <string name="video_sort_label_file_size">Tamanho do arquivo</string>
+    <string name="video_sort_label_largest_to_smallest">(Do maior para o menor)</string>
+    <string name="video_sort_label_smallest_to_largest">(Do menor para o maior)</string>
+</resources>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="localVideo"
+            type="com.myAllVideoBrowser.data.local.model.LocalVideo" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        android:minHeight="72dp"
+        android:paddingStart="12dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="8dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/iv_thumbnail"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.rounded" />
+
+        <View
+            android:id="@+id/iv_play"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="#1A000000"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="@id/iv_thumbnail"
+            app:layout_constraintTop_toTopOf="@id/iv_thumbnail" />
+
+        <ImageView
+            android:id="@+id/iv_play_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_play"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/iv_play"
+            app:layout_constraintEnd_toEndOf="@id/iv_play"
+            app:layout_constraintStart_toStartOf="@id/iv_play"
+            app:layout_constraintTop_toTopOf="@id/iv_play" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{localVideo.name}"
+            android:textColor="#101828"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/iv_more"
+            app:layout_constraintStart_toEndOf="@id/iv_thumbnail"
+            app:layout_constraintTop_toTopOf="@id/iv_thumbnail"
+            tools:text="downloaded...1021655.jpg" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_size"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{localVideo.subtitle}"
+            android:textColor="@color/downloaded_meta_text"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@id/iv_more"
+            app:layout_constraintStart_toEndOf="@id/iv_thumbnail"
+            app:layout_constraintTop_toBottomOf="@id/tv_name"
+            tools:text="14.02KB ·16/03/2026 11:17:01" />
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@null"
+            android:padding="4dp"
+            android:src="@drawable/ic_more_gray_24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_select"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@null"
+            android:padding="1dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/downloaded_ic_selection_unchecked" />
+
+        <View
+            android:id="@+id/view_divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/home_divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_thumbnail" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

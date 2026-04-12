@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Fel</string>
+    <string name="detected_videos_unexpected_error">Något gick fel. Försök igen.</string>
+    <string name="browser_back_exit_hint">Tryck på Tillbaka igen för att avsluta</string>
+    <string name="proxies_invalid_host_port">Ogiltig värd eller port</string>
+    <string name="browser_open_in_new_tab">Öppna i ny flik</string>
+    <string name="share_via">Dela via</string>
+    <string name="player_download_only_title">Endast nedladdning</string>
+    <string name="player_download_only_message">Den här videon stöder endast nedladdning.</string>
+    <string name="download_status_preparing">Förbereder</string>
+    <string name="download_status_pending">Väntar</string>
+    <string name="download_status_downloading">Laddar ner</string>
+    <string name="download_status_paused">Pausad</string>
+    <string name="download_status_success">Klart</string>
+    <string name="download_status_failed">Misslyckades</string>
+    <string name="download_status_canceled">Avbruten</string>
+    <string name="download_status_unknown">Okänd status</string>
+    <string name="notification_failed_with_reason">Misslyckades: %1$s</string>
+    <string name="proxy_service_notification_title">Proxytjänst</string>
+    <string name="proxy_service_notification_message">Lokal proxy körs...</string>
+    <string name="video_sort_label_name">Namn</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Senast redigerad</string>
+    <string name="video_sort_label_latest_first">(Senaste först)</string>
+    <string name="video_sort_label_latest_last">(Äldsta först)</string>
+    <string name="video_sort_label_file_size">Filstorlek</string>
+    <string name="video_sort_label_largest_to_smallest">(Störst till minst)</string>
+    <string name="video_sort_label_smallest_to_largest">(Minst till störst)</string>
+</resources>

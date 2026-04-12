@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Hata</string>
+    <string name="detected_videos_unexpected_error">Bir şeyler yanlış gitti. Lütfen tekrar deneyin.</string>
+    <string name="browser_back_exit_hint">Çıkmak için Geri\'ye tekrar basın</string>
+    <string name="proxies_invalid_host_port">Geçersiz ana makine veya bağlantı noktası</string>
+    <string name="browser_open_in_new_tab">Yeni sekmede aç</string>
+    <string name="share_via">Şununla paylaş</string>
+    <string name="player_download_only_title">Yalnızca indir</string>
+    <string name="player_download_only_message">Bu video yalnızca indirmeyi destekler.</string>
+    <string name="download_status_preparing">Hazırlanıyor</string>
+    <string name="download_status_pending">Beklemede</string>
+    <string name="download_status_downloading">İndiriliyor</string>
+    <string name="download_status_paused">Duraklatıldı</string>
+    <string name="download_status_success">Başarılı</string>
+    <string name="download_status_failed">Başarısız</string>
+    <string name="download_status_canceled">İptal edildi</string>
+    <string name="download_status_unknown">Bilinmeyen durum</string>
+    <string name="notification_failed_with_reason">Başarısız: %1$s</string>
+    <string name="proxy_service_notification_title">Proxy hizmeti</string>
+    <string name="proxy_service_notification_message">Yerel proxy çalışıyor...</string>
+    <string name="video_sort_label_name">Ad</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Son düzenleme</string>
+    <string name="video_sort_label_latest_first">(En yeni önce)</string>
+    <string name="video_sort_label_latest_last">(En eski önce)</string>
+    <string name="video_sort_label_file_size">Dosya boyutu</string>
+    <string name="video_sort_label_largest_to_smallest">(Büyükten küçüğe)</string>
+    <string name="video_sort_label_smallest_to_largest">(Küçükten büyüğe)</string>
+</resources>

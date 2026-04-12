@@ -1,0 +1,8 @@
+<resources>
+    <string name="bookmarks_dialog_add_title">Add bookmark</string>
+    <string name="bookmarks_dialog_add_message">Save the current page to your bookmarks list.</string>
+    <string name="bookmarks_dialog_name_hint">Name</string>
+    <string name="bookmarks_dialog_url_hint">URL</string>
+    <string name="bookmarks_dialog_save">Save</string>
+    <string name="bookmarks_dialog_cancel">Cancel</string>
+</resources>

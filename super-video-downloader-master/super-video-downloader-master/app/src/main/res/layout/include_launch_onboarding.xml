@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/launch_onboarding_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_guide_screen"
+    android:visibility="gone">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:alpha="0.85"
+        android:background="@drawable/bg_launch_glow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1.28"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/onboarding_illustration_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="58dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintBottom_toTopOf="@id/onboarding_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/onboarding_page_one"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="308dp"
+                android:layout_height="264dp"
+                android:background="@drawable/bg_launch_blob" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="156dp"
+                android:layout_height="248dp"
+                android:layout_marginTop="-234dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_guide_phone_frame"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/guide_demo_screen"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <View
+                            android:layout_width="72dp"
+                            android:layout_height="6dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/bg_launch_progress_fill" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/bg_guide_search_pill" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="28dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_guide_shortcut" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="28dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/bg_guide_shortcut" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="70dp"
+                            android:layout_height="8dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/bg_launch_text_line_primary" />
+
+                        <GridLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:columnCount="4"
+                            android:rowCount="2">
+
+                            <View
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/bg_home_site_icon" />
+
+                            <View
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/bg_home_site_icon" />
+
+                            <View
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/bg_home_site_icon" />
+
+                            <View
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginBottom="10dp"
+                                android:background="@drawable/bg_home_site_icon" />
+
+                            <View
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/bg_home_site_icon" />
+
+                            <View
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/bg_home_site_icon" />
+
+                            <View
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_marginEnd="8dp"
+                                android:background="@drawable/bg_home_site_icon" />
+
+                            <View
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:background="@drawable/bg_home_site_icon" />
+                        </GridLayout>
+                    </LinearLayout>
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/onboarding_page_two"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="308dp"
+                android:layout_height="264dp"
+                android:background="@drawable/bg_launch_blob" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="164dp"
+                android:layout_height="260dp"
+                android:layout_marginTop="-236dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_guide_phone_frame"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/guide_demo_screen"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <View
+                            android:layout_width="84dp"
+                            android:layout_height="7dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/bg_launch_text_line_primary" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="34dp"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/bg_guide_search_pill" />
+
+                        <include layout="@layout/include_launch_processing_row" />
+                        <include layout="@layout/include_launch_processing_row" />
+                        <include layout="@layout/include_launch_processing_row" />
+                    </LinearLayout>
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/onboarding_page_three"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="292dp"
+                android:layout_height="250dp"
+                android:background="@drawable/bg_launch_blob" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="164dp"
+                android:layout_height="266dp"
+                android:layout_marginTop="-224dp"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="0dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_guide_phone_frame"
+                    android:padding="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                        <View
+                            android:layout_width="96dp"
+                            android:layout_height="7dp"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@drawable/bg_launch_text_line_primary" />
+
+                        <include layout="@layout/include_launch_bookmark_row" />
+                        <include layout="@layout/include_launch_bookmark_row" />
+                        <include layout="@layout/include_launch_bookmark_row" />
+                        <include layout="@layout/include_launch_bookmark_row" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:layout_gravity="end"
+                            android:layout_marginTop="8dp"
+                            app:cardBackgroundColor="@color/guide_download_start"
+                            app:cardCornerRadius="21dp"
+                            app:cardElevation="0dp">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                app:srcCompat="@drawable/add_new_tab_icon24"
+                                app:tint="@color/black" />
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
+                </FrameLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </FrameLayout>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/onboarding_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:text="@string/launch_onboarding_title_one"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/onboarding_indicator_group"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/onboarding_indicator_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/onboarding_next_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <View
+            android:id="@+id/onboarding_indicator_one"
+            android:layout_width="22dp"
+            android:layout_height="6dp"
+            android:background="@drawable/bg_launch_indicator_active" />
+
+        <View
+            android:id="@+id/onboarding_indicator_two"
+            android:layout_width="9dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_launch_indicator_inactive" />
+
+        <View
+            android:id="@+id/onboarding_indicator_three"
+            android:layout_width="9dp"
+            android:layout_height="6dp"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_launch_indicator_inactive" />
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/onboarding_next_button"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="32dp"
+        android:backgroundTint="@color/guide_download_start"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/launch_next"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

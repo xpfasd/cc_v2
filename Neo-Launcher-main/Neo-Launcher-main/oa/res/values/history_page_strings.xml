@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="go_back">Go back</string>
+    <string name="history_title">History</string>
+    <string name="history_search_hint">Search history</string>
+    <string name="history_clear_all">Clear all</string>
+    <string name="history_clear_search">Clear search</string>
+    <string name="history_recent_label">Recent history</string>
+    <string name="history_search_results_label">Search results</string>
+    <string name="history_empty_title">No history yet</string>
+    <string name="history_empty_message">Pages you visit will appear here.</string>
+    <string name="history_search_empty_title">No matches found</string>
+    <string name="history_search_empty_message">Try another keyword or clear the search box.</string>
+</resources>

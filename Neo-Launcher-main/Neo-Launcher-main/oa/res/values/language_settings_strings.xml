@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="language_title" translatable="false">Language</string>
+    <string name="language_done">Done</string>
+    <string name="language_back">Back</string>
+    <string name="language_subtitle">Choose the display language. Changes apply when you tap Done.</string>
+    <string name="language_selected_state">Selected language</string>
+    <string name="language_system_default">Device language</string>
+    <string name="language_english">English</string>
+    <string name="language_spanish">Spanish</string>
+    <string name="language_french">French</string>
+    <string name="language_portuguese_brazil">Portuguese (Brazil)</string>
+    <string name="language_russian">Russian</string>
+    <string name="language_chinese_simplified">Chinese (Simplified)</string>
+    <string name="language_arabic">Arabic</string>
+</resources>

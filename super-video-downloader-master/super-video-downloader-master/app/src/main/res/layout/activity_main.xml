@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.myAllVideoBrowser.ui.main.home.MainViewModel" />
+
+    </data>
+
+    <FrameLayout
+        android:fitsSystemWindows="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:currentItem="@{viewModel.currentItem}"
+                app:layout_constraintBottom_toTopOf="@id/bottom_bar_divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:offScreenPageLimit="@{viewModel.offScreenPageLimit.get()}" />
+
+            <View
+                android:id="@+id/bottom_bar_divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/home_divider"
+                app:layout_constraintBottom_toTopOf="@id/bottom_bar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_bar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/home_tab_bar_height"
+                android:background="@color/white"
+                android:minHeight="@dimen/home_tab_bar_height"
+                app:itemIconSize="24dp"
+                app:itemBackground="@android:color/transparent"
+                app:itemIconTint="@null"
+                app:itemPaddingBottom="4dp"
+                app:itemPaddingTop="4dp"
+                app:itemRippleColor="@android:color/transparent"
+                app:itemTextColor="@color/selector_bottom_navigation_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/menu_bottom_bar"
+                app:selectedItemId="@{viewModel.currentItem}" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@+id/fragment_container_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/launch_flow_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:clickable="true"
+            android:focusable="true"
+            android:visibility="gone">
+
+            <include layout="@layout/include_launch_splash" />
+
+            <include layout="@layout/include_launch_onboarding" />
+
+            <include layout="@layout/include_launch_launcher_prompt" />
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+</layout>

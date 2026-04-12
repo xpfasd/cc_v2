@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">错误</string>
+    <string name="detected_videos_unexpected_error">出了点问题，请重试。</string>
+    <string name="browser_back_exit_hint">再按一次返回即可退出</string>
+    <string name="proxies_invalid_host_port">主机或端口无效</string>
+    <string name="browser_open_in_new_tab">在新标签页中打开</string>
+    <string name="share_via">分享至</string>
+    <string name="player_download_only_title">仅可下载</string>
+    <string name="player_download_only_message">此视频仅支持下载。</string>
+    <string name="download_status_preparing">准备中</string>
+    <string name="download_status_pending">等待中</string>
+    <string name="download_status_downloading">下载中</string>
+    <string name="download_status_paused">已暂停</string>
+    <string name="download_status_success">成功</string>
+    <string name="download_status_failed">失败</string>
+    <string name="download_status_canceled">已取消</string>
+    <string name="download_status_unknown">未知状态</string>
+    <string name="notification_failed_with_reason">失败：%1$s</string>
+    <string name="proxy_service_notification_title">代理服务</string>
+    <string name="proxy_service_notification_message">本地代理正在运行...</string>
+    <string name="video_sort_label_name">名称</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">最后编辑</string>
+    <string name="video_sort_label_latest_first">(最新在前)</string>
+    <string name="video_sort_label_latest_last">(最旧在前)</string>
+    <string name="video_sort_label_file_size">文件大小</string>
+    <string name="video_sort_label_largest_to_smallest">(从大到小)</string>
+    <string name="video_sort_label_smallest_to_largest">(从小到大)</string>
+</resources>

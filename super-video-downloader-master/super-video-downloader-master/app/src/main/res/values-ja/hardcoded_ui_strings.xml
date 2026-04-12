@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">エラー</string>
+    <string name="detected_videos_unexpected_error">問題が発生しました。もう一度お試しください。</string>
+    <string name="browser_back_exit_hint">終了するにはもう一度戻るを押してください</string>
+    <string name="proxies_invalid_host_port">ホストまたはポートが無効です</string>
+    <string name="browser_open_in_new_tab">新しいタブで開く</string>
+    <string name="share_via">共有先</string>
+    <string name="player_download_only_title">ダウンロードのみ</string>
+    <string name="player_download_only_message">この動画はダウンロードのみ対応しています。</string>
+    <string name="download_status_preparing">準備中</string>
+    <string name="download_status_pending">保留中</string>
+    <string name="download_status_downloading">ダウンロード中</string>
+    <string name="download_status_paused">一時停止中</string>
+    <string name="download_status_success">完了</string>
+    <string name="download_status_failed">失敗</string>
+    <string name="download_status_canceled">キャンセル済み</string>
+    <string name="download_status_unknown">不明な状態</string>
+    <string name="notification_failed_with_reason">失敗: %1$s</string>
+    <string name="proxy_service_notification_title">プロキシサービス</string>
+    <string name="proxy_service_notification_message">ローカルプロキシが実行中です...</string>
+    <string name="video_sort_label_name">名前</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">最終更新</string>
+    <string name="video_sort_label_latest_first">(新しい順)</string>
+    <string name="video_sort_label_latest_last">(古い順)</string>
+    <string name="video_sort_label_file_size">ファイルサイズ</string>
+    <string name="video_sort_label_largest_to_smallest">(大きい順)</string>
+    <string name="video_sort_label_smallest_to_largest">(小さい順)</string>
+</resources>

@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Fout</string>
+    <string name="detected_videos_unexpected_error">Er is iets misgegaan. Probeer het opnieuw.</string>
+    <string name="browser_back_exit_hint">Druk nogmaals op Terug om af te sluiten</string>
+    <string name="proxies_invalid_host_port">Ongeldige host of poort</string>
+    <string name="browser_open_in_new_tab">Openen in nieuw tabblad</string>
+    <string name="share_via">Delen via</string>
+    <string name="player_download_only_title">Alleen downloaden</string>
+    <string name="player_download_only_message">Deze video ondersteunt alleen downloaden.</string>
+    <string name="download_status_preparing">Voorbereiden</string>
+    <string name="download_status_pending">In wachtrij</string>
+    <string name="download_status_downloading">Downloaden</string>
+    <string name="download_status_paused">Gepauzeerd</string>
+    <string name="download_status_success">Geslaagd</string>
+    <string name="download_status_failed">Mislukt</string>
+    <string name="download_status_canceled">Geannuleerd</string>
+    <string name="download_status_unknown">Onbekende status</string>
+    <string name="notification_failed_with_reason">Mislukt: %1$s</string>
+    <string name="proxy_service_notification_title">Proxyservice</string>
+    <string name="proxy_service_notification_message">Lokale proxy wordt uitgevoerd...</string>
+    <string name="video_sort_label_name">Naam</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Laatst bewerkt</string>
+    <string name="video_sort_label_latest_first">(Nieuwste eerst)</string>
+    <string name="video_sort_label_latest_last">(Oudste eerst)</string>
+    <string name="video_sort_label_file_size">Bestandsgrootte</string>
+    <string name="video_sort_label_largest_to_smallest">(Van groot naar klein)</string>
+    <string name="video_sort_label_smallest_to_largest">(Van klein naar groot)</string>
+</resources>

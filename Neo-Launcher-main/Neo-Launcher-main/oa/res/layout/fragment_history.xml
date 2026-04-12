@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.myAllVideoBrowser.ui.main.history.HistoryViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/history_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/home_background">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/back_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/browser_action_back"
+            android:padding="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/arrow_back24px"
+            app:tint="@color/black" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/history_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/history_screen_title"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/back_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/back_button" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/search_toggle_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="44dp"
+            android:layout_marginEnd="12dp"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/history_open_search"
+            android:padding="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/search_24px"
+            app:tint="@color/black" />
+
+        <FrameLayout
+            android:id="@+id/search_box"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/selector_history_search_background"
+            android:paddingStart="12dp"
+            android:paddingEnd="10dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/back_button">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@null"
+                    app:srcCompat="@drawable/search_24px"
+                    app:tint="@color/home_hint" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/search_input"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/history_search_hint"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="0dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/home_hint"
+                    android:textSize="15sp"
+                    tools:text="behance" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/search_clear_button"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/history_clear_search"
+                    android:padding="4dp"
+                    android:visibility="@{viewModel.isSearchActive.get() ? View.VISIBLE : View.GONE}"
+                    app:srcCompat="@drawable/close_24px"
+                    app:tint="@color/home_hint" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/history_card"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="12dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="0dp"
+            app:strokeWidth="0dp"
+            app:strokeColor="@android:color/transparent"
+            app:layout_constraintBottom_toTopOf="@id/clear_history_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/search_box">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/history_section_label"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/history_list"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:clipToPadding="false"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="12dp"
+                    android:visibility="@{(viewModel.isLoadingHistory.get() || viewModel.isSearchActive.get() || viewModel.isHistoryEmpty.get()) ? View.GONE : View.VISIBLE}"
+                    app:items="@{viewModel.historyItems.get()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:listitem="@layout/item_history" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/search_results_container"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="@{(viewModel.isSearchActive.get() &amp;&amp; !viewModel.isSearchResultsEmpty.get() &amp;&amp; !viewModel.isLoadingHistory.get()) ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/history_search_list"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:clipToPadding="false"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="12dp"
+                        app:items="@{viewModel.searchHistoryItems.get()}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:listitem="@layout/item_history_search" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/history_empty_state"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp"
+                    android:visibility="@{(!viewModel.isLoadingHistory.get() &amp;&amp; !viewModel.isSearchActive.get() &amp;&amp; viewModel.isHistoryEmpty.get()) ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <FrameLayout
+                        android:id="@+id/history_empty_badge"
+                        android:layout_width="84dp"
+                        android:layout_height="84dp"
+                        android:background="@drawable/bg_history_empty_badge"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/history_menu_icon_24dp"
+                            app:tint="@color/processing_progress_fill" />
+                    </FrameLayout>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/history_empty_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:text="@string/history_empty_title"
+                        android:textColor="@color/black_85"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/history_empty_badge" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/history_empty_message"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="@string/history_empty_message"
+                        android:textColor="@color/black_55"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/history_empty_title" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/search_empty_state"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:paddingStart="32dp"
+                    android:paddingEnd="32dp"
+                    android:visibility="@{(viewModel.isSearchActive.get() &amp;&amp; viewModel.isSearchResultsEmpty.get() &amp;&amp; !viewModel.isLoadingHistory.get()) ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <FrameLayout
+                        android:id="@+id/search_empty_badge"
+                        android:layout_width="84dp"
+                        android:layout_height="84dp"
+                        android:background="@drawable/bg_history_empty_badge"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:layout_gravity="center"
+                            app:srcCompat="@drawable/search_24px"
+                            app:tint="@color/processing_progress_fill" />
+                    </FrameLayout>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/search_empty_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:text="@string/history_search_empty_title"
+                        android:textColor="@color/black_85"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/search_empty_badge" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/search_empty_message"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="@string/history_search_empty_message"
+                        android:textColor="@color/black_55"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/search_empty_title" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/search_empty_clear_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="18dp"
+                        android:minWidth="132dp"
+                        android:text="@string/history_clear_search"
+                        android:textAllCaps="false"
+                        android:textColor="@color/processing_text_primary"
+                        app:backgroundTint="@color/processing_menu_background"
+                        app:cornerRadius="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/search_empty_message"
+                        app:strokeColor="@color/processing_progress_fill"
+                        app:strokeWidth="1dp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ProgressBar
+                    android:layout_width="@dimen/browser_loading_size"
+                    android:layout_height="@dimen/browser_loading_size"
+                    android:visibility="@{viewModel.isLoadingHistory.get() ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/clear_history_button"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="24dp"
+            android:text="@string/clear_history"
+            android:textAllCaps="false"
+            android:textColor="@color/detected_status_red"
+            android:textSize="15sp"
+            android:visibility="@{(viewModel.isSearchActive.get() || viewModel.isHistoryEmpty.get()) ? View.GONE : View.VISIBLE}"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/white"
+            app:strokeWidth="0dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="bookmarks_page_hint">Tap a card to open, swipe to delete, long-press to reorder.</string>
+    <string name="bookmarks_page_add">Add bookmark</string>
+    <string name="bookmarks_page_empty_title">No bookmarks yet</string>
+    <string name="bookmarks_page_empty_message">Tap add to save a page here.</string>
+    <string name="bookmarks_page_search_hint">Search bookmarks</string>
+    <string name="bookmarks_page_clear_search">Clear search</string>
+    <string name="bookmarks_page_all_label">All bookmarks</string>
+    <string name="bookmarks_page_search_results_label">Search results</string>
+    <string name="bookmarks_page_search_empty_title">No matches found</string>
+    <string name="bookmarks_page_search_empty_message">Try a different title or URL.</string>
+</resources>

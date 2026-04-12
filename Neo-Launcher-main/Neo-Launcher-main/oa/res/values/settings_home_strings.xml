@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_home_title" translatable="false">settings</string>
+    <string name="settings_home_download_location">Download location</string>
+    <string name="settings_home_download_location_subtitle" translatable="false">/storage/emulated/0/Download</string>
+    <string name="settings_home_language">Language</string>
+    <string name="settings_home_score">Score</string>
+    <string name="settings_home_share">Share</string>
+    <string name="settings_home_privacy_policy">Privacy Policy</string>
+    <string name="settings_home_share_message">Check out Super Video Downloader on F-Droid:\nhttps://f-droid.org/packages/com.myAllVideoBrowser</string>
+    <string name="settings_home_feedback_subject">Super Video Downloader Feedback</string>
+    <string name="settings_home_feedback_chooser">Send feedback via</string>
+    <string name="settings_home_share_chooser">Share app via</string>
+    <string name="settings_home_review_url" translatable="false">https://f-droid.org/packages/com.myAllVideoBrowser</string>
+    <string name="settings_home_privacy_unavailable">Privacy policy link is not available yet.</string>
+</resources>

@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.main.home.browser.homeTab.BrowserHomeFragment">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.myAllVideoBrowser.ui.main.home.browser.homeTab.BrowserHomeViewModel" />
+
+        <variable
+            name="mainVModel"
+            type="com.myAllVideoBrowser.ui.main.home.MainViewModel" />
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/home_background">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="286dp"
+            android:background="@drawable/bg_home_top_gradient" />
+
+        <View
+            android:layout_width="176dp"
+            android:layout_height="176dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="-58dp"
+            android:layout_marginEnd="-32dp"
+            android:background="@drawable/bg_home_top_orb" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="16dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/info_button"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:contentDescription="@string/help"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/info"/>
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/home_title_downloader"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/info_button" />
+
+            <FrameLayout
+                android:id="@+id/tab_count_container"
+                android:layout_width="@dimen/browser_home_header_chip_size"
+                android:layout_height="@dimen/browser_home_header_chip_size"
+                android:background="@drawable/rectangle_1"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title">
+
+                <TextView
+                    android:id="@+id/tv_tab_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="1"
+                    android:textColor="@color/black"
+                     android:textSize="13sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/tv_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+              android:textColor="@color/browser_home_shortcut_hint"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+            <LinearLayout
+                android:id="@+id/search_container"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_home_search_pill"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:tint="@color/home_hint"
+                    app:srcCompat="@drawable/search_24px" />
+
+                <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    android:id="@+id/home_et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:completionThreshold="1"
+                    android:dropDownVerticalOffset="8dp"
+                    android:ellipsize="end"
+                    android:focusable="@{viewModel.isSearchInputFocused}"
+                    android:focusableInTouchMode="@{viewModel.isSearchInputFocused}"
+                    android:hint="@string/searchbar_hint"
+                    android:onClick="@{() -> viewModel.changeSearchFocus(true)}"
+                    android:padding="0dp"
+                    android:singleLine="true"
+                    android:text="@{viewModel.searchTextInput}"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/home_hint"
+                    android:textSize="15sp"
+                    app:items="@{viewModel.listSuggestions.get()}" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/shortcut_row"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/browser_home_shortcut_height"
+                android:layout_marginTop="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_container">
+
+                <LinearLayout
+                    android:id="@+id/bookmark_shortcut"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_browser_home_quick_action"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
+
+                    <FrameLayout
+                        android:layout_width="@dimen/browser_home_shortcut_icon_size"
+                        android:layout_height="@dimen/browser_home_shortcut_icon_size">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:tint="@color/browser_home_shortcut_icon"
+                            app:srcCompat="@drawable/bookmarks_24px" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/bookmark"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/history_shortcut"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_browser_home_quick_action"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
+
+                    <FrameLayout
+                        android:layout_width="@dimen/browser_home_shortcut_icon_size"
+                        android:layout_height="@dimen/browser_home_shortcut_icon_size">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="24dp"
+                            android:layout_gravity="center"
+                            android:tint="@color/browser_home_shortcut_icon"
+                            app:srcCompat="@drawable/history_menu_icon_24dp" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/history"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/section_divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="36dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/shortcut_row" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/popular_card"
+                android:layout_width="0dp"
+                android:layout_height="218dp"
+                android:layout_marginTop="0dp"
+                app:cardBackgroundColor="@color/white"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/section_divider"
+                app:strokeWidth="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="12dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="12dp">
+
+                    <TextView
+                        android:id="@+id/tv_popular_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/popular_websites"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <GridView
+                        android:id="@+id/top_pages_grid"
+                        android:layout_width="0dp"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="18dp"
+                        android:gravity="center"
+                        android:horizontalSpacing="6dp"
+                        android:numColumns="4"
+                        android:stretchMode="columnWidth"
+                        android:verticalSpacing="14dp"
+                        app:items="@{mainVModel.bookmarksList.get()}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_popular_title" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </FrameLayout>
+
+</layout>

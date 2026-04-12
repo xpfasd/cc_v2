@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="bookmarkItem"
+            type="com.myAllVideoBrowser.data.local.room.entity.PageInfo" />
+
+        <variable
+            name="bookmarksListener"
+            type="com.myAllVideoBrowser.ui.component.adapter.BookmarksListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{(view) -> bookmarksListener.onBookmarkOpenClicked(view, bookmarkItem)}"
+        android:paddingStart="12dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="4dp"
+        android:paddingBottom="14dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/favicon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/bookmark"
+            app:bitmap="@{bookmarkItem.faviconBitmap()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/customImageViewRounded"
+            tools:src="@drawable/bookmarks_24px" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{bookmarkItem.name}"
+            android:textColor="#101828"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toStartOf="@id/iv_arrow"
+            app:layout_constraintStart_toEndOf="@id/favicon"
+            app:layout_constraintTop_toTopOf="@id/favicon"
+            tools:text="Behance : Behance" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_link"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{bookmarkItem.link}"
+            android:textColor="#99A1AF"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toStartOf="@id/iv_arrow"
+            app:layout_constraintStart_toEndOf="@id/favicon"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="behance.net" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_arrow"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="@id/favicon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/favicon"
+            app:srcCompat="@drawable/arrow_forward24px"
+            app:tint="@color/selection_arrow_tint" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tv_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

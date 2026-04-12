@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/home_background">
+
+        <View
+            android:id="@+id/languageTopGradient"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/language_header_height"
+            android:background="@drawable/bg_home_top_gradient"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/languageBackButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/language_back"
+            android:padding="8dp"
+            android:src="@drawable/homeback"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/languageTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_large"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="@dimen/padding_large"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:text="@string/language_title"
+            android:textColor="@color/textPrimary"
+            android:textSize="@dimen/text_xxlarge"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Language" />
+
+        <TextView
+            android:id="@+id/languageSubtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_large"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="@dimen/padding_large"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:text="@string/language_subtitle"
+            android:textColor="@color/home_hint"
+            android:textSize="@dimen/text_small"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/languageTitle"
+            tools:text="Choose the display language. Changes apply when you tap Done." />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/languageList"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:clipToPadding="false"
+            android:overScrollMode="never"
+            android:paddingStart="@dimen/padding_normal"
+            android:paddingTop="@dimen/padding_normal"
+            android:paddingEnd="@dimen/padding_normal"
+            android:paddingBottom="@dimen/padding_normal"
+            app:layout_constraintBottom_toTopOf="@id/languageDoneButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/languageSubtitle"
+            tools:itemCount="7"
+            tools:listitem="@layout/item_language_row" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/languageDoneButton"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="@dimen/padding_normal"
+            android:layout_marginEnd="@dimen/padding_normal"
+            android:layout_marginBottom="20dp"
+            android:text="@string/language_done"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_medium"
+            app:backgroundTint="@color/home_accent"
+            app:cornerRadius="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Done" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

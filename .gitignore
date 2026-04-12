@@ -1,0 +1,30 @@
+# Android/Gradle
+.gradle/
+.kotlin/
+.gradle-local
+build/
+captures/
+local.properties
+
+# IDE
+.idea/
+*.iml
+
+# Generated artifacts
+*.apk
+*.aab
+*.ap_
+*.dex
+
+# Archives in workspace
+*.zip
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Workspace-local generated files
+/Neo-Launcher-main/Neo-Launcher-main/gradle/gradle-daemon-jvm.properties
+/super-video-downloader-master/super-video-downloader-master/.gradle-user-home/
+/super-video-downloader-master/super-video-downloader-master/app/src/main/go/builder/vendor/
+/super-video-downloader-master/super-video-downloader-master/app/src/main/jniLibs/

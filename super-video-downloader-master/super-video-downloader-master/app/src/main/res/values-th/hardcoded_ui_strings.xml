@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">ข้อผิดพลาด</string>
+    <string name="detected_videos_unexpected_error">เกิดข้อผิดพลาด กรุณาลองอีกครั้ง</string>
+    <string name="browser_back_exit_hint">กด Back อีกครั้งเพื่อออก</string>
+    <string name="proxies_invalid_host_port">โฮสต์หรือพอร์ตไม่ถูกต้อง</string>
+    <string name="browser_open_in_new_tab">เปิดในแท็บใหม่</string>
+    <string name="share_via">แชร์ผ่าน</string>
+    <string name="player_download_only_title">ดาวน์โหลดเท่านั้น</string>
+    <string name="player_download_only_message">วิดีโอนี้รองรับการดาวน์โหลดเท่านั้น</string>
+    <string name="download_status_preparing">กำลังเตรียม</string>
+    <string name="download_status_pending">รอดำเนินการ</string>
+    <string name="download_status_downloading">กำลังดาวน์โหลด</string>
+    <string name="download_status_paused">หยุดชั่วคราว</string>
+    <string name="download_status_success">สำเร็จ</string>
+    <string name="download_status_failed">ล้มเหลว</string>
+    <string name="download_status_canceled">ยกเลิกแล้ว</string>
+    <string name="download_status_unknown">สถานะไม่ทราบ</string>
+    <string name="notification_failed_with_reason">ล้มเหลว: %1$s</string>
+    <string name="proxy_service_notification_title">บริการพร็อกซี</string>
+    <string name="proxy_service_notification_message">พร็อกซีภายในเครื่องกำลังทำงาน...</string>
+    <string name="video_sort_label_name">ชื่อ</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">แก้ไขล่าสุด</string>
+    <string name="video_sort_label_latest_first">(ล่าสุดก่อน)</string>
+    <string name="video_sort_label_latest_last">(เก่าสุดก่อน)</string>
+    <string name="video_sort_label_file_size">ขนาดไฟล์</string>
+    <string name="video_sort_label_largest_to_smallest">(ใหญ่ไปเล็ก)</string>
+    <string name="video_sort_label_smallest_to_largest">(เล็กไปใหญ่)</string>
+</resources>

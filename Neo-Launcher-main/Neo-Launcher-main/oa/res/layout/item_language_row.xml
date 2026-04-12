@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/languageCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/language_list_item_spacing"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="@dimen/language_item_corner_radius"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/home_divider"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/language_item_min_height"
+            android:paddingStart="@dimen/padding_normal"
+            android:paddingTop="@dimen/padding_normal"
+            android:paddingEnd="@dimen/padding_normal"
+            android:paddingBottom="@dimen/padding_normal">
+
+            <TextView
+                android:id="@+id/languageName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/textPrimary"
+                android:textSize="@dimen/text_medium"
+                app:layout_constraintEnd_toStartOf="@id/languageState"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="English" />
+
+            <TextView
+                android:id="@+id/languageTag"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:textColor="@color/home_hint"
+                android:textSize="@dimen/text_tiny"
+                app:layout_constraintEnd_toStartOf="@id/languageState"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/languageName"
+                tools:text="en" />
+
+            <ImageView
+                android:id="@+id/languageState"
+                android:layout_width="@dimen/language_state_icon_size"
+                android:layout_height="@dimen/language_state_icon_size"
+                android:contentDescription="@string/language_selected_state"
+                android:src="@drawable/selector_language_check_state"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/downloaded_ic_selection_checked" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

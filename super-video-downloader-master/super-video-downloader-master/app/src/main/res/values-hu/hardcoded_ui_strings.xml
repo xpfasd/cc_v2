@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Hiba</string>
+    <string name="detected_videos_unexpected_error">Valami hiba történt, próbáld újra.</string>
+    <string name="browser_back_exit_hint">Nyomd meg újra a Vissza gombot a kilépéshez</string>
+    <string name="proxies_invalid_host_port">Érvénytelen gazdagép vagy port</string>
+    <string name="browser_open_in_new_tab">Megnyitás új lapon</string>
+    <string name="share_via">Megosztás ezzel</string>
+    <string name="player_download_only_title">Csak letöltés</string>
+    <string name="player_download_only_message">Ez a videó csak letöltést támogat.</string>
+    <string name="download_status_preparing">Előkészítés</string>
+    <string name="download_status_pending">Függőben</string>
+    <string name="download_status_downloading">Letöltés folyamatban</string>
+    <string name="download_status_paused">Szüneteltetve</string>
+    <string name="download_status_success">Sikeres</string>
+    <string name="download_status_failed">Sikertelen</string>
+    <string name="download_status_canceled">Megszakítva</string>
+    <string name="download_status_unknown">Ismeretlen állapot</string>
+    <string name="notification_failed_with_reason">Sikertelen: %1$s</string>
+    <string name="proxy_service_notification_title">Proxy szolgáltatás</string>
+    <string name="proxy_service_notification_message">A helyi proxy fut...</string>
+    <string name="video_sort_label_name">Név</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Utolsó módosítás</string>
+    <string name="video_sort_label_latest_first">(Legújabb elöl)</string>
+    <string name="video_sort_label_latest_last">(Legrégebbi elöl)</string>
+    <string name="video_sort_label_file_size">Fájlméret</string>
+    <string name="video_sort_label_largest_to_smallest">(Legnagyobbtól a legkisebbig)</string>
+    <string name="video_sort_label_smallest_to_largest">(Legkisebbtől a legnagyobbig)</string>
+</resources>

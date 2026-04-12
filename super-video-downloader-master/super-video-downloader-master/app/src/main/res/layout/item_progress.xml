@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="progressInfo"
+            type="com.myAllVideoBrowser.data.local.room.entity.ProgressInfo" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="12dp"
+        android:layout_marginVertical="4dp"
+        app:cardBackgroundColor="@color/processing_card_surface"
+        app:cardCornerRadius="@dimen/processing_card_radius"
+        app:cardElevation="0dp"
+        app:strokeColor="@android:color/transparent"
+        app:strokeWidth="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:minHeight="@dimen/processing_card_min_height"
+            android:padding="@dimen/processing_card_padding">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/thumbnail_card"
+                android:layout_width="@dimen/processing_thumbnail_size"
+                android:layout_height="@dimen/processing_thumbnail_size"
+                app:cardBackgroundColor="@color/processing_thumbnail_surface"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:strokeColor="@color/processing_thumbnail_stroke"
+                app:strokeWidth="1dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_thumbnail"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:scaleType="centerInside"
+                    tools:src="@drawable/ic_video_24dp" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="16dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{progressInfo.videoInfo.name}"
+                android:textColor="@color/processing_text_primary"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@id/primary_action_button"
+                app:layout_constraintStart_toEndOf="@id/thumbnail_card"
+                app:layout_constraintTop_toTopOf="@id/thumbnail_card"
+                tools:text="tiktok_com.mp4" />
+
+            <ProgressBar
+                android:id="@+id/progress_bar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/processing_progress_bar_height"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/transparent"
+                android:progress="@{progressInfo.progress}"
+                android:progressBackgroundTint="@color/processing_progress_track"
+                android:progressTint="@color/processing_progress_fill"
+                app:layout_constraintEnd_toStartOf="@id/primary_action_button"
+                app:layout_constraintStart_toEndOf="@id/thumbnail_card"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                tools:progress="48" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_progress"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:textColor="@color/processing_text_secondary"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@id/primary_action_button"
+                app:layout_constraintStart_toEndOf="@id/thumbnail_card"
+                app:layout_constraintTop_toBottomOf="@id/progress_bar"
+                tools:text="5.7 MB / 15.7 MB" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/primary_action_button"
+                android:layout_width="@dimen/processing_menu_button_size"
+                android:layout_height="@dimen/processing_menu_button_size"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp"
+                app:strokeColor="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@id/thumbnail_card"
+                app:layout_constraintEnd_toStartOf="@id/cancel_action_button"
+                app:layout_constraintTop_toTopOf="@id/thumbnail_card">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_primary_action"
+                    android:layout_width="@dimen/processing_menu_icon_size"
+                    android:layout_height="@dimen/processing_menu_icon_size"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/progress_menu_resume"
+                    tools:src="@drawable/process_start" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cancel_action_button"
+                android:layout_width="@dimen/processing_menu_button_size"
+                android:layout_height="@dimen/processing_menu_button_size"
+                android:layout_marginStart="8dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp"
+                app:strokeColor="@android:color/transparent"
+                app:cardBackgroundColor="@android:color/transparent"
+                app:layout_constraintBottom_toBottomOf="@id/thumbnail_card"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/thumbnail_card">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_cancel_action"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/progress_menu_cancel"
+                    android:tint="@color/processing_cancel_action_tint"
+                    app:srcCompat="@drawable/process_delete" />
+            </com.google.android.material.card.MaterialCardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

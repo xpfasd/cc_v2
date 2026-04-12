@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Lỗi</string>
+    <string name="detected_videos_unexpected_error">Đã xảy ra lỗi. Vui lòng thử lại.</string>
+    <string name="browser_back_exit_hint">Nhấn Back lần nữa để thoát</string>
+    <string name="proxies_invalid_host_port">Máy chủ hoặc cổng không hợp lệ</string>
+    <string name="browser_open_in_new_tab">Mở trong tab mới</string>
+    <string name="share_via">Chia sẻ qua</string>
+    <string name="player_download_only_title">Chỉ tải xuống</string>
+    <string name="player_download_only_message">Video này chỉ hỗ trợ tải xuống.</string>
+    <string name="download_status_preparing">Đang chuẩn bị</string>
+    <string name="download_status_pending">Đang chờ</string>
+    <string name="download_status_downloading">Đang tải xuống</string>
+    <string name="download_status_paused">Đã tạm dừng</string>
+    <string name="download_status_success">Thành công</string>
+    <string name="download_status_failed">Thất bại</string>
+    <string name="download_status_canceled">Đã hủy</string>
+    <string name="download_status_unknown">Trạng thái không xác định</string>
+    <string name="notification_failed_with_reason">Thất bại: %1$s</string>
+    <string name="proxy_service_notification_title">Dịch vụ proxy</string>
+    <string name="proxy_service_notification_message">Proxy cục bộ đang chạy...</string>
+    <string name="video_sort_label_name">Tên</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Chỉnh sửa gần nhất</string>
+    <string name="video_sort_label_latest_first">(Mới nhất trước)</string>
+    <string name="video_sort_label_latest_last">(Cũ nhất trước)</string>
+    <string name="video_sort_label_file_size">Kích thước tệp</string>
+    <string name="video_sort_label_largest_to_smallest">(Từ lớn đến nhỏ)</string>
+    <string name="video_sort_label_smallest_to_largest">(Từ nhỏ đến lớn)</string>
+</resources>

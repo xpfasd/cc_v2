@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Ошибка</string>
+    <string name="detected_videos_unexpected_error">Что-то пошло не так. Попробуйте еще раз.</string>
+    <string name="browser_back_exit_hint">Нажмите Назад еще раз, чтобы выйти</string>
+    <string name="proxies_invalid_host_port">Неверный хост или порт</string>
+    <string name="browser_open_in_new_tab">Открыть в новой вкладке</string>
+    <string name="share_via">Поделиться через</string>
+    <string name="player_download_only_title">Только загрузка</string>
+    <string name="player_download_only_message">Это видео поддерживает только загрузку.</string>
+    <string name="download_status_preparing">Подготовка</string>
+    <string name="download_status_pending">Ожидание</string>
+    <string name="download_status_downloading">Загрузка</string>
+    <string name="download_status_paused">На паузе</string>
+    <string name="download_status_success">Успешно</string>
+    <string name="download_status_failed">Не удалось</string>
+    <string name="download_status_canceled">Отменено</string>
+    <string name="download_status_unknown">Неизвестный статус</string>
+    <string name="notification_failed_with_reason">Не удалось: %1$s</string>
+    <string name="proxy_service_notification_title">Прокси-сервис</string>
+    <string name="proxy_service_notification_message">Локальный прокси запущен...</string>
+    <string name="video_sort_label_name">Имя</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Последнее изменение</string>
+    <string name="video_sort_label_latest_first">(Сначала новые)</string>
+    <string name="video_sort_label_latest_last">(Сначала старые)</string>
+    <string name="video_sort_label_file_size">Размер файла</string>
+    <string name="video_sort_label_largest_to_smallest">(От большего к меньшему)</string>
+    <string name="video_sort_label_smallest_to_largest">(От меньшего к большему)</string>
+</resources>

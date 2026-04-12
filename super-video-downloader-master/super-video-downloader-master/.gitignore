@@ -1,0 +1,10 @@
+.DS_Store
+.gradle
+.idea
+*.iml
+local.properties
+build/
+release/
+captures/*
+.externalNativeBuild
+/app/libs/libv2ray*

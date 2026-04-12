@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">त्रुटि</string>
+    <string name="detected_videos_unexpected_error">कुछ गड़बड़ हो गई, कृपया फिर से प्रयास करें।</string>
+    <string name="browser_back_exit_hint">बाहर निकलने के लिए Back फिर दबाएं</string>
+    <string name="proxies_invalid_host_port">अमान्य होस्ट या पोर्ट</string>
+    <string name="browser_open_in_new_tab">नए टैब में खोलें</string>
+    <string name="share_via">इसके जरिए साझा करें</string>
+    <string name="player_download_only_title">केवल डाउनलोड</string>
+    <string name="player_download_only_message">यह वीडियो केवल डाउनलोड का समर्थन करता है।</string>
+    <string name="download_status_preparing">तैयार हो रहा है</string>
+    <string name="download_status_pending">लंबित</string>
+    <string name="download_status_downloading">डाउनलोड हो रहा है</string>
+    <string name="download_status_paused">रुका हुआ</string>
+    <string name="download_status_success">सफल</string>
+    <string name="download_status_failed">विफल</string>
+    <string name="download_status_canceled">रद्द किया गया</string>
+    <string name="download_status_unknown">अज्ञात स्थिति</string>
+    <string name="notification_failed_with_reason">विफल: %1$s</string>
+    <string name="proxy_service_notification_title">प्रॉक्सी सेवा</string>
+    <string name="proxy_service_notification_message">लोकल प्रॉक्सी चल रहा है...</string>
+    <string name="video_sort_label_name">नाम</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">अंतिम संपादन</string>
+    <string name="video_sort_label_latest_first">(नवीनतम पहले)</string>
+    <string name="video_sort_label_latest_last">(सबसे पुराने पहले)</string>
+    <string name="video_sort_label_file_size">फ़ाइल आकार</string>
+    <string name="video_sort_label_largest_to_smallest">(सबसे बड़ा से सबसे छोटा)</string>
+    <string name="video_sort_label_smallest_to_largest">(सबसे छोटा से सबसे बड़ा)</string>
+</resources>

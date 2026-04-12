@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Error</string>
+    <string name="detected_videos_unexpected_error">Terjadi kesalahan. Coba lagi.</string>
+    <string name="browser_back_exit_hint">Tekan Kembali sekali lagi untuk keluar</string>
+    <string name="proxies_invalid_host_port">Host atau port tidak valid</string>
+    <string name="browser_open_in_new_tab">Buka di tab baru</string>
+    <string name="share_via">Bagikan via</string>
+    <string name="player_download_only_title">Hanya unduh</string>
+    <string name="player_download_only_message">Video ini hanya mendukung pengunduhan.</string>
+    <string name="download_status_preparing">Menyiapkan</string>
+    <string name="download_status_pending">Tertunda</string>
+    <string name="download_status_downloading">Mengunduh</string>
+    <string name="download_status_paused">Dijeda</string>
+    <string name="download_status_success">Berhasil</string>
+    <string name="download_status_failed">Gagal</string>
+    <string name="download_status_canceled">Dibatalkan</string>
+    <string name="download_status_unknown">Status tidak diketahui</string>
+    <string name="notification_failed_with_reason">Gagal: %1$s</string>
+    <string name="proxy_service_notification_title">Layanan proxy</string>
+    <string name="proxy_service_notification_message">Proxy lokal sedang berjalan...</string>
+    <string name="video_sort_label_name">Nama</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Terakhir diedit</string>
+    <string name="video_sort_label_latest_first">(Terbaru lebih dulu)</string>
+    <string name="video_sort_label_latest_last">(Terlama lebih dulu)</string>
+    <string name="video_sort_label_file_size">Ukuran file</string>
+    <string name="video_sort_label_largest_to_smallest">(Terbesar ke terkecil)</string>
+    <string name="video_sort_label_smallest_to_largest">(Terkecil ke terbesar)</string>
+</resources>

@@ -1,0 +1,13 @@
+Neo Launcher is een project gebaseerd op de AOSP launcher voor de veeleisende gebruiker.
+Het is zeer configureerbaar en biedt veel functionaliteit, waaronder:
+
+- De _Dash_.
+- Ondersteuning voor rijke thema's.
+- Aangepaste zoekmachines.
+- Ondersteuning voor gebaren.
+- Een unieke aangepaste widget.
+- Categorieën of mappen in de app-lade.
+- Pictogramvormen en ondersteuning voor pakketten.
+- Apps verbergen.
+
+Er zijn altijd nieuwe functies in de pijplijn, dus blijf op de hoogte…

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.myAllVideoBrowser.ui.main.progress.ProgressViewModel" />
+
+        <variable
+            name="mainViewModel"
+            type="com.myAllVideoBrowser.ui.main.home.MainViewModel" />
+
+        <variable
+            name="adapter"
+            type="com.myAllVideoBrowser.ui.component.adapter.ProgressAdapter" />
+
+    </data>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/processing_background">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/processing_header_height"
+            android:background="@drawable/bg_processing_top_gradient" />
+
+        <View
+            android:layout_width="@dimen/processing_header_orb_size"
+            android:layout_height="@dimen/processing_header_orb_size"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="-58dp"
+            android:layout_marginEnd="-32dp"
+            android:background="@drawable/bg_processing_top_orb" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:text="@string/title_progress"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="@color/processing_text_primary"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/info_button"
+                android:layout_width="24dp"
+                android:visibility="gone"
+                android:layout_height="24dp"
+                android:contentDescription="@string/help"
+                app:layout_constraintBottom_toBottomOf="@id/tv_title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_title"
+                app:srcCompat="@drawable/ic_home_info" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/paste_bar"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/processing_paste_bar_height"
+                android:layout_marginTop="0dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/processing_paste_background"
+                app:cardCornerRadius="@dimen/processing_paste_bar_radius"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toStartOf="@id/download_action_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                app:strokeColor="@android:color/transparent"
+                app:strokeWidth="0dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="6dp">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tv_paste_hint"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@string/processing_paste_hint"
+                        android:textColor="@color/processing_text_secondary"
+                        android:textSize="15sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/paste_chip"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/paste_chip"
+                        android:layout_width="@dimen/processing_paste_chip_width"
+                        android:layout_height="@dimen/processing_paste_chip_height"
+                        android:clickable="true"
+                        android:focusable="true"
+                        app:strokeWidth="0dp"
+                        app:strokeColor="@android:color/transparent"
+                        app:cardBackgroundColor="@color/processing_primary_action_surface"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:id="@+id/ll_prase"
+                            android:orientation="horizontal">
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:contentDescription="@string/paste"
+                                android:tint="@color/processing_primary_action_tint"
+                                app:srcCompat="@drawable/content_paste_icon24" />
+
+                            <com.google.android.material.textview.MaterialTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="4dp"
+                                android:text="@string/launch_paste"
+                                android:textColor="@color/processing_primary_action_tint"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/download_action_circle"
+                android:layout_width="@dimen/processing_action_size"
+                android:layout_height="@dimen/processing_action_size"
+                android:layout_marginStart="12dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:layout_constraintStart_toEndOf="@+id/paste_bar"
+                app:cardBackgroundColor="@color/processing_action_background"
+                app:cardCornerRadius="@dimen/processing_action_size"
+                app:cardElevation="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/paste_bar"
+                app:layout_constraintTop_toBottomOf="@id/tv_title"
+                app:strokeColor="@android:color/transparent"
+                app:strokeWidth="0dp">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/processing_action_icon_size"
+                    android:layout_gravity="center"
+                    android:contentDescription="@string/download_text"
+                    android:tint="@color/processing_primary_action_tint"
+                    app:srcCompat="@drawable/ic_download_24dp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_progress"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:paddingTop="12dp"
+                android:paddingBottom="16dp"
+                app:items="@{viewModel.progressInfos.get()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/paste_bar"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_empty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_large"
+                android:visibility="@{viewModel.progressInfos.size() == 0 ? View.VISIBLE : View.GONE}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/paste_bar">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/iv_empty_icon"
+                    android:layout_width="@dimen/processing_empty_icon_size"
+                    android:layout_height="@dimen/processing_empty_icon_size"
+                    android:layout_marginBottom="@dimen/padding_normal"
+                    android:adjustViewBounds="true"
+                   android:padding="@dimen/padding_normal"
+                    android:scaleType="centerInside"
+                  app:layout_constraintBottom_toTopOf="@id/tv_empty_text"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.rounded" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tv_empty_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:textColor="@color/processing_text_muted"
+                    android:textSize="@dimen/text_medium"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_empty_icon" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/anchor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+</layout>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary_20">#204016A1</color>
+    <color name="colorPrimary">#FFB237</color>
+    <color name="colorPrimaryDark">#552800</color>
+    <color name="colorAccent">#D924B602</color>
+    <color name="colorAccentDark">#D9228C09</color>
+
+    <color name="colorPrimaryProxy">#64B5F6</color>
+    <color name="colorPrimaryDarkProxy">#2196F3</color>
+    <color name="colorAccentProxy">#355DC3</color>
+    <color name="colorAccentDarkProxy">#233E9F</color>
+
+    <color name="colorGreen">#D938BC1A</color>
+
+
+    <color name="color_gray">#7a7a7a</color>
+    <color name="color_gray_1">#F1F3F7</color>
+    <color name="color_gray_2">#7a7a7a</color>
+    <color name="color_gray_3">#71c4c9</color>
+
+    <color name="black_15">#26000000</color>
+    <color name="black_55">#8C000000</color>
+    <color name="black_85">#D9000000</color>
+    <color name="black">#FF000000</color>
+
+    <color name="white_15">#26ffffff</color>
+    <color name="white_55">#8Cffffff</color>
+    <color name="white_85">#D9ffffff</color>
+    <color name="white">#FFFFFF</color>
+    <color name="colorOnPrimary">#000000</color>
+    <color name="textPrimary">#1E1E1E</color>
+    <color name="linkText">#FF9D00</color>
+
+    <color name="home_background">#F5F5F5</color>
+    <color name="home_gradient_start">#FFE26F</color>
+    <color name="home_gradient_end">#00FFEE5C</color>
+    <color name="home_orb">#66FFF0A7</color>
+    <color name="home_hint">#7F7F7F</color>
+    <color name="home_tab_unselected">#8A8A8E</color>
+    <color name="home_divider">#E7E7E8</color>
+    <color name="home_site_circle">#F1F1F1</color>
+    <color name="home_accent">#FFD325</color>
+    <color name="downloaded_tab_selected">#FF9D00</color>
+    <color name="downloaded_meta_text">#99A1AF</color>
+    <color name="downloaded_popup_shadow">#26000000</color>
+    <color name="browser_home_header_chip">#F7F0DD</color>
+    <color name="browser_home_header_chip_stroke">#E7D69C</color>
+    <color name="browser_home_shortcut_surface">#FFFDF7</color>
+    <color name="browser_home_shortcut_stroke">#EEDDA7</color>
+    <color name="browser_home_shortcut_icon">#FFD325</color>
+    <color name="browser_home_shortcut_hint">#6B624B</color>
+
+    <color name="browser_home_shortcut_icon_2">#FFD325</color>
+
+    <color name="processing_background">#F5F5F5</color>
+    <color name="processing_header_start">#FFE26F</color>
+    <color name="processing_header_end">#00FFEE5C</color>
+    <color name="processing_header_orb">#66FFF0A7</color>
+    <color name="processing_sheet_background">#F5F5F5</color>
+    <color name="processing_card_surface">#FFFFFF</color>
+    <color name="processing_card_border">#00000000</color>
+    <color name="processing_paste_background">#FFFFFF</color>
+    <color name="processing_paste_border">#00000000</color>
+    <color name="processing_action_background">#FFFFFF</color>
+    <color name="processing_menu_background">#FFF5D98C</color>
+    <color name="processing_progress_fill">#FFB237</color>
+    <color name="processing_progress_track">#F5F5F5</color>
+    <color name="processing_text_primary">#000000</color>
+    <color name="processing_text_secondary">#7F7F7F</color>
+    <color name="processing_text_muted">#8A8A8E</color>
+    <color name="processing_primary_action_surface">#1AFFB237</color>
+    <color name="processing_primary_action_tint">#FF9D00</color>
+    <color name="processing_cancel_action_surface">#14FF5C50</color>
+    <color name="processing_cancel_action_tint">#FF5C50</color>
+    <color name="processing_thumbnail_surface">#FFFDFD</color>
+    <color name="processing_thumbnail_stroke">#DADADC</color>
+    <color name="processing_thumbnail_video_tint">#FF5C50</color>
+    <color name="processing_thumbnail_image_tint">#008BFF</color>
+    <color name="detected_sheet_scrim">#70000000</color>
+    <color name="detected_sheet_background">#FFFFFF</color>
+    <color name="detected_sheet_border">#E7E7E8</color>
+    <color name="detected_sheet_handle">#E0C980</color>
+    <color name="detected_card_surface">#FFFFFC</color>
+    <color name="detected_card_border">#F1E4BC</color>
+    <color name="detected_chip_surface">#F7EED3</color>
+    <color name="detected_chip_stroke">#E9D39A</color>
+    <color name="detected_chip_selected">#FFF0B4</color>
+    <color name="detected_chip_selected_stroke">#DDA61C</color>
+    <color name="detected_preview_surface">#F7F1E2</color>
+    <color name="detected_action_secondary">#F2E7C7</color>
+    <color name="detected_text_secondary">#6A624E</color>
+    <color name="detected_status_orange">#FF9D00</color>
+    <color name="detected_status_green">#34C759</color>
+    <color name="detected_status_red">#FF5C50</color>
+    <color name="browser_toolbar_surface">#FFFFFFFF</color>
+    <color name="browser_toolbar_icon">#8A8A8E</color>
+    <color name="browser_toolbar_icon_disabled">#D1D1D6</color>
+    <color name="browser_toolbar_download_idle">#FFF1F1F3</color>
+    <color name="browser_toolbar_download_active_start">#FFD54F</color>
+    <color name="browser_toolbar_download_active_end">#FFB800</color>
+    <color name="browser_toolbar_download_icon_active">#FF4B2B</color>
+    <color name="browser_tabs_overview_card_stroke">#1A000000</color>
+    <color name="browser_tabs_overview_placeholder">#C7C7C7</color>
+    <color name="browser_tabs_overview_close_bg">#D9D9D9</color>
+    <color name="browser_tabs_overview_selected_stroke">#FFD325</color>
+    <color name="selection_arrow_tint">#C4C5C7</color>
+    <color name="guide_background_start">#FFF6E9</color>
+    <color name="guide_background_end">#F8F8FB</color>
+    <color name="guide_timeline">#F2D48A</color>
+    <color name="guide_phone_stroke">#212121</color>
+    <color name="guide_demo_screen">#F1F2F6</color>
+    <color name="guide_download_start">#FFD358</color>
+    <color name="guide_download_end">#FFB54D</color>
+    <color name="guide_loading_text">#8A8A8E</color>
+</resources>

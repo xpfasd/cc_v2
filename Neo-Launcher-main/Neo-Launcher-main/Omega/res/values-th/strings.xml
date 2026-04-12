@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_version" translatable="false">Version</string>
+    <string name="app_build" translatable="false">Build</string>
+    <string name="app_id" translatable="false">Package</string>
+    <string name="default_folder_name">โฟลเดอร์ใหม่</string>
+    <string name="folder_name">ชื่อโฟลเดอร์</string>
+    <string name="title__general_about">เกี่ยวกับ</string>
+    <string name="title__general_desktop">เดสก์ท็อป</string>
+    <string name="title__general_dock">ท่าเรือ</string>
+    <string name="title__general_drawer">ลิ้นชัก</string>
+    <string name="title__general_theme">ธีม</string>
+    <string name="title__general_search">ค้นหาและโฟลเดอร์</string>
+    <string name="title__general_smartspace">วิดเจ็ตหน้าแรก</string>
+    <string name="title__general_advanced">การตั้งค่าขั้นสูง</string>
+    <string name="title__general_notifications">ท่าทางและการแจ้งเตือน</string>
+    <string name="title__general_profile">ประวัติโดยย่อ</string>
+    <string name="title__general_gestures_dash">ท่าทางและเส้นประ</string>
+    <string name="title__general_search_feed">ค้นหาและฟีด</string>
+    <string name="title__general_widgets_notifications">วิดเจ็ตและการแจ้งเตือน</string>
+    <string name="summary__general_desktop">ปรับแต่งเดสก์ท็อปของคุณ</string>
+    <string name="summary__general_dock">ไอคอน Hotseat แถบค้นหา</string>
+    <string name="summary__general_drawer">ปรับแต่งลิ้นชักของคุณ</string>
+    <string name="summary__general_theme">เปลี่ยนสี ชุดไอคอน รูปร่างไอคอน</string>
+    <string name="summary__general_search">ผู้ให้บริการค้นหา สไตล์ ไอคอน</string>
+    <string name="summary__general_smartspace">วันที่ เวลา วิดเจ็ตหลัก</string>
+    <string name="summary__general_notifications">จำนวนป้าย สีป้าย ท่าทาง</string>
+    <string name="summary__general_advanced">ภาษา สำรองข้อมูล การตั้งค่าการค้นหา</string>
+    <string name="pref_category__interfaces">ส่วนต่อประสานกับผู้ใช้</string>
+    <string name="pref_category__features">คุณสมบัติ</string>
+    <string name="pref_category__inputs">ท่าทางและการค้นหา</string>
+    <string name="pref_category__others">คนอื่น</string>
+    <string name="pref_category__incubating">การฟักตัว</string>
+    <string name="allow_rotation_blocked_desc">การตั้งค่าการแสดงผลปัจจุบันไม่อนุญาตให้หมุน</string>
+    <string name="title_desktop_full_width_widgets">วิดเจ็ตความกว้างเต็ม</string>
+    <string name="title_desktop_widget_corner_radius">รัศมีมุมของวิดเจ็ต</string>
+    <string name="title__desktop_icon_size">ขนาดไอคอน</string>
+    <string name="title__desktop_grid_size">ขนาดตาราง</string>
+    <string name="title__desktop_hide_icon_labels">ซ่อนป้ายกำกับไอคอนบนหน้าจอหลัก</string>
+    <string name="title_desktop_overlap_placement">อนุญาตวิดเจ็ตที่ทับซ้อนกัน</string>
+    <string name="title_desktop_lock_desktop">ล็อคเดสก์ท็อป</string>
+    <string name="title_desktop_keep_empty">อนุญาตให้มีหน้าว่าง</string>
+    <string name="title__multiline_labels">ชื่อแอปหลายบรรทัด</string>
+    <string name="title_desktop_free_scrolling">เลื่อนฟรี</string>
+    <string name="title_desktop_icon_popup_menu">รายการเมนูป๊อปอัป</string>
+    <string name="title_desktop_hide_statusbar">ซ่อนแถบสถานะ</string>
+    <string name="title_desktop_text_size">ขนาดข้อความ</string>
+    <string name="summary_full_width_widgets">อนุญาตให้วิดเจ็ตขยายทั่วทั้งความกว้างโดยไม่ต้องมีช่องว่างภายใน</string>
+    <string name="grid_size_height">ความสูง</string>
+    <string name="grid_size_width">ความกว้าง</string>
+    <string name="show_top_shadow">แสดงเงาด้านบน</string>
+    <string name="title__dock_icon_size_enforce">บังคับใช้ขนาดไอคอนที่กำหนดเอง</string>
+    <string name="title__dock_icon_size">ขนาดไอคอน</string>
+    <string name="title__dock_scale">มาตราส่วนท่าเรือ</string>
+    <string name="title_dock_fill">แสดงพื้นหลัง</string>
+    <string name="title_dock_background_color">สีพื้นหลัง</string>
+    <string name="title_dock_two_row">แสดงแถวที่สอง</string>
+    <string name="title__dock_hide">ท่าเรือซ่อน</string>
+    <string name="title_expandable_dock">ท่าเรือที่ขยายได้</string>
+    <string name="title__dock_hide_labels">ซ่อนป้ายกำกับ</string>
+    <string name="title__dock_colored_icons">ไอคอนสี</string>
+    <string name="title__dock_hotseat_icons">จำนวนไอคอน</string>
+    <string name="title__dock_show_arrow">แสดงลูกศร</string>
+    <string name="dock_colored_google">ไอคอนสี</string>
+    <string name="title_opacity">ความทึบ</string>
+    <string name="hotseat_show_page_indicator">แสดงตัวบ่งชี้หน้า</string>
+    <string name="hotseat_show_dots_page_indicator">แสดงตัวบ่งชี้หน้า Dots แทนที่จะเป็นเส้น</string>
+    <string name="title_disabled">ปิด</string>
+    <string name="dock_search_value" translatable="false">%1$s %2$s</string>
+    <string name="num_hotseat_icons_pref_title">จำนวนไอคอน</string>
+    <string name="title_dock_search">แถบค้นหาท่าเรือ</string>
+    <string name="summary_dock_search">แสดงในท่าเรือด้านล่าง</string>
+    <string name="label_search">ค้นหา</string>
+    <string name="cat_dock_search">ลิ้นชักและท่าเรือ</string>
+    <string name="label_lens" translatable="false">Google Lens</string>
+    <string name="title__drawer_sort">จัดเรียงแอป</string>
+    <string name="title_drawer_all_apps">ทั้งหมด</string>
+    <string name="title__drawer_all_apps">แสดงป้ายกำกับ "แอปทั้งหมด"</string>
+    <string name="title_separate_work_apps">แท็บที่สองสำหรับแอปงาน</string>
+    <string name="title__drawer_paged_apps">มุมมองแอปเพจ</string>
+    <string name="title__drawer_hide_icon_labels">ซ่อนชื่อแอป</string>
+    <string name="title__drawer_hide_apps">ทางลัดแอปที่ซ่อนอยู่</string>
+    <string name="title__drawer_icon_size">ขนาดไอคอนแอปทั้งหมด</string>
+    <string name="title__drawer_categorization">หมวดหมู่</string>
+    <string name="title__drawer_icon_popup_menu">ฟองทางลัด</string>
+    <string name="title__drawer_columns">จำนวนคอลัมน์</string>
+    <string name="title__drawer_rows">จำนวนแถว</string>
+    <string name="title_drawer_enable_background">ใช้สีพื้นหลังที่กำหนดเอง</string>
+    <string name="title_drawer_row_height">ความสูงของแถว</string>
+    <string name="title__sort_mode">การเรียงลำดับแอป</string>
+    <string name="title__sort_alphabetical_az">ก → ซี</string>
+    <string name="title__sort_alphabetical_za">ซี → ก</string>
+    <string name="title__sort_last_installed">ติดตั้งครั้งล่าสุด</string>
+    <string name="title__sort_most_used">ใช้มากที่สุด</string>
+    <string name="title__sort_by_color">ตามสี</string>
+    <string name="title_all_apps_search">แถบค้นหาลิ้นชัก</string>
+    <string name="title_all_apps_google_search">ผลลัพธ์จากเว็บ</string>
+    <string name="title_all_apps_keep_scroll_state">จำตำแหน่ง</string>
+    <string name="title_all_apps_hide_scrollbar">ซ่อนแถบเลื่อน</string>
+    <string name="title_search_hidden_apps">ค้นหาแอปที่ซ่อนอยู่</string>
+    <string name="title_fuzzy_search">ค้นหาคลุมเครือ</string>
+    <string name="summary_fuzzy_search">การจับคู่โดยประมาณสำหรับการค้นหาแอป</string>
+    <string name="title_manage_tabs">จัดการแท็บ</string>
+    <string name="summary_manage_tabs">สร้างหรือแก้ไขแท็บ</string>
+    <string name="summary_search_hidden_apps">แสดงทางลัดที่ซ่อนอยู่ในผลลัพธ์</string>
+    <string name="summary_all_apps_google_search">ค้นหาผลลัพธ์บนเว็บและแอป</string>
+    <string name="summary__drawer_hide_apps">ซ่อนแอปจากลิ้นชักแอป</string>
+    <string name="summary_app_categorization_enable">สร้างแท็บหรือโฟลเดอร์</string>
+    <string name="summary_app_suggestions">สำหรับแอปทั้งหมดและหน้าจอหลัก</string>
+    <string name="title_disable_suggestions_prompt">ปิดคำแนะนำแอป</string>
+    <string name="msg_disable_suggestions_prompt">"ข้อมูลการใช้งานจะถูกลบ"</string>
+    <string name="label_turn_off_suggestions">ปิดการใช้งาน</string>
+    <string name="title_text_color">สีข้อความ</string>
+    <string name="title_drawer_layout">โหมดเค้าโครง</string>
+    <string name="title_drawer_layout_categories">จัดการหมวดหมู่</string>
+    <string name="title_drawer_vertical">แนวตั้ง</string>
+    <string name="title_drawer_horizontal">แนวนอน</string>
+    <string name="title_drawer_categorized">หมวดหมู่แนวตั้ง</string>
+    <string name="title_drawer_tabs">แท็บแนวนอน</string>
+    <string name="title_drawer_paged">เพจ</string>
+    <string name="dialog_message_change_sort">เปลี่ยนไปใช้การเรียงลำดับแอปตามตัวอักษรหรือไม่</string>
+    <string name="cat_desktop_grid">ตารางและเค้าโครง</string>
+    <string name="cat_drawer_grid">กริด</string>
+    <string name="cat_drawer_icons">ไอคอน</string>
+    <string name="pref_appcategorization_flowerpot_title">หมวดหมู่แอพ</string>
+    <string name="title_app_categorization_enable">เปิดใช้งานหมวดหมู่แอพ</string>
+    <string name="pref_appcategorization_style_text">สไตล์</string>
+    <string name="app_categorization_folders">โฟลเดอร์</string>
+    <string name="pref_appcategorization_folders_summary">แตะเพื่อเปิดป๊อปอัป</string>
+    <string name="app_categorization_tabs">แท็บ</string>
+    <string name="pref_appcategorization_tabs_summary">ปัดระหว่างกลุ่ม</string>
+    <string name="pref_app_groups_edit_tip">แตะเพื่อแก้ไข ลากเพื่อเรียงลำดับใหม่</string>
+    <string name="tab_type_custom_desc">เลือกทางลัดด้วยตนเอง</string>
+    <string name="tab_type_smart">อัตโนมัติ</string>
+    <string name="pref_appcategorization_flowerpot_summary">เลือกทางลัดโดยอัตโนมัติ</string>
+    <string name="add_new_tab">เพิ่ม</string>
+    <string name="selected_count">เลือก %1$d แล้ว</string>
+    <plurals name="tab_apps_count">
+        <item quantity="zero">แอพ %0$d</item>
+        <item quantity="one">แอพ %1$d</item>
+        <item quantity="other">แอพ %1$d</item>
+    </plurals>
+    <plurals name="hidden_apps_count">
+        <item quantity="one">%1$d ซ่อนอยู่</item>
+        <item quantity="other">%1$d ซ่อนอยู่</item>
+    </plurals>
+    <string name="protected_apps">แอพที่ได้รับการป้องกัน</string>
+    <string name="category_art_and_design">ออกแบบ</string>
+    <string name="category_business_and_productivity">ผลผลิต</string>
+    <string name="category_communication">การสื่อสาร</string>
+    <string name="category_entertainment">ความบันเทิง</string>
+    <string name="category_game">เกมส์</string>
+    <string name="category_health_and_fitness">ฟิตเนส</string>
+    <string name="category_lifestyle">ไลฟ์สไตล์</string>
+    <string name="category_knowledge_and_reference">ความรู้</string>
+    <string name="category_music">ดนตรี</string>
+    <string name="category_news">ข่าว</string>
+    <string name="category_personalization">การปรับเปลี่ยนในแบบของคุณ</string>
+    <string name="category_tools">เครื่องมือ</string>
+    <string name="category_travel_and_navigation">การนำทาง</string>
+    <string name="protected_app_selected">แอปที่ได้รับการป้องกัน (%1$d)</string>
+    <string name="hide_app_selected">แอพที่ซ่อนอยู่ (%1$d)</string>
+    <string name="hide_app_reset">รีเซ็ตแอปที่ซ่อนอยู่</string>
+    <string name="selected_apps">แอพที่เลือก (%1$d)</string>
+    <string name="app_reset">รีเซ็ตการเลือก</string>
+    <string name="protected_app_reset">รีเซ็ตแอปที่ได้รับการป้องกัน</string>
+    <string name="action_preferences" translatable="false">@string/customize</string>
+    <string name="needs_usage_access">จำเป็นต้องเข้าถึงการใช้งาน</string>
+    <string name="msg_missing_usage_access">Turn on usage access for <xliff:g example="My App" id="name">%1$s</xliff:g> to show app suggestions</string>
+    <string name="trust_apps_no_lock_error">โปรดตั้งค่าหน้าจอล็อคที่ปลอดภัยเพื่อจำกัดการเข้าถึงแอป</string>
+    <string name="trust_apps_manager_name">แอปที่ซ่อนและได้รับการป้องกัน</string>
+    <string name="trust_apps_unlock">ปลดล็อค</string>
+    <string name="trust_apps_message">จำเป็นต้องมีการรับรองความถูกต้องเพื่อเข้าถึงแอปที่ได้รับการป้องกัน</string>
+    <string name="enable_protected_apps">เปิดแอปที่มีการป้องกัน</string>
+    <string name="disable_protected_apps">ปิดแอปที่ได้รับการป้องกัน</string>
+    <string name="disable_protected_apps_message">ปิดแอปที่ได้รับการป้องกันซึ่งต้องมีการตรวจสอบสิทธิ์</string>
+    <string name="title__theme_accent_color">สีเน้น</string>
+    <string name="title__theme_blur">เบลอ</string>
+    <string name="title__theme_blur_radius">ความเข้มของภาพเบลอ</string>
+    <string name="title__theme_icon_shape">รูปร่างไอคอน</string>
+    <string name="title_theme_icon_packs">ชุดไอคอน</string>
+    <string name="title_theme_customize_icons">ปรับแต่งไอคอน</string>
+    <string name="summary__theme_blur">พื้นหลังหน้าเบลอ</string>
+    <string name="theme_auto">ติดตามวอลเปเปอร์</string>
+    <string name="color_wallpaper_secondary">วอลเปเปอร์รอง</string>
+    <string name="color_wallpaper_tertiary">วอลล์เปเปอร์ตติยภูมิ</string>
+    <string name="theme_auto_black">ติดตามวอลเปเปอร์ (สีดำ)</string>
+    <string name="theme_auto_night_mode">ระบบ</string>
+    <string name="theme_auto_night_mode_black">ระบบ (สีดำ)</string>
+    <string name="theme_based">กำหนดตามธีม</string>
+    <string name="theme_light">แสงสว่าง</string>
+    <string name="theme_with_dark_text">ข้อความสีเข้ม</string>
+    <string name="theme_black">สีดำ</string>
+    <string name="theme_black_dark_text">สีดำมีข้อความสีเข้ม</string>
+    <string name="theme_dark">มืด</string>
+    <string name="theme_dark_text">สว่างด้วยข้อความสีเข้ม</string>
+    <string name="theme_dark_dark_text">มืดด้วยข้อความสีเข้ม</string>
+    <string name="theme_dark_theme_mode">ธีมสีเข้ม</string>
+    <string name="theme_dark_theme_mode_follow_wallpaper" translatable="false">@string/theme_auto</string>
+    <string name="theme_dark_theme_mode_follow_wallpaper_black" translatable="false">@string/theme_auto_black</string>
+    <string name="theme_dark_theme_mode_follow_system" translatable="false">@string/theme_auto_night_mode</string>
+    <string name="theme_dark_theme_mode_follow_daylight">ติดตามแสงตะวัน</string>
+    <string name="theme_use_black">ใช้สีดำล้วน</string>
+    <string name="theme_use_dark_text">ใช้ข้อความสีเข้ม</string>
+    <string name="title_default">ค่าเริ่มต้น</string>
+    <string name="icon_pack">ชุดไอคอน</string>
+    <string name="get_more_icon_packs">ดาวน์โหลดชุดไอคอนใหม่</string>
+    <string name="menu_icon_shape">รูปร่างไอคอนที่กำหนดเอง</string>
+    <string name="icon_shape_override_progress">"กำลังใช้การเปลี่ยนแปลงรูปร่างไอคอน"</string>
+    <string name="icon_shape_override_label">เปลี่ยนรูปร่างไอคอน</string>
+    <string name="icon_shape_override_label_location">บนหน้าจอหลัก</string>
+    <string name="icon_shape_system_default">ระบบ</string>
+    <string name="icon_shape_square">สี่เหลี่ยม</string>
+    <string name="icon_shape_squircle">สควอเคิล</string>
+    <string name="icon_shape_circle">วงกลม</string>
+    <string name="icon_shape_teardrop">หยดน้ำตา</string>
+    <string name="icon_shape_cylinder">กระบอก</string>
+    <string name="icon_shape_rounded_square">สี่เหลี่ยมโค้งมน</string>
+    <string name="icon_shape_top_left">ซ้ายบน</string>
+    <string name="icon_shape_top_right">ขวาบน</string>
+    <string name="icon_shape_bottom_left">ซ้ายล่าง</string>
+    <string name="icon_shape_bottom_right">ล่างขวา</string>
+    <string name="icon_shape_corner_round">กลม</string>
+    <string name="icon_shape_corner_squircle">สควอเคิล</string>
+    <string name="icon_shape_corner_cut">ตัด</string>
+    <string name="icon_pack_applied_toast">ใช้ %s แล้ว</string>
+    <string name="icon_pack_default">ไอคอนระบบ</string>
+    <string name="icon_pack_external_picker">เปิดตัวเลือกภายนอก</string>
+    <string name="open_image_picker">เปิดเครื่องมือเลือกรูปภาพ</string>
+    <string name="import_icon">ไอคอนนำเข้า</string>
+    <string name="import_as_adaptive">เป็นไอคอนที่ปรับตัวได้</string>
+    <string name="reset_custom_icon">ลบไอคอนแบบกำหนดเอง</string>
+    <string name="reset_custom_icons">ลบไอคอนแบบกำหนดเอง</string>
+    <string name="reset_custom_icons_confirmation">เปลี่ยนกลับเป็นไอคอนเริ่มต้นจากชุดไอคอนนี้หรือไม่ การดำเนินการนี้ไม่สามารถยกเลิกได้</string>
+    <string name="color_presets">ค่าที่ตั้งล่วงหน้า</string>
+    <string name="color_dynamic">พลวัต</string>
+    <string name="title_adaptify_pack">สร้างไอคอนแบบปรับได้สำหรับชุดไอคอน</string>
+    <string name="title_force_shapeless">บังคับให้ไอคอนไม่มีรูปแบบ</string>
+    <string name="title_themed_icons">ไอคอนธีม</string>
+    <string name="title_themed_background">พื้นหลังไอคอนโปร่งใส</string>
+    <string name="title_colored_backgrounds">พื้นหลังสี</string>
+    <string name="summary_colored_backgrounds">สำหรับพื้นหลังของไอคอน Adaptive</string>
+    <string name="summary_force_shapeless">ลองใช้ไอคอนเดิมสำหรับแอปทั้งหมด</string>
+    <string name="title_legacy_treatment">สร้างไอคอนแบบปรับได้</string>
+    <string name="summary_legacy_treatment">สร้างไอคอน Adaptive สำหรับทางลัดทั้งหมด</string>
+    <string name="title_white_only_treatment">แทนที่พื้นหลังสีขาว</string>
+    <string name="summary_white_only_treatment">ระบายสีพื้นหลังของไอคอน Adaptive ทั้งหมด</string>
+    <string name="preview_app_osmand" translatable="false">OsmAnd</string>
+    <string name="preview_app_youtube" translatable="false">Youtube</string>
+    <string name="preview_app_newpipe" translatable="false">NewPipe</string>
+    <string name="preview_app_signal" translatable="false">Signal</string>
+    <string name="icon_picker_default_category">ไอคอน</string>
+    <string name="icon_picker_load_failed">ไม่สามารถโหลดไอคอนเพิ่มเติมได้</string>
+    <string name="title_show_google_app">แสดงแอป Google</string>
+    <string name="title_smartspace_feed_theme">ธีมฟีด</string>
+    <string name="title_use_pill_qsb">แสดงทางลัดการค้นหายา</string>
+    <string name="title_smartspace">แสดงสมาร์ทสเปซ</string>
+    <string name="title_smartspace_time">แสดงเวลา</string>
+    <string name="title_smartspace_time_format">รูปแบบเวลา</string>
+    <string name="title_smartspace_background">แสดงพื้นหลังที่มีธีม</string>
+    <string name="title_smartspace_date">แสดงวันที่</string>
+    <string name="title_smartspace_calendar">เลือกปฏิทิน</string>
+    <string name="title_smartspace_time_above">แสดงนาฬิกาขนาดใหญ่</string>
+    <string name="title_smartspace_widget_provider">แหล่งที่มาของสภาพอากาศ</string>
+    <string name="title_smartspace_weather_units">หน่วยอุณหภูมิ</string>
+    <string name="title_smartspace_event_providers">แหล่งที่มาของเหตุการณ์</string>
+    <string name="category__behavior_weather">สภาพอากาศ</string>
+    <string name="google_app" translatable="false">Google app</string>
+    <string name="pref_shelf_summary">ทางด้านซ้ายของหน้าจอหลัก</string>
+    <string name="accessibility_smartspace_page">หน้า %1$d ของ %2$d</string>
+    <string name="smartspace_calendar_gregorian" translatable="false">gregorian</string>
+    <string name="title_calendar_gregorian">เกรกอเรียน</string>
+    <string name="smartspace_calendar_persian" translatable="false">persian</string>
+    <string name="title_calendar_persian">เปอร์เซีย</string>
+    <string name="smartspace_preferences">การตั้งค่า</string>
+    <string name="smartspace_add_to_home">เพิ่มไปยังเดสก์ท็อป</string>
+    <string name="smartspace_setup_text">แตะเพื่อตั้งค่า</string>
+    <string name="smartspace_now">ตอนนี้</string>
+    <string name="smartspace_in_time">ใน %1$s</string>
+    <string name="smartspace_hours_mins">%1$s %2$s</string>
+    <string name="smartspace_pill_text_format">%1$s %2$s</string>
+    <string name="smartspace_provider_bridge">สะพานพิกเซลไร้รูท</string>
+    <string name="resuable_text_alarm">เตือน</string>
+    <string name="name_provider_alarm_events">การปลุกที่จะเกิดขึ้น</string>
+    <string name="smartspace_widget_provider_not_found">รับแอป Google</string>
+    <string name="zen_mode_enabled">เปิดใช้งานห้ามรบกวนแล้ว</string>
+    <string name="home_widget">โดยสรุป</string>
+    <string name="battery_charging">กำลังชาร์จ</string>
+    <string name="battery_full">เรียกเก็บเงินแล้ว</string>
+    <string name="battery_low">แบตเตอรี่เหลือน้อย</string>
+    <string name="battery_charging_percentage_charging_time">"%1$d%% — เต็มใน %2$s"</string>
+    <string name="n_percent">%1$d%%</string>
+    <string name="event_provider_missing_notification_access">Turn on notifications from <xliff:g example="My App" id="name">“%2$s” to use </xliff:g>
+        <xliff:g example="My Provider" id="providerName">“%1$s”.</xliff:g>
+    </string>
+    <string name="event_provider_missing_notification_dots">Turn on notification dots to use <xliff:g example="My Provider" id="providerName">“%1$s”</xliff:g>.</string>
+    <string name="permission_iplocate">ตำแหน่งโดยประมาณ</string>
+    <string name="permission_iplocate_twilight_explanation">อนุญาตให้เข้าถึงตำแหน่งโดยประมาณของคุณไหม ช่วยให้การคำนวณเวลากลางวันแม่นยำยิ่งขึ้น</string>
+    <string name="allow">อนุญาต</string>
+    <string name="deny">ปฏิเสธ</string>
+    <string name="smartspace_provider_calendar">กิจกรรมในปฏิทิน</string>
+    <string name="action_open_recents">เปิดล่าสุด</string>
+    <string name="personality_provider">สวัสดี</string>
+    <string name="onbording">การเริ่มต้นใช้งาน</string>
+    <string name="onbording_settings_title">ตั้งค่า %s</string>
+    <string name="onbording_settings_summary">แตะค้างไว้บนเดสก์ท็อป</string>
+    <string name="onboarding_swipe_up">ปัดขึ้นเพื่อเปิดลิ้นชัก</string>
+    <string name="weather_provider_testing">ดีบัก</string>
+    <string name="weather_provider_owm" translatable="true">OpenWeatherMap</string>
+    <string name="weather_provider_pe">ประสบการณ์พิกเซล</string>
+    <string name="weather_provider_oneplus_weather">สภาพอากาศ OnePlus</string>
+    <string name="event_provider_now_playing">กำลังเล่นอยู่</string>
+    <string name="event_provider_unread_notifications">การแจ้งเตือน</string>
+    <string name="battery_status">สถานะแบตเตอรี่</string>
+    <string name="week_day_format" translatable="false">%1$s, %2$s</string>
+    <string name="full_wday_month_day_no_year">EEEE MMMM วัน</string>
+    <string name="smartspace_icu_date_pattern_gregorian_wday_month_day_no_year" translatable="false">EEEMMMd</string>
+    <string name="smartspace_icu_date_pattern_gregorian_time" translatable="false">HH:mm</string>
+    <string name="smartspace_icu_date_pattern_gregorian_time_12h" translatable="false">hh:mm aa</string>
+    <string name="smartspace_icu_date_pattern_gregorian_date" translatable="false"> dd MMMM</string>
+    <string name="smartspace_icu_date_pattern_persian_wday_month_day_no_year" translatable="false">l، j F</string>
+    <string name="smartspace_icu_date_pattern_persian_time" translatable="false">H:i</string>
+    <string name="smartspace_icu_date_pattern_persian_time_12h" translatable="false">g:i a</string>
+    <string name="smartspace_icu_date_pattern_persian_date" translatable="false">"j F، "</string>
+    <string name="icu_abbrev_time">ฮช:มม</string>
+    <string name="icu_abbrev_time_12h">ฮช:อืม</string>
+    <string name="icu_abbrev_date">วว MMMM</string>
+    <string name="units_metric">เซลเซียส</string>
+    <string name="units_imperial">ฟาเรนไฮต์</string>
+    <string name="units_kelvin">เคลวิน</string>
+    <string name="units_rakine">แรนคิน</string>
+    <string name="units_newton">นิวตัน</string>
+    <string name="units_delisle">ดีไลล์</string>
+    <string name="units_reaumur">เรโอมูร์</string>
+    <string name="units_romer">โรเมอร์</string>
+    <string name="owm_get_your_own_key">รับคีย์ API ได้ที่ api.openweathermap.org</string>
+    <string name="default_city">ซานซัลวาดอร์ เอสวี</string>
+    <string name="weather_api_key">คีย์ OWM API</string>
+    <string name="weather_city">เมือง</string>
+    <string name="smartspace_icu_date_pattern">EEEMMMม</string>
+    <string name="smartspace_flight_qr_code">รหัส QR</string>
+    <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
+    <string name="accessibility_next_alarm">สัญญาณเตือนครั้งถัดไปที่ %s</string>
+    <string name="smartspace_time_follow_system">ติดตามระบบ</string>
+    <string name="smartspace_time_12_hour_format">รูปแบบ 12 ชั่วโมง</string>
+    <string name="title_smartspace_time_24_h">รูปแบบ 24 ชั่วโมง</string>
+    <string name="smartspace_widget_placeholder_date">ศุกร์ที่ 3 มี.ค</string>
+    <string name="folder_name_format">Folder: <xliff:g example="Games" id="name">%1$s</xliff:g>
+    </string>
+    <string-array name="greetings_morning">
+        <item>สวัสดีตอนเช้า!</item>
+        <item>ขอให้มีวันที่ดี!</item>
+        <item>เป็นวันที่สวยงามข้างนอก!</item>
+    </string-array>
+    <string-array name="greetings_evening">
+        <item>ว่าไง?</item>
+        <item>สวัสดีตอนเย็น!</item>
+        <item>วันของคุณเป็นยังไงบ้าง?</item>
+        <item>วันนี้เป็นอย่างไรบ้าง?</item>
+    </string-array>
+    <string-array name="greetings_night">
+        <item>ฝันดี!</item>
+        <item>เจอกันพรุ่งนี้!</item>
+        <item>ราตรีสวัสดิ์!</item>
+        <item>อย่านอนดึกเกินไป!</item>
+    </string-array>
+    <string name="title__notification_count">แสดงจำนวนการแจ้งเตือน</string>
+    <string name="notification_custom_color">ใช้สีที่กำหนดเอง</string>
+    <string name="title__folder_badge_count">แสดงจำนวนป้ายโฟลเดอร์</string>
+    <string name="title__notification_background">สีพื้นหลังการแจ้งเตือน</string>
+    <string name="title__gesture_swipe_down">ปัดลง</string>
+    <string name="pref_category__notifications">การแจ้งเตือน</string>
+    <string name="pref_category__gestures">ท่าทาง</string>
+    <string name="pref_category__dash">แดช</string>
+    <string name="action_none">ไม่ต้องทำอะไรเลย</string>
+    <string name="action_open_drawer">เปิดลิ้นชักแอป</string>
+    <string name="action_open_drawer_or_recents">เปิดลิ้นชักล่าสุด/แอป</string>
+    <string name="action_open_settings">เปิดการตั้งค่าตัวเรียกใช้งาน</string>
+    <string name="action_open_overview">แสดงบับเบิ้ลเดสก์ท็อป</string>
+    <string name="action_open_dash">เปิดแดช</string>
+    <string name="action_open_app">เปิดแอป</string>
+    <string name="action_open_app_with_target">เปิด “%s”</string>
+    <string name="action_open_app_select_app">เลือกแอป</string>
+    <string name="action_app_search">เปิดการค้นหาแอป</string>
+    <string name="action_open_widgets">เปิดลิ้นชักวิดเจ็ต</string>
+    <string name="action_open_notifications">เปิดการแจ้งเตือน</string>
+    <string name="action_overlay">เปิด Google ฟีด</string>
+    <string name="action_close_notifications">ปิดการแจ้งเตือน</string>
+    <string name="action_global_search">เปิดตัวการค้นหาทั่วโลก</string>
+    <string name="action_sleep">นอน</string>
+    <string name="action_sleep_timeout">การนอนหลับโดยใช้การหมดเวลาหน้าจอ</string>
+    <string name="gesture_double_tap">แตะสองครั้ง</string>
+    <string name="gesture_long_press">แตะค้างไว้</string>
+    <string name="gesture_swipe_up">ปัดขึ้น</string>
+    <string name="folder_swipe_up">การกระทำปัดขึ้น</string>
+    <string name="gesture_dock_swipe_up">ปัดขึ้นจากท่าเรือ</string>
+    <string name="hotseat_accessibility_collapse">ท่าเรือพังทลาย</string>
+    <string name="hotseat_accessibility_expand">ท่าเรือขยายแล้ว</string>
+    <string name="gesture_press_home">แตะปุ่มโฮม</string>
+    <string name="gesture_press_back">ปุ่มย้อนกลับ</string>
+    <string name="gesture_press_recents">ปุ่มล่าสุด</string>
+    <string name="omega_actions">การดำเนินการ</string>
+    <string name="dt2s_admin_hint">หากต้องการใช้การแตะสองครั้งเพื่อเข้าสู่โหมดสลีปและให้สิทธิ์ผู้ดูแลระบบ</string>
+    <string name="dt2s_admin_warning">การแตะสองครั้งเพื่อเข้าสู่โหมดสลีปจะถูกปิด</string>
+    <string name="notification_dots_missing_notification_access">หากต้องการแสดงจุดแจ้งเตือน ให้เปิดการเข้าถึงการแจ้งเตือนของแอพ</string>
+    <string name="notification_dots_disabled">หากต้องการแสดงจุดแจ้งเตือน ให้เปิดใช้งานการแสดงจุดแจ้งเตือนในการตั้งค่า</string>
+    <string name="title__search_bubble_searchbar">แสดงสองฟอง</string>
+    <string name="title__search_action_assistant">เปิดผู้ช่วย</string>
+    <string name="title_search_contacts">ค้นหาผู้ติดต่อ</string>
+    <string name="title__search_show_assistant">แสดงปุ่มค้นหาด้วยเสียง</string>
+    <string name="title_search_provider">เครื่องมือค้นหา</string>
+    <string name="search_provider">ผู้ให้บริการค้นหา</string>
+    <string name="web_search_provider">ผู้ให้บริการค้นหาเว็บ</string>
+    <string name="title__search_bar_radius">รัศมีมุม</string>
+    <string name="title__feed">ให้อาหาร</string>
+    <string name="summary__search_show_as_assistant_summary">เปิดผู้ช่วยแทนการค้นหาด้วยเสียง</string>
+    <string name="cat_search_bar">แถบค้นหา</string>
+    <string name="search_no_results">ไม่มีผลลัพธ์</string>
+    <string name="search_breadcrumb_connector" translatable="false">
+        <xliff:g name="first_item">%1$s</xliff:g>
+        <xliff:g name="second_item">%2$s</xliff:g>
+    </string>
+    <string name="search_provider_yandex" translatable="false">Yandex</string>
+    <string name="search_provider_ddg" translatable="false">DuckDuckGo</string>
+    <string name="search_provider_baidu" translatable="false">Baidu</string>
+    <string name="search_provider_s_finder" translatable="false">S Finder</string>
+    <string name="google" translatable="false">Google</string>
+    <string name="search_provider_google_go" translatable="false">Google Go</string>
+    <string name="search_provider_firefox" translatable="false">Firefox</string>
+    <string name="search_provider_search_lite" translatable="false">Search Lite</string>
+    <string name="search_provider_cool_search" translatable="false">Cool Search</string>
+    <string name="search_provider_appsearch">ค้นหาแอป</string>
+    <string name="search_provider_bing" translatable="false">Bing</string>
+    <string name="search_provider_edge" translatable="false">Edge</string>
+    <string name="search_provider_qwant" translatable="false">Qwant</string>
+    <string name="web_search_google" translatable="false">Google (web)</string>
+    <string name="web_search_ddg" translatable="false">DuckDuckGo (web)</string>
+    <string name="web_search_startpage" translatable="false">Startpage.com (web)</string>
+    <string name="web_search_bing" translatable="false">Bing (web)</string>
+    <string name="web_search_brave" translatable="false">Brave (web)</string>
+    <string name="web_search_qwant" translatable="false">Qwant (web)</string>
+    <string name="web_search_ecosia" translatable="false">Ecosia (web)</string>
+    <string name="web_search_yandex" translatable="false">Yandex (web)</string>
+    <string name="web_search_baidu" translatable="false">Baidu (web)</string>
+    <string name="web_search_yahoo" translatable="false">Yahoo (web)</string>
+    <string name="error_no_browser">ติดตั้งแอปเพื่อเปิด URL ก่อน</string>
+    <string name="folder_custom_background">ใช้พื้นหลังโฟลเดอร์ที่กำหนดเอง</string>
+    <string name="folder_draw_stroke">วาดโฟลเดอร์ Stroke</string>
+    <string name="folder_background">สีพื้นหลังของโฟลเดอร์</string>
+    <string name="folder_stroke_color">สีเส้นขีดของโฟลเดอร์</string>
+    <string name="folder_radius">รัศมีมุมโฟลเดอร์</string>
+    <string name="folder_rows">แถวโฟลเดอร์</string>
+    <string name="folder_columns">คอลัมน์โฟลเดอร์</string>
+    <string name="folder_opacity">ความทึบของไอคอนโฟลเดอร์</string>
+    <string name="section_apps">แอพ</string>
+    <string name="section_web">เว็บ</string>
+    <string name="section_contacts">รายชื่อผู้ติดต่อ</string>
+    <string name="fonts_global_font">แบบอักษร</string>
+    <string name="fonts_change_global_font">เปลี่ยน</string>
+    <string name="summary__advanced_setting_search">แสดงการค้นหาการตั้งค่าในแถบการทำงาน</string>
+    <string name="summary__advanced_language">เปลี่ยนภาษาของแอพนี้</string>
+    <string name="title__advanced_setting_search">แสดงการค้นหาการตั้งค่า</string>
+    <string name="title__advanced_language">ภาษา</string>
+    <string name="backups">การสำรองข้อมูล</string>
+    <string name="backup_delete">ซ่อน</string>
+    <string name="backup_delete_failed">มีบางอย่างผิดพลาด</string>
+    <string name="backup_share">แบ่งปัน</string>
+    <string name="backup_pref_summary">บันทึกหน้าจอหลัก กู้คืนข้อมูลสำรอง</string>
+    <string name="title_create">สร้าง</string>
+    <string name="restore_backup">คืนค่า</string>
+    <string name="backup_homescreen">หน้าจอหลัก</string>
+    <string name="backup_contents">เนื้อหาสำรอง</string>
+    <string name="backup_name">ชื่อสำรอง</string>
+    <string name="backup_settings">การตั้งค่า</string>
+    <string name="backup_wallpaper">วอลล์เปเปอร์</string>
+    <string name="backup_error_blank_name">ต้องกรอกชื่อ</string>
+    <string name="backup_error_blank_contents">เนื้อหาต้องไม่ว่างเปล่า</string>
+    <string name="backup_create_new">สร้างการสำรองข้อมูลใหม่</string>
+    <string name="backup_creating">กำลังสร้างข้อมูลสำรอง</string>
+    <string name="no_recent_backups">ไม่มีการสำรองข้อมูลล่าสุด</string>
+    <string name="backup_invalid">ไม่พร้อมใช้งาน</string>
+    <string name="backup_remove_from_recents">ลบออกจากรายการ</string>
+    <string name="backup_timestamp">สร้างเมื่อ</string>
+    <string name="backup_restoring">กำลังกู้คืนข้อมูลสำรอง</string>
+    <string name="backup_restarting">กำลังเริ่มต้นใหม่</string>
+    <string name="restore_contents">คืนค่าเนื้อหา</string>
+    <string name="restore_success">คืนค่า</string>
+    <string name="backup_failed">การสำรองข้อมูลล้มเหลว</string>
+    <string name="restore_failed">การคืนค่าล้มเหลว</string>
+    <string name="restore_read_meta_fail">ไฟล์สำรองไม่ถูกต้อง</string>
+    <string name="backup_share_title">แบ่งปันการสำรองข้อมูล</string>
+    <string name="backup_share_text">ไฟล์สำรองข้อมูล Neo Launcher</string>
+    <string name="backup_location">ที่ตั้ง</string>
+    <string name="backup_location_device_storage">โฟลเดอร์ภายใน</string>
+    <string name="read_external_storage_required">ให้สิทธิ์การเข้าถึงพื้นที่เก็บข้อมูลเพื่อสร้างข้อมูลสำรอง</string>
+    <string name="local_backups">ในการจัดเก็บ</string>
+    <string name="permission_denied">สิทธิ์การอ่านถูกปฏิเสธ!</string>
+    <string name="developer_options_enabled">ตัวเลือกสำหรับนักพัฒนาเปิดอยู่</string>
+    <string name="search_menu">ค้นหาการตั้งค่า</string>
+    <string name="failed">มีบางอย่างผิดพลาด</string>
+    <string name="developer_options_title">ตัวเลือกสำหรับนักพัฒนา</string>
+    <string name="debug_options_title">ข้อมูลการแก้ไขข้อบกพร่อง</string>
+    <string name="title__dev_show_Dev">แสดงในการตั้งค่า</string>
+    <string name="title__dev_show_debug_info">แสดงข้อมูลการแก้ไขข้อบกพร่อง</string>
+    <string name="title_feed_provider">ผู้ให้บริการฟีด</string>
+    <string name="title__restart_launcher">รีสตาร์ท</string>
+    <string name="summary__dev_restart">จะมีประโยชน์หากใช้การตั้งค่าบางอย่างไม่ถูกต้อง</string>
+    <string name="change_default_home">ตั้งเป็นแอปโฮม</string>
+    <string name="feed_add_widget">เพิ่มวิดเจ็ต</string>
+    <string name="feed_widget">วิดเจ็ต</string>
+    <string name="about_build_information">ข้อมูลการสร้าง</string>
+    <string name="title__about_donate">บริจาค</string>
+    <string name="title__about_changelog">บันทึกการเปลี่ยนแปลง</string>
+    <string name="title__about_acknowledgement">รับทราบ</string>
+    <string name="about_team">สมาชิกในทีม</string>
+    <string name="about_translators_group">ผู้ร่วมให้ข้อมูลและนักแปล</string>
+    <string name="about_translators">นักแปล</string>
+    <string name="about_source">ซอร์สโค้ด</string>
+    <string name="about_channel">ช่อง</string>
+    <string name="about_community">ชุมชน</string>
+    <string name="about_community_telegram">ชุมชนบนโทรเลข</string>
+    <string name="about_community_matrix">ชุมชนบนเมทริกซ์</string>
+    <string name="about_open_source">ไลบรารีโอเพ่นซอร์ส</string>
+    <string name="about_source_url" translatable="false">https://github.com/otakuhqz/Omega</string>
+    <string name="category__about_licenses">ใบอนุญาต</string>
+    <string name="license_gpl" translatable="false">GPLv3+</string>
+    <string name="app_donate_url" translatable="false">https://paypal.me/saulhenriquez</string>
+    <string name="author" translatable="false">Saul Henriquez</string>
+    <string name="author_role">นักพัฒนา</string>
+    <string name="contributor1" translatable="false">Antonios Hazim</string>
+    <string name="contributor2" translatable="false">Rafael Venancio</string>
+    <string name="contributor_role">ผู้ร่วมให้ข้อมูล</string>
+    <string name="title_storage_permission_required">จำเป็นต้องเข้าถึงพื้นที่เก็บข้อมูล</string>
+    <string name="content_storage_permission_required">ให้สิทธิ์เข้าถึงพื้นที่เก็บข้อมูลเพื่อตั้งค่าวอลเปเปอร์</string>
+    <string name="accessibility_undo">เลิกทำ</string>
+    <string name="edit_dash">แก้ไขแดช</string>
+    <string name="wallpaper_pick">เลือกวอลเปเปอร์</string>
+    <string name="dash_all_apps_title">เปิดแอปทั้งหมด</string>
+    <string name="dash_device_settings_title">การตั้งค่าอุปกรณ์</string>
+    <string name="dash_volume_title">กล่องโต้ตอบระดับเสียง</string>
+    <string name="dash_launch_app_title">เปิดแอป</string>
+    <string name="dash_mobile_network_title">เครือข่ายมือถือ</string>
+    <string name="dash_manage_apps_summary">เปิดตัวจัดการแอป Android</string>
+    <string name="dash_mobile_network_summary">แสดงการตั้งค่าเครือข่ายมือถือ</string>
+    <string name="dash_all_apps_summary">แสดงปุ่มแอปทั้งหมด</string>
+    <string name="dash_media_player">เครื่องเล่นเสียง</string>
+    <string name="dash_media_player_description">แสดงหรือซ่อนส่วนควบคุมเครื่องเล่นเสียง</string>
+    <string name="edit_dash_summary">เปิดหรือปิดทางลัด</string>
+    <string name="wallpaper_pick_summary">เปิดตัวเลือกวอลเปเปอร์</string>
+    <string name="dash_launcher_settings_summary">แสดงการตั้งค่าตัวเรียกใช้งาน</string>
+    <string name="dash_volume_summary">แสดงตัวเลือกเสียงของอุปกรณ์</string>
+    <string name="dash_device_settings_summary">เปิดการตั้งค่าอุปกรณ์</string>
+    <string name="drag_to_disable_packs">ลากลงเพื่อปิด</string>
+    <string name="drag_to_enable_packs">ลากขึ้นเพื่อเปิด</string>
+    <string name="tap_to_enable">แตะรายการเพื่อเปิดใช้งาน</string>
+    <string name="enabled_events">เปิดใช้งานแล้ว</string>
+    <string name="dash_wifi">อินเตอร์เน็ตไร้สาย</string>
+    <string name="dash_wifi_summary">สถานะ Wi-Fi และการเชื่อมต่อ</string>
+    <string name="dash_bluetooth">บลูทูธ</string>
+    <string name="dash_bluetooth_summary">เปิดหรือปิดบลูทูธ</string>
+    <string name="dash_location">ที่ตั้ง</string>
+    <string name="dash_location_summary">เปลี่ยนการตั้งค่าตำแหน่ง</string>
+    <string name="dash_torch">คบเพลิง</string>
+    <string name="dash_torch_summary">เปิดหรือปิดไฟแฟลช</string>
+    <string name="dash_auto_rotation">การหมุนอัตโนมัติ</string>
+    <string name="dash_auto_rotation_summary">เปิดหรือปิดการหมุนอัตโนมัติ</string>
+    <string name="dash_sync">ซิงค์</string>
+    <string name="dash_sync_summary">เปิดหรือปิดการซิงค์</string>
+    <string name="launch_assistant">เปิดตัวผู้ช่วย</string>
+    <string name="gesture_launch_assistant">เปิดตัวผู้ช่วย (ผ่านปุ่มหรือท่าทาง)</string>
+    <string name="reset_to_default">รีเซ็ตเป็นค่าเริ่มต้น</string>
+    <string name="automatic_short">อัตโนมัติ</string>
+    <string name="label_voice_search">ค้นหาด้วยเสียง</string>
+    <string name="customize">ปรับแต่ง</string>
+    <string name="button_apply">นำมาใช้</string>
+    <string name="tab_bottom_sheet_save">บันทึก</string>
+    <string name="tab_hide_from_main">ซ่อนจากแท็บหลัก</string>
+    <string name="tab_color">สีแท็บ</string>
+    <string name="tab_manage_apps">จัดการแอป</string>
+    <string name="delete">ลบ</string>
+    <string name="none">ไม่มี</string>
+    <string name="name">ชื่อ</string>
+    <string name="apps_label">แอพ</string>
+    <string name="app_name">ชื่อแอป</string>
+    <string name="custom">กำหนดเอง</string>
+    <string name="default_tab_name">แท็บใหม่</string>
+    <string name="tabs_manage">จัดการ</string>
+    <string name="dismiss_drop_target_label">"อย่าแสดง"</string>
+    <string name="debug_component_name">ชื่อส่วนประกอบ</string>
+    <string name="debug_component_name_copied">คัดลอกไปยังคลิปบอร์ดแล้ว</string>
+    <string name="hide_app">ซ่อนทางลัด</string>
+    <string name="folder_cover_mode">ใช้โหมดปก</string>
+    <string name="folder_cover_mode_desc">แตะเพื่อเปิดแอปแรก ปัดขึ้นเพื่อดูทั้งหมด</string>
+    <string name="loading">กำลังโหลด...</string>
+    <string name="uninstall_failed">ไม่สามารถถอนการติดตั้งแอปได้</string>
+    <string name="tab_launcher">ตัวเปิด</string>
+    <string name="tab_shortcuts">ทางลัด</string>
+    <string name="button_organize_screens">จัดเรียงหน้า</string>
+    <string name="modify_system_settings">แก้ไขการตั้งค่าระบบ</string>
+    <string name="modify_system_settings_message">ให้ความสามารถในการแก้ไขการตั้งค่าระบบเพื่อให้ทำงานได้</string>
+    <string name="app_widget_name">วิดเจ็ตนาฬิกา</string>
+    <string name="pref_desktop_mode">โหมดเดสก์ท็อป</string>
+    <string name="pref_desktop_mode_summary">เปิดใช้งานโหมดเดสก์ท็อปของ Android</string>
+    <string name="pref_desktop_mode_settings">การตั้งค่าโหมดเดสก์ท็อป</string>
+    <string name="web_search_metager">Metager (เว็บ)</string>
+    <string name="web_search_searx">Seax (เว็บ)</string>
+    <string name="web_search_perplexity">ความฉงนสนเท่ห์ (เว็บ)</string>
+    <string name="web_search_you">คุณ (เว็บ)</string>
+    <string name="web_search_neeva">นีวา (เว็บ)</string>
+    <string name="web_search_wolfram_alpha">วุลแฟรม อัลฟ่า (เว็บ)</string>
+    <string name="title_override_corner_radius_value">รัศมีมุมโลก</string>
+    <string name="dash_line_size">ขนาดเส้นประ</string>
+    <string name="title_search_providers">ผู้ให้บริการค้นหา</string>
+    <string name="edit_search_summary">เลือกและเรียงลำดับผู้ให้บริการการค้นหาที่ใช้งานอยู่</string>
+    <string name="add_search_provider">เพิ่มผู้ให้บริการ</string>
+    <string name="edit_search_provider">แก้ไขผู้ให้บริการค้นหา</string>
+    <string name="search_provider_search_url">URL ค้นหา</string>
+    <string name="search_provider_suggestion_url">URL คำแนะนำ</string>
+    <string name="search_provider_url_hint">ใช้ %s แทนคำค้นหา</string>
+</resources>

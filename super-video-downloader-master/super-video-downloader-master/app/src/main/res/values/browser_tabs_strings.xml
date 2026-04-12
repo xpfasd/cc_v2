@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tab_close">Close tab</string>
+    <string name="browser_home_subtitle">Open a site fast, then save videos or images in one tap.</string>
+    <string name="browser_home_bookmark_hint">Saved pages</string>
+    <string name="browser_home_history_hint">Recent pages</string>
+    <string name="detected_media_title">Download media</string>
+    <string name="detected_media_subtitle">Choose a source, preview it, or save it directly.</string>
+    <string name="detected_downloadable_title">Downloadable</string>
+    <string name="detected_download_ready">Ready to download</string>
+    <string name="detected_formats_label">Available formats</string>
+    <string name="detected_action_preview_video">Preview video</string>
+    <string name="detected_action_preview_image">Open image</string>
+    <string name="detected_action_download_video">Download video</string>
+    <string name="detected_action_download_image">Download image</string>
+    <string name="detected_action_edit_name">Edit name</string>
+    <string name="detected_media_type_video">Video</string>
+    <string name="detected_media_type_image">Image</string>
+    <string name="detected_media_type_audio">Audio</string>
+    <string name="detected_media_type_stream">Live stream</string>
+</resources>

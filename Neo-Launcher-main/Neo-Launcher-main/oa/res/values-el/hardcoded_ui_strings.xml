@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Σφάλμα</string>
+    <string name="detected_videos_unexpected_error">Κάτι πήγε στραβά, δοκιμάστε ξανά.</string>
+    <string name="browser_back_exit_hint">Πατήστε Πίσω ξανά για έξοδο</string>
+    <string name="proxies_invalid_host_port">Μη έγκυρος host ή port</string>
+    <string name="browser_open_in_new_tab">Άνοιγμα σε νέα καρτέλα</string>
+    <string name="share_via">Κοινή χρήση μέσω</string>
+    <string name="player_download_only_title">Μόνο λήψη</string>
+    <string name="player_download_only_message">Αυτό το βίντεο υποστηρίζει μόνο λήψη.</string>
+    <string name="download_status_preparing">Προετοιμασία</string>
+    <string name="download_status_pending">Σε αναμονή</string>
+    <string name="download_status_downloading">Λήψη σε εξέλιξη</string>
+    <string name="download_status_paused">Σε παύση</string>
+    <string name="download_status_success">Επιτυχία</string>
+    <string name="download_status_failed">Αποτυχία</string>
+    <string name="download_status_canceled">Ακυρώθηκε</string>
+    <string name="download_status_unknown">Άγνωστη κατάσταση</string>
+    <string name="notification_failed_with_reason">Αποτυχία: %1$s</string>
+    <string name="proxy_service_notification_title">Υπηρεσία διαμεσολαβητή</string>
+    <string name="proxy_service_notification_message">Ο τοπικός διαμεσολαβητής εκτελείται...</string>
+    <string name="video_sort_label_name">Όνομα</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Τελευταία επεξεργασία</string>
+    <string name="video_sort_label_latest_first">(Πιο πρόσφατα πρώτα)</string>
+    <string name="video_sort_label_latest_last">(Πιο παλιά πρώτα)</string>
+    <string name="video_sort_label_file_size">Μέγεθος αρχείου</string>
+    <string name="video_sort_label_largest_to_smallest">(Μεγαλύτερο προς μικρότερο)</string>
+    <string name="video_sort_label_smallest_to_largest">(Μικρότερο προς μεγαλύτερο)</string>
+</resources>

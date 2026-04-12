@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="webTab"
+            type="com.myAllVideoBrowser.ui.main.home.browser.webTab.WebTab" />
+
+        <variable
+            name="tabListener"
+            type="com.myAllVideoBrowser.ui.component.adapter.WebTabsListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/item_web_tab_button"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/browser_tabs_card_height"
+        android:layout_margin="7dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{(v) -> tabListener.onSelectTabClicked(webTab)}"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/browser_tabs_overview_card_stroke"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingStart="12dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="10dp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tab_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:layout_marginTop="3dp"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:text="@{webTab.title}"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@id/closeTab"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Page Title Page Tit..." />
+
+            <ImageView
+                android:id="@+id/preview_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tab_title"
+                tools:src="@drawable/search_icon24" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/preview_placeholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="35sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/closeTab"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/bg_browser_tabs_overview_close"
+                android:clickable="true"
+                android:contentDescription="@string/tab_close"
+                android:focusable="true"
+                android:onClick="@{(v) -> tabListener.onCloseTabClicked(webTab)}"
+                android:padding="3dp"
+                android:src="@drawable/close_24px"
+                android:tint="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

@@ -1,0 +1,81 @@
+stages:
+    - build
+    - deploy
+
+variables:
+    GRADLE_USER_HOME: "$CI_PROJECT_DIR/.gradle"
+    CHAT_ID: "omega"
+    KEYSTORE_FILE: "$CI_PROJECT_DIR/debug.keystore"
+    KEYSTORE_PASSWORD: "android"
+    KEY_ALIAS: "androiddebugkey"
+    KEY_PASSWORD: "android"
+    ANDROID_BUILD_TOOLS: "33.0.2"
+    ANDROID_COMPILE_SDK: "33"
+    ANDROID_SDK_TOOLS: "9477386"
+
+before_script:
+    - export ANDROID_HOME="${PWD}/android-sdk-root"
+    - install -d $ANDROID_HOME
+    - export GRADLE_OPTS="-Dorg.gradle.daemon=false"
+    - apt-get update -qy
+    - apt-get install -y openjdk-22-jdk
+    - export JAVA_HOME="/usr/lib/jvm/java-22-openjdk-amd64"
+    - export PATH=$PATH:$JAVA_HOME/bin
+    - chmod +x gradlew
+    - wget --no-verbose --output-document=$ANDROID_HOME/cmdline-tools.zip https://dl.google.com/android/repository/commandlinetools-linux-${ANDROID_SDK_TOOLS}_latest.zip
+    - unzip -q -d "$ANDROID_HOME/cmdline-tools" "$ANDROID_HOME/cmdline-tools.zip"
+    - mv -T "$ANDROID_HOME/cmdline-tools/cmdline-tools" "$ANDROID_HOME/cmdline-tools/tools"
+    - export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/cmdline-tools/tools/bin
+    - yes | sdkmanager --licenses > /dev/null || true
+    - sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}"
+    - sdkmanager "platform-tools"
+    - sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}"
+
+
+build:
+    stage: build
+    interruptible: true
+    cache:    
+        paths:
+            - .gradle/caches
+            - .gradle/wrapper
+    artifacts:
+        paths:
+            - app/build/outputs/
+        expire_in: 
+            1 week
+
+    before_script:
+        - /usr/lib/jvm/java-22-openjdk-amd64/bin/keytool -importkeystore \
+            -srckeystore $KEYSTORE_FILE \
+            -srcstoretype PKCS12 \
+            -destkeystore keystore.jks \
+            -deststoretype JKS \
+            -srcstorepass $KEYSTORE_PASSWORD \
+            -deststorepass $KEYSTORE_PASSWORD
+
+        - echo -e "storePassword=$KEYSTORE_PASSWORD\nkeyPassword=$KEY_PASSWORD\nkeyAlias=$KEY_ALIAS\nstoreFile=keystore.jks" > keystore.properties
+        - ./gradlew signingConfig
+
+    script:
+        - ./gradlew assembleAospOmegaDebug
+    
+    after_script:
+        - rm -f keystore.jks || true
+        - ls /builds/NeoApplications/Neo-Launcher/build/
+        - ARTIFACT_PATHNAME_APK=$(ls app/build/outputs/apk/aospOmega/debug/*.apk | head -n 1)
+        - ARTIFACT_NAME_APK=basename $ARTIFACT_PATHNAME_APK
+        - echo "ARTIFACT_NAME_APK is $ARTIFACT_NAME_APK"
+        - echo "ARTIFACT_PATHNAME_APK=$ARTIFACT_PATHNAME_APK" >> $CI_JOB_ENV
+        - echo "ARTIFACT_NAME_APK=$ARTIFACT_NAME_APK" >> $CI_JOB_ENV
+
+deploy:
+    stage: deploy
+    needs:
+      [ build ]
+    interruptible: true
+    script:
+        - curl -s -X POST https://api.telegram.org/SECRET_BOT_TOKEN/sendMessage -d chat_id=$CHAT_ID -d text="Build finished"
+        - apt-get install curl
+        - curl -F document=@"outputs/NeoLauncher-Signed.apk" "https://api.telegram.org/bot${SECRET_BOT_TOKEN}/sendDocument?chat_id=@${CHAT_ID}"
+        - curl -s -X POST https://api.telegram.org/SECRET_BOT_TOKEN/sendMessage -d chat_id=$CHAT_ID -d text="Build finished"

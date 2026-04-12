@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Error</string>
+    <string name="detected_videos_unexpected_error">Algo salió mal. Inténtalo de nuevo.</string>
+    <string name="browser_back_exit_hint">Pulsa Atrás otra vez para salir</string>
+    <string name="proxies_invalid_host_port">Host o puerto no válidos</string>
+    <string name="browser_open_in_new_tab">Abrir en una pestaña nueva</string>
+    <string name="share_via">Compartir vía</string>
+    <string name="player_download_only_title">Solo descarga</string>
+    <string name="player_download_only_message">Este video solo admite descarga.</string>
+    <string name="download_status_preparing">Preparando</string>
+    <string name="download_status_pending">Pendiente</string>
+    <string name="download_status_downloading">Descargando</string>
+    <string name="download_status_paused">En pausa</string>
+    <string name="download_status_success">Completado</string>
+    <string name="download_status_failed">Fallido</string>
+    <string name="download_status_canceled">Cancelado</string>
+    <string name="download_status_unknown">Estado desconocido</string>
+    <string name="notification_failed_with_reason">Falló: %1$s</string>
+    <string name="proxy_service_notification_title">Servicio proxy</string>
+    <string name="proxy_service_notification_message">El proxy local está en ejecución...</string>
+    <string name="video_sort_label_name">Nombre</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Última edición</string>
+    <string name="video_sort_label_latest_first">(Más reciente primero)</string>
+    <string name="video_sort_label_latest_last">(Más antiguos primero)</string>
+    <string name="video_sort_label_file_size">Tamaño del archivo</string>
+    <string name="video_sort_label_largest_to_smallest">(De mayor a menor)</string>
+    <string name="video_sort_label_smallest_to_largest">(De menor a mayor)</string>
+</resources>

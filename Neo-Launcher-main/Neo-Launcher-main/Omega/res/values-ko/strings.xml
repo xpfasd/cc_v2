@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_version" translatable="false">Version</string>
+    <string name="app_build" translatable="false">Build</string>
+    <string name="app_id" translatable="false">Package</string>
+    <string name="default_folder_name">새 폴더</string>
+    <string name="folder_name">폴더 이름</string>
+    <string name="title__general_about">에 대한</string>
+    <string name="title__general_desktop">데스크탑</string>
+    <string name="title__general_dock">독</string>
+    <string name="title__general_drawer">서랍</string>
+    <string name="title__general_theme">주제</string>
+    <string name="title__general_search">검색 및 폴더</string>
+    <string name="title__general_smartspace">홈 위젯</string>
+    <string name="title__general_advanced">고급 설정</string>
+    <string name="title__general_notifications">제스처 및 알림</string>
+    <string name="title__general_profile">윤곽</string>
+    <string name="title__general_gestures_dash">제스처 및 대시</string>
+    <string name="title__general_search_feed">검색 및 피드</string>
+    <string name="title__general_widgets_notifications">위젯 및 알림</string>
+    <string name="summary__general_desktop">데스크탑 사용자 정의</string>
+    <string name="summary__general_dock">핫시트 아이콘, 검색창</string>
+    <string name="summary__general_drawer">서랍을 맞춤 설정하세요</string>
+    <string name="summary__general_theme">색상, 아이콘 팩, 아이콘 모양 변경</string>
+    <string name="summary__general_search">검색 공급자, 스타일, 아이콘</string>
+    <string name="summary__general_smartspace">날짜, 시간, 홈 위젯</string>
+    <string name="summary__general_notifications">배지 개수, 배지 색상, 제스처</string>
+    <string name="summary__general_advanced">언어, 백업, 설정 검색</string>
+    <string name="pref_category__interfaces">사용자 인터페이스</string>
+    <string name="pref_category__features">특징</string>
+    <string name="pref_category__inputs">제스처 및 검색</string>
+    <string name="pref_category__others">기타</string>
+    <string name="pref_category__incubating">인큐베이팅</string>
+    <string name="allow_rotation_blocked_desc">현재 디스플레이 설정은 회전을 허용하지 않습니다.</string>
+    <string name="title_desktop_full_width_widgets">전체 너비 위젯</string>
+    <string name="title_desktop_widget_corner_radius">위젯 코너 반경</string>
+    <string name="title__desktop_icon_size">아이콘 크기</string>
+    <string name="title__desktop_grid_size">그리드 크기</string>
+    <string name="title__desktop_hide_icon_labels">홈 화면에서 아이콘 라벨 숨기기</string>
+    <string name="title_desktop_overlap_placement">겹치는 위젯 허용</string>
+    <string name="title_desktop_lock_desktop">데스크탑 잠금</string>
+    <string name="title_desktop_keep_empty">빈 페이지 허용</string>
+    <string name="title__multiline_labels">여러 줄로 된 앱 이름</string>
+    <string name="title_desktop_free_scrolling">무료 스크롤</string>
+    <string name="title_desktop_icon_popup_menu">팝업 메뉴 항목</string>
+    <string name="title_desktop_hide_statusbar">상태 표시줄 숨기기</string>
+    <string name="title_desktop_text_size">텍스트 크기</string>
+    <string name="summary_full_width_widgets">위젯이 패딩 없이 전체 너비에 걸쳐 있도록 허용</string>
+    <string name="grid_size_height">키</string>
+    <string name="grid_size_width">너비</string>
+    <string name="show_top_shadow">상단 그림자 표시</string>
+    <string name="title__dock_icon_size_enforce">맞춤 아이콘 크기 시행</string>
+    <string name="title__dock_icon_size">아이콘 크기</string>
+    <string name="title__dock_scale">도크 스케일</string>
+    <string name="title_dock_fill">배경 표시</string>
+    <string name="title_dock_background_color">배경색</string>
+    <string name="title_dock_two_row">두 번째 행 표시</string>
+    <string name="title__dock_hide">독 숨기기</string>
+    <string name="title_expandable_dock">확장형 도크</string>
+    <string name="title__dock_hide_labels">라벨 숨기기</string>
+    <string name="title__dock_colored_icons">컬러 아이콘</string>
+    <string name="title__dock_hotseat_icons">아이콘 수</string>
+    <string name="title__dock_show_arrow">화살표 표시</string>
+    <string name="dock_colored_google">컬러 아이콘</string>
+    <string name="title_opacity">불투명</string>
+    <string name="hotseat_show_page_indicator">페이지 표시기 표시</string>
+    <string name="hotseat_show_dots_page_indicator">선 대신 점 페이지 표시기 표시</string>
+    <string name="title_disabled">끄다</string>
+    <string name="dock_search_value" translatable="false">%1$s %2$s</string>
+    <string name="num_hotseat_icons_pref_title">아이콘 수</string>
+    <string name="title_dock_search">도킹 검색창</string>
+    <string name="summary_dock_search">하단 도크에 표시</string>
+    <string name="label_search">찾다</string>
+    <string name="cat_dock_search">서랍 및 도크</string>
+    <string name="label_lens" translatable="false">Google Lens</string>
+    <string name="title__drawer_sort">앱 정렬</string>
+    <string name="title_drawer_all_apps">모두</string>
+    <string name="title__drawer_all_apps">&quot;모든 앱&quot; 라벨 표시</string>
+    <string name="title_separate_work_apps">업무용 앱의 두 번째 탭</string>
+    <string name="title__drawer_paged_apps">페이징된 앱 보기</string>
+    <string name="title__drawer_hide_icon_labels">앱 이름 숨기기</string>
+    <string name="title__drawer_hide_apps">숨겨진 앱 바로가기</string>
+    <string name="title__drawer_icon_size">모든 앱 아이콘 크기</string>
+    <string name="title__drawer_categorization">카테고리</string>
+    <string name="title__drawer_icon_popup_menu">바로가기 버블</string>
+    <string name="title__drawer_columns">열 수</string>
+    <string name="title__drawer_rows">행 수</string>
+    <string name="title_drawer_enable_background">사용자 정의 배경색 사용</string>
+    <string name="title_drawer_row_height">행 높이</string>
+    <string name="title__sort_mode">앱 정렬</string>
+    <string name="title__sort_alphabetical_az">A→Z</string>
+    <string name="title__sort_alphabetical_za">Z→A</string>
+    <string name="title__sort_last_installed">마지막 설치</string>
+    <string name="title__sort_most_used">가장 많이 사용됨</string>
+    <string name="title__sort_by_color">색상별</string>
+    <string name="title_all_apps_search">서랍 검색창</string>
+    <string name="title_all_apps_google_search">웹 검색결과</string>
+    <string name="title_all_apps_keep_scroll_state">위치 기억</string>
+    <string name="title_all_apps_hide_scrollbar">스크롤바 숨기기</string>
+    <string name="title_search_hidden_apps">숨겨진 앱 찾기</string>
+    <string name="title_fuzzy_search">퍼지 검색</string>
+    <string name="summary_fuzzy_search">앱 검색에 대한 대략적인 일치입니다.</string>
+    <string name="title_manage_tabs">탭 관리</string>
+    <string name="summary_manage_tabs">탭 생성 또는 편집</string>
+    <string name="summary_search_hidden_apps">결과에 숨겨진 바로가기를 표시합니다.</string>
+    <string name="summary_all_apps_google_search">웹 검색결과 및 앱 찾기</string>
+    <string name="summary__drawer_hide_apps">앱 서랍에서 앱 숨기기</string>
+    <string name="summary_app_categorization_enable">탭 또는 폴더 만들기</string>
+    <string name="summary_app_suggestions">모든 앱 및 홈 화면용</string>
+    <string name="title_disable_suggestions_prompt">앱 제안 끄기</string>
+    <string name="msg_disable_suggestions_prompt">"사용 데이터가 삭제됩니다."</string>
+    <string name="label_turn_off_suggestions">장애를 입히다</string>
+    <string name="title_text_color">텍스트 색상</string>
+    <string name="title_drawer_layout">레이아웃 모드</string>
+    <string name="title_drawer_layout_categories">카테고리 관리</string>
+    <string name="title_drawer_vertical">수직의</string>
+    <string name="title_drawer_horizontal">수평의</string>
+    <string name="title_drawer_categorized">업종 카테고리</string>
+    <string name="title_drawer_tabs">수평 탭</string>
+    <string name="title_drawer_paged">페이징됨</string>
+    <string name="dialog_message_change_sort">앱 정렬을 알파벳순으로 변경하시겠습니까?</string>
+    <string name="cat_desktop_grid">그리드 및 레이아웃</string>
+    <string name="cat_drawer_grid">그리드</string>
+    <string name="cat_drawer_icons">아이콘</string>
+    <string name="pref_appcategorization_flowerpot_title">앱 카테고리</string>
+    <string name="title_app_categorization_enable">앱 카테고리 활성화</string>
+    <string name="pref_appcategorization_style_text">스타일</string>
+    <string name="app_categorization_folders">폴더</string>
+    <string name="pref_appcategorization_folders_summary">팝업을 열려면 탭하세요.</string>
+    <string name="app_categorization_tabs">탭</string>
+    <string name="pref_appcategorization_tabs_summary">그룹 간에 스와이프하세요.</string>
+    <string name="pref_app_groups_edit_tip">수정하려면 탭하고, 재정렬하려면 드래그하세요.</string>
+    <string name="tab_type_custom_desc">바로가기를 수동으로 선택하세요.</string>
+    <string name="tab_type_smart">오토매틱</string>
+    <string name="pref_appcategorization_flowerpot_summary">자동으로 바로가기를 선택하세요.</string>
+    <string name="add_new_tab">추가하다</string>
+    <string name="selected_count">%1$d 선택됨</string>
+    <plurals name="tab_apps_count">
+        <item quantity="zero">%0$d 앱</item>
+        <item quantity="one">%1$d 앱</item>
+        <item quantity="other">%1$d 앱</item>
+    </plurals>
+    <plurals name="hidden_apps_count">
+        <item quantity="one">%1$d 숨겨진</item>
+        <item quantity="other">%1$d 숨겨진</item>
+    </plurals>
+    <string name="protected_apps">보호된 앱</string>
+    <string name="category_art_and_design">설계</string>
+    <string name="category_business_and_productivity">생산력</string>
+    <string name="category_communication">의사소통</string>
+    <string name="category_entertainment">오락</string>
+    <string name="category_game">계략</string>
+    <string name="category_health_and_fitness">적합</string>
+    <string name="category_lifestyle">라이프 스타일</string>
+    <string name="category_knowledge_and_reference">지식</string>
+    <string name="category_music">음악</string>
+    <string name="category_news">소식</string>
+    <string name="category_personalization">개인화</string>
+    <string name="category_tools">도구</string>
+    <string name="category_travel_and_navigation">항해</string>
+    <string name="protected_app_selected">보호된 앱(%1$d)</string>
+    <string name="hide_app_selected">숨겨진 앱(%1$d)</string>
+    <string name="hide_app_reset">숨겨진 앱 재설정</string>
+    <string name="selected_apps">선택된 앱(%1$d)</string>
+    <string name="app_reset">선택 재설정</string>
+    <string name="protected_app_reset">보호된 앱 재설정</string>
+    <string name="action_preferences" translatable="false">@string/customize</string>
+    <string name="needs_usage_access">사용 액세스가 필요합니다</string>
+    <string name="msg_missing_usage_access">Turn on usage access for <xliff:g example="My App" id="name">%1$s</xliff:g> to show app suggestions</string>
+    <string name="trust_apps_no_lock_error">앱 액세스를 제한하려면 보안 잠금 화면을 설정하세요.</string>
+    <string name="trust_apps_manager_name">숨겨진 앱과 보호되는 앱</string>
+    <string name="trust_apps_unlock">터놓다</string>
+    <string name="trust_apps_message">보호된 앱에 액세스하려면 인증이 필요합니다.</string>
+    <string name="enable_protected_apps">보호된 앱 켜기</string>
+    <string name="disable_protected_apps">보호된 앱 끄기</string>
+    <string name="disable_protected_apps_message">인증이 필요한 보호된 앱 끄기</string>
+    <string name="title__theme_accent_color">악센트 색상</string>
+    <string name="title__theme_blur">흐림</string>
+    <string name="title__theme_blur_radius">흐림 강도</string>
+    <string name="title__theme_icon_shape">아이콘 모양</string>
+    <string name="title_theme_icon_packs">아이콘 팩</string>
+    <string name="title_theme_customize_icons">아이콘 사용자 정의</string>
+    <string name="summary__theme_blur">페이지 배경을 흐리게 합니다.</string>
+    <string name="theme_auto">배경화면 팔로우</string>
+    <string name="color_wallpaper_secondary">벽지 보조</string>
+    <string name="color_wallpaper_tertiary">벽지 3차</string>
+    <string name="theme_auto_black">팔로우 배경화면(검은색)</string>
+    <string name="theme_auto_night_mode">체계</string>
+    <string name="theme_auto_night_mode_black">시스템(블랙)</string>
+    <string name="theme_based">테마별 설정</string>
+    <string name="theme_light">빛</string>
+    <string name="theme_with_dark_text">어두운 텍스트</string>
+    <string name="theme_black">검은색</string>
+    <string name="theme_black_dark_text">검정색과 어두운 텍스트</string>
+    <string name="theme_dark">어두운</string>
+    <string name="theme_dark_text">밝은 텍스트와 어두운 텍스트</string>
+    <string name="theme_dark_dark_text">어두운 텍스트와 어두운 색</string>
+    <string name="theme_dark_theme_mode">어두운 테마</string>
+    <string name="theme_dark_theme_mode_follow_wallpaper" translatable="false">@string/theme_auto</string>
+    <string name="theme_dark_theme_mode_follow_wallpaper_black" translatable="false">@string/theme_auto_black</string>
+    <string name="theme_dark_theme_mode_follow_system" translatable="false">@string/theme_auto_night_mode</string>
+    <string name="theme_dark_theme_mode_follow_daylight">일광을 따르십시오</string>
+    <string name="theme_use_black">퓨어블랙을 사용하세요</string>
+    <string name="theme_use_dark_text">어두운 텍스트 사용</string>
+    <string name="title_default">기본</string>
+    <string name="icon_pack">아이콘 팩</string>
+    <string name="get_more_icon_packs">새로운 아이콘 팩 다운로드</string>
+    <string name="menu_icon_shape">사용자 정의 아이콘 모양</string>
+    <string name="icon_shape_override_progress">"아이콘 모양 변경 적용"</string>
+    <string name="icon_shape_override_label">아이콘 모양 변경</string>
+    <string name="icon_shape_override_label_location">홈 화면에서</string>
+    <string name="icon_shape_system_default">체계</string>
+    <string name="icon_shape_square">정사각형</string>
+    <string name="icon_shape_squircle">다람쥐</string>
+    <string name="icon_shape_circle">원</string>
+    <string name="icon_shape_teardrop">눈물</string>
+    <string name="icon_shape_cylinder">실린더</string>
+    <string name="icon_shape_rounded_square">둥근 사각형</string>
+    <string name="icon_shape_top_left">왼쪽 위</string>
+    <string name="icon_shape_top_right">오른쪽 상단</string>
+    <string name="icon_shape_bottom_left">왼쪽 하단</string>
+    <string name="icon_shape_bottom_right">오른쪽 하단</string>
+    <string name="icon_shape_corner_round">둥근</string>
+    <string name="icon_shape_corner_squircle">다람쥐</string>
+    <string name="icon_shape_corner_cut">자르다</string>
+    <string name="icon_pack_applied_toast">%s 적용됨</string>
+    <string name="icon_pack_default">시스템 아이콘</string>
+    <string name="icon_pack_external_picker">외부 선택도구 열기</string>
+    <string name="open_image_picker">이미지 선택 도구 열기</string>
+    <string name="import_icon">가져오기 아이콘</string>
+    <string name="import_as_adaptive">적응형 아이콘으로</string>
+    <string name="reset_custom_icon">사용자 정의 아이콘 제거</string>
+    <string name="reset_custom_icons">사용자 정의 아이콘 제거</string>
+    <string name="reset_custom_icons_confirmation">이 아이콘 팩에서 기본 아이콘으로 되돌리시겠습니까? 이 작업은 취소할 수 없습니다.</string>
+    <string name="color_presets">사전 설정</string>
+    <string name="color_dynamic">동적</string>
+    <string name="title_adaptify_pack">아이콘 팩용 적응형 아이콘 만들기</string>
+    <string name="title_force_shapeless">모양 없는 아이콘 강제</string>
+    <string name="title_themed_icons">테마 아이콘</string>
+    <string name="title_themed_background">투명 아이콘 배경</string>
+    <string name="title_colored_backgrounds">컬러 배경</string>
+    <string name="summary_colored_backgrounds">적응형 아이콘의 배경.</string>
+    <string name="summary_force_shapeless">모든 앱에 레거시 아이콘을 사용해 보세요.</string>
+    <string name="title_legacy_treatment">적응형 아이콘 만들기</string>
+    <string name="summary_legacy_treatment">모든 바로가기에 대한 적응형 아이콘을 만듭니다.</string>
+    <string name="title_white_only_treatment">흰색 배경 바꾸기</string>
+    <string name="summary_white_only_treatment">모든 적응형 아이콘의 배경색을 지정합니다.</string>
+    <string name="preview_app_osmand" translatable="false">OsmAnd</string>
+    <string name="preview_app_youtube" translatable="false">Youtube</string>
+    <string name="preview_app_newpipe" translatable="false">NewPipe</string>
+    <string name="preview_app_signal" translatable="false">Signal</string>
+    <string name="icon_picker_default_category">아이콘</string>
+    <string name="icon_picker_load_failed">더 많은 아이콘을 로드할 수 없습니다.</string>
+    <string name="title_show_google_app">Google 앱 표시</string>
+    <string name="title_smartspace_feed_theme">피드 테마</string>
+    <string name="title_use_pill_qsb">알약 검색 바로가기 표시</string>
+    <string name="title_smartspace">스마트스페이스 표시</string>
+    <string name="title_smartspace_time">쇼 시간</string>
+    <string name="title_smartspace_time_format">시간 형식</string>
+    <string name="title_smartspace_background">테마 배경 표시</string>
+    <string name="title_smartspace_date">날짜 표시</string>
+    <string name="title_smartspace_calendar">캘린더 선택</string>
+    <string name="title_smartspace_time_above">큰 시계 표시</string>
+    <string name="title_smartspace_widget_provider">날씨 출처</string>
+    <string name="title_smartspace_weather_units">온도 단위</string>
+    <string name="title_smartspace_event_providers">이벤트 소스</string>
+    <string name="category__behavior_weather">날씨</string>
+    <string name="google_app" translatable="false">Google app</string>
+    <string name="pref_shelf_summary">메인 홈 화면 왼쪽</string>
+    <string name="accessibility_smartspace_page">%2$d의 페이지 %1$d</string>
+    <string name="smartspace_calendar_gregorian" translatable="false">gregorian</string>
+    <string name="title_calendar_gregorian">그레고리력</string>
+    <string name="smartspace_calendar_persian" translatable="false">persian</string>
+    <string name="title_calendar_persian">페르시아 인</string>
+    <string name="smartspace_preferences">환경설정</string>
+    <string name="smartspace_add_to_home">데스크탑에 추가</string>
+    <string name="smartspace_setup_text">탭하여 설정하세요</string>
+    <string name="smartspace_now">지금</string>
+    <string name="smartspace_in_time">%1$s에서</string>
+    <string name="smartspace_hours_mins">%1$s %2$s</string>
+    <string name="smartspace_pill_text_format">%1$s %2$s</string>
+    <string name="smartspace_provider_bridge">루트리스 픽셀 브릿지</string>
+    <string name="resuable_text_alarm">경보</string>
+    <string name="name_provider_alarm_events">다가오는 알람</string>
+    <string name="smartspace_widget_provider_not_found">Google 앱을 다운로드하세요.</string>
+    <string name="zen_mode_enabled">방해금지 모드가 활성화되었습니다.</string>
+    <string name="home_widget">한눈에</string>
+    <string name="battery_charging">충전 중</string>
+    <string name="battery_full">청구됨</string>
+    <string name="battery_low">배터리 부족</string>
+    <string name="battery_charging_percentage_charging_time">"%1$d%% — %2$s에서 전체"</string>
+    <string name="n_percent">%1$d%%</string>
+    <string name="event_provider_missing_notification_access">Turn on notifications from <xliff:g example="My App" id="name">“%2$s” to use </xliff:g>
+        <xliff:g example="My Provider" id="providerName">“%1$s”.</xliff:g>
+    </string>
+    <string name="event_provider_missing_notification_dots">Turn on notification dots to use <xliff:g example="My Provider" id="providerName">“%1$s”</xliff:g>.</string>
+    <string name="permission_iplocate">대략적인 위치</string>
+    <string name="permission_iplocate_twilight_explanation">대략적인 위치에 대한 액세스를 허용하시겠습니까? 이를 통해 보다 정확한 일광 계산이 가능해집니다.</string>
+    <string name="allow">허용하다</string>
+    <string name="deny">부인하다</string>
+    <string name="smartspace_provider_calendar">캘린더 이벤트</string>
+    <string name="action_open_recents">최근 항목 열기</string>
+    <string name="personality_provider">인사말</string>
+    <string name="onbording">온보딩</string>
+    <string name="onbording_settings_title">%s 설정</string>
+    <string name="onbording_settings_summary">데스크탑을 길게 터치하세요.</string>
+    <string name="onboarding_swipe_up">위로 스와이프하여 서랍을 엽니다.</string>
+    <string name="weather_provider_testing">디버그</string>
+    <string name="weather_provider_owm" translatable="true">OpenWeather지도</string>
+    <string name="weather_provider_pe">픽셀 경험</string>
+    <string name="weather_provider_oneplus_weather">원플러스 날씨</string>
+    <string name="event_provider_now_playing">지금 재생 중</string>
+    <string name="event_provider_unread_notifications">알림</string>
+    <string name="battery_status">배터리 상태</string>
+    <string name="week_day_format" translatable="false">%1$s, %2$s</string>
+    <string name="full_wday_month_day_no_year">으어어어어어어어어어어</string>
+    <string name="smartspace_icu_date_pattern_gregorian_wday_month_day_no_year" translatable="false">EEEMMMd</string>
+    <string name="smartspace_icu_date_pattern_gregorian_time" translatable="false">HH:mm</string>
+    <string name="smartspace_icu_date_pattern_gregorian_time_12h" translatable="false">hh:mm aa</string>
+    <string name="smartspace_icu_date_pattern_gregorian_date" translatable="false"> dd MMMM</string>
+    <string name="smartspace_icu_date_pattern_persian_wday_month_day_no_year" translatable="false">l، j F</string>
+    <string name="smartspace_icu_date_pattern_persian_time" translatable="false">H:i</string>
+    <string name="smartspace_icu_date_pattern_persian_time_12h" translatable="false">g:i a</string>
+    <string name="smartspace_icu_date_pattern_persian_date" translatable="false">"j F، "</string>
+    <string name="icu_abbrev_time">HH:mm</string>
+    <string name="icu_abbrev_time_12h">hh:mm 아아</string>
+    <string name="icu_abbrev_date">dd MMMM</string>
+    <string name="units_metric">섭씨</string>
+    <string name="units_imperial">화씨</string>
+    <string name="units_kelvin">켈빈</string>
+    <string name="units_rakine">랭킨</string>
+    <string name="units_newton">뉴턴</string>
+    <string name="units_delisle">딜라일</string>
+    <string name="units_reaumur">레오뮈르</string>
+    <string name="units_romer">뢰머</string>
+    <string name="owm_get_your_own_key">api.openweathermap.org에서 API 키를 받으세요.</string>
+    <string name="default_city">산살바도르, SV</string>
+    <string name="weather_api_key">OWM API 키</string>
+    <string name="weather_city">도시</string>
+    <string name="smartspace_icu_date_pattern">EEEMMMd</string>
+    <string name="smartspace_flight_qr_code">QR 코드</string>
+    <string name="generic_smartspace_concatenated_desc">%1$s, %2$s</string>
+    <string name="accessibility_next_alarm">%s의 다음 알람</string>
+    <string name="smartspace_time_follow_system">팔로우 시스템</string>
+    <string name="smartspace_time_12_hour_format">12시간 형식</string>
+    <string name="title_smartspace_time_24_h">24시간 형식</string>
+    <string name="smartspace_widget_placeholder_date">3월 3일 금요일</string>
+    <string name="folder_name_format">Folder: <xliff:g example="Games" id="name">%1$s</xliff:g>
+    </string>
+    <string-array name="greetings_morning">
+        <item>좋은 아침이에요!</item>
+        <item>좋은 하루 보내세요!</item>
+        <item>밖은 정말 아름다운 날이에요!</item>
+    </string-array>
+    <string-array name="greetings_evening">
+        <item>무슨 일이야?</item>
+        <item>좋은 저녁이에요!</item>
+        <item>오늘 하루는 어땠나요?</item>
+        <item>오늘 어땠나요?</item>
+    </string-array>
+    <string-array name="greetings_night">
+        <item>잘 자다!</item>
+        <item>내일 봐요!</item>
+        <item>안녕히 주무세요!</item>
+        <item>너무 늦게까지 깨어있지 마세요!</item>
+    </string-array>
+    <string name="title__notification_count">알림 수 표시</string>
+    <string name="notification_custom_color">맞춤 색상 사용</string>
+    <string name="title__folder_badge_count">폴더 배지 수 표시</string>
+    <string name="title__notification_background">알림 배경색</string>
+    <string name="title__gesture_swipe_down">아래로 스와이프</string>
+    <string name="pref_category__notifications">알림</string>
+    <string name="pref_category__gestures">제스처</string>
+    <string name="pref_category__dash">대시</string>
+    <string name="action_none">아무것도 하지 않음</string>
+    <string name="action_open_drawer">앱 서랍 열기</string>
+    <string name="action_open_drawer_or_recents">최근 항목/앱 서랍 열기</string>
+    <string name="action_open_settings">런처 설정 열기</string>
+    <string name="action_open_overview">데스크톱 버블 표시</string>
+    <string name="action_open_dash">대시 열기</string>
+    <string name="action_open_app">앱 열기</string>
+    <string name="action_open_app_with_target">"%s" 열기</string>
+    <string name="action_open_app_select_app">앱 선택</string>
+    <string name="action_app_search">앱 검색 열기</string>
+    <string name="action_open_widgets">위젯 서랍 열기</string>
+    <string name="action_open_notifications">알림 열기</string>
+    <string name="action_overlay">Google 피드 열기</string>
+    <string name="action_close_notifications">알림 닫기</string>
+    <string name="action_global_search">글로벌 검색 실행</string>
+    <string name="action_sleep">잠</string>
+    <string name="action_sleep_timeout">화면 시간 초과를 사용하여 절전 모드</string>
+    <string name="gesture_double_tap">두 번 탭하세요.</string>
+    <string name="gesture_long_press">길게 터치하세요</string>
+    <string name="gesture_swipe_up">위쪽으로 스와이프</string>
+    <string name="folder_swipe_up">위로 스와이프 동작</string>
+    <string name="gesture_dock_swipe_up">도크에서 위쪽으로 스와이프</string>
+    <string name="hotseat_accessibility_collapse">도크가 접혔습니다.</string>
+    <string name="hotseat_accessibility_expand">도크 확장됨</string>
+    <string name="gesture_press_home">홈 버튼 탭</string>
+    <string name="gesture_press_back">뒤로 버튼</string>
+    <string name="gesture_press_recents">최근 버튼</string>
+    <string name="omega_actions">행위</string>
+    <string name="dt2s_admin_hint">잠자기 상태로 전환하고 관리자 권한을 부여하려면 두 번 탭하세요.</string>
+    <string name="dt2s_admin_warning">두 번 탭하여 잠자기 기능이 꺼집니다.</string>
+    <string name="notification_dots_missing_notification_access">알림 점을 표시하려면 앱 알림 액세스를 사용 설정하세요.</string>
+    <string name="notification_dots_disabled">알림 점을 표시하려면 설정에서 알림 점 표시를 활성화하세요.</string>
+    <string name="title__search_bubble_searchbar">거품 두 개 표시</string>
+    <string name="title__search_action_assistant">어시스턴트 열기</string>
+    <string name="title_search_contacts">연락처 검색</string>
+    <string name="title__search_show_assistant">음성 검색 버튼 표시</string>
+    <string name="title_search_provider">검색 엔진</string>
+    <string name="search_provider">검색 공급자</string>
+    <string name="web_search_provider">웹 검색 제공자</string>
+    <string name="title__search_bar_radius">코너 반경</string>
+    <string name="title__feed">밥을 먹이다</string>
+    <string name="summary__search_show_as_assistant_summary">음성 검색 대신 어시스턴트 열기</string>
+    <string name="cat_search_bar">검색창</string>
+    <string name="search_no_results">결과 없음</string>
+    <string name="search_breadcrumb_connector" translatable="false">
+        <xliff:g name="first_item">%1$s</xliff:g>
+        <xliff:g name="second_item">%2$s</xliff:g>
+    </string>
+    <string name="search_provider_yandex" translatable="false">Yandex</string>
+    <string name="search_provider_ddg" translatable="false">DuckDuckGo</string>
+    <string name="search_provider_baidu" translatable="false">Baidu</string>
+    <string name="search_provider_s_finder" translatable="false">S Finder</string>
+    <string name="google" translatable="false">Google</string>
+    <string name="search_provider_google_go" translatable="false">Google Go</string>
+    <string name="search_provider_firefox" translatable="false">Firefox</string>
+    <string name="search_provider_search_lite" translatable="false">Search Lite</string>
+    <string name="search_provider_cool_search" translatable="false">Cool Search</string>
+    <string name="search_provider_appsearch">앱 검색</string>
+    <string name="search_provider_bing" translatable="false">Bing</string>
+    <string name="search_provider_edge" translatable="false">Edge</string>
+    <string name="search_provider_qwant" translatable="false">Qwant</string>
+    <string name="web_search_google" translatable="false">Google (web)</string>
+    <string name="web_search_ddg" translatable="false">DuckDuckGo (web)</string>
+    <string name="web_search_startpage" translatable="false">Startpage.com (web)</string>
+    <string name="web_search_bing" translatable="false">Bing (web)</string>
+    <string name="web_search_brave" translatable="false">Brave (web)</string>
+    <string name="web_search_qwant" translatable="false">Qwant (web)</string>
+    <string name="web_search_ecosia" translatable="false">Ecosia (web)</string>
+    <string name="web_search_yandex" translatable="false">Yandex (web)</string>
+    <string name="web_search_baidu" translatable="false">Baidu (web)</string>
+    <string name="web_search_yahoo" translatable="false">Yahoo (web)</string>
+    <string name="error_no_browser">먼저 URL을 열려면 앱을 설치하세요.</string>
+    <string name="folder_custom_background">사용자 정의 폴더 배경 사용</string>
+    <string name="folder_draw_stroke">폴더 스트로크 그리기</string>
+    <string name="folder_background">폴더 배경색</string>
+    <string name="folder_stroke_color">폴더 획 색상</string>
+    <string name="folder_radius">폴더 모서리 반경</string>
+    <string name="folder_rows">폴더 행</string>
+    <string name="folder_columns">폴더 열</string>
+    <string name="folder_opacity">폴더 아이콘 불투명도</string>
+    <string name="section_apps">앱</string>
+    <string name="section_web">편물</string>
+    <string name="section_contacts">콘택트 렌즈</string>
+    <string name="fonts_global_font">세례반</string>
+    <string name="fonts_change_global_font">변화</string>
+    <string name="summary__advanced_setting_search">작업 표시줄에 설정 검색 표시</string>
+    <string name="summary__advanced_language">이 앱의 언어 변경</string>
+    <string name="title__advanced_setting_search">설정 검색 표시</string>
+    <string name="title__advanced_language">언어</string>
+    <string name="backups">백업</string>
+    <string name="backup_delete">숨다</string>
+    <string name="backup_delete_failed">문제가 발생했습니다.</string>
+    <string name="backup_share">공유하다</string>
+    <string name="backup_pref_summary">홈 화면 저장, 백업 복원</string>
+    <string name="title_create">만들다</string>
+    <string name="restore_backup">복원하다</string>
+    <string name="backup_homescreen">홈 화면</string>
+    <string name="backup_contents">백업 내용</string>
+    <string name="backup_name">백업 이름</string>
+    <string name="backup_settings">설정</string>
+    <string name="backup_wallpaper">벽지</string>
+    <string name="backup_error_blank_name">이름을 입력해야 합니다.</string>
+    <string name="backup_error_blank_contents">콘텐츠는 비워둘 수 없습니다.</string>
+    <string name="backup_create_new">새 백업 만들기</string>
+    <string name="backup_creating">백업 생성</string>
+    <string name="no_recent_backups">최근 백업 없음</string>
+    <string name="backup_invalid">없는</string>
+    <string name="backup_remove_from_recents">목록에서 제거</string>
+    <string name="backup_timestamp">생성 날짜</string>
+    <string name="backup_restoring">백업 복원 중</string>
+    <string name="backup_restarting">다시 시작하는 중</string>
+    <string name="restore_contents">콘텐츠 복원</string>
+    <string name="restore_success">복원됨</string>
+    <string name="backup_failed">백업 실패</string>
+    <string name="restore_failed">복원 실패</string>
+    <string name="restore_read_meta_fail">잘못된 백업 파일</string>
+    <string name="backup_share_title">백업 공유</string>
+    <string name="backup_share_text">네오런처 백업파일</string>
+    <string name="backup_location">위치</string>
+    <string name="backup_location_device_storage">내부 폴더</string>
+    <string name="read_external_storage_required">백업을 만들려면 저장소 액세스 권한을 부여하세요.</string>
+    <string name="local_backups">보관 중</string>
+    <string name="permission_denied">읽기 권한이 거부되었습니다!</string>
+    <string name="developer_options_enabled">개발자 옵션 켜짐</string>
+    <string name="search_menu">설정 찾기</string>
+    <string name="failed">문제가 발생했습니다.</string>
+    <string name="developer_options_title">개발자 옵션</string>
+    <string name="debug_options_title">디버그 정보</string>
+    <string name="title__dev_show_Dev">설정에 표시</string>
+    <string name="title__dev_show_debug_info">디버그 정보 표시</string>
+    <string name="title_feed_provider">피드 제공업체</string>
+    <string name="title__restart_launcher">다시 시작</string>
+    <string name="summary__dev_restart">일부 설정이 제대로 적용되지 않은 경우 도움이 될 수 있습니다.</string>
+    <string name="change_default_home">홈 앱으로 설정</string>
+    <string name="feed_add_widget">위젯 추가</string>
+    <string name="feed_widget">위젯</string>
+    <string name="about_build_information">빌드 정보</string>
+    <string name="title__about_donate">기부</string>
+    <string name="title__about_changelog">변경 내역</string>
+    <string name="title__about_acknowledgement">승인</string>
+    <string name="about_team">팀원</string>
+    <string name="about_translators_group">기여자 및 번역가</string>
+    <string name="about_translators">번역가</string>
+    <string name="about_source">소스 코드</string>
+    <string name="about_channel">채널</string>
+    <string name="about_community">지역 사회</string>
+    <string name="about_community_telegram">텔레그램 커뮤니티</string>
+    <string name="about_community_matrix">매트릭스 커뮤니티</string>
+    <string name="about_open_source">오픈 소스 라이브러리</string>
+    <string name="about_source_url" translatable="false">https://github.com/otakuhqz/Omega</string>
+    <string name="category__about_licenses">특허</string>
+    <string name="license_gpl" translatable="false">GPLv3+</string>
+    <string name="app_donate_url" translatable="false">https://paypal.me/saulhenriquez</string>
+    <string name="author" translatable="false">Saul Henriquez</string>
+    <string name="author_role">개발자</string>
+    <string name="contributor1" translatable="false">Antonios Hazim</string>
+    <string name="contributor2" translatable="false">Rafael Venancio</string>
+    <string name="contributor_role">기부자</string>
+    <string name="title_storage_permission_required">저장소 액세스가 필요함</string>
+    <string name="content_storage_permission_required">배경화면을 설정하려면 저장소 액세스 권한을 부여하세요.</string>
+    <string name="accessibility_undo">끄르다</string>
+    <string name="edit_dash">대시 편집</string>
+    <string name="wallpaper_pick">배경화면 선택</string>
+    <string name="dash_all_apps_title">모든 앱 열기</string>
+    <string name="dash_device_settings_title">장치 설정</string>
+    <string name="dash_volume_title">볼륨 대화 상자</string>
+    <string name="dash_launch_app_title">앱 실행</string>
+    <string name="dash_mobile_network_title">모바일 네트워크</string>
+    <string name="dash_manage_apps_summary">Android 앱 관리자를 엽니다.</string>
+    <string name="dash_mobile_network_summary">모바일 네트워크 설정 표시</string>
+    <string name="dash_all_apps_summary">모든 앱 버튼 표시</string>
+    <string name="dash_media_player">오디오 플레이어</string>
+    <string name="dash_media_player_description">오디오 플레이어 컨트롤 표시 또는 숨기기</string>
+    <string name="edit_dash_summary">바로가기 켜거나 끄기</string>
+    <string name="wallpaper_pick_summary">배경화면 선택기 열기</string>
+    <string name="dash_launcher_settings_summary">런처 설정 표시</string>
+    <string name="dash_volume_summary">장치 오디오 선택기 표시</string>
+    <string name="dash_device_settings_summary">장치 설정 열기</string>
+    <string name="drag_to_disable_packs">끄려면 아래로 드래그하세요.</string>
+    <string name="drag_to_enable_packs">켜려면 위로 드래그하세요.</string>
+    <string name="tap_to_enable">활성화하려면 항목을 탭하세요.</string>
+    <string name="enabled_events">활성화됨</string>
+    <string name="dash_wifi">Wi-Fi</string>
+    <string name="dash_wifi_summary">Wi-Fi 상태 및 연결</string>
+    <string name="dash_bluetooth">블루투스</string>
+    <string name="dash_bluetooth_summary">블루투스 켜기 또는 끄기</string>
+    <string name="dash_location">위치</string>
+    <string name="dash_location_summary">위치 설정 변경</string>
+    <string name="dash_torch">토치</string>
+    <string name="dash_torch_summary">플래시 조명을 켜거나 끕니다.</string>
+    <string name="dash_auto_rotation">자동 회전</string>
+    <string name="dash_auto_rotation_summary">자동 회전을 켜거나 끕니다.</string>
+    <string name="dash_sync">동조</string>
+    <string name="dash_sync_summary">동기화를 켜거나 끕니다.</string>
+    <string name="launch_assistant">어시스턴트 실행</string>
+    <string name="gesture_launch_assistant">어시스턴트 실행(버튼 또는 동작을 통해)</string>
+    <string name="reset_to_default">기본값으로 재설정</string>
+    <string name="automatic_short">자동</string>
+    <string name="label_voice_search">음성 검색</string>
+    <string name="customize">사용자 정의</string>
+    <string name="button_apply">적용하다</string>
+    <string name="tab_bottom_sheet_save">구하다</string>
+    <string name="tab_hide_from_main">기본 탭에서 숨기기</string>
+    <string name="tab_color">탭 색상</string>
+    <string name="tab_manage_apps">앱 관리</string>
+    <string name="delete">삭제</string>
+    <string name="none">없음</string>
+    <string name="name">이름</string>
+    <string name="apps_label">앱</string>
+    <string name="app_name">앱 이름</string>
+    <string name="custom">관습</string>
+    <string name="default_tab_name">새 탭</string>
+    <string name="tabs_manage">관리하다</string>
+    <string name="dismiss_drop_target_label">"표시하지 않음"</string>
+    <string name="debug_component_name">구성요소 이름</string>
+    <string name="debug_component_name_copied">클립보드에 복사되었습니다.</string>
+    <string name="hide_app">바로가기 숨기기</string>
+    <string name="folder_cover_mode">표지 모드 사용</string>
+    <string name="folder_cover_mode_desc">첫 번째 앱을 열려면 탭하세요. 모두 보려면 위로 스와이프하세요.</string>
+    <string name="loading">로드 중…</string>
+    <string name="uninstall_failed">앱을 제거할 수 없습니다.</string>
+    <string name="tab_launcher">발사통</string>
+    <string name="tab_shortcuts">단축키</string>
+    <string name="button_organize_screens">페이지 정렬</string>
+    <string name="modify_system_settings">시스템 설정 수정</string>
+    <string name="modify_system_settings_message">이것이 작동하도록 시스템 설정을 수정하는 기능을 부여합니다.</string>
+    <string name="app_widget_name">시계 위젯</string>
+    <string name="pref_desktop_mode">데스크탑 모드</string>
+    <string name="pref_desktop_mode_summary">Android의 데스크탑 모드 활성화</string>
+    <string name="pref_desktop_mode_settings">데스크탑 모드 설정</string>
+    <string name="web_search_metager">메타저(웹)</string>
+    <string name="web_search_searx">검색어(웹)</string>
+    <string name="web_search_perplexity">당혹감(웹)</string>
+    <string name="web_search_you">당신(웹)</string>
+    <string name="web_search_neeva">니바(웹)</string>
+    <string name="web_search_wolfram_alpha">Wolfram Alpha (웹)</string>
+    <string name="title_override_corner_radius_value">글로벌 코너 반경</string>
+    <string name="dash_line_size">대시 선 크기</string>
+    <string name="title_search_providers">검색 공급자</string>
+    <string name="edit_search_summary">활성 검색 공급자 선택 및 정렬</string>
+    <string name="add_search_provider">제공업체 추가</string>
+    <string name="edit_search_provider">검색 공급자 수정</string>
+    <string name="search_provider_search_url">검색 URL</string>
+    <string name="search_provider_suggestion_url">제안 URL</string>
+    <string name="search_provider_url_hint">검색어 대신 %s를 사용하세요.</string>
+</resources>

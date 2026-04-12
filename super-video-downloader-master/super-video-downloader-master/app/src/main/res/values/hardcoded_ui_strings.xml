@@ -1,0 +1,30 @@
+<resources>
+    <string name="common_error_label">Error</string>
+    <string name="detected_videos_unexpected_error">Something went wrong, try again.</string>
+    <string name="browser_back_exit_hint">Press back again to exit</string>
+    <string name="proxies_invalid_host_port">Invalid host or port</string>
+    <string name="browser_open_in_new_tab">Open in new tab</string>
+    <string name="share_via">Share via</string>
+    <string name="player_download_only_title">Download Only</string>
+    <string name="player_download_only_message">This video supports only download.</string>
+    <string name="download_status_preparing">Preparing</string>
+    <string name="download_status_pending">Pending</string>
+    <string name="download_status_downloading">Downloading</string>
+    <string name="download_status_paused">Paused</string>
+    <string name="download_status_success">Success</string>
+    <string name="download_status_failed">Failed</string>
+    <string name="download_status_canceled">Canceled</string>
+    <string name="download_status_unknown">Unknown status</string>
+    <string name="notification_failed_with_reason">Failed: %1$s</string>
+    <string name="proxy_service_notification_title">Proxy Service</string>
+    <string name="proxy_service_notification_message">Local proxy is running...</string>
+    <string name="video_sort_label_name">Name</string>
+    <string name="video_sort_label_name_asc" translatable="false">(A-Z)</string>
+    <string name="video_sort_label_name_desc" translatable="false">(Z-A)</string>
+    <string name="video_sort_label_last_edit">Last Edit</string>
+    <string name="video_sort_label_latest_first">(Latest First)</string>
+    <string name="video_sort_label_latest_last">(Latest Last)</string>
+    <string name="video_sort_label_file_size">File Size</string>
+    <string name="video_sort_label_largest_to_smallest">(Largest to smallest)</string>
+    <string name="video_sort_label_smallest_to_largest">(Smallest to largest)</string>
+</resources>
