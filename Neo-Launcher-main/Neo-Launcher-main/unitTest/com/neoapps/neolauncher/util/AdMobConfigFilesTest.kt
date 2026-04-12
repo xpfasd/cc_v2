@@ -19,10 +19,10 @@ class AdMobConfigFilesTest {
     }
 
     @Test
-    fun admobConfig_usesGoogleTestAppId() {
+    fun admobConfig_usesConfiguredAppId() {
         assertTrue("Expected AdMob config file to exist", admobConfig.exists())
         assertTrue(
-            admobConfig.readText().contains("ca-app-pub-3940256099942544~3347511713")
+            admobConfig.readText().contains("ca-app-pub-3777590112281158~1785263760")
         )
     }
 

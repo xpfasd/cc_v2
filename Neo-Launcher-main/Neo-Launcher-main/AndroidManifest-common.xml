@@ -77,6 +77,27 @@
         android:largeHeap="@bool/config_largeHeap"
         android:restoreAnyVersion="true"
         android:supportsRtl="true" tools:replace="android:label" >
+        <meta-data
+            android:name="com.cc.ads.TOPON_APP_ID"
+            android:value="${toponAppId}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_APP_KEY"
+            android:value="${toponAppKey}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_SPLASH_PLACEMENT_ID"
+            android:value="${toponSplashPlacementId}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_INTERSTITIAL_PLACEMENT_ID"
+            android:value="${toponInterstitialPlacementId}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_REWARDED_PLACEMENT_ID"
+            android:value="${toponRewardedPlacementId}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_BANNER_PLACEMENT_ID"
+            android:value="${toponBannerPlacementId}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_NATIVE_PLACEMENT_ID"
+            android:value="${toponNativePlacementId}" />
 
         <!-- Intent received when a session is committed -->
         <receiver

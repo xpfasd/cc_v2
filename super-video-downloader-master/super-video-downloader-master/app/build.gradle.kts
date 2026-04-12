@@ -7,17 +7,14 @@ plugins {
     id("com.google.devtools.ksp")
 }
 
+if (com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.substringBefore(".").toInt() < 9) {
+    pluginManager.apply("org.jetbrains.kotlin.android")
+}
+
 configurations.configureEach {
     resolutionStrategy {
         force(downloaderLibs.kotlin.stdlib)
     }
-}
-
-repositories {
-    flatDir {
-        dirs("libs")
-    }
-    maven(url = "https://jfrog.anythinktech.com/artifactory/overseas_sdk")
 }
 
 android {
@@ -35,6 +32,18 @@ android {
         minSdk = downloaderLibs.versions.minSdk.get().toInt()
         consumerProguardFiles("proguard-rules.pro")
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        manifestPlaceholders["toponAppId"] = findProperty("TOPON_APP_ID")?.toString().orEmpty()
+        manifestPlaceholders["toponAppKey"] = findProperty("TOPON_APP_KEY")?.toString().orEmpty()
+        manifestPlaceholders["toponSplashPlacementId"] =
+            findProperty("TOPON_SPLASH_PLACEMENT_ID")?.toString().orEmpty()
+        manifestPlaceholders["toponInterstitialPlacementId"] =
+            findProperty("TOPON_INTERSTITIAL_PLACEMENT_ID")?.toString().orEmpty()
+        manifestPlaceholders["toponRewardedPlacementId"] =
+            findProperty("TOPON_REWARDED_PLACEMENT_ID")?.toString().orEmpty()
+        manifestPlaceholders["toponBannerPlacementId"] =
+            findProperty("TOPON_BANNER_PLACEMENT_ID")?.toString().orEmpty()
+        manifestPlaceholders["toponNativePlacementId"] =
+            findProperty("TOPON_NATIVE_PLACEMENT_ID")?.toString().orEmpty()
     }
 
     buildTypes {
@@ -114,6 +123,8 @@ android {
 }
 
 dependencies {
+    implementation(project(":topon-ads"))
+
     implementation(downloaderLibs.appcompat)
     implementation(downloaderLibs.material)
     implementation(downloaderLibs.constraintlayout)
@@ -170,17 +181,6 @@ dependencies {
     implementation(downloaderLibs.jsoup)
     implementation(downloaderLibs.timeago)
     coreLibraryDesugaring(downloaderLibs.desugarJdk)
-
-    api("com.thinkup.sdk:core-tpn:6.5.72")
-    api("androidx.browser:browser:1.4.0")
-    api("com.thinkup.sdk:adapter-tpn-facebook:6.21.0.1.1")
-    api("com.facebook.android:audience-network-sdk:6.21.0")
-    api("androidx.annotation:annotation:1.0.0")
-    api("com.thinkup.sdk:adapter-tpn-admob:25.0.0.1.0")
-    api("com.google.android.gms:play-services-ads:25.0.0")
-    api("com.thinkup.sdk:adapter-tpn-sdm:6.5.56.1.1")
-    api("com.smartdigimkttech.sdk:smartdigimkttech-sdk:6.5.56")
-    api("com.thinkup.sdk:tramini-plugin-tpn:6.5.72")
 
     testImplementation(downloaderLibs.junit)
     testImplementation(downloaderLibs.mockitoCore)

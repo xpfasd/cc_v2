@@ -31,6 +31,7 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.cc.ads.topon.TopOnAdSceneManager
 import com.myAllVideoBrowser.R
 import com.myAllVideoBrowser.data.local.room.entity.HistoryItem
 import com.myAllVideoBrowser.data.local.room.entity.VideFormatEntityList
@@ -403,29 +404,29 @@ class WebTabFragment : BaseWebTabFragment() {
             return
         }
 
-        // start your activity by passing the intent
-        startActivity(
-            Intent(
-                requireContext(), VideoPlayerActivity::class.java
-            ).apply {
-                // you can add values(if any) to pass to the next class or avoid using `.apply`
-                putExtra(VideoPlayerFragment.VIDEO_NAME, videoInfo.title)
-                if (currFormat.isNotEmpty()) {
-                    val headers = currFormat.first().httpHeaders?.let {
-                        JSONObject(
-                            currFormat.first().httpHeaders ?: emptyMap<String, String>()
-                        ).toString()
-                    } ?: "{}"
+        val playIntent = Intent(
+            requireContext(), VideoPlayerActivity::class.java
+        ).apply {
+            putExtra(VideoPlayerFragment.VIDEO_NAME, videoInfo.title)
+            if (currFormat.isNotEmpty()) {
+                val headers = currFormat.first().httpHeaders?.let {
+                    JSONObject(
+                        currFormat.first().httpHeaders ?: emptyMap<String, String>()
+                    ).toString()
+                } ?: "{}"
 
-                    putExtra(
-                        VideoPlayerFragment.VIDEO_URL, currFormat.first().url
-                    )
-                    val headersFinal = if (isForce) "{}" else headers
-                    putExtra(
-                        VideoPlayerFragment.VIDEO_HEADERS, headersFinal
-                    )
-                }
-            })
+                putExtra(
+                    VideoPlayerFragment.VIDEO_URL, currFormat.first().url
+                )
+                val headersFinal = if (isForce) "{}" else headers
+                putExtra(
+                    VideoPlayerFragment.VIDEO_HEADERS, headersFinal
+                )
+            }
+        }
+        TopOnAdSceneManager.showGeneralInterstitial(mainActivity) {
+            startActivity(playIntent)
+        }
     }
 
     private fun onVideoDownloadPropagate(
@@ -467,12 +468,14 @@ class WebTabFragment : BaseWebTabFragment() {
 
     private fun completeDownloadStart(info: VideoInfo) {
 
-        mainActivity.mainViewModel.downloadVideoEvent.value = info
+        TopOnAdSceneManager.showGeneralInterstitial(mainActivity) {
+            mainActivity.mainViewModel.downloadVideoEvent.value = info
 
-        context?.let {
-            Toast.makeText(
-                it, it.getString(R.string.download_started), Toast.LENGTH_SHORT
-            ).show()
+            context?.let {
+                Toast.makeText(
+                    it, it.getString(R.string.download_started), Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
@@ -910,7 +913,9 @@ class WebTabFragment : BaseWebTabFragment() {
         val isStateResumed = viewLifecycleOwner.lifecycle.currentState == Lifecycle.State.RESUMED
 
         if (isStateResumed && isBrowserRoute && isCurrentTabSelected && isVisible) {
-            webTab.getWebView()?.goBack()
+            TopOnAdSceneManager.showGeneralInterstitial(mainActivity) {
+                webTab.getWebView()?.goBack()
+            }
         }
     }
 

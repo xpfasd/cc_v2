@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.work.Configuration
 import androidx.work.WorkManager
+import com.cc.ads.topon.TopOnAds
 import com.myAllVideoBrowser.di.component.DaggerAppComponent
 import com.myAllVideoBrowser.util.AppLogger
 import com.myAllVideoBrowser.util.ContextUtils
@@ -56,6 +57,7 @@ open class DLApplication : DaggerApplication() {
         super.onCreate()
 
         ContextUtils.initApplicationContext(applicationContext)
+        AppLogger.i("TopOn init result: ${TopOnAds.initializeFromManifest(applicationContext, BuildConfig.DEBUG)}")
 
         initializeFileUtils()
 

@@ -11,6 +11,8 @@ import android.widget.EditText
 import androidx.databinding.Observable
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
+import com.cc.ads.topon.TopOnAdSceneManager
+import com.cc.ads.topon.TopOnAdScenes
 import com.myAllVideoBrowser.data.local.model.Suggestion
 import com.myAllVideoBrowser.data.local.room.entity.PageInfo
 import com.myAllVideoBrowser.databinding.FragmentBrowserHomeBinding
@@ -114,6 +116,14 @@ class BrowserHomeFragment : BaseWebTabFragment() {
         if (openingText != null) {
             openNewTab(openingText)
             mainViewModel.openedText.set(null)
+        }
+
+        TopOnAdSceneManager.preloadNative(requireContext().applicationContext, TopOnAdScenes.HOME_TOP_NATIVE)
+        binding.homeTopNativeAdContainer.post {
+            TopOnAdSceneManager.renderNativeInto(
+                binding.homeTopNativeAdContainer,
+                TopOnAdScenes.HOME_TOP_NATIVE
+            )
         }
     }
 

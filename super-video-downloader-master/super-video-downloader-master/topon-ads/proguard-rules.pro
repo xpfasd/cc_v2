@@ -1,0 +1,3 @@
+-keep class com.thinkup.** { *; }
+-keep class com.facebook.ads.** { *; }
+-keep class com.google.android.gms.ads.** { *; }

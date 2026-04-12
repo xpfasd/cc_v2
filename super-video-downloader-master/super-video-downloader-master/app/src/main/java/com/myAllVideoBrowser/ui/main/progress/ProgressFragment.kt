@@ -19,6 +19,7 @@ import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cc.ads.topon.TopOnAdSceneManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
 import androidx.activity.result.contract.ActivityResultContracts
@@ -300,8 +301,7 @@ class ProgressFragment : BaseFragment() {
             return
         }
 
-        startActivity(
-            Intent(requireContext(), VideoPlayerActivity::class.java).apply {
+        val playIntent = Intent(requireContext(), VideoPlayerActivity::class.java).apply {
                 putExtra(VideoPlayerFragment.VIDEO_NAME, videoInfo.title)
                 if (currentFormat.isNotEmpty()) {
                     val headers = currentFormat.first().httpHeaders?.let {
@@ -311,7 +311,9 @@ class ProgressFragment : BaseFragment() {
                     putExtra(VideoPlayerFragment.VIDEO_HEADERS, if (isForce) "{}" else headers)
                 }
             }
-        )
+        TopOnAdSceneManager.showGeneralInterstitial(mainActivity) {
+            startActivity(playIntent)
+        }
     }
 
     private fun onParsedVideoDownload(videoInfo: VideoInfo, videoTitle: String, format: String) {
@@ -346,8 +348,10 @@ class ProgressFragment : BaseFragment() {
     }
 
     private fun completeDownloadStart(info: VideoInfo) {
-        mainActivity.mainViewModel.downloadVideoEvent.value = info
-        Toast.makeText(requireContext(), R.string.download_started, Toast.LENGTH_SHORT).show()
+        TopOnAdSceneManager.showGeneralInterstitial(mainActivity) {
+            mainActivity.mainViewModel.downloadVideoEvent.value = info
+            Toast.makeText(requireContext(), R.string.download_started, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun shouldRequestDownloadPermissions(): Boolean {

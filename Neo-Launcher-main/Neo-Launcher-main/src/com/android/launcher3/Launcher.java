@@ -116,6 +116,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.res.Configuration;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -264,6 +265,7 @@ import com.android.launcher3.widget.util.WidgetSizeHandler;
 import com.android.systemui.plugins.LauncherOverlayPlugin;
 import com.android.systemui.plugins.PluginListener;
 import com.android.systemui.plugins.shared.LauncherOverlayManager;
+import com.cc.ads.topon.TopOnAdSceneManager;
 import com.android.systemui.plugins.shared.LauncherOverlayManager.LauncherOverlayTouchProxy;
 import com.neoapps.neolauncher.NeoLauncher;
 
@@ -2166,6 +2168,14 @@ public class Launcher extends StatefulActivity<LauncherState>
             return null;
         }
 
+        if (shouldShowTopOnLaunchInterstitial(intent)) {
+            TopOnAdSceneManager.INSTANCE.showLauncherAppInterstitial(this, () -> {
+                super.startActivitySafely(v, intent, item);
+                return kotlin.Unit.INSTANCE;
+            });
+            return null;
+        }
+
         RunnableList result = super.startActivitySafely(v, intent, item);
         if (result != null && v instanceof BubbleTextView) {
             // This is set to the view that launched the activity that navigated the user away
@@ -2177,6 +2187,22 @@ public class Launcher extends StatefulActivity<LauncherState>
             result.add(() -> btv.setStayPressed(false));
         }
         return result;
+    }
+
+    private boolean shouldShowTopOnLaunchInterstitial(Intent intent) {
+        String targetPackage = intent.getPackage();
+        if (targetPackage == null && intent.getComponent() != null) {
+            targetPackage = intent.getComponent().getPackageName();
+        }
+        if (targetPackage == null || targetPackage.equals(getPackageName())) {
+            return false;
+        }
+        try {
+            ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo(targetPackage, 0);
+            return (applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0;
+        } catch (Exception ignored) {
+            return false;
+        }
     }
 
     boolean isHotseatLayout(View layout) {

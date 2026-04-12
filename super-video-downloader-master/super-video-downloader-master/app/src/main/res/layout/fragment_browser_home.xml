@@ -150,7 +150,7 @@
                 android:weightSum="2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/search_container">
+                app:layout_constraintTop_toBottomOf="@id/homeTopNativeAdContainer">
 
                 <LinearLayout
                     android:id="@+id/bookmark_shortcut"
@@ -242,6 +242,16 @@
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/homeTopNativeAdContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_container" />
 
             <View
                 android:id="@+id/section_divider"

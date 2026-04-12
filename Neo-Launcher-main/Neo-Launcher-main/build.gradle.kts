@@ -105,6 +105,18 @@ android {
         buildConfigField("boolean", "WIDGETS_ENABLED", "true")
         buildConfigField("boolean", "NOTIFICATION_DOTS_ENABLED", "true")
         buildConfigField("boolean", "WIDGET_ON_FIRST_SCREEN", "true")
+        manifestPlaceholders["toponAppId"] = findProperty("TOPON_APP_ID")?.toString().orEmpty()
+        manifestPlaceholders["toponAppKey"] = findProperty("TOPON_APP_KEY")?.toString().orEmpty()
+        manifestPlaceholders["toponSplashPlacementId"] =
+            findProperty("TOPON_SPLASH_PLACEMENT_ID")?.toString().orEmpty()
+        manifestPlaceholders["toponInterstitialPlacementId"] =
+            findProperty("TOPON_INTERSTITIAL_PLACEMENT_ID")?.toString().orEmpty()
+        manifestPlaceholders["toponRewardedPlacementId"] =
+            findProperty("TOPON_REWARDED_PLACEMENT_ID")?.toString().orEmpty()
+        manifestPlaceholders["toponBannerPlacementId"] =
+            findProperty("TOPON_BANNER_PLACEMENT_ID")?.toString().orEmpty()
+        manifestPlaceholders["toponNativePlacementId"] =
+            findProperty("TOPON_NATIVE_PLACEMENT_ID")?.toString().orEmpty()
 
         val langsList: MutableSet<String> = HashSet()
 
@@ -253,6 +265,7 @@ dependencies {
     implementation(project(":animationlib"))
     implementation(project(":concurrent"))
     implementation(project(":downloaderlib"))
+    implementation(project(":topon-ads"))
     implementation(project(":iconloaderlib"))
     implementation(project(":flags"))
     implementation(project(":msdllib"))

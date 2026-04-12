@@ -89,6 +89,12 @@
 
             <include layout="@layout/include_launch_launcher_prompt" />
 
+            <FrameLayout
+                android:id="@+id/launch_splash_ad_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
         </FrameLayout>
 
     </FrameLayout>

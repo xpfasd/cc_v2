@@ -12,9 +12,10 @@ dependencyResolutionManagement {
         mavenCentral()
         maven(url = "https://jitpack.io")
         flatDir {
-            dirs("libs")
+            dirs("libs", "app/libs")
         }
         maven(url = "https://jfrog.anythinktech.com/artifactory/overseas_sdk")
+        maven(url = "https://artifact.bytedance.com/repository/pangle")
     }
     versionCatalogs {
         create("downloaderLibs") {
@@ -25,3 +26,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "super-video-downloader"
 include(":app")
+include(":topon-ads")

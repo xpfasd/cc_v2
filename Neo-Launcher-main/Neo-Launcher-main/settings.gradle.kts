@@ -11,6 +11,14 @@ dependencyResolutionManagement {
         mavenCentral()
         google()
         maven(url = "https://jitpack.io")
+        flatDir {
+            dirs(
+                "../../super-video-downloader-master/super-video-downloader-master/libs",
+                "../../super-video-downloader-master/super-video-downloader-master/app/libs"
+            )
+        }
+        maven(url = "https://jfrog.anythinktech.com/artifactory/overseas_sdk")
+        maven(url = "https://artifact.bytedance.com/repository/pangle")
     }
     versionCatalogs {
         create("downloaderLibs") {
@@ -64,4 +72,6 @@ include (":compatLib:compatLibVU")
 include (":compatLib:compatLibVV")
 include(":downloaderlib")
 project(":downloaderlib").projectDir = File(rootDir, "../../super-video-downloader-master/super-video-downloader-master/app")
+include(":topon-ads")
+project(":topon-ads").projectDir = File(rootDir, "../../super-video-downloader-master/super-video-downloader-master/topon-ads")
 rootProject.name = "Neo Launcher"

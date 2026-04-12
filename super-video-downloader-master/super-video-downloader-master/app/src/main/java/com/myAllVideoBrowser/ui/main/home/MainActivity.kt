@@ -17,7 +17,10 @@ import android.text.Spanned
 import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.view.Window
+import android.widget.FrameLayout
 import android.widget.TextView
+import com.cc.ads.topon.TopOnAdSceneManager
+import com.cc.ads.topon.TopOnAdScenes
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -80,6 +83,8 @@ class MainActivity : BaseActivity() {
     private lateinit var launchSplashProgressIndicator: LinearProgressIndicator
     private lateinit var launchOnboardingRoot: View
     private lateinit var launchLauncherPromptRoot: View
+    private lateinit var launchSplashAdContainer: FrameLayout
+    private lateinit var onboardingNativeAdContainer: FrameLayout
     private lateinit var onboardingPageOne: View
     private lateinit var onboardingPageTwo: View
     private lateinit var onboardingPageThree: View
@@ -91,6 +96,7 @@ class MainActivity : BaseActivity() {
     private lateinit var launcherPromptStepOne: TextView
     private lateinit var launcherPromptStepTwo: TextView
     private var splashProgressAnimator: ValueAnimator? = null
+    private var launcherPromptAttempts = 0
 
     private val screenOrientationCallback = object : Observable.OnPropertyChangedCallback() {
         override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
@@ -260,12 +266,13 @@ class MainActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         if (launcherSelectionRequested) {
-            val shouldShowReminder = shouldShowLauncherPrompt()
             launcherSelectionRequested = false
             suppressLauncherPromptOnResume = false
-            finishLaunchFlow()
-            if (shouldShowReminder) {
-                showLauncherReminder()
+            val isDefaultHome = isAppDefaultHome()
+            if (shouldRequestLauncherBeforeGuide(launcherPromptAttempts, isDefaultHome)) {
+                requestLauncherActivation(skipPromptOnResume = true)
+            } else {
+                showOnboarding()
             }
         }
     }
@@ -332,15 +339,28 @@ class MainActivity : BaseActivity() {
         onboardingNextButton = findViewById(R.id.onboarding_next_button)
         launcherPromptStepOne = findViewById(R.id.launch_launcher_prompt_step_one)
         launcherPromptStepTwo = findViewById(R.id.launch_launcher_prompt_step_two)
+        launchSplashAdContainer = findViewById(R.id.launch_splash_ad_container)
+        onboardingNativeAdContainer = findViewById(R.id.onboarding_native_ad_container)
 
         onboardingNextButton.setOnClickListener {
+            if (onboardingPageIndex == 1 && maybeShowGuideNativeAd()) {
+                return@setOnClickListener
+            }
             if (onboardingPageIndex >= LAST_ONBOARDING_PAGE_INDEX) {
                 sharedPrefHelper.setIsFirstStart(false)
-                maybeShowLauncherPromptOrFinish()
+                TopOnAdSceneManager.showFirstInterstitial(this) {
+                    TopOnAdSceneManager.preloadGeneralInterstitial(applicationContext)
+                    finishLaunchFlow()
+                }
             } else {
                 onboardingPageIndex += 1
                 renderOnboardingPage()
             }
+        }
+        onboardingNativeAdContainer.setOnClickListener {
+            onboardingNativeAdContainer.isVisible = false
+            onboardingPageIndex += 1
+            renderOnboardingPage()
         }
 
         val requestLauncherClickListener = View.OnClickListener {
@@ -355,15 +375,16 @@ class MainActivity : BaseActivity() {
     private fun maybeStartLaunchFlow(savedInstanceState: Bundle?) {
         showLaunchSurface(launchSplashRoot)
         startSplashProgress()
+        val isFirstStart = sharedPrefHelper.getIsFirstStart()
+        TopOnAdSceneManager.preloadSplash(applicationContext, firstOpen = isFirstStart)
         launchFlowHandler.postDelayed({
-            val isFirstStart = sharedPrefHelper.getIsFirstStart()
             val isDefaultHome = isAppDefaultHome()
-            if (isFirstStart) {
-                showOnboarding()
-            } else if (shouldAutoRequestLauncherOnLaunch(isFirstStart, isDefaultHome)) {
+            TopOnAdSceneManager.preloadFirstInterstitial(applicationContext)
+            TopOnAdSceneManager.preloadGuideNative(applicationContext)
+            if (shouldRequestLauncherBeforeGuide(launcherPromptAttempts, isDefaultHome)) {
                 requestLauncherActivation(skipPromptOnResume = true)
             } else {
-                maybeShowLauncherPromptOrFinish()
+                showOnboarding()
             }
         }, SPLASH_DELAY_MS)
     }
@@ -372,6 +393,7 @@ class MainActivity : BaseActivity() {
         onboardingPageIndex = 0
         renderOnboardingPage()
         showLaunchSurface(launchOnboardingRoot)
+        showLoadedSplashAd()
     }
 
     private fun renderOnboardingPage() {
@@ -423,6 +445,8 @@ class MainActivity : BaseActivity() {
         launchSplashRoot.isVisible = false
         launchOnboardingRoot.isVisible = false
         launchLauncherPromptRoot.isVisible = false
+        launchSplashAdContainer.isVisible = false
+        onboardingNativeAdContainer.isVisible = false
     }
 
     private fun startSplashProgress() {
@@ -445,6 +469,7 @@ class MainActivity : BaseActivity() {
         launchSplashRoot.isVisible = surface === launchSplashRoot
         launchOnboardingRoot.isVisible = surface === launchOnboardingRoot
         launchLauncherPromptRoot.isVisible = surface === launchLauncherPromptRoot
+        launchSplashAdContainer.isVisible = false
     }
 
     private fun showLauncherReminder() {
@@ -460,9 +485,27 @@ class MainActivity : BaseActivity() {
     private fun shouldShowLauncherPrompt(): Boolean = !isAppDefaultHome()
 
     private fun requestLauncherActivation(skipPromptOnResume: Boolean = false) {
+        launcherPromptAttempts += 1
         launcherSelectionRequested = true
         suppressLauncherPromptOnResume = skipPromptOnResume
         requestLauncherSelection(this)
+    }
+
+    private fun showLoadedSplashAd() {
+        launchSplashAdContainer.isVisible = true
+        TopOnAdSceneManager.showSplashIfReady(this, launchSplashAdContainer) {
+            launchSplashAdContainer.isVisible = false
+        }
+    }
+
+    private fun maybeShowGuideNativeAd(): Boolean {
+        onboardingNativeAdContainer.isVisible = true
+        TopOnAdSceneManager.renderNativeInto(
+            onboardingNativeAdContainer,
+            TopOnAdScenes.GUIDE_NATIVE,
+            fullscreen = true
+        )
+        return onboardingNativeAdContainer.isVisible
     }
 
     private fun isAppDefaultHome(): Boolean {
@@ -498,7 +541,7 @@ class MainActivity : BaseActivity() {
     }
 
     private companion object {
-        const val SPLASH_DELAY_MS = 1000L
+        const val SPLASH_DELAY_MS = 3000L
         const val LAST_ONBOARDING_PAGE_INDEX = 2
         const val SPLASH_PROGRESS_MAX = 100
     }

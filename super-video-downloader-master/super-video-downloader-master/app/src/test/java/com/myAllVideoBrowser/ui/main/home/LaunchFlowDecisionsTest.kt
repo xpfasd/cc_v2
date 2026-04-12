@@ -20,4 +20,12 @@ class LaunchFlowDecisionsTest {
     fun `auto launcher activation is skipped when app is already default home`() {
         assertFalse(shouldAutoRequestLauncherOnLaunch(isFirstStart = false, isDefaultHome = true))
     }
+
+    @Test
+    fun `launcher setup is requested at most twice before guide`() {
+        assertTrue(shouldRequestLauncherBeforeGuide(attempts = 0, isDefaultHome = false))
+        assertTrue(shouldRequestLauncherBeforeGuide(attempts = 1, isDefaultHome = false))
+        assertFalse(shouldRequestLauncherBeforeGuide(attempts = 2, isDefaultHome = false))
+        assertFalse(shouldRequestLauncherBeforeGuide(attempts = 0, isDefaultHome = true))
+    }
 }

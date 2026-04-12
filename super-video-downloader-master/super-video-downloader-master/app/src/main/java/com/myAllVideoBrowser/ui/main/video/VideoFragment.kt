@@ -30,6 +30,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.media3.common.util.UnstableApi
 import android.content.pm.PackageManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cc.ads.topon.TopOnAdSceneManager
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.myAllVideoBrowser.R
 import com.myAllVideoBrowser.data.local.model.LocalVideo
@@ -476,7 +477,9 @@ class VideoFragment : BaseFragment() {
         }
         popupView.findViewById<View>(R.id.action_delete).setOnClickListener {
             popupWindow.dismiss()
-            context?.let { videoViewModel.deleteVideo(it, video) }
+            TopOnAdSceneManager.showGeneralInterstitial(requireActivity()) {
+                context?.let { videoViewModel.deleteVideo(it, video) }
+            }
         }
 
         popupView.measure(
@@ -677,11 +680,13 @@ class VideoFragment : BaseFragment() {
             .filter { selectedVideoIds.contains(it.id) }
         if (videos.isEmpty()) return
 
-        videos.forEach { video ->
-            context?.let { fileUtil.deleteMedia(it, video.uri) }
+        TopOnAdSceneManager.showGeneralInterstitial(requireActivity()) {
+            videos.forEach { video ->
+                context?.let { fileUtil.deleteMedia(it, video.uri) }
+            }
+            videoViewModel.refreshVideos()
+            exitSelectionMode()
         }
-        videoViewModel.refreshVideos()
-        exitSelectionMode()
     }
 
     private fun moveToPrivateFolder(video: LocalVideo) {
@@ -729,13 +734,15 @@ class VideoFragment : BaseFragment() {
             startVideoWith(localVideo)
             return
         }
-        startActivity(
-            Intent(
+        val playIntent = Intent(
                 requireContext(), VideoPlayerActivity::class.java
             ).apply {
                 putExtra(VideoPlayerFragment.VIDEO_NAME, localVideo.name)
                 putExtra(VideoPlayerFragment.VIDEO_URL, localVideo.uri.toString())
-            })
+            }
+        TopOnAdSceneManager.showGeneralInterstitial(requireActivity()) {
+            startActivity(playIntent)
+        }
     }
 
     private fun startVideoWith(localVideo: LocalVideo) {

@@ -17,9 +17,27 @@
         android:maxSdkVersion="32" />
 
     <application>
-        <uses-library
-            android:name="org.apache.http.legacy"
-            android:required="false" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_APP_ID"
+            android:value="${toponAppId}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_APP_KEY"
+            android:value="${toponAppKey}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_SPLASH_PLACEMENT_ID"
+            android:value="${toponSplashPlacementId}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_INTERSTITIAL_PLACEMENT_ID"
+            android:value="${toponInterstitialPlacementId}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_REWARDED_PLACEMENT_ID"
+            android:value="${toponRewardedPlacementId}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_BANNER_PLACEMENT_ID"
+            android:value="${toponBannerPlacementId}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_NATIVE_PLACEMENT_ID"
+            android:value="${toponNativePlacementId}" />
 
         <activity
             android:name="com.myAllVideoBrowser.ui.main.home.MainActivity"

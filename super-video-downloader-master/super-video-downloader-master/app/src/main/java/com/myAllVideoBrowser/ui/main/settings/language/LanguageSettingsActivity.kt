@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.os.LocaleListCompat
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.cc.ads.topon.TopOnAdSceneManager
+import com.cc.ads.topon.TopOnAdScenes
 import com.myAllVideoBrowser.R
 import com.myAllVideoBrowser.databinding.ActivityLanguageSettingsBinding
 import com.myAllVideoBrowser.ui.main.base.BaseActivity
@@ -49,6 +51,13 @@ class LanguageSettingsActivity : BaseActivity() {
         setupHeader()
         setupLanguageList()
         setupActions()
+        TopOnAdSceneManager.preloadNative(applicationContext, TopOnAdScenes.LANGUAGE_NATIVE)
+        binding.languageNativeAdContainer.post {
+            TopOnAdSceneManager.renderNativeInto(
+                binding.languageNativeAdContainer,
+                TopOnAdScenes.LANGUAGE_NATIVE
+            )
+        }
 
         onBackPressedDispatcher.addCallback(this) {
             finish()

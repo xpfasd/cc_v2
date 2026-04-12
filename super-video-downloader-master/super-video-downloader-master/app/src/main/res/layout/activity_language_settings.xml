@@ -84,9 +84,21 @@
             app:layout_constraintBottom_toTopOf="@id/languageDoneButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/languageSubtitle"
+            app:layout_constraintTop_toBottomOf="@id/languageNativeAdContainer"
             tools:itemCount="7"
             tools:listitem="@layout/item_language_row" />
+
+        <FrameLayout
+            android:id="@+id/languageNativeAdContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/padding_normal"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="@dimen/padding_normal"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/languageSubtitle" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/languageDoneButton"
