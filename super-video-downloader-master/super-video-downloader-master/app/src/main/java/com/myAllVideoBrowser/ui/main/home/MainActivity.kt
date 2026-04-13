@@ -40,6 +40,8 @@ import com.myAllVideoBrowser.databinding.ActivityMainBinding
 import com.myAllVideoBrowser.ui.component.adapter.MainAdapter
 import com.myAllVideoBrowser.ui.main.base.BaseActivity
 import com.myAllVideoBrowser.ui.main.proxies.ProxiesViewModel
+import com.myAllVideoBrowser.ui.main.settings.LAUNCHER_ACTIVATION_PREFS
+import com.myAllVideoBrowser.ui.main.settings.RETURN_TO_DOWNLOADER_AFTER_HOME_SELECTION
 import com.myAllVideoBrowser.ui.main.settings.requestLauncherSelection
 import com.myAllVideoBrowser.ui.main.settings.SettingsViewModel
 import com.myAllVideoBrowser.util.AppLogger
@@ -97,6 +99,7 @@ class MainActivity : BaseActivity() {
     private lateinit var launcherPromptStepTwo: TextView
     private var splashProgressAnimator: ValueAnimator? = null
     private var launcherPromptAttempts = 0
+    private var notificationPermissionRequested = false
 
     private val screenOrientationCallback = object : Observable.OnPropertyChangedCallback() {
         override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
@@ -152,7 +155,6 @@ class MainActivity : BaseActivity() {
         }
         dataBinding.viewModel = mainViewModel
 
-        grantPermissions()
         proxiesViewModel.start()
         settingsViewModel.start()
         mainViewModel.start()
@@ -173,7 +175,11 @@ class MainActivity : BaseActivity() {
 
         handleScreenOrientationSettingChange()
         handleScreenOrientationSettingsInit()
-        maybeStartLaunchFlow(savedInstanceState)
+        if (intent.getBooleanExtra(EXTRA_SKIP_LAUNCH_SPLASH, false)) {
+            continueLaunchFlowAfterLauncherReturn()
+        } else {
+            maybeStartLaunchFlow(savedInstanceState)
+        }
 
         onNewIntent(intent)
     }
@@ -214,13 +220,17 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    private fun grantPermissions() {
+    private fun maybeRequestNotificationPermission() {
+        if (notificationPermissionRequested) {
+            return
+        }
         if (Build.VERSION.SDK_INT >= 33) {
             if (ContextCompat.checkSelfPermission(
                     applicationContext,
                     Manifest.permission.POST_NOTIFICATIONS
                 ) != PackageManager.PERMISSION_GRANTED
             ) {
+                notificationPermissionRequested = true
                 ActivityCompat.requestPermissions(
                     this,
                     arrayOf(
@@ -266,6 +276,7 @@ class MainActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         if (launcherSelectionRequested) {
+            clearLauncherActivationReturnFlag()
             launcherSelectionRequested = false
             suppressLauncherPromptOnResume = false
             val isDefaultHome = isAppDefaultHome()
@@ -389,6 +400,12 @@ class MainActivity : BaseActivity() {
         }, SPLASH_DELAY_MS)
     }
 
+    private fun continueLaunchFlowAfterLauncherReturn() {
+        launcherSelectionRequested = false
+        suppressLauncherPromptOnResume = false
+        showOnboarding()
+    }
+
     private fun showOnboarding() {
         onboardingPageIndex = 0
         renderOnboardingPage()
@@ -447,6 +464,10 @@ class MainActivity : BaseActivity() {
         launchLauncherPromptRoot.isVisible = false
         launchSplashAdContainer.isVisible = false
         onboardingNativeAdContainer.isVisible = false
+        maybeRequestNotificationPermission()
+        if (shouldShowLauncherPrompt()) {
+            showLauncherReminder()
+        }
     }
 
     private fun startSplashProgress() {
@@ -473,13 +494,13 @@ class MainActivity : BaseActivity() {
     }
 
     private fun showLauncherReminder() {
-//        Snackbar.make(
-//            dataBinding.root,
-//            R.string.launch_launcher_prompt_title,
-//            Snackbar.LENGTH_LONG
-//        ).setAction(R.string.launch_continue) {
-//            requestLauncherActivation(skipPromptOnResume = true)
-//        }.show()
+        Snackbar.make(
+            dataBinding.root,
+            R.string.launch_launcher_prompt_title,
+            Snackbar.LENGTH_LONG
+        ).setAction(R.string.launch_continue) {
+            requestLauncherActivation(skipPromptOnResume = true)
+        }.show()
     }
 
     private fun shouldShowLauncherPrompt(): Boolean = !isAppDefaultHome()
@@ -489,6 +510,13 @@ class MainActivity : BaseActivity() {
         launcherSelectionRequested = true
         suppressLauncherPromptOnResume = skipPromptOnResume
         requestLauncherSelection(this)
+    }
+
+    private fun clearLauncherActivationReturnFlag() {
+        getSharedPreferences(LAUNCHER_ACTIVATION_PREFS, MODE_PRIVATE)
+            .edit()
+            .putBoolean(RETURN_TO_DOWNLOADER_AFTER_HOME_SELECTION, false)
+            .apply()
     }
 
     private fun showLoadedSplashAd() {
@@ -503,7 +531,8 @@ class MainActivity : BaseActivity() {
         TopOnAdSceneManager.renderNativeInto(
             onboardingNativeAdContainer,
             TopOnAdScenes.GUIDE_NATIVE,
-            fullscreen = true
+            fullscreen = true,
+            renderWhenLoaded = false
         )
         return onboardingNativeAdContainer.isVisible
     }
@@ -540,7 +569,8 @@ class MainActivity : BaseActivity() {
         return spannable
     }
 
-    private companion object {
+    companion object {
+        const val EXTRA_SKIP_LAUNCH_SPLASH = "extra_skip_launch_splash"
         const val SPLASH_DELAY_MS = 3000L
         const val LAST_ONBOARDING_PAGE_INDEX = 2
         const val SPLASH_PROGRESS_MAX = 100

@@ -108,18 +108,28 @@ object TopOnAdSceneManager {
         loader.load()
     }
 
-    fun renderNativeInto(container: ViewGroup, placementId: String, fullscreen: Boolean = false) {
+    fun renderNativeInto(
+        container: ViewGroup,
+        placementId: String,
+        fullscreen: Boolean = false,
+        renderWhenLoaded: Boolean = true
+    ) {
         val loader = nativeLoaders.getOrPut(placementId) {
             TopOnAds.native(container.context.applicationContext, placementId)
         }
         val handle = loader.takeLoadedAd()
         if (handle == null || !handle.isValid) {
-            loader.load { event ->
-                if (event is TopOnAdEvent.Loaded) {
-                    container.post {
-                        renderNativeInto(container, placementId, fullscreen)
+            container.visibility = View.GONE
+            if (renderWhenLoaded) {
+                loader.load { event ->
+                    if (event is TopOnAdEvent.Loaded) {
+                        container.post {
+                            renderNativeInto(container, placementId, fullscreen, renderWhenLoaded)
+                        }
                     }
                 }
+            } else {
+                loader.load()
             }
             return
         }

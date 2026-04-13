@@ -6,6 +6,8 @@ import java.io.File
 
 class TopOnAdScenesSourceTest {
     private val scenesFile = File("../topon-ads/src/main/java/com/cc/ads/topon/TopOnAdScenes.kt")
+    private val mainActivityFile =
+        File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt")
 
     @Test
     fun topOnAdScenes_declaresAllRequestedPlacementIds() {
@@ -23,5 +25,15 @@ class TopOnAdScenesSourceTest {
         ).forEach { placementId ->
             assertTrue("Missing placement id $placementId", source.contains(placementId))
         }
+    }
+
+    @Test
+    fun guideNativeAd_doesNotWaitForLateNativeLoad() {
+        val source = mainActivityFile.readText()
+
+        assertTrue(
+            "Guide full-screen native ad should be skipped when it is not already loaded",
+            source.contains("renderWhenLoaded = false")
+        )
     }
 }

@@ -23,4 +23,16 @@ class MainActivityLaunchFlowSourceTest {
             methodBody.contains("if (savedInstanceState != null)")
         )
     }
+
+    @Test
+    fun `onCreate can skip launch splash when returning from launcher activation`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        val onCreateBody = source.substringAfter("override fun onCreate(savedInstanceState: Bundle?) {")
+            .substringBefore("\n    @SuppressLint(\"MissingSuperCall\")")
+
+        assertTrue(onCreateBody.contains("intent.getBooleanExtra(EXTRA_SKIP_LAUNCH_SPLASH, false)"))
+        assertTrue(onCreateBody.contains("continueLaunchFlowAfterLauncherReturn()"))
+        assertTrue(onCreateBody.contains("maybeStartLaunchFlow(savedInstanceState)"))
+    }
 }

@@ -29,4 +29,17 @@ class BrowserDetailToolbarIndexSourceTest {
 
         assertTrue(callbackBody.contains("updateToolbarHeader()"))
     }
+
+    @Test
+    fun `current tab selection callback syncs selected tab url before toolbar refresh`() {
+        val source = File(
+            "src/main/java/com/myAllVideoBrowser/ui/main/home/browser/webTab/WebTabFragment.kt"
+        ).readText()
+
+        val callbackBody = source.substringAfter("private val currentTabSelectionCallback = object : Observable.OnPropertyChangedCallback() {")
+            .substringBefore("\n    private val backPressedCallback = object : OnBackPressedCallback(true) {")
+
+        assertTrue(callbackBody.contains("syncToolbarStateFromSelectedTab()"))
+        assertTrue(callbackBody.indexOf("syncToolbarStateFromSelectedTab()") < callbackBody.indexOf("updateToolbarHeader()"))
+    }
 }

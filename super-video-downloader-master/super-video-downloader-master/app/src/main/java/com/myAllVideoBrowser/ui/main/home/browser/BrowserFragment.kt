@@ -613,6 +613,7 @@ class BrowserFragment : BaseFragment(), BrowserServicesProvider {
         val safeSession = BrowserTabSessionManager.sanitize(session.tabs, session.currentTabIndex)
         browserViewModel.tabs.set(BrowserTabSessionManager.toRuntimeTabs(safeSession))
         browserViewModel.currentTab.set(safeSession.currentTabIndex)
+        dataBinding.viewPager.currentItem = safeSession.currentTabIndex
         persistBrowserTabSession()
         updateTabsOverviewHeader()
     }

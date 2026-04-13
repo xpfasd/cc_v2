@@ -15,6 +15,7 @@ class LauncherActivationCoordinatorTest {
         assertEquals(
             listOf(
                 "enable:com.neoapps.neolauncher.FakeLauncher",
+                "mark_return_to_app",
                 "open_home_picker",
                 "restore:com.neoapps.neolauncher.FakeLauncher"
             ),
@@ -32,6 +33,7 @@ class LauncherActivationCoordinatorTest {
         assertEquals(
             listOf(
                 "enable:com.neoapps.neolauncher.FakeLauncher",
+                "mark_return_to_app",
                 "open_home_picker",
                 "open_home_settings",
                 "restore:com.neoapps.neolauncher.FakeLauncher"
@@ -56,6 +58,10 @@ class LauncherActivationCoordinatorTest {
             if (throwOnHomePicker) {
                 throw IllegalStateException("picker failed")
             }
+        }
+
+        override fun markReturnToAppAfterHomeSelection() {
+            events += "mark_return_to_app"
         }
 
         override fun restoreFakeLauncher(className: String) {

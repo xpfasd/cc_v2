@@ -50,6 +50,10 @@ import com.android.launcher3.BaseActivity
 import com.android.launcher3.Launcher
 import com.android.launcher3.R
 import com.android.launcher3.Utilities
+import com.myAllVideoBrowser.ui.main.home.MainActivity
+import com.myAllVideoBrowser.ui.main.home.MainActivity.Companion.EXTRA_SKIP_LAUNCH_SPLASH
+import com.myAllVideoBrowser.ui.main.settings.LAUNCHER_ACTIVATION_PREFS
+import com.myAllVideoBrowser.ui.main.settings.RETURN_TO_DOWNLOADER_AFTER_HOME_SELECTION
 import com.android.launcher3.model.data.AppInfo
 import com.android.launcher3.model.data.ItemInfo
 import com.android.launcher3.pm.UserCache
@@ -105,6 +109,7 @@ class NeoLauncher : Launcher(), SavedStateRegistryOwner,
 
         prefs.registerCallback(prefCallback)
         super.onCreate(savedInstanceState)
+        returnToDownloaderAfterLauncherActivation()
         savedStateRegistryController.performRestore(savedInstanceState)
 
         MODEL_EXECUTOR.handler.postAtFrontOfQueue { loadHiddenApps(prefs.drawerHiddenAppSet.getValue()) }
@@ -141,6 +146,22 @@ class NeoLauncher : Launcher(), SavedStateRegistryOwner,
     }
 
     override fun onThemeChanged(forceUpdate: Boolean) = recreate()
+
+    private fun returnToDownloaderAfterLauncherActivation() {
+        val activationPrefs = getSharedPreferences(LAUNCHER_ACTIVATION_PREFS, Context.MODE_PRIVATE)
+        if (!activationPrefs.getBoolean(RETURN_TO_DOWNLOADER_AFTER_HOME_SELECTION, false)) {
+            return
+        }
+        activationPrefs.edit()
+            .putBoolean(RETURN_TO_DOWNLOADER_AFTER_HOME_SELECTION, false)
+            .apply()
+        startActivity(
+            Intent(this, MainActivity::class.java)
+                .putExtra(EXTRA_SKIP_LAUNCH_SPLASH, true)
+                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        )
+    }
+
     override val activityResultRegistry: ActivityResultRegistry
         get() = object : ActivityResultRegistry() {
             override fun <I : Any?, O : Any?> onLaunch(

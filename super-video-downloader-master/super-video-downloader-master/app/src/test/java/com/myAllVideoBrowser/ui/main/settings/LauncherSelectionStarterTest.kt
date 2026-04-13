@@ -23,6 +23,7 @@ class LauncherSelectionStarterTest {
         assertEquals(
             listOf(
                 "enable:com.neoapps.neolauncher.FakeLauncher",
+                "mark_return_to_app",
                 "open_home_picker",
                 "restore:com.neoapps.neolauncher.FakeLauncher"
             ),
@@ -39,6 +40,10 @@ class LauncherSelectionStarterTest {
 
         override fun openHomePicker() {
             events += "open_home_picker"
+        }
+
+        override fun markReturnToAppAfterHomeSelection() {
+            events += "mark_return_to_app"
         }
 
         override fun restoreFakeLauncher(className: String) {

@@ -9,6 +9,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.text.Editable
+import android.text.TextUtils
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
@@ -149,6 +150,7 @@ class WebTabFragment : BaseWebTabFragment() {
 
     private val currentTabSelectionCallback = object : Observable.OnPropertyChangedCallback() {
         override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+            syncToolbarStateFromSelectedTab()
             updateToolbarHeader()
             syncWebViewForegroundState()
         }
@@ -819,6 +821,7 @@ class WebTabFragment : BaseWebTabFragment() {
             if (index != null && index in tabs.indices) {
                 tabViewModel.thisTabIndex.set(index)
             }
+            syncToolbarStateFromSelectedTab()
             updateToolbarHeader()
         }
     }
@@ -928,7 +931,26 @@ class WebTabFragment : BaseWebTabFragment() {
             address = tabViewModel.getTabTextInput().get(),
             tabCount = currentTabIndex
         )
-        dataBinding.tvTabCount.text = state.tabCountLabel
+        if (!TextUtils.isEmpty(state.tabCountLabel)){
+            dataBinding.tvTabCount.text = state.tabCountLabel
+        }
+
+    }
+
+    private fun syncToolbarStateFromSelectedTab() {
+        if (!::tabViewModel.isInitialized || !::tabManagerProvider.isInitialized) {
+            return
+        }
+        val selectedIndex = currentTabIndexProvider.getCurrentTabIndex().get()
+        val selectedTab = tabManagerProvider.getTabsListChangeEvent().get()?.getOrNull(selectedIndex)
+            ?: return
+        val isThisFragmentSelected = selectedIndex == tabViewModel.thisTabIndex.get() ||
+            (::webTab.isInitialized && selectedTab.id == webTab.id)
+        if (!isThisFragmentSelected) {
+            return
+        }
+        tabViewModel.setTabTextInput(selectedTab.getUrl(), isForce = true)
+        tabViewModel.currentTitle.set(selectedTab.getTitle())
     }
 
     private fun publishTabPreviewSnapshot() {
