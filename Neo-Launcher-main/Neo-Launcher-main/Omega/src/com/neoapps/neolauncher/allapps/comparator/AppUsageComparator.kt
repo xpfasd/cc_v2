@@ -21,15 +21,11 @@ import com.android.launcher3.model.data.AppInfo
 import com.neoapps.neolauncher.data.models.AppTracker
 
 class AppUsageComparator(private val mApps: List<AppTracker>) : Comparator<AppInfo> {
+    private val usageByPackage = mApps.associate { it.packageName to it.count }
+
     override fun compare(app1: AppInfo, app2: AppInfo): Int {
-        var item1 = 0
-        var item2 = 0
-        for (i in mApps.indices) {
-            if (mApps[i].packageName == app1.componentName!!.packageName)
-                item1 = mApps[i].count
-            if (mApps[i].packageName == app2.componentName!!.packageName)
-                item2 = mApps[i].count
-        }
+        val item1 = usageByPackage[app1.componentName!!.packageName] ?: 0
+        val item2 = usageByPackage[app2.componentName!!.packageName] ?: 0
         return when {
             item1 < item2 -> 1
             item2 < item1 -> -1

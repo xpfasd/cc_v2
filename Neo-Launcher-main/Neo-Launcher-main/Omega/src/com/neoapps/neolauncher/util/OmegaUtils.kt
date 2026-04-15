@@ -301,8 +301,11 @@ fun openURLInBrowser(context: Context, url: String?, sourceBounds: Rect?, option
 fun UserCache.getUserForProfileId(profileId: Int) =
     userProfiles.find { it.toString() == "UserHandle{$profileId}" }
 
-fun getAllAppsComparator(context: Context, sortType: Int): Comparator<AppInfo> {
-    val pm: PackageManager = context.packageManager
+fun getAllAppsComparator(
+    context: Context,
+    sortType: Int,
+    installTimes: Map<String, Long> = emptyMap(),
+): Comparator<AppInfo> {
     return when (sortType) {
         Config.SORT_ZA              -> compareBy(Collator.getInstance().reversed()) {
             it.title.toString().lowercase()
@@ -317,7 +320,7 @@ fun getAllAppsComparator(context: Context, sortType: Int): Comparator<AppInfo> {
 
         Config.SORT_BY_COLOR        -> AppColorComparator(context)
 
-        Config.SORT_BY_INSTALL_DATE -> InstallTimeComparator(pm)
+        Config.SORT_BY_INSTALL_DATE -> InstallTimeComparator(installTimes)
 
         Config.SORT_AZ              -> compareBy(Collator.getInstance()) {
             it.title.toString().lowercase()

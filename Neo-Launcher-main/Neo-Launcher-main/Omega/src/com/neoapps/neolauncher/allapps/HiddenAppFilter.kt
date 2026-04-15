@@ -30,18 +30,30 @@ import javax.inject.Inject
 class HiddenAppFilter @Inject constructor(@ApplicationContext context: Context) :
     AppFilter(context) {
 
+    @Volatile
+    private var hiddenAppsCache: Set<String>? = null
+
     override fun shouldShowApp(componentName: ComponentName): Boolean {
         val key = ComponentKey(componentName, Process.myUserHandle())
-        return super.shouldShowApp(componentName) && !isHiddenApp(key)
+        return super.shouldShowApp(componentName) && !isHiddenApp(key, hiddenApps())
+    }
+
+    fun clearCache() {
+        hiddenAppsCache = null
+    }
+
+    private fun hiddenApps(): Set<String> {
+        hiddenAppsCache?.let { return it }
+        return synchronized(this) {
+            hiddenAppsCache ?: NeoPrefs.getInstance().drawerHiddenAppSet.getValue().toSet().also {
+                hiddenAppsCache = it
+            }
+        }
     }
 
     companion object {
-        private fun isHiddenApp(key: ComponentKey?): Boolean {
-            return getHiddenAppList().contains(key.toString())
-        }
-
-        private fun getHiddenAppList(): MutableSet<String> {
-            return HashSet(NeoPrefs.getInstance().drawerHiddenAppSet.getValue())
+        private fun isHiddenApp(key: ComponentKey?, hiddenApps: Set<String>): Boolean {
+            return key != null && hiddenApps.contains(key.toString())
         }
     }
 }

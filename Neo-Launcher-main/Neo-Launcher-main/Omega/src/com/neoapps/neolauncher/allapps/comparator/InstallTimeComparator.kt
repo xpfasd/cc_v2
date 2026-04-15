@@ -17,22 +17,16 @@
 
 package com.neoapps.neolauncher.allapps.comparator
 
-import android.content.pm.PackageManager
 import com.android.launcher3.model.data.AppInfo
 
-class InstallTimeComparator(private val mPackageManager: PackageManager) : Comparator<AppInfo> {
-    override fun compare(app1: AppInfo, app2: AppInfo): Int = try {
-        val app1InstallTime =
-            mPackageManager.getPackageInfo(app1.componentName!!.packageName, 0).firstInstallTime
-        val app2InstallTime =
-            mPackageManager.getPackageInfo(app2.componentName!!.packageName, 0).firstInstallTime
+class InstallTimeComparator(private val installTimes: Map<String, Long>) : Comparator<AppInfo> {
+    override fun compare(app1: AppInfo, app2: AppInfo): Int = run {
+        val app1InstallTime = installTimes[app1.componentName!!.packageName] ?: 0L
+        val app2InstallTime = installTimes[app2.componentName!!.packageName] ?: 0L
         when {
             app1InstallTime < app2InstallTime -> 1
             app2InstallTime < app1InstallTime -> -1
             else -> 0
         }
-    } catch (e: PackageManager.NameNotFoundException) {
-        e.printStackTrace()
-        0
     }
 }

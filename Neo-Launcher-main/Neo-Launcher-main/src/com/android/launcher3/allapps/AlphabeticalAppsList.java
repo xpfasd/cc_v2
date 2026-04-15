@@ -27,6 +27,7 @@ import static com.android.launcher3.logging.StatsLogManager.LauncherEvent.LAUNCH
 import static com.neoapps.neolauncher.util.OmegaUtilsKt.getAllAppsComparator;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.ImageSpan;
@@ -43,10 +44,12 @@ import com.android.launcher3.model.data.AppInfo;
 import com.android.launcher3.model.data.ItemInfo;
 import com.android.launcher3.util.LabelComparator;
 import com.android.launcher3.views.ActivityContext;
+import com.neoapps.neolauncher.util.Config;
 import com.neoapps.neolauncher.preferences.NeoPrefs;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
@@ -124,7 +127,8 @@ public class AlphabeticalAppsList implements AllAppsStore.OnUpdateListener {
         prefs = NeoPrefs.getInstance();
 
         Context context = activityContext.asContext();
-        mAppNameComparator = getAllAppsComparator(context, prefs.getDrawerSortMode().getValue());
+        mAppNameComparator = getAllAppsComparator(
+                context, prefs.getDrawerSortMode().getValue(), new HashMap<>());
         mWorkProviderManager = workProfileManager;
         mPrivateProviderManager = privateProfileManager;
         mNumAppsPerRowAllApps = mActivityContext.getDeviceProfile().numShownAllAppsColumns;
@@ -245,7 +249,11 @@ public class AlphabeticalAppsList implements AllAppsStore.OnUpdateListener {
         // Sort the list of apps
         mApps.clear();
         mPrivateApps.clear();
-        mAppNameComparator = getAllAppsComparator(mActivityContext.asContext(), prefs.getDrawerSortMode().getValue());
+        int sortMode = prefs.getDrawerSortMode().getValue();
+        Map<String, Long> installTimes = sortMode == Config.SORT_BY_INSTALL_DATE
+                ? collectInstallTimes(mAllAppsStore.getApps()) : new HashMap<>();
+        mAppNameComparator = getAllAppsComparator(
+                mActivityContext.asContext(), sortMode, installTimes);
 
         // Filter against private space app that may show outside of Private Profile.
         Stream<AppInfo> appSteam = Stream.of(mAllAppsStore.getApps()).filter(
@@ -499,6 +507,31 @@ public class AlphabeticalAppsList implements AllAppsStore.OnUpdateListener {
 
     private boolean isPrivateSpaceApp(AppInfo appInfo) {
         return appInfo != null && Objects.equals(appInfo.getTargetPackage(), PRIVATE_SPACE_PACKAGE);
+    }
+
+    private Map<String, Long> collectInstallTimes(AppInfo[] apps) {
+        PackageManager packageManager = mActivityContext.asContext().getPackageManager();
+        Map<String, Long> installTimes = new HashMap<>();
+        for (AppInfo app : apps) {
+            if (app.componentName == null) {
+                continue;
+            }
+            String packageName = app.componentName.getPackageName();
+            if (installTimes.containsKey(packageName)) {
+                continue;
+            }
+            installTimes.put(packageName, getInstallTime(packageManager, packageName));
+        }
+        return installTimes;
+    }
+
+    private long getInstallTime(PackageManager packageManager, String packageName) {
+        try {
+            return packageManager.getPackageInfo(packageName, 0).firstInstallTime;
+        } catch (PackageManager.NameNotFoundException e) {
+            Log.w(TAG, "Unable to resolve install time for package " + packageName, e);
+            return 0L;
+        }
     }
 
     /**

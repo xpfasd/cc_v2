@@ -43,6 +43,7 @@ import com.android.launcher3.pm.UserCache;
 import com.android.launcher3.util.ApiWrapper;
 import com.android.launcher3.util.FlagOp;
 import com.android.launcher3.util.PackageManagerHelper;
+import com.android.launcher3.util.ComponentKey;
 import com.neoapps.neolauncher.allapps.HiddenAppFilter;
 
 import java.util.ArrayList;
@@ -72,6 +73,7 @@ public class AllAppsList {
 
     /** The list off all apps. */
     public final ArrayList<AppInfo> data = new ArrayList<>(DEFAULT_APPLICATIONS_NUMBER);
+    private final Set<ComponentKey> mExistingApps = new HashSet<>();
 
     @NonNull
     private final IconCache mIconCache;
@@ -161,8 +163,8 @@ public class AllAppsList {
         if (!mAppFilter.shouldShowApp(info.componentName)) {
             return;
         }
-        if (data.stream().anyMatch(it ->
-                it.getTargetComponent().equals(info.componentName) && it.user.equals(info.user))) {
+        ComponentKey componentKey = new ComponentKey(info.componentName, info.user);
+        if (mExistingApps.contains(componentKey)) {
             return;
         }
         if (loadIcon) {
@@ -173,6 +175,7 @@ public class AllAppsList {
         }
 
         data.add(info);
+        mExistingApps.add(componentKey);
         mDataChanged = true;
     }
 
@@ -217,6 +220,8 @@ public class AllAppsList {
 
     public void clear() {
         data.clear();
+        mExistingApps.clear();
+        mAppFilter.clearCache();
         mDataChanged = false;
         // Reset the index as locales might have changed
         mIndex = new AlphabeticIndexCompat(LocaleList.getDefault());
@@ -226,8 +231,16 @@ public class AllAppsList {
      * Remove the apps for the given apk identified by packageName.
      */
     public void removePackage(String packageName, UserHandle user) {
-        boolean removed = data.removeIf(
-                info -> info.user.equals(user) && packageName.equals(info.getTargetPackage()));
+        boolean removed = false;
+        Iterator<AppInfo> iterator = data.iterator();
+        while (iterator.hasNext()) {
+            AppInfo info = iterator.next();
+            if (info.user.equals(user) && packageName.equals(info.getTargetPackage())) {
+                iterator.remove();
+                mExistingApps.remove(new ComponentKey(info.componentName, info.user));
+                removed = true;
+            }
+        }
         mDataChanged |= removed;
     }
 
@@ -284,6 +297,7 @@ public class AllAppsList {
                     mIconCache.remove(cn, user);
                     outRemovedComponents.add(cn);
                     iterator.remove();
+                    mExistingApps.remove(new ComponentKey(cn, user));
                     if (DEBUG) {
                         Log.w(TAG, "updatePackage: removing unavailable component, cn=" + cn
                                 + ", user=" + user);
