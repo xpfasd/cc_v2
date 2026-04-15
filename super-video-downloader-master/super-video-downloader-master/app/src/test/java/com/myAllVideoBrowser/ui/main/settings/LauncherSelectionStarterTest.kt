@@ -1,6 +1,8 @@
 package com.myAllVideoBrowser.ui.main.settings
 
 import android.content.Context
+import android.content.Intent
+import androidx.activity.result.ActivityResultLauncher
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertSame
 import org.junit.Test
@@ -11,21 +13,24 @@ class LauncherSelectionStarterTest {
     @Test
     fun `requestLauncherSelection uses provided context and requests home selection`() {
         val context = mock(Context::class.java)
+        @Suppress("UNCHECKED_CAST")
+        val roleRequestLauncher = mock(ActivityResultLauncher::class.java) as ActivityResultLauncher<Intent>
         val delegate = RecordingLauncherActivationDelegate()
         var capturedContext: Context? = null
+        var capturedLauncher: ActivityResultLauncher<Intent>? = null
 
-        requestLauncherSelection(context) {
-            capturedContext = it
+        requestLauncherSelection(context, roleRequestLauncher) { providedContext, providedLauncher ->
+            capturedContext = providedContext
+            capturedLauncher = providedLauncher
             delegate
         }
 
         assertSame(context, capturedContext)
+        assertSame(roleRequestLauncher, capturedLauncher)
         assertEquals(
             listOf(
-                "enable:com.neoapps.neolauncher.FakeLauncher",
                 "mark_return_to_app",
-                "open_home_picker",
-                "restore:com.neoapps.neolauncher.FakeLauncher"
+                "request_home_role"
             ),
             delegate.events
         )
@@ -34,20 +39,14 @@ class LauncherSelectionStarterTest {
     private class RecordingLauncherActivationDelegate : LauncherActivationDelegate {
         val events = mutableListOf<String>()
 
-        override fun enableFakeLauncher(className: String) {
-            events += "enable:$className"
-        }
-
-        override fun openHomePicker() {
-            events += "open_home_picker"
-        }
-
         override fun markReturnToAppAfterHomeSelection() {
             events += "mark_return_to_app"
         }
 
-        override fun restoreFakeLauncher(className: String) {
-            events += "restore:$className"
+        override fun isHomeRoleRequestAvailable(): Boolean = true
+
+        override fun requestHomeRole() {
+            events += "request_home_role"
         }
 
         override fun openHomeSettings() {

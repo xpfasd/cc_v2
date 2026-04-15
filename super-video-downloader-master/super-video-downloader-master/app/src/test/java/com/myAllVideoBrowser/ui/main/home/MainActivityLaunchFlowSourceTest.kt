@@ -35,4 +35,15 @@ class MainActivityLaunchFlowSourceTest {
         assertTrue(onCreateBody.contains("continueLaunchFlowAfterLauncherReturn()"))
         assertTrue(onCreateBody.contains("maybeStartLaunchFlow(savedInstanceState)"))
     }
+
+    @Test
+    fun `onNewIntent can skip launch splash when launcher authorization brings app back`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        val onNewIntentBody = source.substringAfter("override fun onNewIntent(intent: Intent?) {")
+            .substringBefore("\n        if (intent?.getBooleanExtra(\n                YoutubeDlDownloaderWorker.IS_FINISHED_DOWNLOAD_ACTION_KEY,")
+
+        assertTrue(onNewIntentBody.contains("intent?.getBooleanExtra(EXTRA_SKIP_LAUNCH_SPLASH, false) == true"))
+        assertTrue(onNewIntentBody.contains("continueLaunchFlowAfterLauncherReturn()"))
+    }
 }

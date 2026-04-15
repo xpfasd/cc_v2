@@ -3,6 +3,7 @@ package com.myAllVideoBrowser.ui.main.home
 import android.Manifest
 import android.annotation.SuppressLint
 import android.animation.ValueAnimator
+import android.app.Activity
 import android.content.res.ColorStateList
 import android.content.Intent
 import android.content.pm.ActivityInfo
@@ -21,6 +22,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import com.cc.ads.topon.TopOnAdSceneManager
 import com.cc.ads.topon.TopOnAdScenes
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -100,6 +102,20 @@ class MainActivity : BaseActivity() {
     private var splashProgressAnimator: ValueAnimator? = null
     private var launcherPromptAttempts = 0
     private var notificationPermissionRequested = false
+    private val requestHomeRoleLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            val granted = result.resultCode == RESULT_OK && isAppDefaultHome()
+            AppLogger.d("MainActivity.requestHomeRoleLauncher granted=$granted resultCode=${result.resultCode}")
+            if (granted) {
+                startActivity(
+                    Intent(this, MainActivity::class.java)
+                        .putExtra(EXTRA_SKIP_LAUNCH_SPLASH, true)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                )
+            } else if (result.resultCode == Activity.RESULT_CANCELED) {
+                AppLogger.d("MainActivity.requestHomeRoleLauncher launcher role request canceled")
+            }
+        }
 
     private val screenOrientationCallback = object : Observable.OnPropertyChangedCallback() {
         override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
@@ -187,6 +203,10 @@ class MainActivity : BaseActivity() {
     @SuppressLint("MissingSuperCall")
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
+        if (intent?.getBooleanExtra(EXTRA_SKIP_LAUNCH_SPLASH, false) == true) {
+            continueLaunchFlowAfterLauncherReturn()
+            return
+        }
         if (intent?.getBooleanExtra(
                 YoutubeDlDownloaderWorker.IS_FINISHED_DOWNLOAD_ACTION_KEY,
                 false
@@ -509,7 +529,7 @@ class MainActivity : BaseActivity() {
         launcherPromptAttempts += 1
         launcherSelectionRequested = true
         suppressLauncherPromptOnResume = skipPromptOnResume
-        requestLauncherSelection(this)
+        requestLauncherSelection(this, requestHomeRoleLauncher)
     }
 
     private fun clearLauncherActivationReturnFlag() {
