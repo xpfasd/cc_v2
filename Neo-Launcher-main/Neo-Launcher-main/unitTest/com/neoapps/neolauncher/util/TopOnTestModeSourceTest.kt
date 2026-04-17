@@ -16,6 +16,7 @@ class TopOnTestModeSourceTest {
         assertTrue(source.contains("TEST_TOPON_SPLASH_PLACEMENT_ID"))
         assertTrue(source.contains("TEST_TOPON_APP_PACKAGE_NAME"))
         assertTrue(source.contains("activeProperty("))
+        assertTrue(source.contains("applicationId = activeTopOnPackageName"))
     }
 
     @Test

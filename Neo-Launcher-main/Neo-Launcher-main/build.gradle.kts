@@ -82,6 +82,34 @@ val activeTopOnPackageName = activeProperty(
     "TEST_TOPON_APP_PACKAGE_NAME",
     isTopOnTestMode
 )
+val googleServicesProductionFile = file("google-services-production.json")
+val googleServicesTestFile = file("google-services-test.json")
+val googleServicesOutputFile = file("google-services.json")
+
+tasks.register("prepareGoogleServicesJson") {
+    inputs.property("toponTestMode", isTopOnTestMode)
+    inputs.files(googleServicesProductionFile, googleServicesTestFile)
+    outputs.file(googleServicesOutputFile)
+
+    doLast {
+        val selectedFile = if (isTopOnTestMode) {
+            googleServicesTestFile
+        } else {
+            googleServicesProductionFile
+        }
+
+        if (!selectedFile.exists()) {
+            throw GradleException(
+                "Missing ${selectedFile.name}. " +
+                    "Please provide the ${if (isTopOnTestMode) "test" else "production"} " +
+                    "google-services file before building."
+            )
+        }
+
+        googleServicesOutputFile.writeText(selectedFile.readText())
+        logger.lifecycle("Prepared ${googleServicesOutputFile.name} from ${selectedFile.name}")
+    }
+}
 
 plugins {
     alias(libs.plugins.android.application)
@@ -143,7 +171,7 @@ android {
     defaultConfig {
         minSdk = 30
         targetSdk = 36
-        applicationId = "com.video.downloader"
+        applicationId = activeTopOnPackageName
         javaCompileOptions.annotationProcessorOptions.arguments["dagger.hilt.disableModulesHaveInstallInCheck"] =
             "true"
         versionName = "1.0.10"
@@ -310,6 +338,17 @@ android {
         checkReleaseBuilds = false
         disable += listOf("MissingTranslation", "ExtraTranslation")
     }
+}
+
+tasks.named("preBuild") {
+    dependsOn("prepareGoogleServicesJson")
+}
+
+tasks.matching { task ->
+    task.name.contains("GoogleServices", ignoreCase = true) &&
+        task.name != "prepareGoogleServicesJson"
+}.configureEach {
+    dependsOn("prepareGoogleServicesJson")
 }
 
 dependencies {

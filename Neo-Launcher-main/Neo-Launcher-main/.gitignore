@@ -25,3 +25,5 @@ gradlew*
 /aospOmega/neo/
 /aospOmega/release/
 /oa/go/builder/
+google-services-production.json
+google-services-test.json
