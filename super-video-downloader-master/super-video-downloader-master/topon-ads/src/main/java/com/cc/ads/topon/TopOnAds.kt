@@ -47,6 +47,7 @@ object TopOnAds {
         enableDebugLog: Boolean = false
     ): TopOnInitResult {
         currentConfig = config
+        TopOnAdScenes.setTestMode(config.isTestMode)
         if (initialized) {
             return TopOnInitResult.AlreadyInitialized
         }

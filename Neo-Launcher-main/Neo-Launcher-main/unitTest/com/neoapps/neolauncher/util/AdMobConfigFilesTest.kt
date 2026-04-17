@@ -16,6 +16,7 @@ class AdMobConfigFilesTest {
 
         assertTrue(manifest.contains("com.google.android.gms.ads.APPLICATION_ID"))
         assertTrue(manifest.contains("@string/admob_app_id"))
+        assertTrue(manifest.contains("tools:replace=\"android:value\""))
     }
 
     @Test

@@ -1,14 +1,38 @@
 package com.cc.ads.topon
 
 object TopOnAdScenes {
-    const val FIRST_SPLASH = "n69db2a97be495"
-    const val ACTIVE_SPLASH = "n69db2a9908bc0"
-    const val FIRST_INTERSTITIAL = "n69db2a9c2fd64"
-    const val GENERAL_INTERSTITIAL = "n69db2a9ce61c8"
-    const val LAUNCHER_APP_INTERSTITIAL = "n69db2a9d986e1"
-    const val GUIDE_NATIVE = "n69db2a9aa11d7"
-    const val LANGUAGE_NATIVE = "n69db2a99c9b03"
-    const val HOME_TOP_NATIVE = "n69db2a9b611b4"
+    @Volatile
+    private var currentProfile = TopOnAdProfiles.forMode(isTestMode = false)
+
+    val FIRST_SPLASH: String
+        get() = currentProfile.scenes.firstSplash
+
+    val ACTIVE_SPLASH: String
+        get() = currentProfile.scenes.activeSplash
+
+    val FIRST_INTERSTITIAL: String
+        get() = currentProfile.scenes.firstInterstitial
+
+    val GENERAL_INTERSTITIAL: String
+        get() = currentProfile.scenes.generalInterstitial
+
+    val LAUNCHER_APP_INTERSTITIAL: String
+        get() = currentProfile.scenes.externalInterstitial
+
+    val EXTERNAL_INTERSTITIAL: String
+        get() = currentProfile.scenes.externalInterstitial
+
+    val TAB_INTERSTITIAL: String
+        get() = currentProfile.scenes.tabInterstitial
+
+    val GUIDE_NATIVE: String
+        get() = currentProfile.scenes.guideNative
+
+    val LANGUAGE_NATIVE: String
+        get() = currentProfile.scenes.languageNative
+
+    val HOME_TOP_NATIVE: String
+        get() = currentProfile.scenes.homeTopNative
 
     const val SCENARIO_FIRST_SPLASH = "first_splash"
     const val SCENARIO_ACTIVE_SPLASH = "active_splash"
@@ -18,4 +42,8 @@ object TopOnAdScenes {
     const val SCENARIO_GUIDE_NATIVE = "guide_native"
     const val SCENARIO_LANGUAGE_NATIVE = "language_native"
     const val SCENARIO_HOME_TOP_NATIVE = "home_top_native"
+
+    internal fun setTestMode(isTestMode: Boolean) {
+        currentProfile = TopOnAdProfiles.forMode(isTestMode)
+    }
 }

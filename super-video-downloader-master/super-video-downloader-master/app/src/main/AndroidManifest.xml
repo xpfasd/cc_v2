@@ -18,6 +18,12 @@
 
     <application>
         <meta-data
+            android:name="com.cc.ads.TOPON_TEST_MODE"
+            android:value="${toponTestMode}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_APP_PACKAGE_NAME"
+            android:value="${toponAppPackageName}" />
+        <meta-data
             android:name="com.cc.ads.TOPON_APP_ID"
             android:value="${toponAppId}" />
         <meta-data
@@ -38,6 +44,9 @@
         <meta-data
             android:name="com.cc.ads.TOPON_NATIVE_PLACEMENT_ID"
             android:value="${toponNativePlacementId}" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="${admobAppId}" />
 
         <activity
             android:name="com.myAllVideoBrowser.ui.main.home.MainActivity"

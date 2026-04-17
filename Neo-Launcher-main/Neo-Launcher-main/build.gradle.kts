@@ -33,6 +33,56 @@ val addFrameworkJar = { name: String ->
 }
 addFrameworkJar("framework-16.jar")
 
+fun Project.stringProperty(name: String): String = findProperty(name)?.toString().orEmpty()
+
+fun Project.booleanProperty(name: String, defaultValue: Boolean = false): Boolean =
+    findProperty(name)?.toString()?.toBooleanStrictOrNull() ?: defaultValue
+
+fun Project.activeProperty(
+    productionName: String,
+    testName: String,
+    isTestMode: Boolean
+): String {
+    if (!isTestMode) {
+        return stringProperty(productionName)
+    }
+    return stringProperty(testName).ifBlank { stringProperty(productionName) }
+}
+
+val isTopOnTestMode = booleanProperty("TOPON_TEST_MODE")
+val activeTopOnAppId = activeProperty("TOPON_APP_ID", "TEST_TOPON_APP_ID", isTopOnTestMode)
+val activeTopOnAppKey = activeProperty("TOPON_APP_KEY", "TEST_TOPON_APP_KEY", isTopOnTestMode)
+val activeTopOnSplashPlacementId = activeProperty(
+    "TOPON_SPLASH_PLACEMENT_ID",
+    "TEST_TOPON_SPLASH_PLACEMENT_ID",
+    isTopOnTestMode
+)
+val activeTopOnInterstitialPlacementId = activeProperty(
+    "TOPON_INTERSTITIAL_PLACEMENT_ID",
+    "TEST_TOPON_INTERSTITIAL_PLACEMENT_ID",
+    isTopOnTestMode
+)
+val activeTopOnRewardedPlacementId = activeProperty(
+    "TOPON_REWARDED_PLACEMENT_ID",
+    "TEST_TOPON_REWARDED_PLACEMENT_ID",
+    isTopOnTestMode
+)
+val activeTopOnBannerPlacementId = activeProperty(
+    "TOPON_BANNER_PLACEMENT_ID",
+    "TEST_TOPON_BANNER_PLACEMENT_ID",
+    isTopOnTestMode
+)
+val activeTopOnNativePlacementId = activeProperty(
+    "TOPON_NATIVE_PLACEMENT_ID",
+    "TEST_TOPON_NATIVE_PLACEMENT_ID",
+    isTopOnTestMode
+)
+val activeTopOnPackageName = activeProperty(
+    "APP_PACKAGE_NAME",
+    "TEST_TOPON_APP_PACKAGE_NAME",
+    isTopOnTestMode
+)
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.android.library) apply false
@@ -105,18 +155,20 @@ android {
         buildConfigField("boolean", "WIDGETS_ENABLED", "true")
         buildConfigField("boolean", "NOTIFICATION_DOTS_ENABLED", "true")
         buildConfigField("boolean", "WIDGET_ON_FIRST_SCREEN", "true")
-        manifestPlaceholders["toponAppId"] = findProperty("TOPON_APP_ID")?.toString().orEmpty()
-        manifestPlaceholders["toponAppKey"] = findProperty("TOPON_APP_KEY")?.toString().orEmpty()
+        manifestPlaceholders["toponTestMode"] = isTopOnTestMode.toString()
+        manifestPlaceholders["toponAppPackageName"] = activeTopOnPackageName
+        manifestPlaceholders["toponAppId"] = activeTopOnAppId
+        manifestPlaceholders["toponAppKey"] = activeTopOnAppKey
         manifestPlaceholders["toponSplashPlacementId"] =
-            findProperty("TOPON_SPLASH_PLACEMENT_ID")?.toString().orEmpty()
+            activeTopOnSplashPlacementId
         manifestPlaceholders["toponInterstitialPlacementId"] =
-            findProperty("TOPON_INTERSTITIAL_PLACEMENT_ID")?.toString().orEmpty()
+            activeTopOnInterstitialPlacementId
         manifestPlaceholders["toponRewardedPlacementId"] =
-            findProperty("TOPON_REWARDED_PLACEMENT_ID")?.toString().orEmpty()
+            activeTopOnRewardedPlacementId
         manifestPlaceholders["toponBannerPlacementId"] =
-            findProperty("TOPON_BANNER_PLACEMENT_ID")?.toString().orEmpty()
+            activeTopOnBannerPlacementId
         manifestPlaceholders["toponNativePlacementId"] =
-            findProperty("TOPON_NATIVE_PLACEMENT_ID")?.toString().orEmpty()
+            activeTopOnNativePlacementId
 
         val langsList: MutableSet<String> = HashSet()
 

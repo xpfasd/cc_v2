@@ -1,10 +1,21 @@
+import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.LibraryExtension
 import java.util.Properties
 import org.gradle.kotlin.dsl.support.serviceOf
 import org.gradle.process.ExecOperations
 
 plugins {
-    id("com.android.library")
+    id("com.android.application") apply false
+    id("com.android.library") apply false
     id("com.google.devtools.ksp")
+}
+
+val isEmbeddedDownloaderLibrary = project.name == "downloaderlib"
+
+if (isEmbeddedDownloaderLibrary) {
+    apply(plugin = "com.android.library")
+} else {
+    apply(plugin = "com.android.application")
 }
 
 if (com.android.Version.ANDROID_GRADLE_PLUGIN_VERSION.substringBefore(".").toInt() < 9) {
@@ -17,178 +28,378 @@ configurations.configureEach {
     }
 }
 
-android {
-    namespace = "com.myAllVideoBrowser"
-    compileSdk = downloaderLibs.versions.targetSdk.get().toInt()
-    ndkVersion = downloaderLibs.versions.ndk.get()
+fun Project.stringProperty(name: String): String = findProperty(name)?.toString().orEmpty()
 
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_21
-        targetCompatibility = JavaVersion.VERSION_21
-        isCoreLibraryDesugaringEnabled = true
+fun Project.booleanProperty(name: String, defaultValue: Boolean = false): Boolean =
+    findProperty(name)?.toString()?.toBooleanStrictOrNull() ?: defaultValue
+
+fun Project.activeProperty(
+    productionName: String,
+    testName: String,
+    isTestMode: Boolean
+): String {
+    if (!isTestMode) {
+        return stringProperty(productionName)
     }
+    return stringProperty(testName).ifBlank { stringProperty(productionName) }
+}
 
-    defaultConfig {
-        minSdk = downloaderLibs.versions.minSdk.get().toInt()
-        consumerProguardFiles("proguard-rules.pro")
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        manifestPlaceholders["toponAppId"] = findProperty("TOPON_APP_ID")?.toString().orEmpty()
-        manifestPlaceholders["toponAppKey"] = findProperty("TOPON_APP_KEY")?.toString().orEmpty()
-        manifestPlaceholders["toponSplashPlacementId"] =
-            findProperty("TOPON_SPLASH_PLACEMENT_ID")?.toString().orEmpty()
-        manifestPlaceholders["toponInterstitialPlacementId"] =
-            findProperty("TOPON_INTERSTITIAL_PLACEMENT_ID")?.toString().orEmpty()
-        manifestPlaceholders["toponRewardedPlacementId"] =
-            findProperty("TOPON_REWARDED_PLACEMENT_ID")?.toString().orEmpty()
-        manifestPlaceholders["toponBannerPlacementId"] =
-            findProperty("TOPON_BANNER_PLACEMENT_ID")?.toString().orEmpty()
-        manifestPlaceholders["toponNativePlacementId"] =
-            findProperty("TOPON_NATIVE_PLACEMENT_ID")?.toString().orEmpty()
-    }
+val isTopOnTestMode = booleanProperty("TOPON_TEST_MODE")
+val activeTopOnAppId = activeProperty("TOPON_APP_ID", "TEST_TOPON_APP_ID", isTopOnTestMode)
+val activeTopOnAppKey = activeProperty("TOPON_APP_KEY", "TEST_TOPON_APP_KEY", isTopOnTestMode)
+val activeTopOnSplashPlacementId = activeProperty(
+    "TOPON_SPLASH_PLACEMENT_ID",
+    "TEST_TOPON_SPLASH_PLACEMENT_ID",
+    isTopOnTestMode
+)
+val activeTopOnInterstitialPlacementId = activeProperty(
+    "TOPON_INTERSTITIAL_PLACEMENT_ID",
+    "TEST_TOPON_INTERSTITIAL_PLACEMENT_ID",
+    isTopOnTestMode
+)
+val activeTopOnRewardedPlacementId = activeProperty(
+    "TOPON_REWARDED_PLACEMENT_ID",
+    "TEST_TOPON_REWARDED_PLACEMENT_ID",
+    isTopOnTestMode
+)
+val activeTopOnBannerPlacementId = activeProperty(
+    "TOPON_BANNER_PLACEMENT_ID",
+    "TEST_TOPON_BANNER_PLACEMENT_ID",
+    isTopOnTestMode
+)
+val activeTopOnNativePlacementId = activeProperty(
+    "TOPON_NATIVE_PLACEMENT_ID",
+    "TEST_TOPON_NATIVE_PLACEMENT_ID",
+    isTopOnTestMode
+)
+val activeTopOnPackageName = activeProperty(
+    "APP_PACKAGE_NAME",
+    "TEST_TOPON_APP_PACKAGE_NAME",
+    isTopOnTestMode
+)
+val activeAdmobAppId = activeProperty("ADMOB_APP_ID", "TEST_ADMOB_APP_ID", isTopOnTestMode)
+val googleServicesProductionFile = file("google-services-production.json")
+val googleServicesTestFile = file("google-services-test.json")
+val googleServicesOutputFile = file("google-services.json")
 
-    buildTypes {
-        debug {
-            isMinifyEnabled = false
-            isShrinkResources = false
+tasks.register("prepareGoogleServicesJson") {
+    inputs.property("toponTestMode", isTopOnTestMode)
+    inputs.files(googleServicesProductionFile, googleServicesTestFile)
+    outputs.file(googleServicesOutputFile)
+
+    doLast {
+        val selectedFile = if (isTopOnTestMode) {
+            googleServicesTestFile
+        } else {
+            googleServicesProductionFile
         }
-        create("neo") {
-            initWith(getByName("debug"))
-            matchingFallbacks += listOf("debug")
-        }
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+
+        if (!selectedFile.exists()) {
+            if (googleServicesOutputFile.exists()) {
+                googleServicesOutputFile.delete()
+            }
+            logger.warn(
+                "Missing ${selectedFile.name}. Skipping google-services.json materialization for " +
+                    if (isTopOnTestMode) "test mode." else "production mode."
             )
+            return@doLast
+        }
+
+        selectedFile.copyTo(googleServicesOutputFile, overwrite = true)
+        logger.lifecycle("Prepared ${googleServicesOutputFile.name} from ${selectedFile.name}")
+    }
+}
+
+plugins.withId("com.android.application") {
+    extensions.configure<ApplicationExtension> {
+        namespace = "com.myAllVideoBrowser"
+        compileSdk = downloaderLibs.versions.targetSdk.get().toInt()
+        ndkVersion = downloaderLibs.versions.ndk.get()
+
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_21
+            targetCompatibility = JavaVersion.VERSION_21
+            isCoreLibraryDesugaringEnabled = true
+        }
+
+        defaultConfig {
+            applicationId = activeTopOnPackageName
+            minSdk = downloaderLibs.versions.minSdk.get().toInt()
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            manifestPlaceholders["toponTestMode"] = isTopOnTestMode.toString()
+            manifestPlaceholders["toponAppId"] = activeTopOnAppId
+            manifestPlaceholders["toponAppKey"] = activeTopOnAppKey
+            manifestPlaceholders["toponSplashPlacementId"] = activeTopOnSplashPlacementId
+            manifestPlaceholders["toponInterstitialPlacementId"] = activeTopOnInterstitialPlacementId
+            manifestPlaceholders["toponRewardedPlacementId"] = activeTopOnRewardedPlacementId
+            manifestPlaceholders["toponBannerPlacementId"] = activeTopOnBannerPlacementId
+            manifestPlaceholders["toponNativePlacementId"] = activeTopOnNativePlacementId
+            manifestPlaceholders["toponAppPackageName"] = activeTopOnPackageName
+            manifestPlaceholders["admobAppId"] = activeAdmobAppId
+            buildConfigField("boolean", "TOPON_TEST_MODE", isTopOnTestMode.toString())
+            buildConfigField("String", "TOPON_ACTIVE_PACKAGE_NAME", "\"$activeTopOnPackageName\"")
+            buildConfigField("String", "ADMOB_APP_ID", "\"$activeAdmobAppId\"")
+        }
+
+        buildTypes {
+            getByName("debug") {
+                isMinifyEnabled = false
+                isShrinkResources = false
+            }
+            maybeCreate("neo").apply {
+                initWith(getByName("debug"))
+                matchingFallbacks += listOf("debug")
+            }
+            getByName("release") {
+                isMinifyEnabled = false
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
+            }
+        }
+
+        buildFeatures {
+            buildConfig = true
+        }
+        viewBinding {
+            enable = true
+        }
+        dataBinding {
+            enable = true
+        }
+
+        packaging {
+            resources {
+                excludes += listOf(
+                    "mozilla/public-suffix-list.txt",
+                    "META-INF/*.kotlin_module",
+                    "META-INF/DEPENDENCIES",
+                    "META-INF/LICENSE",
+                    "META-INF/LICENSE.txt",
+                    "META-INF/license.txt",
+                    "META-INF/NOTICE",
+                    "META-INF/versions/9/OSGI-INF/MANIFEST.MF",
+                    "META-INF/NOTICE.txt",
+                    "META-INF/notice.txt",
+                    "META-INF/ASL2.0"
+                )
+            }
+            jniLibs {
+                useLegacyPackaging = true
+                keepDebugSymbols += listOf(
+                    "**/libffmpeg.zip.so",
+                    "**/libpython.zip.so",
+                    "**/libffmpeg.so",
+                    "**/libffprobe.so",
+                    "**/libgojni.so",
+                    "**/libpython.so",
+                    "**/libqjs.so"
+                )
+            }
+        }
+
+        testOptions {
+            unitTests {
+                isIncludeAndroidResources = true
+                isReturnDefaultValues = true
+            }
+        }
+
+        lint {
+            abortOnError = false
+        }
+
+        sourceSets {
+            getByName("main") {
+                manifest.srcFile("src/main/AndroidManifest.xml")
+                kotlin.directories.add("src/main/java")
+                res.directories.add("src/main/res")
+                assets.directories.add("src/main/assets")
+                jniLibs.directories.add("src/main/jniLibs")
+            }
         }
     }
+}
 
-    buildFeatures {
-        viewBinding = true
-        dataBinding = true
-        buildConfig = true
-    }
+plugins.withId("com.android.library") {
+    extensions.configure<LibraryExtension> {
+        namespace = "com.myAllVideoBrowser"
+        compileSdk = downloaderLibs.versions.targetSdk.get().toInt()
+        ndkVersion = downloaderLibs.versions.ndk.get()
 
-    packaging {
-        resources {
-            excludes += listOf(
-                "mozilla/public-suffix-list.txt",
-                "META-INF/*.kotlin_module",
-                "META-INF/DEPENDENCIES",
-                "META-INF/LICENSE",
-                "META-INF/LICENSE.txt",
-                "META-INF/license.txt",
-                "META-INF/NOTICE",
-                "META-INF/versions/9/OSGI-INF/MANIFEST.MF",
-                "META-INF/NOTICE.txt",
-                "META-INF/notice.txt",
-                "META-INF/ASL2.0"
-            )
+        compileOptions {
+            sourceCompatibility = JavaVersion.VERSION_21
+            targetCompatibility = JavaVersion.VERSION_21
+            isCoreLibraryDesugaringEnabled = true
         }
-        jniLibs {
-            useLegacyPackaging = true
-            keepDebugSymbols += listOf(
-                "**/libffmpeg.zip.so",
-                "**/libpython.zip.so",
-                "**/libffmpeg.so",
-                "**/libffprobe.so",
-                "**/libgojni.so",
-                "**/libpython.so",
-                "**/libqjs.so"
-            )
+
+        defaultConfig {
+            minSdk = downloaderLibs.versions.minSdk.get().toInt()
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            manifestPlaceholders["toponTestMode"] = isTopOnTestMode.toString()
+            manifestPlaceholders["toponAppId"] = activeTopOnAppId
+            manifestPlaceholders["toponAppKey"] = activeTopOnAppKey
+            manifestPlaceholders["toponSplashPlacementId"] = activeTopOnSplashPlacementId
+            manifestPlaceholders["toponInterstitialPlacementId"] = activeTopOnInterstitialPlacementId
+            manifestPlaceholders["toponRewardedPlacementId"] = activeTopOnRewardedPlacementId
+            manifestPlaceholders["toponBannerPlacementId"] = activeTopOnBannerPlacementId
+            manifestPlaceholders["toponNativePlacementId"] = activeTopOnNativePlacementId
+            manifestPlaceholders["toponAppPackageName"] = activeTopOnPackageName
+            manifestPlaceholders["admobAppId"] = activeAdmobAppId
+            buildConfigField("boolean", "TOPON_TEST_MODE", isTopOnTestMode.toString())
+            buildConfigField("String", "TOPON_ACTIVE_PACKAGE_NAME", "\"$activeTopOnPackageName\"")
+            buildConfigField("String", "ADMOB_APP_ID", "\"$activeAdmobAppId\"")
         }
-    }
 
-    testOptions {
-        unitTests {
-            isIncludeAndroidResources = true
-            isReturnDefaultValues = true
+        buildTypes {
+            getByName("debug") {
+                isMinifyEnabled = false
+                isShrinkResources = false
+            }
+            maybeCreate("neo").apply {
+                initWith(getByName("debug"))
+                matchingFallbacks += listOf("debug")
+            }
+            getByName("release") {
+                isMinifyEnabled = false
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
+            }
         }
-    }
 
-    lint {
-        abortOnError = false
-    }
+        buildFeatures {
+            buildConfig = true
+        }
+        viewBinding {
+            enable = true
+        }
+        dataBinding {
+            enable = true
+        }
 
-    sourceSets {
-        getByName("main") {
-            manifest.srcFile("src/main/AndroidManifest.xml")
-            kotlin.directories.add("src/main/java")
-            res.directories.add("src/main/res")
-            assets.directories.add("src/main/assets")
-            jniLibs.directories.add("src/main/jniLibs")
+        packaging {
+            resources {
+                excludes += listOf(
+                    "mozilla/public-suffix-list.txt",
+                    "META-INF/*.kotlin_module",
+                    "META-INF/DEPENDENCIES",
+                    "META-INF/LICENSE",
+                    "META-INF/LICENSE.txt",
+                    "META-INF/license.txt",
+                    "META-INF/NOTICE",
+                    "META-INF/versions/9/OSGI-INF/MANIFEST.MF",
+                    "META-INF/NOTICE.txt",
+                    "META-INF/notice.txt",
+                    "META-INF/ASL2.0"
+                )
+            }
+            jniLibs {
+                useLegacyPackaging = true
+                keepDebugSymbols += listOf(
+                    "**/libffmpeg.zip.so",
+                    "**/libpython.zip.so",
+                    "**/libffmpeg.so",
+                    "**/libffprobe.so",
+                    "**/libgojni.so",
+                    "**/libpython.so",
+                    "**/libqjs.so"
+                )
+            }
+        }
+
+        testOptions {
+            unitTests {
+                isIncludeAndroidResources = true
+                isReturnDefaultValues = true
+            }
+        }
+
+        lint {
+            abortOnError = false
+        }
+
+        sourceSets {
+            getByName("main") {
+                manifest.srcFile("src/main/AndroidManifest.xml")
+                kotlin.directories.add("src/main/java")
+                res.directories.add("src/main/res")
+                assets.directories.add("src/main/assets")
+                jniLibs.directories.add("src/main/jniLibs")
+            }
         }
     }
 }
 
 dependencies {
-    implementation(project(":topon-ads"))
+    add("implementation", project(":topon-ads"))
 
-    implementation(downloaderLibs.appcompat)
-    implementation(downloaderLibs.material)
-    implementation(downloaderLibs.constraintlayout)
-    implementation(downloaderLibs.recyclerview)
-    implementation(downloaderLibs.webkit)
-    implementation(downloaderLibs.coreKtx)
-    implementation(downloaderLibs.coreSplashscreen)
-    implementation(downloaderLibs.legacySupportV4)
-    implementation(downloaderLibs.kotlin.stdlib)
-    implementation(downloaderLibs.workRuntimeKtx)
-    implementation(downloaderLibs.workRxjava3)
-    implementation(downloaderLibs.workMultiprocess)
-    implementation(downloaderLibs.fragmentKtx)
-    implementation(downloaderLibs.concurrentFuturesKtx)
-    implementation(downloaderLibs.lifecycleExtensions)
-    implementation(downloaderLibs.lifecycleCommonJava8)
-    implementation(downloaderLibs.lifecycleLivedata)
-    implementation(downloaderLibs.lifecycleViewmodel)
-    implementation(downloaderLibs.roomRuntime)
-    implementation(downloaderLibs.roomKtx)
-    implementation(downloaderLibs.roomRxjava3)
-    implementation(downloaderLibs.roomGuava)
-    ksp(downloaderLibs.roomCompiler)
-    implementation(downloaderLibs.daggerRuntime)
-    implementation(downloaderLibs.daggerAndroid)
-    implementation(downloaderLibs.daggerAndroidSupport)
-    ksp(downloaderLibs.daggerCompiler)
-    ksp(downloaderLibs.daggerAndroidProcessor)
-    implementation(downloaderLibs.okHttpRuntime)
-    implementation(downloaderLibs.okHttpLogging)
-    implementation(downloaderLibs.retrofitRuntime)
-    implementation(downloaderLibs.retrofitGson)
-    implementation(downloaderLibs.retrofitRxjava3)
-    implementation(downloaderLibs.persistentCookieJar)
-    implementation(downloaderLibs.rxjava3)
-    implementation(downloaderLibs.rxandroid3)
-    implementation(downloaderLibs.youtubedl)
+    add("implementation", downloaderLibs.appcompat)
+    add("implementation", downloaderLibs.material)
+    add("implementation", downloaderLibs.constraintlayout)
+    add("implementation", downloaderLibs.recyclerview)
+    add("implementation", downloaderLibs.webkit)
+    add("implementation", downloaderLibs.coreKtx)
+    add("implementation", downloaderLibs.coreSplashscreen)
+    add("implementation", downloaderLibs.legacySupportV4)
+    add("implementation", downloaderLibs.kotlin.stdlib)
+    add("implementation", downloaderLibs.workRuntimeKtx)
+    add("implementation", downloaderLibs.workRxjava3)
+    add("implementation", downloaderLibs.workMultiprocess)
+    add("implementation", downloaderLibs.fragmentKtx)
+    add("implementation", downloaderLibs.concurrentFuturesKtx)
+    add("implementation", downloaderLibs.lifecycleExtensions)
+    add("implementation", downloaderLibs.lifecycleCommonJava8)
+    add("implementation", downloaderLibs.lifecycleLivedata)
+    add("implementation", downloaderLibs.lifecycleViewmodel)
+    add("implementation", downloaderLibs.roomRuntime)
+    add("implementation", downloaderLibs.roomKtx)
+    add("implementation", downloaderLibs.roomRxjava3)
+    add("implementation", downloaderLibs.roomGuava)
+    add("ksp", downloaderLibs.roomCompiler)
+    add("implementation", downloaderLibs.daggerRuntime)
+    add("implementation", downloaderLibs.daggerAndroid)
+    add("implementation", downloaderLibs.daggerAndroidSupport)
+    add("ksp", downloaderLibs.daggerCompiler)
+    add("ksp", downloaderLibs.daggerAndroidProcessor)
+    add("implementation", downloaderLibs.okHttpRuntime)
+    add("implementation", downloaderLibs.okHttpLogging)
+    add("implementation", downloaderLibs.retrofitRuntime)
+    add("implementation", downloaderLibs.retrofitGson)
+    add("implementation", downloaderLibs.retrofitRxjava3)
+    add("implementation", downloaderLibs.persistentCookieJar)
+    add("implementation", downloaderLibs.rxjava3)
+    add("implementation", downloaderLibs.rxandroid3)
+    add("implementation", downloaderLibs.youtubedl)
     //implementation(downloaderLibs.youtubedl.ffmpeg)
-    implementation(downloaderLibs.ffmpegKit)
-    implementation(downloaderLibs.media3Exoplayer)
-    implementation(downloaderLibs.media3ExoplayerDash)
-    implementation(downloaderLibs.media3ExoplayerHls)
-    implementation(downloaderLibs.media3ExoplayerRtsp)
-    implementation(downloaderLibs.media3Ui)
-    implementation(downloaderLibs.media3Extractor)
-    implementation(downloaderLibs.media3Database)
-    implementation(downloaderLibs.media3Decoder)
-    implementation(downloaderLibs.media3Datasource)
-    implementation(downloaderLibs.media3Common)
-    implementation(downloaderLibs.media3DatasourceOkhttp)
-    implementation(downloaderLibs.glideRuntime)
-    implementation(downloaderLibs.kotlinxSerializationJson)
-    implementation(downloaderLibs.kotlinxSerializationCore)
-    implementation(downloaderLibs.jsoup)
-    implementation(downloaderLibs.timeago)
-    coreLibraryDesugaring(downloaderLibs.desugarJdk)
+    add("implementation", downloaderLibs.ffmpegKit)
+    add("implementation", downloaderLibs.media3Exoplayer)
+    add("implementation", downloaderLibs.media3ExoplayerDash)
+    add("implementation", downloaderLibs.media3ExoplayerHls)
+    add("implementation", downloaderLibs.media3ExoplayerRtsp)
+    add("implementation", downloaderLibs.media3Ui)
+    add("implementation", downloaderLibs.media3Extractor)
+    add("implementation", downloaderLibs.media3Database)
+    add("implementation", downloaderLibs.media3Decoder)
+    add("implementation", downloaderLibs.media3Datasource)
+    add("implementation", downloaderLibs.media3Common)
+    add("implementation", downloaderLibs.media3DatasourceOkhttp)
+    add("implementation", downloaderLibs.glideRuntime)
+    add("implementation", downloaderLibs.kotlinxSerializationJson)
+    add("implementation", downloaderLibs.kotlinxSerializationCore)
+    add("implementation", downloaderLibs.jsoup)
+    add("implementation", downloaderLibs.timeago)
+    add("coreLibraryDesugaring", downloaderLibs.desugarJdk)
 
-    testImplementation(downloaderLibs.junit)
-    testImplementation(downloaderLibs.mockitoCore)
-    testImplementation(downloaderLibs.mockitoKotlin)
-    androidTestImplementation(downloaderLibs.testRunner)
-    androidTestImplementation(downloaderLibs.mockitoAndroid)
-    androidTestImplementation(downloaderLibs.espressoCore)
-    androidTestImplementation(downloaderLibs.espressoIntents)
+    add("testImplementation", downloaderLibs.junit)
+    add("testImplementation", downloaderLibs.mockitoCore)
+    add("testImplementation", downloaderLibs.mockitoKotlin)
+    add("androidTestImplementation", downloaderLibs.testRunner)
+    add("androidTestImplementation", downloaderLibs.mockitoAndroid)
+    add("androidTestImplementation", downloaderLibs.espressoCore)
+    add("androidTestImplementation", downloaderLibs.espressoIntents)
 }
 
 ksp {
@@ -452,6 +663,7 @@ listOf(
 }
 
 tasks.named("preBuild") {
+    dependsOn("prepareGoogleServicesJson")
     if (shouldBuildNativeArtifacts) {
         dependsOn(copyAllGoSharedLibs)
     }

@@ -78,6 +78,12 @@
         android:restoreAnyVersion="true"
         android:supportsRtl="true" tools:replace="android:label" >
         <meta-data
+            android:name="com.cc.ads.TOPON_TEST_MODE"
+            android:value="${toponTestMode}" />
+        <meta-data
+            android:name="com.cc.ads.TOPON_APP_PACKAGE_NAME"
+            android:value="${toponAppPackageName}" />
+        <meta-data
             android:name="com.cc.ads.TOPON_APP_ID"
             android:value="${toponAppId}" />
         <meta-data

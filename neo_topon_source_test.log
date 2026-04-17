@@ -1,0 +1,567 @@
+﻿
+> Configure project :
+WARNING: The option setting 'android.newDsl=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+WARNING: The option setting 'android.r8.optimizedResourceShrinking=false' is deprecated.
+The current default is 'true'.
+It will be removed in version 10.0 of the Android Gradle plugin.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/build.gradle.kts:1:8: 'class BaseExtension : AndroidConfig, Lockable' is deprecated. Replaced by com.android.build.api.dsl.CommonExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/build.gradle.kts:100:30: 'class BaseExtension : AndroidConfig, Lockable' is deprecated. Replaced by com.android.build.api.dsl.CommonExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/build.gradle.kts:135:1: 'fun Project.android(configure: Action<BaseAppModuleExtension>): Unit' is deprecated. Replaced by com.android.build.api.dsl.ApplicationExtension.
+This class is not used for the public extensions in AGP when android.newDsl=true, which is the default in AGP 9.0, and will be removed in AGP 10.0.
+
+> Configure project :downloaderlib
+go version go1.25.1 windows/amd64
+Path for java installation 'C:\Program Files\Java\jdk-11\bin' (environment variable 'JAVA_HOME') does not contain a java executable
+
+> Task :preBuild UP-TO-DATE
+> Task :preAospOmegaDebugBuild UP-TO-DATE
+> Task :concurrent:preBuild UP-TO-DATE
+> Task :concurrent:preDebugBuild UP-TO-DATE
+> Task :concurrent:compileDebugAidl NO-SOURCE
+> Task :plugincore:preBuild UP-TO-DATE
+> Task :plugincore:preDebugBuild UP-TO-DATE
+> Task :plugincore:compileDebugAidl NO-SOURCE
+> Task :shared:preBuild UP-TO-DATE
+> Task :shared:preDebugBuild UP-TO-DATE
+> Task :shared:compileDebugAidl NO-SOURCE
+> Task :compatLib:preBuild UP-TO-DATE
+> Task :compatLib:preDebugBuild UP-TO-DATE
+> Task :compatLib:compileDebugAidl UP-TO-DATE
+> Task :hidden-api:preBuild UP-TO-DATE
+> Task :hidden-api:preDebugBuild UP-TO-DATE
+> Task :hidden-api:compileDebugAidl NO-SOURCE
+> Task :wmshell:preBuild UP-TO-DATE
+> Task :wmshell:preDebugBuild UP-TO-DATE
+> Task :compatLib:compatLibVQ:preBuild UP-TO-DATE
+> Task :compatLib:compatLibVQ:preDebugBuild UP-TO-DATE
+> Task :compatLib:compatLibVQ:compileDebugAidl NO-SOURCE
+> Task :compatLib:compatLibVR:preBuild UP-TO-DATE
+> Task :compatLib:compatLibVR:preDebugBuild UP-TO-DATE
+> Task :compatLib:compatLibVR:compileDebugAidl NO-SOURCE
+> Task :compatLib:compatLibVS:preBuild UP-TO-DATE
+> Task :compatLib:compatLibVS:preDebugBuild UP-TO-DATE
+> Task :compatLib:compatLibVS:compileDebugAidl NO-SOURCE
+> Task :compatLib:compatLibVT:preBuild UP-TO-DATE
+> Task :compatLib:compatLibVT:preDebugBuild UP-TO-DATE
+> Task :compatLib:compatLibVT:compileDebugAidl NO-SOURCE
+> Task :compatLib:compatLibVU:preBuild UP-TO-DATE
+> Task :compatLib:compatLibVU:preDebugBuild UP-TO-DATE
+> Task :compatLib:compatLibVU:compileDebugAidl NO-SOURCE
+> Task :compatLib:compatLibVV:preBuild UP-TO-DATE
+> Task :compatLib:compatLibVV:preDebugBuild UP-TO-DATE
+> Task :compatLib:compatLibVV:compileDebugAidl NO-SOURCE
+> Task :wmshell:compileDebugAidl UP-TO-DATE
+> Task :compileAospOmegaDebugAidl UP-TO-DATE
+> Task :downloaderlib:prepareGoogleServicesJson UP-TO-DATE
+> Task :downloaderlib:preBuild UP-TO-DATE
+> Task :downloaderlib:preDebugBuild UP-TO-DATE
+> Task :downloaderlib:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :downloaderlib:generateDebugResources UP-TO-DATE
+> Task :downloaderlib:packageDebugResources UP-TO-DATE
+> Task :downloaderlib:processDebugNavigationResources
+> Task :downloaderlib:parseDebugLocalResources UP-TO-DATE
+> Task :topon-ads:preBuild UP-TO-DATE
+> Task :topon-ads:preDebugBuild UP-TO-DATE
+> Task :topon-ads:generateDebugResources UP-TO-DATE
+> Task :topon-ads:packageDebugResources UP-TO-DATE
+> Task :topon-ads:processDebugNavigationResources UP-TO-DATE
+> Task :topon-ads:parseDebugLocalResources UP-TO-DATE
+> Task :topon-ads:generateDebugRFile UP-TO-DATE
+> Task :downloaderlib:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :downloaderlib:dataBindingTriggerDebug UP-TO-DATE
+> Task :downloaderlib:generateDebugBuildConfig
+> Task :downloaderlib:generateDebugRFile UP-TO-DATE
+> Task :topon-ads:compileDebugKotlin UP-TO-DATE
+> Task :topon-ads:javaPreCompileDebug UP-TO-DATE
+> Task :topon-ads:compileDebugJavaWithJavac NO-SOURCE
+> Task :topon-ads:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :downloaderlib:javaPreCompileDebug UP-TO-DATE
+> Task :compatLib:generateDebugResources UP-TO-DATE
+> Task :compatLib:packageDebugResources UP-TO-DATE
+> Task :compatLib:processDebugNavigationResources UP-TO-DATE
+> Task :compatLib:parseDebugLocalResources UP-TO-DATE
+> Task :compatLib:generateDebugRFile UP-TO-DATE
+> Task :compatLib:compileDebugKotlin NO-SOURCE
+> Task :compatLib:javaPreCompileDebug UP-TO-DATE
+> Task :compatLib:compileDebugJavaWithJavac UP-TO-DATE
+> Task :compatLib:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :flags:preBuild UP-TO-DATE
+> Task :flags:preDebugBuild UP-TO-DATE
+> Task :flags:generateDebugResources UP-TO-DATE
+> Task :flags:packageDebugResources UP-TO-DATE
+> Task :flags:processDebugNavigationResources UP-TO-DATE
+> Task :flags:parseDebugLocalResources UP-TO-DATE
+> Task :flags:generateDebugRFile UP-TO-DATE
+> Task :plugincore:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :plugincore:generateDebugResources UP-TO-DATE
+> Task :plugincore:packageDebugResources UP-TO-DATE
+> Task :plugincore:processDebugNavigationResources UP-TO-DATE
+> Task :plugincore:parseDebugLocalResources UP-TO-DATE
+> Task :plugincore:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :plugincore:generateDebugRFile UP-TO-DATE
+> Task :plugincore:compileDebugKotlin UP-TO-DATE
+> Task :plugincore:javaPreCompileDebug UP-TO-DATE
+> Task :plugincore:compileDebugJavaWithJavac UP-TO-DATE
+> Task :plugincore:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :flags:compileDebugKotlin UP-TO-DATE
+> Task :flags:javaPreCompileDebug UP-TO-DATE
+> Task :flags:compileDebugJavaWithJavac UP-TO-DATE
+> Task :flags:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :hidden-api:generateDebugResources UP-TO-DATE
+> Task :hidden-api:packageDebugResources UP-TO-DATE
+> Task :hidden-api:processDebugNavigationResources UP-TO-DATE
+> Task :hidden-api:parseDebugLocalResources UP-TO-DATE
+> Task :hidden-api:generateDebugRFile UP-TO-DATE
+> Task :hidden-api:compileDebugKotlin NO-SOURCE
+> Task :hidden-api:javaPreCompileDebug UP-TO-DATE
+> Task :hidden-api:compileDebugJavaWithJavac UP-TO-DATE
+> Task :hidden-api:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :iconloaderlib:preBuild UP-TO-DATE
+> Task :iconloaderlib:preDebugBuild UP-TO-DATE
+> Task :iconloaderlib:generateDebugResources UP-TO-DATE
+> Task :iconloaderlib:packageDebugResources UP-TO-DATE
+> Task :iconloaderlib:processDebugNavigationResources UP-TO-DATE
+> Task :iconloaderlib:parseDebugLocalResources UP-TO-DATE
+> Task :iconloaderlib:generateDebugRFile UP-TO-DATE
+> Task :iconloaderlib:compileDebugKotlin UP-TO-DATE
+> Task :iconloaderlib:javaPreCompileDebug UP-TO-DATE
+> Task :iconloaderlib:compileDebugJavaWithJavac UP-TO-DATE
+> Task :iconloaderlib:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :wmshell:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :wmshell:generateDebugResources UP-TO-DATE
+> Task :wmshell:packageDebugResources UP-TO-DATE
+> Task :wmshell:processDebugNavigationResources UP-TO-DATE
+> Task :wmshell:parseDebugLocalResources UP-TO-DATE
+> Task :wmshell:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :wmshell:dataBindingTriggerDebug UP-TO-DATE
+> Task :wmshell:generateDebugBuildConfig UP-TO-DATE
+> Task :wmshell:protobufDummy UP-TO-DATE
+> Task :wmshell:extractDebugProto UP-TO-DATE
+> Task :compatLib:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :compatLib:processDebugJavaRes NO-SOURCE
+> Task :compatLib:createFullJarDebug UP-TO-DATE
+> Task :flags:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :flags:processDebugJavaRes UP-TO-DATE
+> Task :flags:createFullJarDebug UP-TO-DATE
+> Task :hidden-api:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :hidden-api:processDebugJavaRes NO-SOURCE
+> Task :hidden-api:createFullJarDebug UP-TO-DATE
+> Task :iconloaderlib:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :iconloaderlib:processDebugJavaRes UP-TO-DATE
+> Task :iconloaderlib:createFullJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVQ:generateDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVQ:packageDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVQ:processDebugNavigationResources UP-TO-DATE
+> Task :compatLib:compatLibVQ:parseDebugLocalResources UP-TO-DATE
+> Task :compatLib:compatLibVQ:generateDebugRFile UP-TO-DATE
+> Task :compatLib:compatLibVQ:compileDebugKotlin NO-SOURCE
+> Task :compatLib:compatLibVQ:javaPreCompileDebug UP-TO-DATE
+> Task :compatLib:compatLibVQ:compileDebugJavaWithJavac UP-TO-DATE
+> Task :compatLib:compatLibVQ:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVQ:processDebugJavaRes NO-SOURCE
+> Task :compatLib:compatLibVQ:createFullJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVQ:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVR:generateDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVR:packageDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVR:processDebugNavigationResources UP-TO-DATE
+> Task :compatLib:compatLibVR:parseDebugLocalResources UP-TO-DATE
+> Task :compatLib:compatLibVR:generateDebugRFile UP-TO-DATE
+> Task :compatLib:compatLibVR:compileDebugKotlin NO-SOURCE
+> Task :compatLib:compatLibVR:javaPreCompileDebug UP-TO-DATE
+> Task :compatLib:compatLibVR:compileDebugJavaWithJavac UP-TO-DATE
+> Task :compatLib:compatLibVR:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVR:processDebugJavaRes NO-SOURCE
+> Task :compatLib:compatLibVR:createFullJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVR:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVS:generateDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVS:packageDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVS:processDebugNavigationResources UP-TO-DATE
+> Task :compatLib:compatLibVS:parseDebugLocalResources UP-TO-DATE
+> Task :compatLib:compatLibVS:generateDebugRFile UP-TO-DATE
+> Task :compatLib:compatLibVS:compileDebugKotlin NO-SOURCE
+> Task :compatLib:compatLibVS:javaPreCompileDebug UP-TO-DATE
+> Task :compatLib:compatLibVS:compileDebugJavaWithJavac UP-TO-DATE
+> Task :compatLib:compatLibVS:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVS:processDebugJavaRes NO-SOURCE
+> Task :compatLib:compatLibVS:createFullJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVS:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVT:generateDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVT:packageDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVT:processDebugNavigationResources UP-TO-DATE
+> Task :compatLib:compatLibVT:parseDebugLocalResources UP-TO-DATE
+> Task :compatLib:compatLibVT:generateDebugRFile UP-TO-DATE
+> Task :compatLib:compatLibVT:compileDebugKotlin NO-SOURCE
+> Task :compatLib:compatLibVT:javaPreCompileDebug UP-TO-DATE
+> Task :compatLib:compatLibVT:compileDebugJavaWithJavac UP-TO-DATE
+> Task :compatLib:compatLibVT:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVT:processDebugJavaRes NO-SOURCE
+> Task :compatLib:compatLibVT:createFullJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVT:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVU:generateDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVU:packageDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVU:processDebugNavigationResources UP-TO-DATE
+> Task :compatLib:compatLibVU:parseDebugLocalResources UP-TO-DATE
+> Task :compatLib:compatLibVU:generateDebugRFile UP-TO-DATE
+> Task :compatLib:compatLibVU:compileDebugKotlin NO-SOURCE
+> Task :compatLib:compatLibVU:javaPreCompileDebug UP-TO-DATE
+> Task :compatLib:compatLibVU:compileDebugJavaWithJavac UP-TO-DATE
+> Task :compatLib:compatLibVU:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVU:processDebugJavaRes NO-SOURCE
+> Task :compatLib:compatLibVU:createFullJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVU:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVV:generateDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVV:packageDebugResources UP-TO-DATE
+> Task :compatLib:compatLibVV:processDebugNavigationResources UP-TO-DATE
+> Task :compatLib:compatLibVV:parseDebugLocalResources UP-TO-DATE
+> Task :compatLib:compatLibVV:generateDebugRFile UP-TO-DATE
+> Task :compatLib:compatLibVV:compileDebugKotlin NO-SOURCE
+> Task :compatLib:compatLibVV:javaPreCompileDebug UP-TO-DATE
+> Task :compatLib:compatLibVV:compileDebugJavaWithJavac UP-TO-DATE
+> Task :compatLib:compatLibVV:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :compatLib:compatLibVV:processDebugJavaRes NO-SOURCE
+> Task :compatLib:compatLibVV:createFullJarDebug UP-TO-DATE
+> Task :wmshell:extractIncludeDebugProto UP-TO-DATE
+> Task :wmshell:extractProto UP-TO-DATE
+> Task :wmshell:generateDebugProto UP-TO-DATE
+> Task :wmshell:generateDebugRFile UP-TO-DATE
+> Task :compatLib:compatLibVV:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :wmshell:compileDebugKotlin UP-TO-DATE
+> Task :wmshell:javaPreCompileDebug UP-TO-DATE
+> Task :wmshell:compileDebugJavaWithJavac UP-TO-DATE
+> Task :generateAospOmegaDebugResources UP-TO-DATE
+> Task :injectCrashlyticsMappingFileIdAospOmegaDebug UP-TO-DATE
+> Task :injectCrashlyticsVersionControlInfoAospOmegaDebug UP-TO-DATE
+> Task :processAospOmegaDebugGoogleServices UP-TO-DATE
+> Task :animationlib:preBuild UP-TO-DATE
+> Task :animationlib:preDebugBuild UP-TO-DATE
+> Task :animationlib:generateDebugResources UP-TO-DATE
+> Task :animationlib:packageDebugResources UP-TO-DATE
+> Task :concurrent:generateDebugResources UP-TO-DATE
+> Task :concurrent:packageDebugResources UP-TO-DATE
+> Task :msdllib:preBuild UP-TO-DATE
+> Task :msdllib:preDebugBuild UP-TO-DATE
+> Task :msdllib:generateDebugResources UP-TO-DATE
+> Task :msdllib:packageDebugResources UP-TO-DATE
+> Task :shared:generateDebugResources UP-TO-DATE
+> Task :shared:packageDebugResources UP-TO-DATE
+> Task :smartspace:preBuild UP-TO-DATE
+> Task :smartspace:preDebugBuild UP-TO-DATE
+> Task :smartspace:generateDebugResources UP-TO-DATE
+> Task :smartspace:packageDebugResources UP-TO-DATE
+> Task :widgetpicker:preBuild UP-TO-DATE
+> Task :widgetpicker:preDebugBuild UP-TO-DATE
+> Task :widgetpicker:generateDebugResources UP-TO-DATE
+> Task :widgetpicker:packageDebugResources UP-TO-DATE
+> Task :mergeAospOmegaDebugResources UP-TO-DATE
+> Task :packageAospOmegaDebugResources UP-TO-DATE
+> Task :animationlib:processDebugNavigationResources UP-TO-DATE
+> Task :concurrent:processDebugNavigationResources UP-TO-DATE
+> Task :msdllib:processDebugNavigationResources UP-TO-DATE
+> Task :shared:processDebugNavigationResources UP-TO-DATE
+> Task :smartspace:processDebugNavigationResources UP-TO-DATE
+> Task :widgetpicker:processDebugNavigationResources UP-TO-DATE
+> Task :processAospOmegaDebugNavigationResources
+> Task :parseAospOmegaDebugLocalResources UP-TO-DATE
+> Task :animationlib:dataBindingMergeDependencyArtifactsDebug UP-TO-DATE
+> Task :animationlib:parseDebugLocalResources UP-TO-DATE
+> Task :animationlib:dataBindingGenBaseClassesDebug UP-TO-DATE
+> Task :animationlib:generateDebugRFile UP-TO-DATE
+> Task :concurrent:parseDebugLocalResources UP-TO-DATE
+> Task :concurrent:generateDebugRFile UP-TO-DATE
+> Task :msdllib:parseDebugLocalResources UP-TO-DATE
+> Task :msdllib:generateDebugRFile UP-TO-DATE
+> Task :shared:parseDebugLocalResources UP-TO-DATE
+> Task :shared:generateDebugRFile UP-TO-DATE
+> Task :smartspace:parseDebugLocalResources UP-TO-DATE
+> Task :smartspace:generateDebugRFile UP-TO-DATE
+> Task :widgetpicker:parseDebugLocalResources UP-TO-DATE
+> Task :widgetpicker:generateDebugRFile UP-TO-DATE
+> Task :dataBindingTriggerAospOmegaDebug UP-TO-DATE
+> Task :generateAospOmegaDebugBuildConfig
+> Task :protobufDummy UP-TO-DATE
+> Task :extractAospOmegaDebugProto UP-TO-DATE
+> Task :extractAospOmegaProto UP-TO-DATE
+> Task :extractAospProto UP-TO-DATE
+> Task :extractDebugProto UP-TO-DATE
+> Task :animationlib:compileDebugKotlin UP-TO-DATE
+> Task :animationlib:javaPreCompileDebug UP-TO-DATE
+> Task :animationlib:compileDebugJavaWithJavac UP-TO-DATE
+> Task :animationlib:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :animationlib:processDebugJavaRes UP-TO-DATE
+> Task :animationlib:createFullJarDebug UP-TO-DATE
+> Task :concurrent:compileDebugKotlin UP-TO-DATE
+> Task :concurrent:javaPreCompileDebug UP-TO-DATE
+> Task :concurrent:compileDebugJavaWithJavac NO-SOURCE
+> Task :concurrent:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :concurrent:processDebugJavaRes UP-TO-DATE
+> Task :concurrent:createFullJarDebug UP-TO-DATE
+> Task :msdllib:compileDebugKotlin UP-TO-DATE
+> Task :msdllib:javaPreCompileDebug UP-TO-DATE
+> Task :msdllib:compileDebugJavaWithJavac NO-SOURCE
+> Task :msdllib:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :msdllib:processDebugJavaRes UP-TO-DATE
+> Task :msdllib:createFullJarDebug UP-TO-DATE
+> Task :plugincore:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :plugincore:processDebugJavaRes UP-TO-DATE
+> Task :plugincore:createFullJarDebug UP-TO-DATE
+> Task :shared:compileDebugKotlin NO-SOURCE
+> Task :shared:javaPreCompileDebug UP-TO-DATE
+> Task :shared:compileDebugJavaWithJavac UP-TO-DATE
+> Task :shared:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :shared:processDebugJavaRes UP-TO-DATE
+> Task :shared:createFullJarDebug UP-TO-DATE
+> Task :smartspace:compileDebugKotlin UP-TO-DATE
+> Task :smartspace:javaPreCompileDebug UP-TO-DATE
+> Task :smartspace:compileDebugJavaWithJavac NO-SOURCE
+> Task :smartspace:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :smartspace:processDebugJavaRes UP-TO-DATE
+> Task :smartspace:createFullJarDebug UP-TO-DATE
+> Task :topon-ads:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :topon-ads:processDebugJavaRes UP-TO-DATE
+> Task :topon-ads:createFullJarDebug UP-TO-DATE
+> Task :concurrent:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :widgetpicker:compileDebugKotlin UP-TO-DATE
+> Task :widgetpicker:javaPreCompileDebug UP-TO-DATE
+> Task :widgetpicker:compileDebugJavaWithJavac NO-SOURCE
+> Task :widgetpicker:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :widgetpicker:processDebugJavaRes UP-TO-DATE
+> Task :widgetpicker:createFullJarDebug UP-TO-DATE
+> Task :wmshell:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :wmshell:processDebugJavaRes UP-TO-DATE
+> Task :wmshell:createFullJarDebug UP-TO-DATE
+> Task :extractOmegaProto UP-TO-DATE
+> Task :extractProto UP-TO-DATE
+> Task :generateAospOmegaDebugRFile UP-TO-DATE
+> Task :animationlib:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :msdllib:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :shared:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :smartspace:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :widgetpicker:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :wmshell:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :javaPreCompileAospOmegaDebug UP-TO-DATE
+> Task :animationlib:writeDebugAarMetadata UP-TO-DATE
+> Task :concurrent:writeDebugAarMetadata UP-TO-DATE
+> Task :downloaderlib:writeDebugAarMetadata UP-TO-DATE
+> Task :flags:writeDebugAarMetadata UP-TO-DATE
+> Task :iconloaderlib:writeDebugAarMetadata UP-TO-DATE
+> Task :msdllib:writeDebugAarMetadata UP-TO-DATE
+> Task :plugincore:writeDebugAarMetadata UP-TO-DATE
+> Task :shared:writeDebugAarMetadata UP-TO-DATE
+> Task :smartspace:writeDebugAarMetadata UP-TO-DATE
+> Task :topon-ads:writeDebugAarMetadata UP-TO-DATE
+> Task :widgetpicker:writeDebugAarMetadata UP-TO-DATE
+> Task :wmshell:writeDebugAarMetadata UP-TO-DATE
+> Task :checkAospOmegaDebugAarMetadata UP-TO-DATE
+> Task :compileAospOmegaDebugNavigationResources UP-TO-DATE
+> Task :mapAospOmegaDebugSourceSetPaths UP-TO-DATE
+> Task :createAospOmegaDebugCompatibleScreenManifests UP-TO-DATE
+> Task :extractDeepLinksAospOmegaDebug
+> Task :animationlib:extractDeepLinksDebug UP-TO-DATE
+> Task :animationlib:processDebugManifest UP-TO-DATE
+> Task :concurrent:extractDeepLinksDebug UP-TO-DATE
+> Task :concurrent:processDebugManifest UP-TO-DATE
+> Task :downloaderlib:extractDeepLinksDebug
+> Task :flags:extractDeepLinksDebug UP-TO-DATE
+> Task :flags:processDebugManifest UP-TO-DATE
+> Task :iconloaderlib:extractDeepLinksDebug UP-TO-DATE
+> Task :iconloaderlib:processDebugManifest UP-TO-DATE
+> Task :msdllib:extractDeepLinksDebug UP-TO-DATE
+> Task :msdllib:processDebugManifest UP-TO-DATE
+> Task :plugincore:extractDeepLinksDebug UP-TO-DATE
+> Task :plugincore:processDebugManifest UP-TO-DATE
+> Task :shared:extractDeepLinksDebug UP-TO-DATE
+> Task :shared:processDebugManifest UP-TO-DATE
+> Task :smartspace:extractDeepLinksDebug UP-TO-DATE
+> Task :smartspace:processDebugManifest UP-TO-DATE
+> Task :topon-ads:extractDeepLinksDebug UP-TO-DATE
+> Task :topon-ads:processDebugManifest UP-TO-DATE
+> Task :widgetpicker:extractDeepLinksDebug UP-TO-DATE
+> Task :widgetpicker:processDebugManifest UP-TO-DATE
+> Task :wmshell:extractDeepLinksDebug UP-TO-DATE
+> Task :wmshell:processDebugManifest UP-TO-DATE
+> Task :animationlib:compileDebugLibraryResources UP-TO-DATE
+> Task :concurrent:compileDebugLibraryResources UP-TO-DATE
+> Task :downloaderlib:compileDebugLibraryResources UP-TO-DATE
+> Task :flags:compileDebugLibraryResources UP-TO-DATE
+> Task :iconloaderlib:compileDebugLibraryResources UP-TO-DATE
+> Task :msdllib:compileDebugLibraryResources UP-TO-DATE
+> Task :plugincore:compileDebugLibraryResources UP-TO-DATE
+> Task :shared:compileDebugLibraryResources UP-TO-DATE
+> Task :smartspace:compileDebugLibraryResources UP-TO-DATE
+> Task :topon-ads:compileDebugLibraryResources UP-TO-DATE
+> Task :widgetpicker:compileDebugLibraryResources UP-TO-DATE
+> Task :wmshell:compileDebugLibraryResources UP-TO-DATE
+> Task :preAospOmegaDebugUnitTestBuild UP-TO-DATE
+> Task :extractTestAospOmegaDebugProto
+> Task :extractTestAospOmegaProto
+> Task :extractTestAospProto
+> Task :extractTestDebugProto
+> Task :extractTestOmegaProto
+> Task :extractTestProto
+> Task :javaPreCompileAospOmegaDebugUnitTest
+
+> Task :downloaderlib:processDebugManifest
+D:\code\cc_v2\cc_v2\super-video-downloader-master\super-video-downloader-master\app\src\main\AndroidManifest.xml:128:9-131:35 Warning:
+	provider#androidx.startup.InitializationProvider was tagged at AndroidManifest.xml:128 to remove other declarations but no other declaration present
+
+> Task :processAospOmegaDebugMainManifest
+package="com.android.launcher3" found in source AndroidManifest.xml: D:\code\cc_v2\cc_v2\Neo-Launcher-main\Neo-Launcher-main\AndroidManifest-common.xml.
+Setting the namespace via the package attribute in the source AndroidManifest.xml is no longer supported, and the value is ignored.
+Recommendation: remove package="com.android.launcher3" from the source AndroidManifest.xml: D:\code\cc_v2\cc_v2\Neo-Launcher-main\Neo-Launcher-main\AndroidManifest-common.xml.
+D:\code\cc_v2\cc_v2\Neo-Launcher-main\Neo-Launcher-main\Omega\AndroidManifest.xml:67:9-70:35 Warning:
+	activity#com.android.launcher3.Launcher was tagged at AndroidManifest.xml:67 to remove other declarations but no other declaration present
+
+> Task :processAospOmegaDebugManifest
+> Task :processAospOmegaDebugManifestForPackage
+warn: removing resource com.video.downloader:string/about_copyright without required default value.
+warn: removing resource com.video.downloader:string/summary__general_about without required default value.
+warn: removing resource com.video.downloader:string/summary_app_categorize without required default value.
+warn: removing resource com.video.downloader:string/title_app_categorize without required default value.
+warn: removing resource com.video.downloader:string/title_drawer_custom_categories without required default value.
+warn: removing resource com.video.downloader:string/title_drawer_vertical_list without required default value.
+warn: removing resource com.video.downloader:string/web_search_phind without required default value.
+
+> Task :processAospOmegaDebugResources
+> Task :downloaderlib:kspDebugKotlin
+> Task :downloaderlib:compileDebugKotlin
+
+> Task :downloaderlib:compileDebugJavaWithJavac
+java.exe : 璀﹀憡: Binding adapter AK(android.widget.ImageView, java.lang.String) already exists for android:src! Overridi
+ng androidx.databinding.adapters.ImageViewBindingAdapter#setImageUri with com.myAllVideoBrowser.ui.component.binding.Im
+ageBinding#setImageUri
+所在位置 行:2 字符: 55
++ ... _test.log'; & 'C:\Program Files\Java\jdk-21123\bin\java.exe' -cp 'gra ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (璀﹀憡: Binding ad...ing#setImageUri:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+璀﹀憡: Binding adapter AK(android.widget.ImageView, android.net.Uri) already exists for android:src! Overriding androidx.
+databinding.adapters.ImageViewBindingAdapter#setImageUri with com.myAllVideoBrowser.ui.component.binding.ImageBinding#s
+etImageUri
+璀﹀憡: Binding adapter AK(android.widget.ImageView, android.graphics.drawable.Drawable) already exists for android:src! O
+verriding androidx.databinding.adapters.ImageViewBindingAdapter#setImageDrawable with com.myAllVideoBrowser.ui.componen
+t.binding.ImageBinding#setImageDrawable
+3 涓鍛?
+
+> Task :dataBindingMergeDependencyArtifactsAospOmegaDebug UP-TO-DATE
+> Task :dataBindingGenBaseClassesAospOmegaDebug UP-TO-DATE
+> Task :downloaderlib:processDebugJavaRes UP-TO-DATE
+> Task :downloaderlib:bundleLibRuntimeToJarDebug
+> Task :downloaderlib:bundleLibCompileToJarDebug
+> Task :downloaderlib:createFullJarDebug
+> Task :extractIncludeAospOmegaDebugProto
+> Task :generateAospOmegaDebugProto UP-TO-DATE
+> Task :kspAospOmegaDebugKotlin
+
+> Task :compileAospOmegaDebugKotlin
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/Omega/src/com/neoapps/neolauncher/compose/pages/preferences/AboutPrefPage.kt:204:5 This annotation is currently applied to the value parameter only, but in the future it will also be applied to field.
+- To opt in to applying to both value parameter and field, add '-Xannotation-default-target=param-property' to your compiler arguments.
+- To keep applying to the value parameter only, use the '@param:' annotation target.
+
+See https://youtrack.jetbrains.com/issue/KT-73255 for more details.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/Omega/src/com/neoapps/neolauncher/compose/pages/preferences/AboutPrefPage.kt:209:5 This annotation is currently applied to the value parameter only, but in the future it will also be applied to field.
+- To opt in to applying to both value parameter and field, add '-Xannotation-default-target=param-property' to your compiler arguments.
+- To keep applying to the value parameter only, use the '@param:' annotation target.
+
+See https://youtrack.jetbrains.com/issue/KT-73255 for more details.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/Omega/src/com/neoapps/neolauncher/compose/pages/preferences/AboutPrefPage.kt:210:5 This annotation is currently applied to the value parameter only, but in the future it will also be applied to field.
+- To opt in to applying to both value parameter and field, add '-Xannotation-default-target=param-property' to your compiler arguments.
+- To keep applying to the value parameter only, use the '@param:' annotation target.
+
+See https://youtrack.jetbrains.com/issue/KT-73255 for more details.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/Omega/src/com/neoapps/neolauncher/compose/pages/preferences/AboutPrefPage.kt:365:47 'static fun startActivity(p0: Context, p1: Intent, p2: Bundle?): Unit' is deprecated. Deprecated in Java.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/Omega/src/com/neoapps/neolauncher/smartspace/weather/OWMWeatherProvider.kt:25:8 'class Criteria : Any, Parcelable' is deprecated. Deprecated in Java.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/Omega/src/com/neoapps/neolauncher/smartspace/weather/OWMWeatherProvider.kt:113:57 'fun getBestProvider(criteria: Criteria, enabledOnly: Boolean): String?' is deprecated. Deprecated in Java.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/Omega/src/com/neoapps/neolauncher/smartspace/weather/OWMWeatherProvider.kt:113:73 'constructor(): Criteria' is deprecated. Deprecated in Java.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/LauncherPrefs.kt:50:13 This annotation is currently applied to the value parameter only, but in the future it will also be applied to property.
+- To opt in to applying to both value parameter and property, add '-Xannotation-default-target=param-property' to your compiler arguments.
+- To keep applying to the value parameter only, use the '@param:' annotation target.
+
+See https://youtrack.jetbrains.com/issue/KT-73255 for more details.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/LauncherPrefs.kt:81:87 This class is not recommended for use in Kotlin. Use 'kotlin.Boolean' instead.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/LauncherPrefs.kt:83:83 This class is not recommended for use in Kotlin. Use 'kotlin.Int' instead.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/LauncherPrefs.kt:85:83 This class is not recommended for use in Kotlin. Use 'kotlin.Float' instead.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/LauncherPrefs.kt:87:81 This class is not recommended for use in Kotlin. Use 'kotlin.Long' instead.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/LauncherPrefs.kt:153:87 This class is not recommended for use in Kotlin. Use 'kotlin.Boolean' instead.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/LauncherPrefs.kt:155:83 This class is not recommended for use in Kotlin. Use 'kotlin.Int' instead.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/LauncherPrefs.kt:157:83 This class is not recommended for use in Kotlin. Use 'kotlin.Float' instead.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/LauncherPrefs.kt:159:81 This class is not recommended for use in Kotlin. Use 'kotlin.Long' instead.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/icons/CacheableShortcutInfo.kt:28:8 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/icons/CacheableShortcutInfo.kt:109:31 The corresponding parameter in the supertype 'CachingLogic' is named 'item'. This may cause problems when calling this function with named arguments.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/icons/CacheableShortcutInfo.kt:112:26 The corresponding parameter in the supertype 'CachingLogic' is named 'item'. This may cause problems when calling this function with named arguments.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/icons/CacheableShortcutInfo.kt:114:27 The corresponding parameter in the supertype 'CachingLogic' is named 'item'. This may cause problems when calling this function with named arguments.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/icons/CacheableShortcutInfo.kt:116:37 The corresponding parameter in the supertype 'CachingLogic' is named 'item'. This may cause problems when calling this function with named arguments.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/icons/CacheableShortcutInfo.kt:118:67 The corresponding parameter in the supertype 'CachingLogic' is named 'item'. This may cause problems when calling this function with named arguments.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/icons/CacheableShortcutInfo.kt:123:17 'data class LauncherAppState : Any' is deprecated. Inject the specific targets directly instead of using LauncherAppState.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/icons/CacheableShortcutInfo.kt:145:9 The corresponding parameter in the supertype 'CachingLogic' is named 'iconProvider'. This may cause problems when calling this function with named arguments.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/model/BgDataModel.kt:118:9 'val extraItems: IntSparseArrayMap<BgDataModel.FixedContainerItems>' is deprecated. Use independent repository for each extra item.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/model/BgDataModel.kt:127:9 'val extraItems: IntSparseArrayMap<BgDataModel.FixedContainerItems>' is deprecated. Use independent repository for each extra item.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/model/ModelInitializer.kt:64:5 This annotation is currently applied to the value parameter only, but in the future it will also be applied to property.
+- To opt in to applying to both value parameter and property, add '-Xannotation-default-target=param-property' to your compiler arguments.
+- To keep applying to the value parameter only, use the '@param:' annotation target.
+
+See https://youtrack.jetbrains.com/issue/KT-73255 for more details.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/recyclerview/AllAppsRecyclerViewPool.kt:52:5 This annotation is currently applied to the value parameter only, but in the future it will also be applied to property.
+- To opt in to applying to both value parameter and property, add '-Xannotation-default-target=param-property' to your compiler arguments.
+- To keep applying to the value parameter only, use the '@param:' annotation target.
+
+See https://youtrack.jetbrains.com/issue/KT-73255 for more details.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/widget/WidgetInflater.kt:34:5 This annotation is currently applied to the value parameter only, but in the future it will also be applied to property.
+- To opt in to applying to both value parameter and property, add '-Xannotation-default-target=param-property' to your compiler arguments.
+- To keep applying to the value parameter only, use the '@param:' annotation target.
+
+See https://youtrack.jetbrains.com/issue/KT-73255 for more details.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/widget/WidgetInflater.kt:35:5 This annotation is currently applied to the value parameter only, but in the future it will also be applied to property.
+- To opt in to applying to both value parameter and property, add '-Xannotation-default-target=param-property' to your compiler arguments.
+- To keep applying to the value parameter only, use the '@param:' annotation target.
+
+See https://youtrack.jetbrains.com/issue/KT-73255 for more details.
+w: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/src/com/android/launcher3/widget/WidgetInflater.kt:196:9 This annotation is currently applied to the value parameter only, but in the future it will also be applied to property.
+- To opt in to applying to both value parameter and property, add '-Xannotation-default-target=param-property' to your compiler arguments.
+- To keep applying to the value parameter only, use the '@param:' annotation target.
+
+See https://youtrack.jetbrains.com/issue/KT-73255 for more details.
+
+> Task :compileAospOmegaDebugJavaWithJavac
+璀﹀憡: 浠ヤ笅閫夐」鏈浠讳綍澶勭悊绋嬪簭璇嗗埆: '[dagger.hilt.disableModulesHaveInstallInCheck, dagger.hilt.internal.useAggregatingRootProc
+essor, dagger.fastInit, dagger.hilt.android.internal.disableAndroidSuperclassValidation, dagger.hilt.android.internal.p
+rojectType]'
+娉? 鏌愪簺杈撳叆鏂囦欢浣跨敤鎴栬鐩栦簡宸茶繃鏃剁殑 API銆?
+娉? 鏈夊叧璇︾粏淇℃伅, 璇蜂娇鐢?-Xlint:deprecation 閲嶆柊缂栬瘧銆?
+娉? 鏌愪簺杈撳叆鏂囦欢浣跨敤浜嗘湭缁忔鏌ユ垨涓嶅畨鍏ㄧ殑鎿嶄綔銆?
+娉? 鏈夊叧璇︾粏淇℃伅, 璇蜂娇鐢?-Xlint:unchecked 閲嶆柊缂栬瘧銆?
+1 涓鍛?
+
+> Task :hiltSyncAospOmegaDebug
+> Task :hiltAggregateDepsAospOmegaDebug UP-TO-DATE
+> Task :hiltJavaCompileAospOmegaDebug NO-SOURCE
+> Task :processAospOmegaDebugJavaRes UP-TO-DATE
+> Task :bundleAospOmegaDebugClassesToCompileJar
+> Task :extractIncludeAospOmegaDebugUnitTestProto
+> Task :generateAospOmegaDebugUnitTestProto NO-SOURCE
+> Task :kspAospOmegaDebugUnitTestKotlin
+> Task :compileAospOmegaDebugUnitTestKotlin
+> Task :processAospOmegaDebugUnitTestJavaRes
+> Task :compileAospOmegaDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :transformAospOmegaDebugClassesWithAsm
+> Task :bundleAospOmegaDebugClassesToRuntimeJar
+> Task :hiltSyncAospOmegaDebugUnitTest
+> Task :hiltAggregateDepsAospOmegaDebugUnitTest
+> Task :hiltJavaCompileAospOmegaDebugUnitTest NO-SOURCE
+> Task :transformAospOmegaDebugUnitTestClassesWithAsm
+> Task :testAospOmegaDebugUnitTest
+
+[Incubating] Problems report is available at: file:///D:/code/cc_v2/cc_v2/Neo-Launcher-main/Neo-Launcher-main/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.4.0/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 2m 11s
+342 actionable tasks: 40 executed, 302 up-to-date

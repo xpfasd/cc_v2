@@ -5,13 +5,13 @@ import org.junit.Test
 import java.io.File
 
 class TopOnAdScenesSourceTest {
-    private val scenesFile = File("../topon-ads/src/main/java/com/cc/ads/topon/TopOnAdScenes.kt")
+    private val profilesFile = File("../topon-ads/src/main/java/com/cc/ads/topon/TopOnAdProfiles.kt")
     private val mainActivityFile =
         File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt")
 
     @Test
-    fun topOnAdScenes_declaresAllRequestedPlacementIds() {
-        val source = scenesFile.readText()
+    fun topOnAdProfiles_declareProductionAndTestPlacementIds() {
+        val source = profilesFile.readText()
 
         listOf(
             "n69db2a97be495",
@@ -21,7 +21,16 @@ class TopOnAdScenesSourceTest {
             "n69db2a9d986e1",
             "n69db2a9aa11d7",
             "n69db2a99c9b03",
-            "n69db2a9b611b4"
+            "n69db2a9b611b4",
+            "n1h9mmu52n0afu",
+            "n1h9mmu52n0710",
+            "n1h9mmu52mvnbp",
+            "n1h9mmu52mvi86",
+            "n1h9mmu52mvbp4",
+            "n1h9mmu52mv7pl",
+            "n1h9mmu52mv3d3",
+            "n1h9mmu52muv52",
+            "n1h9mmu52mun2"
         ).forEach { placementId ->
             assertTrue("Missing placement id $placementId", source.contains(placementId))
         }

@@ -61,7 +61,8 @@
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/admob_app_id" />
+            android:value="@string/admob_app_id"
+            tools:replace="android:value" />
 
         <activity
             android:name="com.android.launcher3.Launcher"
