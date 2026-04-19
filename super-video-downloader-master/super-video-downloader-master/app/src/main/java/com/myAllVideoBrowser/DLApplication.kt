@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.work.Configuration
 import androidx.work.WorkManager
+import com.myAllVideoBrowser.ads.InstallReferrerAttributionChecker
 import com.cc.ads.topon.TopOnAds
 import com.myAllVideoBrowser.di.component.DaggerAppComponent
 import com.myAllVideoBrowser.util.AppLogger
@@ -57,6 +58,10 @@ open class DLApplication : DaggerApplication() {
         super.onCreate()
 
         ContextUtils.initApplicationContext(applicationContext)
+        CoroutineScope(Dispatchers.IO).launch {
+            InstallReferrerAttributionChecker(applicationContext, sharedPrefHelper)
+                .checkAndPersistIfNeeded()
+        }
         AppLogger.i("TopOn init result: ${TopOnAds.initializeFromManifest(applicationContext, BuildConfig.DEBUG)}")
 
         initializeFileUtils()

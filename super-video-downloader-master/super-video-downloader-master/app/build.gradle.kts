@@ -389,6 +389,7 @@ dependencies {
     add("implementation", downloaderLibs.glideRuntime)
     add("implementation", downloaderLibs.kotlinxSerializationJson)
     add("implementation", downloaderLibs.kotlinxSerializationCore)
+    add("implementation", downloaderLibs.installReferrer)
     add("implementation", downloaderLibs.jsoup)
     add("implementation", downloaderLibs.timeago)
     add("coreLibraryDesugaring", downloaderLibs.desugarJdk)

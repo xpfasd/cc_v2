@@ -49,6 +49,10 @@ object TopOnAdSceneManager {
     }
 
     fun preloadLauncherAppInterstitial(context: Context) {
+        if (!canUseExternalInterstitial(context)) {
+            Log.d(TAG, "TopOn launcher interstitial preload skipped: user is not yet eligible")
+            return
+        }
         preloadInterstitial(context, TopOnAdScenes.LAUNCHER_APP_INTERSTITIAL)
     }
 
@@ -68,6 +72,11 @@ object TopOnAdSceneManager {
     }
 
     fun showLauncherAppInterstitial(activity: Activity, onFinished: () -> Unit) {
+        if (!canUseExternalInterstitial(activity)) {
+            Log.d(TAG, "TopOn launcher interstitial show skipped: user is not yet eligible")
+            onFinished()
+            return
+        }
         showReloadingInterstitial(activity, TopOnAdScenes.LAUNCHER_APP_INTERSTITIAL, onFinished)
     }
 
@@ -109,6 +118,10 @@ object TopOnAdSceneManager {
             Log.d(TAG, "TopOn launch interstitial show returned false: placementId=$placementId")
             finishOnce()
         }
+    }
+
+    private fun canUseExternalInterstitial(context: Context): Boolean {
+        return TopOnAdAttributionStore.canUseExternalInterstitial(context.applicationContext)
     }
 
     fun preloadGuideNative(context: Context) {

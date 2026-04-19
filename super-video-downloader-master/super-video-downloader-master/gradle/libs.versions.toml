@@ -56,6 +56,7 @@ rxjava3 = "3.1.12"
 rxandroid3 = "3.0.2"
 
 # Other Dependencies
+installReferrer = "2.2"
 glide = "5.0.5"
 youtubedl = "0.18.1"
 ffmpegKit = "2.1.0"
@@ -169,6 +170,7 @@ glideRuntime = { module = "com.github.bumptech.glide:glide", version.ref = "glid
 glideCompiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 
 # Other Dependencies
+installReferrer = { module = "com.android.installreferrer:installreferrer", version.ref = "installReferrer" }
 youtubedl = { module = "io.github.junkfood02.youtubedl-android:library", version.ref = "youtubedl" }
 youtubedl-ffmpeg = { module = "io.github.junkfood02.youtubedl-android:ffmpeg", version.ref = "youtubedl" }
 #ffmpegKit = { module = "com.antonkarpenko:ffmpeg-kit-full-gpl", version.ref = "ffmpegKit" }

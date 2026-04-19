@@ -61,6 +61,10 @@ class SharedPrefHelper @Inject constructor(
         private const val PASSWORD_SECURITY_ANSWER_HASH = "PASSWORD_SECURITY_ANSWER_HASH"
         private const val SELECTED_LANGUAGE_TAG = "SELECTED_LANGUAGE_TAG"
         private const val BROWSER_TAB_SESSION = "BROWSER_TAB_SESSION"
+        private const val IS_AD_ATTRIBUTED_USER = "IS_AD_ATTRIBUTED_USER"
+        private const val AD_ATTRIBUTION_MATCHED_AT_MILLIS = "AD_ATTRIBUTION_MATCHED_AT_MILLIS"
+        private const val HAS_ATTEMPTED_INSTALL_REFERRER_ATTRIBUTION =
+            "HAS_ATTEMPTED_INSTALL_REFERRER_ATTRIBUTION"
     }
 
     private val gson = Gson()
@@ -442,6 +446,36 @@ class SharedPrefHelper @Inject constructor(
         return sharedPreferences.getString(SELECTED_LANGUAGE_TAG, SYSTEM_LANGUAGE_TAG)
             ?.takeIf { it.isNotBlank() }
             ?: SYSTEM_LANGUAGE_TAG
+    }
+
+    fun getIsAdAttributedUser(): Boolean {
+        return sharedPreferences.getBoolean(IS_AD_ATTRIBUTED_USER, false)
+    }
+
+    fun markAdAttributedUser() {
+        sharedPreferences.edit {
+            putBoolean(IS_AD_ATTRIBUTED_USER, true)
+        }
+    }
+
+    fun getAdAttributionMatchedAtMillis(): Long {
+        return sharedPreferences.getLong(AD_ATTRIBUTION_MATCHED_AT_MILLIS, 0L)
+    }
+
+    fun setAdAttributionMatchedAtMillis(matchedAtMillis: Long) {
+        sharedPreferences.edit {
+            putLong(AD_ATTRIBUTION_MATCHED_AT_MILLIS, matchedAtMillis)
+        }
+    }
+
+    fun hasAttemptedInstallReferrerAttribution(): Boolean {
+        return sharedPreferences.getBoolean(HAS_ATTEMPTED_INSTALL_REFERRER_ATTRIBUTION, false)
+    }
+
+    fun markInstallReferrerAttributionAttempted() {
+        sharedPreferences.edit {
+            putBoolean(HAS_ATTEMPTED_INSTALL_REFERRER_ATTRIBUTION, true)
+        }
     }
 
     fun saveBrowserTabSession(session: BrowserTabSession) {

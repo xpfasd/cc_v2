@@ -289,6 +289,19 @@ public class Launcher extends StatefulActivity<LauncherState>
         implements Callbacks, InvariantDeviceProfile.OnIDPChangeListener,
         PluginListener<LauncherOverlayPlugin> {
     public static final String TAG = "Launcher";
+    private static final Set<String> EXCLUDED_TOPON_LAUNCH_PACKAGES = Set.of(
+            "com.tencent.mm",
+            "com.ss.android.ugc.aweme",
+            "com.instagram.android",
+            "com.zhiliaoapp.musically",
+            "com.facebook.katana",
+            "com.android.chrome",
+            "com.google.android.gm",
+            "com.google.android.apps.maps",
+            "com.google.android.youtube",
+            "com.google.android.apps.photos",
+            "com.google.android.apps.docs"
+    );
 
     public static final ContextTracker.ActivityTracker<Launcher> ACTIVITY_TRACKER =
             new ContextTracker.ActivityTracker<>();
@@ -2263,12 +2276,20 @@ public class Launcher extends StatefulActivity<LauncherState>
         if (targetPackage == null || targetPackage.equals(getPackageName())) {
             return false;
         }
+        if (isExcludedTopOnLaunchPackage(targetPackage)) {
+            return false;
+        }
         try {
             ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo(targetPackage, 0);
             return (applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM) == 0;
         } catch (Exception ignored) {
             return false;
         }
+    }
+
+    private boolean isExcludedTopOnLaunchPackage(String targetPackage) {
+        return EXCLUDED_TOPON_LAUNCH_PACKAGES.contains(targetPackage)
+                || targetPackage.startsWith("com.google.android.");
     }
 
     boolean isHotseatLayout(View layout) {
