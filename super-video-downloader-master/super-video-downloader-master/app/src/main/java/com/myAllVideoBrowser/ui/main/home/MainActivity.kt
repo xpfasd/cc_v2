@@ -35,7 +35,6 @@ import androidx.appcompat.content.res.AppCompatResources
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.progressindicator.LinearProgressIndicator
-import com.google.android.material.snackbar.Snackbar
 import com.myAllVideoBrowser.DLApplication
 import com.myAllVideoBrowser.R
 import com.myAllVideoBrowser.databinding.ActivityMainBinding
@@ -101,7 +100,6 @@ class MainActivity : BaseActivity() {
     private lateinit var launcherPromptStepOne: TextView
     private lateinit var launcherPromptStepTwo: TextView
     private var splashProgressAnimator: ValueAnimator? = null
-    private var launcherPromptAttempts = 0
     private var notificationPermissionRequested = false
     private var guideNativeAdShowing = false
     private var ignoreGuideNativePagerSelection = false
@@ -325,10 +323,7 @@ class MainActivity : BaseActivity() {
             clearLauncherActivationReturnFlag()
             launcherSelectionRequested = false
             suppressLauncherPromptOnResume = false
-            val isDefaultHome = isAppDefaultHome()
-            if (shouldRequestLauncherBeforeGuide(launcherPromptAttempts, isDefaultHome)) {
-                requestLauncherActivation(skipPromptOnResume = true)
-            } else {
+            if (sharedPrefHelper.getIsFirstStart()) {
                 showOnboarding()
             }
         }
@@ -446,13 +441,13 @@ class MainActivity : BaseActivity() {
         val isDefaultHome = isAppDefaultHome()
         AppLogger.d(
             "Splash delay completed: isFirstStart=$isFirstStart, " +
-                "isDefaultHome=$isDefaultHome, launcherPromptAttempts=$launcherPromptAttempts"
+                "isDefaultHome=$isDefaultHome"
         )
         if (isFirstStart) {
             TopOnAdSceneManager.preloadFirstInterstitial(applicationContext)
             TopOnAdSceneManager.preloadGuideNative(applicationContext)
         }
-        if (isFirstStart && shouldRequestLauncherBeforeGuide(launcherPromptAttempts, isDefaultHome)) {
+        if (isFirstStart && shouldRequestLauncherBeforeGuide(isDefaultHome)) {
             AppLogger.d("Splash flow showing onboarding because launcher prompt is required")
             requestLauncherActivation(skipPromptOnResume = true)
             return
@@ -487,7 +482,11 @@ class MainActivity : BaseActivity() {
     private fun continueLaunchFlowAfterLauncherReturn() {
         launcherSelectionRequested = false
         suppressLauncherPromptOnResume = false
-        showOnboarding()
+        if (sharedPrefHelper.getIsFirstStart()) {
+            showOnboarding()
+        } else {
+            finishLaunchFlow()
+        }
     }
 
     private fun showOnboarding() {
@@ -550,8 +549,8 @@ class MainActivity : BaseActivity() {
         guideNativeAdShowing = false
         maybeRequestNotificationPermission()
         scheduleStoragePermissionPromptReadiness()
-        if (shouldShowLauncherPrompt()) {
-            showLauncherReminder()
+        if (shouldAutoRequestLauncherOnLaunch(sharedPrefHelper.getIsFirstStart(), isAppDefaultHome())) {
+            requestLauncherActivation(skipPromptOnResume = true)
         }
     }
 
@@ -600,20 +599,9 @@ class MainActivity : BaseActivity() {
         launchSplashAdContainer.isVisible = false
     }
 
-    private fun showLauncherReminder() {
-        Snackbar.make(
-            dataBinding.root,
-            R.string.launch_launcher_prompt_title,
-            Snackbar.LENGTH_LONG
-        ).setAction(R.string.launch_continue) {
-            requestLauncherActivation(skipPromptOnResume = true)
-        }.show()
-    }
-
     private fun shouldShowLauncherPrompt(): Boolean = !isAppDefaultHome()
 
     private fun requestLauncherActivation(skipPromptOnResume: Boolean = false) {
-        launcherPromptAttempts += 1
         launcherSelectionRequested = true
         suppressLauncherPromptOnResume = skipPromptOnResume
         requestLauncherSelection(this, requestHomeRoleLauncher)

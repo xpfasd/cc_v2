@@ -103,4 +103,30 @@ class MainActivityLaunchFlowSourceTest {
         assertTrue(source.contains("Splash flow splash ad finished"))
         assertTrue(source.contains("Splash flow splash ad unavailable, continuing to onboarding"))
     }
+
+    @Test
+    fun `returning users request launcher activation directly instead of showing snackbar reminder`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        val finishBody = source.substringAfter("private fun finishLaunchFlow() {")
+            .substringBefore("\n    fun isStoragePermissionPromptReady(): Boolean = storagePermissionPromptReady")
+
+        assertTrue(finishBody.contains("shouldAutoRequestLauncherOnLaunch"))
+        assertTrue(finishBody.contains("requestLauncherActivation(skipPromptOnResume = true)"))
+        assertFalse(source.contains("Snackbar.make("))
+        assertFalse(source.contains("private fun showLauncherReminder()"))
+    }
+
+    @Test
+    fun `launcher authorization resume path does not issue a second launcher prompt`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        val onResumeBody = source.substringAfter("override fun onResume() {")
+            .substringBefore("\n    override fun onDestroy() {")
+
+        assertFalse(onResumeBody.contains("requestLauncherActivation(skipPromptOnResume = true)"))
+        assertFalse(onResumeBody.contains("shouldRequestLauncherBeforeGuide(launcherPromptAttempts"))
+        assertTrue(onResumeBody.contains("if (sharedPrefHelper.getIsFirstStart()) {"))
+        assertTrue(onResumeBody.contains("showOnboarding()"))
+    }
 }

@@ -6,6 +6,5 @@ internal fun shouldAutoRequestLauncherOnLaunch(
 ): Boolean = !isFirstStart && !isDefaultHome
 
 internal fun shouldRequestLauncherBeforeGuide(
-    attempts: Int,
     isDefaultHome: Boolean
-): Boolean = !isDefaultHome && attempts < 2
+): Boolean = !isDefaultHome

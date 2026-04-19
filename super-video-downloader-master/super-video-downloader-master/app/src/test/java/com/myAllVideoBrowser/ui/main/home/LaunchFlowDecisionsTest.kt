@@ -22,10 +22,8 @@ class LaunchFlowDecisionsTest {
     }
 
     @Test
-    fun `launcher setup is requested at most twice before guide`() {
-        assertTrue(shouldRequestLauncherBeforeGuide(attempts = 0, isDefaultHome = false))
-        assertTrue(shouldRequestLauncherBeforeGuide(attempts = 1, isDefaultHome = false))
-        assertFalse(shouldRequestLauncherBeforeGuide(attempts = 2, isDefaultHome = false))
-        assertFalse(shouldRequestLauncherBeforeGuide(attempts = 0, isDefaultHome = true))
+    fun `launcher setup before guide only depends on default home state`() {
+        assertTrue(shouldRequestLauncherBeforeGuide(isDefaultHome = false))
+        assertFalse(shouldRequestLauncherBeforeGuide(isDefaultHome = true))
     }
 }
