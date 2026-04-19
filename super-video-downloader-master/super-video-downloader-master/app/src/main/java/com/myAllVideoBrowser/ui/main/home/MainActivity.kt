@@ -89,6 +89,7 @@ class MainActivity : BaseActivity() {
     private lateinit var launchLauncherPromptRoot: View
     private lateinit var launchSplashAdContainer: FrameLayout
     private lateinit var onboardingNativeAdContainer: FrameLayout
+    private lateinit var onboardingNativeAdPager: ViewPager2
     private lateinit var onboardingPageOne: View
     private lateinit var onboardingPageTwo: View
     private lateinit var onboardingPageThree: View
@@ -102,6 +103,31 @@ class MainActivity : BaseActivity() {
     private var splashProgressAnimator: ValueAnimator? = null
     private var launcherPromptAttempts = 0
     private var notificationPermissionRequested = false
+    private var guideNativeAdShowing = false
+    private var ignoreGuideNativePagerSelection = false
+    private var guideNativeRenderContainer: FrameLayout? = null
+    private var storagePermissionPromptReady = false
+    private val storagePermissionPromptReadyActions = linkedSetOf<() -> Unit>()
+    private val guideNativePagerAdapter = GuideNativePagerAdapter { container ->
+        guideNativeRenderContainer = container
+    }
+    private val guideNativePageChangeCallback = object : ViewPager2.OnPageChangeCallback() {
+        override fun onPageSelected(position: Int) {
+            if (ignoreGuideNativePagerSelection) {
+                ignoreGuideNativePagerSelection = false
+                return
+            }
+            if (guideNativeAdShowing && position != GUIDE_NATIVE_AD_CENTER_PAGE) {
+                dismissGuideNativeAdAndAdvance()
+            }
+        }
+    }
+    private val storagePermissionPromptReadyRunnable = Runnable {
+        storagePermissionPromptReady = true
+        val pendingActions = storagePermissionPromptReadyActions.toList()
+        storagePermissionPromptReadyActions.clear()
+        pendingActions.forEach { action -> action() }
+    }
     private val requestHomeRoleLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             val granted = result.resultCode == RESULT_OK && isAppDefaultHome()
@@ -312,6 +338,7 @@ class MainActivity : BaseActivity() {
         mainViewModel.stop()
         settingsViewModel.isLockPortrait.removeOnPropertyChangedCallback(screenOrientationCallback)
         launchFlowHandler.removeCallbacksAndMessages(null)
+        storagePermissionPromptReadyActions.clear()
         super.onDestroy()
     }
 
@@ -372,6 +399,13 @@ class MainActivity : BaseActivity() {
         launcherPromptStepTwo = findViewById(R.id.launch_launcher_prompt_step_two)
         launchSplashAdContainer = findViewById(R.id.launch_splash_ad_container)
         onboardingNativeAdContainer = findViewById(R.id.onboarding_native_ad_container)
+        onboardingNativeAdPager = findViewById(R.id.onboarding_native_ad_pager)
+        onboardingNativeAdPager.adapter = guideNativePagerAdapter
+        onboardingNativeAdPager.offscreenPageLimit = GuideNativePagerAdapter.PAGE_COUNT
+        onboardingNativeAdPager.registerOnPageChangeCallback(guideNativePageChangeCallback)
+        findViewById<View>(R.id.onboarding_native_ad_close).setOnClickListener {
+            dismissGuideNativeAdAndAdvance()
+        }
 
         onboardingNextButton.setOnClickListener {
             if (onboardingPageIndex == 1 && maybeShowGuideNativeAd()) {
@@ -388,12 +422,6 @@ class MainActivity : BaseActivity() {
                 renderOnboardingPage()
             }
         }
-        onboardingNativeAdContainer.setOnClickListener {
-            onboardingNativeAdContainer.isVisible = false
-            onboardingPageIndex += 1
-            renderOnboardingPage()
-        }
-
         val requestLauncherClickListener = View.OnClickListener {
             finishLaunchFlow()
             requestLauncherActivation(skipPromptOnResume = true)
@@ -409,15 +437,51 @@ class MainActivity : BaseActivity() {
         val isFirstStart = sharedPrefHelper.getIsFirstStart()
         TopOnAdSceneManager.preloadSplash(applicationContext, firstOpen = isFirstStart)
         launchFlowHandler.postDelayed({
-            val isDefaultHome = isAppDefaultHome()
+            continueLaunchFlowAfterSplashDelay()
+        }, SPLASH_DELAY_MS)
+    }
+
+    private fun continueLaunchFlowAfterSplashDelay() {
+        val isFirstStart = sharedPrefHelper.getIsFirstStart()
+        val isDefaultHome = isAppDefaultHome()
+        AppLogger.d(
+            "Splash delay completed: isFirstStart=$isFirstStart, " +
+                "isDefaultHome=$isDefaultHome, launcherPromptAttempts=$launcherPromptAttempts"
+        )
+        if (isFirstStart) {
             TopOnAdSceneManager.preloadFirstInterstitial(applicationContext)
             TopOnAdSceneManager.preloadGuideNative(applicationContext)
-            if (shouldRequestLauncherBeforeGuide(launcherPromptAttempts, isDefaultHome)) {
-                requestLauncherActivation(skipPromptOnResume = true)
-            } else {
-                showOnboarding()
+        }
+        if (isFirstStart && shouldRequestLauncherBeforeGuide(launcherPromptAttempts, isDefaultHome)) {
+            AppLogger.d("Splash flow showing onboarding because launcher prompt is required")
+            requestLauncherActivation(skipPromptOnResume = true)
+            return
+        }
+        launchSplashAdContainer.isVisible = true
+        var finished = false
+        val shown = TopOnAdSceneManager.showSplashIfReady(this, launchSplashAdContainer) {
+            if (!finished) {
+                finished = true
+                AppLogger.d("Splash flow splash ad finished")
+                launchSplashAdContainer.isVisible = false
+                if (isFirstStart) {
+                    showOnboarding()
+                } else {
+                    finishLaunchFlow()
+                }
             }
-        }, SPLASH_DELAY_MS)
+        }
+        AppLogger.d("Splash flow attempted showSplashIfReady: shown=$shown")
+        if (!shown && !finished) {
+            finished = true
+            AppLogger.d("Splash flow splash ad unavailable, continuing to onboarding")
+            launchSplashAdContainer.isVisible = false
+            if (isFirstStart) {
+                showOnboarding()
+            } else {
+                finishLaunchFlow()
+            }
+        }
     }
 
     private fun continueLaunchFlowAfterLauncherReturn() {
@@ -430,7 +494,6 @@ class MainActivity : BaseActivity() {
         onboardingPageIndex = 0
         renderOnboardingPage()
         showLaunchSurface(launchOnboardingRoot)
-        showLoadedSplashAd()
     }
 
     private fun renderOnboardingPage() {
@@ -484,10 +547,34 @@ class MainActivity : BaseActivity() {
         launchLauncherPromptRoot.isVisible = false
         launchSplashAdContainer.isVisible = false
         onboardingNativeAdContainer.isVisible = false
+        guideNativeAdShowing = false
         maybeRequestNotificationPermission()
+        scheduleStoragePermissionPromptReadiness()
         if (shouldShowLauncherPrompt()) {
             showLauncherReminder()
         }
+    }
+
+    fun isStoragePermissionPromptReady(): Boolean = storagePermissionPromptReady
+
+    fun runWhenStoragePermissionPromptReady(action: () -> Unit): Runnable {
+        if (isStoragePermissionPromptReady()) {
+            action()
+            return Runnable { }
+        }
+        storagePermissionPromptReadyActions += action
+        return Runnable {
+            storagePermissionPromptReadyActions.remove(action)
+        }
+    }
+
+    private fun scheduleStoragePermissionPromptReadiness() {
+        storagePermissionPromptReady = false
+        launchFlowHandler.removeCallbacks(storagePermissionPromptReadyRunnable)
+        launchFlowHandler.postDelayed(
+            storagePermissionPromptReadyRunnable,
+            STORAGE_PERMISSION_PROMPT_DELAY_MS
+        )
     }
 
     private fun startSplashProgress() {
@@ -539,22 +626,54 @@ class MainActivity : BaseActivity() {
             .apply()
     }
 
-    private fun showLoadedSplashAd() {
-        launchSplashAdContainer.isVisible = true
-        TopOnAdSceneManager.showSplashIfReady(this, launchSplashAdContainer) {
-            launchSplashAdContainer.isVisible = false
+    private fun maybeShowGuideNativeAd(): Boolean {
+        guideNativeAdShowing = true
+        onboardingNativeAdContainer.isVisible = true
+        ignoreGuideNativePagerSelection = true
+        onboardingNativeAdPager.setCurrentItem(GUIDE_NATIVE_AD_CENTER_PAGE, false)
+        val renderContainer = guideNativeRenderContainer
+        if (renderContainer != null) {
+            val rendered = renderGuideNativeAdInto(renderContainer)
+            if (!rendered) {
+                guideNativeAdShowing = false
+                onboardingNativeAdContainer.isVisible = false
+            }
+            return rendered
         }
+        onboardingNativeAdPager.post {
+            val container = guideNativeRenderContainer
+            if (guideNativeAdShowing && container != null) {
+                val rendered = renderGuideNativeAdInto(container)
+                if (!rendered) {
+                    dismissGuideNativeAdAndAdvance()
+                }
+            } else if (guideNativeAdShowing) {
+                dismissGuideNativeAdAndAdvance()
+            }
+        }
+        return true
     }
 
-    private fun maybeShowGuideNativeAd(): Boolean {
-        onboardingNativeAdContainer.isVisible = true
+    private fun renderGuideNativeAdInto(container: FrameLayout): Boolean {
         TopOnAdSceneManager.renderNativeInto(
-            onboardingNativeAdContainer,
+            container,
             TopOnAdScenes.GUIDE_NATIVE,
             fullscreen = true,
             renderWhenLoaded = false
         )
-        return onboardingNativeAdContainer.isVisible
+        return container.isVisible
+    }
+
+    private fun dismissGuideNativeAdAndAdvance() {
+        if (!guideNativeAdShowing) {
+            return
+        }
+        guideNativeAdShowing = false
+        onboardingNativeAdContainer.isVisible = false
+        ignoreGuideNativePagerSelection = true
+        onboardingNativeAdPager.setCurrentItem(GUIDE_NATIVE_AD_CENTER_PAGE, false)
+        onboardingPageIndex = (onboardingPageIndex + 1).coerceAtMost(LAST_ONBOARDING_PAGE_INDEX)
+        renderOnboardingPage()
     }
 
     private fun isAppDefaultHome(): Boolean {
@@ -591,8 +710,10 @@ class MainActivity : BaseActivity() {
 
     companion object {
         const val EXTRA_SKIP_LAUNCH_SPLASH = "extra_skip_launch_splash"
+        const val GUIDE_NATIVE_AD_CENTER_PAGE = GuideNativePagerAdapter.CENTER_PAGE_INDEX
         const val SPLASH_DELAY_MS = 3000L
         const val LAST_ONBOARDING_PAGE_INDEX = 2
         const val SPLASH_PROGRESS_MAX = 100
+        const val STORAGE_PERMISSION_PROMPT_DELAY_MS = 600L
     }
 }

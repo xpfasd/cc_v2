@@ -104,6 +104,7 @@ class VideoFragment : BaseFragment() {
         }
     }
     private var hasInitializedContent = false
+    private var cancelStoragePermissionPromptReadyCallback: Runnable? = null
 
     private val storagePermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { result ->
@@ -171,6 +172,8 @@ class VideoFragment : BaseFragment() {
         if (this::dataBinding.isInitialized) {
             dataBinding.root.removeCallbacks(syncListUiRunnable)
         }
+        cancelStoragePermissionPromptReadyCallback?.run()
+        cancelStoragePermissionPromptReadyCallback = null
         disposable?.dispose()
         disposable = null
         super.onDestroyView()
@@ -210,23 +213,57 @@ class VideoFragment : BaseFragment() {
     private fun ensureVideoContentReady() {
         if (isPrivateSpaceMode || hasDownloadLocationPermissions()) {
             initializeVideoContent()
-        } else {
-            AppLogger.d("VideoFragment.ensureVideoContentReady requesting permissions ${requiredStoragePermissions().toList()}")
-            storagePermissionLauncher.launch(requiredStoragePermissions())
+            return
         }
+
+        val mainActivity = activity as? MainActivity
+        if (mainActivity == null || mainActivity.isStoragePermissionPromptReady()) {
+            requestStoragePermissions()
+            return
+        }
+
+        if (cancelStoragePermissionPromptReadyCallback != null) {
+            return
+        }
+
+        AppLogger.d("VideoFragment.ensureVideoContentReady waiting for launch flow delay before requesting permissions")
+        cancelStoragePermissionPromptReadyCallback =
+            mainActivity.runWhenStoragePermissionPromptReady {
+                cancelStoragePermissionPromptReadyCallback = null
+                if (!isAdded || view == null) {
+                    return@runWhenStoragePermissionPromptReady
+                }
+                if (hasDownloadLocationPermissions()) {
+                    initializeVideoContent()
+                } else {
+                    requestStoragePermissions()
+                }
+            }
+    }
+
+    private fun requestStoragePermissions() {
+        if (!isAdded) {
+            return
+        }
+        AppLogger.d(
+            "VideoFragment.ensureVideoContentReady requesting permissions ${requiredStoragePermissions().toList()}"
+        )
+        storagePermissionLauncher.launch(requiredStoragePermissions())
     }
 
     private fun initializeVideoContent() {
+        cancelStoragePermissionPromptReadyCallback?.run()
+        cancelStoragePermissionPromptReadyCallback = null
         if (hasInitializedContent) {
             videoViewModel.refreshVideos()
-            return
+        } else {
+            hasInitializedContent = true
+            videoViewModel.setContentSource(
+                if (isPrivateSpaceMode) VideoViewModel.ContentSource.PRIVATE_SPACE
+                else VideoViewModel.ContentSource.DOWNLOADS
+            )
+            videoViewModel.start()
         }
-        hasInitializedContent = true
-        videoViewModel.setContentSource(
-            if (isPrivateSpaceMode) VideoViewModel.ContentSource.PRIVATE_SPACE
-            else VideoViewModel.ContentSource.DOWNLOADS
-        )
-        videoViewModel.start()
     }
 
     private fun hasDownloadLocationPermissions(): Boolean {

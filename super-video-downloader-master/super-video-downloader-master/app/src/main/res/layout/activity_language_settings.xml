@@ -91,7 +91,7 @@
         <FrameLayout
             android:id="@+id/languageNativeAdContainer"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginStart="@dimen/padding_normal"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="@dimen/padding_normal"

@@ -19,6 +19,16 @@ class VideoStoragePermissionsSourceTest {
     }
 
     @Test
+    fun `video fragment waits until launch flow completes before requesting storage permissions`() {
+        val source = File(
+            "src/main/java/com/myAllVideoBrowser/ui/main/video/VideoFragment.kt"
+        ).readText()
+
+        assertTrue(source.contains("mainActivity.isStoragePermissionPromptReady()"))
+        assertTrue(source.contains("mainActivity.runWhenStoragePermissionPromptReady"))
+    }
+
+    @Test
     fun `manifest declares shared media read permissions`() {
         val manifest = File("src/main/AndroidManifest.xml").readText()
 

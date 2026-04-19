@@ -26,4 +26,15 @@ class NotificationPermissionTimingSourceTest {
 
         assertTrue(methodBody.contains("maybeRequestNotificationPermission()"))
     }
+
+    @Test
+    fun `finish launch flow delays storage permission readiness until after home is visible`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        val methodBody = source.substringAfter("private fun finishLaunchFlow() {")
+            .substringBefore("\n    private fun startSplashProgress() {")
+
+        assertTrue(methodBody.contains("scheduleStoragePermissionPromptReadiness()"))
+        assertTrue(source.contains("const val STORAGE_PERMISSION_PROMPT_DELAY_MS"))
+    }
 }

@@ -46,4 +46,61 @@ class MainActivityLaunchFlowSourceTest {
         assertTrue(onNewIntentBody.contains("intent?.getBooleanExtra(EXTRA_SKIP_LAUNCH_SPLASH, false) == true"))
         assertTrue(onNewIntentBody.contains("continueLaunchFlowAfterLauncherReturn()"))
     }
+
+    @Test
+    fun `splash delay completion checks splash ad before onboarding`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        val startFlowBody = source.substringAfter("private fun maybeStartLaunchFlow(savedInstanceState: Bundle?) {")
+            .substringBefore("\n    private fun continueLaunchFlowAfterLauncherReturn()")
+
+        assertTrue(startFlowBody.contains("continueLaunchFlowAfterSplashDelay()"))
+        assertTrue(startFlowBody.contains("TopOnAdSceneManager.preloadSplash(applicationContext, firstOpen = isFirstStart)"))
+    }
+
+    @Test
+    fun `show onboarding no longer tries to show splash ad`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        val showOnboardingBody = source.substringAfter("private fun showOnboarding() {")
+            .substringBefore("\n    private fun renderOnboardingPage()")
+
+        assertTrue(showOnboardingBody.contains("showLaunchSurface(launchOnboardingRoot)"))
+        assertFalse(showOnboardingBody.contains("showLoadedSplashAd()"))
+    }
+
+    @Test
+    fun `splash ad ready path shows ad before onboarding and fallback goes straight to onboarding`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        val methodBody = source.substringAfter("private fun continueLaunchFlowAfterSplashDelay() {")
+            .substringBefore("\n    private fun continueLaunchFlowAfterLauncherReturn()")
+
+        assertTrue(methodBody.contains("TopOnAdSceneManager.showSplashIfReady(this, launchSplashAdContainer)"))
+        assertTrue(methodBody.contains("showOnboarding()"))
+        assertTrue(methodBody.contains("if (!shown && !finished)"))
+    }
+
+    @Test
+    fun `returning users skip onboarding ad preloads and finish launch flow directly`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        val methodBody = source.substringAfter("private fun continueLaunchFlowAfterSplashDelay() {")
+            .substringBefore("\n    private fun continueLaunchFlowAfterLauncherReturn()")
+
+        assertTrue(methodBody.contains("val isFirstStart = sharedPrefHelper.getIsFirstStart()"))
+        assertTrue(methodBody.contains("if (isFirstStart) {"))
+        assertTrue(methodBody.contains("finishLaunchFlow()"))
+    }
+
+    @Test
+    fun `splash flow emits decision logs for ready and fallback cases`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        assertTrue(source.contains("Splash delay completed"))
+        assertTrue(source.contains("Splash flow showing onboarding because launcher prompt is required"))
+        assertTrue(source.contains("Splash flow attempted showSplashIfReady"))
+        assertTrue(source.contains("Splash flow splash ad finished"))
+        assertTrue(source.contains("Splash flow splash ad unavailable, continuing to onboarding"))
+    }
 }

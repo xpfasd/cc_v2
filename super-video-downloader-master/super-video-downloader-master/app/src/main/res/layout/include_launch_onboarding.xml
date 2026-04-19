@@ -353,6 +353,27 @@
         android:background="@color/white"
         android:clickable="true"
         android:focusable="true"
-        android:visibility="gone" />
+        android:visibility="gone">
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/onboarding_native_ad_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/onboarding_native_ad_close"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="top|end"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="18dp"
+            android:background="@drawable/bg_launch_indicator_inactive"
+            android:clickable="true"
+            android:contentDescription="@string/all_text_cancel"
+            android:focusable="true"
+            android:padding="8dp"
+            app:srcCompat="@drawable/close_24px"
+            app:tint="@color/black" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

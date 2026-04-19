@@ -367,6 +367,7 @@ public class Launcher extends StatefulActivity<LauncherState>
     // Used to notify when an activity launch has been deferred because launcher is not yet resumed
     // TODO: See if we can remove this later
     private Runnable mOnDeferredActivityLaunchCallback;
+    private Runnable mPendingPostInterstitialLaunch;
     private OnPreDrawListener mOnInitialBindListener;
 
     private LauncherModel mModel;
@@ -1037,6 +1038,9 @@ public class Launcher extends StatefulActivity<LauncherState>
 
         DiscoveryBounce.showForHomeIfNeeded(this);
         mAppWidgetHolder.setActivityResumed(true);
+        FileLog.d(TAG, "TopOn launch interstitial deferred resume: flags="
+                + getActivityStateString(getActivityFlags()));
+        maybeContinuePostInterstitialLaunch();
 
         // Listen for IME changes to keep state up to date.
         getRootView().setWindowInsetsAnimationCallback(
@@ -1219,6 +1223,16 @@ public class Launcher extends StatefulActivity<LauncherState>
 
         DragView.removeAllViews(this);
         TraceHelper.INSTANCE.endSection();
+    }
+
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if (hasFocus) {
+            FileLog.d(TAG, "TopOn launch interstitial window focus regained: flags="
+                    + getActivityStateString(getActivityFlags()));
+            maybeContinuePostInterstitialLaunch();
+        }
     }
 
     @Override
@@ -2169,14 +2183,67 @@ public class Launcher extends StatefulActivity<LauncherState>
         }
 
         if (shouldShowTopOnLaunchInterstitial(intent)) {
+            FileLog.d(TAG, "TopOn launch interstitial requested: target="
+                    + getLaunchTargetForDebug(intent) + ", flags=" + intent.getFlags()
+                    + ", activityFlags=" + getActivityStateString(getActivityFlags()));
             TopOnAdSceneManager.INSTANCE.showLauncherAppInterstitial(this, () -> {
-                super.startActivitySafely(v, intent, item);
+                FileLog.d(TAG, "TopOn launch interstitial callback: target="
+                        + getLaunchTargetForDebug(intent) + ", activityFlags="
+                        + getActivityStateString(getActivityFlags()));
+                scheduleLaunchAfterTopOnInterstitial(v, intent, item);
                 return kotlin.Unit.INSTANCE;
             });
             return null;
         }
 
         RunnableList result = super.startActivitySafely(v, intent, item);
+        applyStayPressedState(v, result);
+        return result;
+    }
+
+    private void scheduleLaunchAfterTopOnInterstitial(View v, Intent intent, ItemInfo item) {
+        FileLog.d(TAG, "Scheduling post-interstitial launch: target="
+                + getLaunchTargetForDebug(intent) + ", activityFlags="
+                + getActivityStateString(getActivityFlags()));
+        mPendingPostInterstitialLaunch = () -> {
+            FileLog.d(TAG, "Running post-interstitial launch: target="
+                    + getLaunchTargetForDebug(intent) + ", intentFlags=" + intent.getFlags()
+                    + ", activityFlags=" + getActivityStateString(getActivityFlags()));
+            RunnableList result = super.startActivitySafely(v, intent, item);
+            applyStayPressedState(v, result);
+        };
+        maybeContinuePostInterstitialLaunch();
+    }
+
+    private void maybeContinuePostInterstitialLaunch() {
+        Runnable pendingLaunch = mPendingPostInterstitialLaunch;
+        if (pendingLaunch == null) {
+            return;
+        }
+        int activityFlags = getActivityFlags();
+        boolean isReadyToLaunch = hasBeenResumed()
+                && (activityFlags & ACTIVITY_STATE_DEFERRED_RESUMED) != 0
+                && (activityFlags & ACTIVITY_STATE_WINDOW_FOCUSED) != 0;
+        if (!isReadyToLaunch) {
+            FileLog.d(TAG, "Post-interstitial launch still waiting: flags="
+                    + getActivityStateString(activityFlags));
+            return;
+        }
+        mPendingPostInterstitialLaunch = null;
+        pendingLaunch.run();
+    }
+
+    private String getLaunchTargetForDebug(Intent intent) {
+        if (intent.getComponent() != null) {
+            return intent.getComponent().flattenToShortString();
+        }
+        if (intent.getPackage() != null) {
+            return intent.getPackage();
+        }
+        return String.valueOf(intent.getData());
+    }
+
+    private void applyStayPressedState(View v, RunnableList result) {
         if (result != null && v instanceof BubbleTextView) {
             // This is set to the view that launched the activity that navigated the user away
             // from launcher. Since there is no callback for when the activity has finished
@@ -2186,7 +2253,6 @@ public class Launcher extends StatefulActivity<LauncherState>
             btv.setStayPressed(true);
             result.add(() -> btv.setStayPressed(false));
         }
-        return result;
     }
 
     private boolean shouldShowTopOnLaunchInterstitial(Intent intent) {

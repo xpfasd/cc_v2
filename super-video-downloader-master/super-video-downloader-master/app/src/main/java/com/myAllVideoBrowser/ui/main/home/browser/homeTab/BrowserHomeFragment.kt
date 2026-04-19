@@ -3,6 +3,7 @@ package com.myAllVideoBrowser.ui.main.home.browser.homeTab
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,8 +30,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class BrowserHomeFragment : BaseWebTabFragment() {
-
     companion object {
+        private const val TAG = "BrowserHomeFragment"
+
         fun newInstance() = BrowserHomeFragment()
     }
 
@@ -118,8 +120,10 @@ class BrowserHomeFragment : BaseWebTabFragment() {
             mainViewModel.openedText.set(null)
         }
 
+        Log.d(TAG, "HOME_TOP_NATIVE preload requested")
         TopOnAdSceneManager.preloadNative(requireContext().applicationContext, TopOnAdScenes.HOME_TOP_NATIVE)
         binding.homeTopNativeAdContainer.post {
+            Log.d(TAG, "HOME_TOP_NATIVE render requested")
             TopOnAdSceneManager.renderNativeInto(
                 binding.homeTopNativeAdContainer,
                 TopOnAdScenes.HOME_TOP_NATIVE
