@@ -21,6 +21,7 @@ import com.thinkup.banner.api.TUBannerListener
 import com.thinkup.banner.api.TUBannerView
 import com.thinkup.core.api.AdError
 import com.thinkup.core.api.TUAdInfo
+import com.thinkup.core.api.TUAdRevenueListener
 import com.thinkup.core.api.TUSDK
 import com.thinkup.interstitial.api.TUInterstitial
 import com.thinkup.interstitial.api.TUInterstitialListener
@@ -35,6 +36,18 @@ import com.thinkup.rewardvideo.api.TURewardVideoListener
 import com.thinkup.splashad.api.TUSplashAd
 import com.thinkup.splashad.api.TUSplashAdExtraInfo
 import com.thinkup.splashad.api.TUSplashAdListener
+import java.util.concurrent.CopyOnWriteArraySet
+
+private val globalCallbacks = CopyOnWriteArraySet<TopOnAdCallback>()
+
+private fun notifyGlobalCallbacks(event: TopOnAdEvent) {
+    globalCallbacks.forEach { callback -> callback(event) }
+}
+
+private fun dispatchToCallbacks(callback: TopOnAdCallback, event: TopOnAdEvent) {
+    callback(event)
+    notifyGlobalCallbacks(event)
+}
 
 object TopOnAds {
     @Volatile
@@ -45,6 +58,14 @@ object TopOnAds {
 
     val config: TopOnAdConfig?
         get() = currentConfig
+
+    fun addGlobalAdEventListener(callback: TopOnAdCallback) {
+        globalCallbacks += callback
+    }
+
+    fun removeGlobalAdEventListener(callback: TopOnAdCallback) {
+        globalCallbacks -= callback
+    }
 
     fun initializeFromManifest(
         context: Context,
@@ -104,39 +125,63 @@ object TopOnAds {
         callback: TopOnAdCallback = {}
     ): TUBannerView? {
         if (placementId.isBlank()) {
-            callback(TopOnAdEvent.Failed(TopOnAdFormat.BANNER, TopOnAdError.missingPlacement(TopOnAdFormat.BANNER)))
+            dispatchToCallbacks(
+                callback,
+                TopOnAdEvent.Failed(
+                    TopOnAdFormat.BANNER,
+                    TopOnAdError.missingPlacement(TopOnAdFormat.BANNER)
+                )
+            )
             return null
         }
         return TUBannerView(context).apply {
             setPlacementId(placementId)
             setBannerAdListener(object : TUBannerListener {
                 override fun onBannerLoaded() {
-                    callback(TopOnAdEvent.Loaded(TopOnAdFormat.BANNER))
+                    dispatchToCallbacks(callback, TopOnAdEvent.Loaded(TopOnAdFormat.BANNER))
                 }
 
                 override fun onBannerFailed(error: AdError?) {
-                    callback(TopOnAdEvent.Failed(TopOnAdFormat.BANNER, TopOnAdError.from(error)))
+                    dispatchToCallbacks(
+                        callback,
+                        TopOnAdEvent.Failed(TopOnAdFormat.BANNER, TopOnAdError.from(error))
+                    )
                 }
 
                 override fun onBannerClicked(info: TUAdInfo?) {
-                    callback(TopOnAdEvent.Clicked(TopOnAdFormat.BANNER, TopOnAdInfo.from(info)))
+                    dispatchToCallbacks(
+                        callback,
+                        TopOnAdEvent.Clicked(TopOnAdFormat.BANNER, TopOnAdInfo.from(info))
+                    )
                 }
 
                 override fun onBannerShow(info: TUAdInfo?) {
-                    callback(TopOnAdEvent.Shown(TopOnAdFormat.BANNER, TopOnAdInfo.from(info)))
+                    dispatchToCallbacks(
+                        callback,
+                        TopOnAdEvent.Shown(TopOnAdFormat.BANNER, TopOnAdInfo.from(info))
+                    )
                 }
 
                 override fun onBannerClose(info: TUAdInfo?) {
-                    callback(TopOnAdEvent.Closed(TopOnAdFormat.BANNER, TopOnAdInfo.from(info)))
+                    dispatchToCallbacks(
+                        callback,
+                        TopOnAdEvent.Closed(TopOnAdFormat.BANNER, TopOnAdInfo.from(info))
+                    )
                 }
 
                 override fun onBannerAutoRefreshed(info: TUAdInfo?) {
-                    callback(TopOnAdEvent.Loaded(TopOnAdFormat.BANNER))
-                    callback(TopOnAdEvent.Shown(TopOnAdFormat.BANNER, TopOnAdInfo.from(info)))
+                    dispatchToCallbacks(callback, TopOnAdEvent.Loaded(TopOnAdFormat.BANNER))
+                    dispatchToCallbacks(
+                        callback,
+                        TopOnAdEvent.Shown(TopOnAdFormat.BANNER, TopOnAdInfo.from(info))
+                    )
                 }
 
                 override fun onBannerAutoRefreshFail(error: AdError?) {
-                    callback(TopOnAdEvent.Failed(TopOnAdFormat.BANNER, TopOnAdError.from(error)))
+                    dispatchToCallbacks(
+                        callback,
+                        TopOnAdEvent.Failed(TopOnAdFormat.BANNER, TopOnAdError.from(error))
+                    )
                 }
             })
         }
@@ -179,13 +224,29 @@ class TopOnInterstitialAd internal constructor(
     private var callbackDebugOwner: String = "constructor"
     private var callbackDebugVersion: Int = 0
     private val ad: TUInterstitial? = if (placementId.isBlank()) {
-        callback(TopOnAdEvent.Failed(TopOnAdFormat.INTERSTITIAL, TopOnAdError.missingPlacement(TopOnAdFormat.INTERSTITIAL)))
+        dispatchToCallbacks(
+            callback,
+            TopOnAdEvent.Failed(
+                TopOnAdFormat.INTERSTITIAL,
+                TopOnAdError.missingPlacement(TopOnAdFormat.INTERSTITIAL)
+            )
+        )
         null
     } else {
         TUInterstitial(context.applicationContext, placementId)
     }
 
     init {
+        ad?.setAdRevenueListener(object : TUAdRevenueListener {
+            override fun onAdRevenuePaid(info: TUAdInfo?) {
+                Log.d(
+                    TAG,
+                    "TopOn launch interstitial revenue paid: placementId=$placementId, info=$info, " +
+                        "callbackOwner=$callbackDebugOwner, callbackVersion=$callbackDebugVersion"
+                )
+                dispatchCallback(TopOnAdEvent.RevenuePaid(TopOnAdFormat.INTERSTITIAL, TopOnAdInfo.from(info)))
+            }
+        })
         ad?.setAdListener(object : TUInterstitialListener {
             override fun onInterstitialAdLoaded() {
                 Log.d(TAG, "TopOn launch interstitial loaded: placementId=$placementId, callbackOwner=$callbackDebugOwner, callbackVersion=$callbackDebugVersion")
@@ -243,7 +304,13 @@ class TopOnInterstitialAd internal constructor(
         callback?.let { updateCallback(it, "show") }
         val interstitial = ad ?: return false
         if (!interstitial.isAdReady) {
-            this.callback(TopOnAdEvent.Failed(TopOnAdFormat.INTERSTITIAL, TopOnAdError.notReady(TopOnAdFormat.INTERSTITIAL)))
+            dispatchToCallbacks(
+                this.callback,
+                TopOnAdEvent.Failed(
+                    TopOnAdFormat.INTERSTITIAL,
+                    TopOnAdError.notReady(TopOnAdFormat.INTERSTITIAL)
+                )
+            )
             return false
         }
         Log.d(TAG, "TopOn SDK interstitial show call: placementId=$placementId, scenarioId=$scenarioId, callbackOwner=$callbackDebugOwner, callbackVersion=$callbackDebugVersion")
@@ -263,7 +330,7 @@ class TopOnInterstitialAd internal constructor(
     }
 
     private fun dispatchCallback(event: TopOnAdEvent) {
-        callback(event)
+        dispatchToCallbacks(callback, event)
     }
 }
 
@@ -274,7 +341,13 @@ class TopOnRewardedAd internal constructor(
 ) {
     private var callback: TopOnAdCallback = callback
     private val ad: TURewardVideoAd? = if (placementId.isBlank()) {
-        callback(TopOnAdEvent.Failed(TopOnAdFormat.REWARDED, TopOnAdError.missingPlacement(TopOnAdFormat.REWARDED)))
+        dispatchToCallbacks(
+            callback,
+            TopOnAdEvent.Failed(
+                TopOnAdFormat.REWARDED,
+                TopOnAdError.missingPlacement(TopOnAdFormat.REWARDED)
+            )
+        )
         null
     } else {
         TURewardVideoAd(context.applicationContext, placementId)
@@ -283,35 +356,35 @@ class TopOnRewardedAd internal constructor(
     init {
         ad?.setAdListener(object : TURewardVideoListener {
             override fun onRewardedVideoAdLoaded() {
-                callback(TopOnAdEvent.Loaded(TopOnAdFormat.REWARDED))
+                dispatchCallback(TopOnAdEvent.Loaded(TopOnAdFormat.REWARDED))
             }
 
             override fun onRewardedVideoAdFailed(error: AdError?) {
-                callback(TopOnAdEvent.Failed(TopOnAdFormat.REWARDED, TopOnAdError.from(error)))
+                dispatchCallback(TopOnAdEvent.Failed(TopOnAdFormat.REWARDED, TopOnAdError.from(error)))
             }
 
             override fun onRewardedVideoAdPlayStart(info: TUAdInfo?) {
-                callback(TopOnAdEvent.VideoStarted(TopOnAdFormat.REWARDED, TopOnAdInfo.from(info)))
+                dispatchCallback(TopOnAdEvent.VideoStarted(TopOnAdFormat.REWARDED, TopOnAdInfo.from(info)))
             }
 
             override fun onRewardedVideoAdPlayEnd(info: TUAdInfo?) {
-                callback(TopOnAdEvent.VideoEnded(TopOnAdFormat.REWARDED, TopOnAdInfo.from(info)))
+                dispatchCallback(TopOnAdEvent.VideoEnded(TopOnAdFormat.REWARDED, TopOnAdInfo.from(info)))
             }
 
             override fun onRewardedVideoAdPlayFailed(error: AdError?, info: TUAdInfo?) {
-                callback(TopOnAdEvent.Failed(TopOnAdFormat.REWARDED, TopOnAdError.from(error)))
+                dispatchCallback(TopOnAdEvent.Failed(TopOnAdFormat.REWARDED, TopOnAdError.from(error)))
             }
 
             override fun onRewardedVideoAdClosed(info: TUAdInfo?) {
-                callback(TopOnAdEvent.Closed(TopOnAdFormat.REWARDED, TopOnAdInfo.from(info)))
+                dispatchCallback(TopOnAdEvent.Closed(TopOnAdFormat.REWARDED, TopOnAdInfo.from(info)))
             }
 
             override fun onRewardedVideoAdPlayClicked(info: TUAdInfo?) {
-                callback(TopOnAdEvent.Clicked(TopOnAdFormat.REWARDED, TopOnAdInfo.from(info)))
+                dispatchCallback(TopOnAdEvent.Clicked(TopOnAdFormat.REWARDED, TopOnAdInfo.from(info)))
             }
 
             override fun onReward(info: TUAdInfo?) {
-                callback(TopOnAdEvent.Rewarded(TopOnAdInfo.from(info)))
+                dispatchCallback(TopOnAdEvent.Rewarded(TopOnAdInfo.from(info)))
             }
         })
     }
@@ -327,7 +400,13 @@ class TopOnRewardedAd internal constructor(
         callback?.let { this.callback = it }
         val rewarded = ad ?: return false
         if (!rewarded.isAdReady) {
-            this.callback(TopOnAdEvent.Failed(TopOnAdFormat.REWARDED, TopOnAdError.notReady(TopOnAdFormat.REWARDED)))
+            dispatchToCallbacks(
+                this.callback,
+                TopOnAdEvent.Failed(
+                    TopOnAdFormat.REWARDED,
+                    TopOnAdError.notReady(TopOnAdFormat.REWARDED)
+                )
+            )
             return false
         }
         if (scenarioId.isBlank()) {
@@ -336,6 +415,10 @@ class TopOnRewardedAd internal constructor(
             rewarded.show(activity, scenarioId)
         }
         return true
+    }
+
+    private fun dispatchCallback(event: TopOnAdEvent) {
+        dispatchToCallbacks(callback, event)
     }
 }
 
@@ -353,10 +436,29 @@ class TopOnSplashAd internal constructor(
     private var callbackDebugOwner: String = "constructor"
     private var callbackDebugVersion: Int = 0
     private val ad: TUSplashAd? = if (placementId.isBlank()) {
-        callback(TopOnAdEvent.Failed(TopOnAdFormat.SPLASH, TopOnAdError.missingPlacement(TopOnAdFormat.SPLASH)))
+        dispatchToCallbacks(
+            callback,
+            TopOnAdEvent.Failed(
+                TopOnAdFormat.SPLASH,
+                TopOnAdError.missingPlacement(TopOnAdFormat.SPLASH)
+            )
+        )
         null
     } else {
         TUSplashAd(context.applicationContext, placementId, listener(), timeoutMillis)
+    }
+
+    init {
+        ad?.setAdRevenueListener(object : TUAdRevenueListener {
+            override fun onAdRevenuePaid(info: TUAdInfo?) {
+                Log.d(
+                    TAG,
+                    "TopOn splash revenue paid: placementId=$placementId, info=$info, " +
+                        "callbackOwner=$callbackDebugOwner, callbackVersion=$callbackDebugVersion"
+                )
+                dispatchCallback(TopOnAdEvent.RevenuePaid(TopOnAdFormat.SPLASH, TopOnAdInfo.from(info)))
+            }
+        })
     }
 
     fun load(callback: TopOnAdCallback? = null) {
@@ -434,7 +536,7 @@ class TopOnSplashAd internal constructor(
     }
 
     private fun dispatchCallback(event: TopOnAdEvent) {
-        callback(event)
+        dispatchToCallbacks(callback, event)
     }
 }
 
@@ -451,7 +553,13 @@ class TopOnNativeAdLoader internal constructor(
     private var callbackDebugOwner: String = "constructor"
     private var callbackDebugVersion: Int = 0
     private val native: TUNative? = if (placementId.isBlank()) {
-        callback(TopOnAdEvent.Failed(TopOnAdFormat.NATIVE, TopOnAdError.missingPlacement(TopOnAdFormat.NATIVE)))
+        dispatchToCallbacks(
+            callback,
+            TopOnAdEvent.Failed(
+                TopOnAdFormat.NATIVE,
+                TopOnAdError.missingPlacement(TopOnAdFormat.NATIVE)
+            )
+        )
         null
     } else {
         TUNative(context.applicationContext, placementId, object : TUNativeNetworkListener {
@@ -495,7 +603,7 @@ class TopOnNativeAdLoader internal constructor(
     }
 
     private fun dispatchCallback(event: TopOnAdEvent) {
-        callback(event)
+        dispatchToCallbacks(callback, event)
     }
 }
 
@@ -525,27 +633,39 @@ class TopOnNativeAdHandle internal constructor(
         contentView: View,
         prepareInfo: TUNativePrepareInfo? = null
     ) {
+        nativeAd.setAdRevenueListener(object : TUAdRevenueListener {
+            override fun onAdRevenuePaid(info: TUAdInfo?) {
+                Log.d(TAG, "TopOn native revenue paid: placementId=$placementId, info=$info")
+                dispatchToCallbacks(callback, TopOnAdEvent.RevenuePaid(TopOnAdFormat.NATIVE, TopOnAdInfo.from(info)))
+            }
+        })
         nativeAd.renderAdContainer(adView, contentView)
         prepareInfo?.let { nativeAd.prepare(adView, it) }
         nativeAd.setNativeEventListener(object : TUNativeEventListener {
             override fun onAdImpressed(view: TUNativeAdView?, info: TUAdInfo?) {
                 Log.d(TAG, "TopOn native impressed: placementId=$placementId, info=$info")
-                callback(TopOnAdEvent.Shown(TopOnAdFormat.NATIVE, TopOnAdInfo.from(info)))
+                dispatchToCallbacks(callback, TopOnAdEvent.Shown(TopOnAdFormat.NATIVE, TopOnAdInfo.from(info)))
             }
 
             override fun onAdClicked(view: TUNativeAdView?, info: TUAdInfo?) {
                 Log.d(TAG, "TopOn native clicked: placementId=$placementId, info=$info")
-                callback(TopOnAdEvent.Clicked(TopOnAdFormat.NATIVE, TopOnAdInfo.from(info)))
+                dispatchToCallbacks(callback, TopOnAdEvent.Clicked(TopOnAdFormat.NATIVE, TopOnAdInfo.from(info)))
             }
 
             override fun onAdVideoStart(view: TUNativeAdView?) {
                 Log.d(TAG, "TopOn native video start: placementId=$placementId")
-                callback(TopOnAdEvent.VideoStarted(TopOnAdFormat.NATIVE, nativeAd.adInfo?.let { TopOnAdInfo.from(it) }))
+                dispatchToCallbacks(
+                    callback,
+                    TopOnAdEvent.VideoStarted(TopOnAdFormat.NATIVE, nativeAd.adInfo?.let { TopOnAdInfo.from(it) })
+                )
             }
 
             override fun onAdVideoEnd(view: TUNativeAdView?) {
                 Log.d(TAG, "TopOn native video end: placementId=$placementId")
-                callback(TopOnAdEvent.VideoEnded(TopOnAdFormat.NATIVE, nativeAd.adInfo?.let { TopOnAdInfo.from(it) }))
+                dispatchToCallbacks(
+                    callback,
+                    TopOnAdEvent.VideoEnded(TopOnAdFormat.NATIVE, nativeAd.adInfo?.let { TopOnAdInfo.from(it) })
+                )
             }
 
             override fun onAdVideoProgress(view: TUNativeAdView?, progress: Int) = Unit

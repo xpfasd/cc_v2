@@ -390,6 +390,7 @@ dependencies {
     add("implementation", downloaderLibs.kotlinxSerializationJson)
     add("implementation", downloaderLibs.kotlinxSerializationCore)
     add("implementation", downloaderLibs.installReferrer)
+    add("implementation", "com.google.firebase:firebase-analytics-ktx:22.5.0")
     add("implementation", downloaderLibs.jsoup)
     add("implementation", downloaderLibs.timeago)
     add("coreLibraryDesugaring", downloaderLibs.desugarJdk)

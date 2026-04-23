@@ -11,6 +11,7 @@ import com.myAllVideoBrowser.R
 import com.myAllVideoBrowser.data.local.room.entity.PageInfo
 import com.myAllVideoBrowser.databinding.ItemBookmarkBinding
 import com.myAllVideoBrowser.util.ContextUtils
+import com.myAllVideoBrowser.util.PopularSiteIconRegistry
 import java.util.Collections
 
 interface BookmarksListener {
@@ -38,16 +39,18 @@ class BookmarksAdapter(
             with(binding) {
                 this.bookmarkItem = bookmarkItem
                 this.bookmarksListener = bookmarksListener
+                executePendingBindings()
 
-                if (bookmarkItem.faviconBitmap() == null) {
+                val bundledIconRes = PopularSiteIconRegistry.drawableResIdFor(bookmarkItem)
+                if (bundledIconRes != null) {
+                    this.favicon.setImageResource(bundledIconRes)
+                } else if (bookmarkItem.faviconBitmap() == null) {
                     val bm = AppCompatResources.getDrawable(
                         ContextUtils.getApplicationContext(), R.drawable.ic_browser
                     )
 
                     this.favicon.setImageDrawable(bm)
                 }
-
-                executePendingBindings()
             }
         }
     }

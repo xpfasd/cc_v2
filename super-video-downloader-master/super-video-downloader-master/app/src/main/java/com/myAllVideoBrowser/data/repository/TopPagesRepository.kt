@@ -4,6 +4,7 @@ import com.myAllVideoBrowser.data.local.room.entity.PageInfo
 import com.myAllVideoBrowser.di.qualifier.LocalData
 import com.myAllVideoBrowser.di.qualifier.RemoteData
 import com.myAllVideoBrowser.util.FaviconUtils
+import com.myAllVideoBrowser.util.PopularSiteIconRegistry
 import com.myAllVideoBrowser.util.proxy_utils.OkHttpProxyClient
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.delay
@@ -50,6 +51,9 @@ class TopPagesRepositoryImpl @Inject constructor(
     override suspend fun updateLocalStorageFavicons(): Flow<PageInfo> = callbackFlow {
         val pages = localDataSource.getTopPages()
         for (page in pages) {
+            if (PopularSiteIconRegistry.shouldUseBundledIcon(page)) {
+                continue
+            }
             if (page.faviconBitmap() == null) {
                 val bitmap = try {
                     FaviconUtils.getEncodedFaviconFromUrl(

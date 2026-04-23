@@ -14,6 +14,7 @@ import com.myAllVideoBrowser.data.local.room.entity.PageInfo
 import com.myAllVideoBrowser.databinding.ItemTopPageBinding
 import com.myAllVideoBrowser.ui.main.home.browser.BrowserViewModel
 import com.myAllVideoBrowser.util.ContextUtils
+import com.myAllVideoBrowser.util.PopularSiteIconRegistry
 
 class TopPageAdapter(
     context: Context,
@@ -31,7 +32,11 @@ class TopPageAdapter(
         with(binding) {
             this?.pageInfo = pageInfos[position]
             this?.listener = itemListener
-            if (this?.pageInfo?.faviconBitmap() != null) {
+            this?.executePendingBindings()
+            val bundledIconRes = this?.pageInfo?.let(PopularSiteIconRegistry::drawableResIdFor)
+            if (bundledIconRes != null) {
+                this.imgIcon.setImageResource(bundledIconRes)
+            } else if (this?.pageInfo?.faviconBitmap() != null) {
                 this.imgIcon.setImageBitmap(pageInfo!!.faviconBitmap())
             } else {
                 val drawable = AppCompatResources.getDrawable(
@@ -44,7 +49,6 @@ class TopPageAdapter(
                 )
                 this?.imgIcon?.setImageDrawable(drawable)
             }
-            this?.executePendingBindings()
         }
 
         return binding!!.root

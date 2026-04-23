@@ -124,9 +124,22 @@ class MainActivityLaunchFlowSourceTest {
         val onResumeBody = source.substringAfter("override fun onResume() {")
             .substringBefore("\n    override fun onDestroy() {")
 
-        assertFalse(onResumeBody.contains("requestLauncherActivation(skipPromptOnResume = true)"))
-        assertFalse(onResumeBody.contains("shouldRequestLauncherBeforeGuide(launcherPromptAttempts"))
-        assertTrue(onResumeBody.contains("if (sharedPrefHelper.getIsFirstStart()) {"))
+        assertTrue(onResumeBody.contains("val isDefaultHome = isAppDefaultHome()"))
+        assertTrue(onResumeBody.contains("sharedPrefHelper.getIsFirstStart() &&"))
+        assertTrue(onResumeBody.contains("shouldRequestLauncherBeforeGuide(launcherPromptAttempts, isDefaultHome)"))
+        assertTrue(onResumeBody.contains("requestLauncherActivation(skipPromptOnResume = true)"))
         assertTrue(onResumeBody.contains("showOnboarding()"))
+    }
+
+    @Test
+    fun `first open does not auto request launcher again after onboarding completes`() {
+        val source = File("src/main/java/com/myAllVideoBrowser/ui/main/home/MainActivity.kt").readText()
+
+        val finishBody = source.substringAfter("private fun finishLaunchFlow() {")
+            .substringBefore("\n    fun isStoragePermissionPromptReady(): Boolean = storagePermissionPromptReady")
+
+        assertTrue(finishBody.contains("!launchStartedAsFirstStart"))
+        assertTrue(finishBody.contains("shouldAutoRequestLauncherOnLaunch"))
+        assertTrue(finishBody.contains("requestLauncherActivation(skipPromptOnResume = true)"))
     }
 }

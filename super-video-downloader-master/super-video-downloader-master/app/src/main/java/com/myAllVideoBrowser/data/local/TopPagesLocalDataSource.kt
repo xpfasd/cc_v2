@@ -4,6 +4,7 @@ import com.myAllVideoBrowser.data.local.room.dao.PageDao
 import com.myAllVideoBrowser.data.local.room.entity.PageInfo
 import com.myAllVideoBrowser.data.repository.TopPagesRepository
 import com.myAllVideoBrowser.util.CopyrightRestrictedSitePolicy
+import com.myAllVideoBrowser.util.PopularSiteIconRegistry
 import com.myAllVideoBrowser.util.SharedPrefHelper
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -16,13 +17,41 @@ class TopPagesLocalDataSource @Inject constructor(
 ) : TopPagesRepository {
 
     private val figmaPopularSites = listOf(
-        PageInfo(name = "Facebook", link = "https://www.facebook.com"),
-        PageInfo(name = "Instagram", link = "https://www.instagram.com"),
-        PageInfo(name = "TikTok", link = "https://www.tiktok.com"),
-        PageInfo(name = "X(Twitter)", link = "https://x.com"),
-        PageInfo(name = "Vimeo", link = "https://vimeo.com"),
-        PageInfo(name = "Pinterest", link = "https://www.pinterest.com"),
-        PageInfo(name = "Google", link = "https://www.google.com"),
+        PageInfo(
+            name = "Facebook",
+            link = "https://www.facebook.com",
+            icon = PopularSiteIconRegistry.FACEBOOK
+        ),
+        PageInfo(
+            name = "Instagram",
+            link = "https://www.instagram.com",
+            icon = PopularSiteIconRegistry.INSTAGRAM
+        ),
+        PageInfo(
+            name = "TikTok",
+            link = "https://www.tiktok.com",
+            icon = PopularSiteIconRegistry.TIKTOK
+        ),
+        PageInfo(
+            name = "X(Twitter)",
+            link = "https://x.com",
+            icon = PopularSiteIconRegistry.X
+        ),
+        PageInfo(
+            name = "Vimeo",
+            link = "https://vimeo.com",
+            icon = PopularSiteIconRegistry.VIMEO
+        ),
+        PageInfo(
+            name = "Pinterest",
+            link = "https://www.pinterest.com",
+            icon = PopularSiteIconRegistry.PINTEREST
+        ),
+        PageInfo(
+            name = "Google",
+            link = "https://www.google.com",
+            icon = PopularSiteIconRegistry.GOOGLE
+        ),
     )
 
     private val legacyPopularLinks = setOf(
@@ -112,6 +141,7 @@ class TopPagesLocalDataSource @Inject constructor(
             val page = existingPage?.copy() ?: defaultPage.copy()
             page.name = defaultPage.name
             page.link = defaultPage.link
+            page.icon = defaultPage.icon
             page.order = index
             page
         }

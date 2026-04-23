@@ -51,10 +51,13 @@ data class TopOnAdInfo(
     val placementId: String,
     val format: String,
     val networkName: String,
+    val networkFirmId: String,
     val networkPlacementId: String,
     val scenarioId: String,
     val ecpm: Double,
-    val currency: String
+    val currency: String,
+    val country: String,
+    val publisherRevenue: Double
 ) {
     companion object {
         fun from(info: TUAdInfo?): TopOnAdInfo? {
@@ -65,10 +68,13 @@ data class TopOnAdInfo(
                 placementId = info.placementId.orEmpty(),
                 format = info.format.orEmpty(),
                 networkName = info.networkName.orEmpty(),
+                networkFirmId = info.networkFirmId.toString(),
                 networkPlacementId = info.networkPlacementId.orEmpty(),
                 scenarioId = info.scenarioId.orEmpty(),
                 ecpm = info.ecpm,
-                currency = info.currency.orEmpty()
+                currency = info.currency.orEmpty(),
+                country = info.country.orEmpty(),
+                publisherRevenue = info.publisherRevenue ?: 0.0
             )
         }
     }
@@ -78,6 +84,7 @@ sealed class TopOnAdEvent {
     data class Loaded(val format: TopOnAdFormat) : TopOnAdEvent()
     data class Failed(val format: TopOnAdFormat, val error: TopOnAdError) : TopOnAdEvent()
     data class Shown(val format: TopOnAdFormat, val info: TopOnAdInfo?) : TopOnAdEvent()
+    data class RevenuePaid(val format: TopOnAdFormat, val info: TopOnAdInfo?) : TopOnAdEvent()
     data class Clicked(val format: TopOnAdFormat, val info: TopOnAdInfo?) : TopOnAdEvent()
     data class Closed(val format: TopOnAdFormat, val info: TopOnAdInfo?) : TopOnAdEvent()
     data class VideoStarted(val format: TopOnAdFormat, val info: TopOnAdInfo?) : TopOnAdEvent()

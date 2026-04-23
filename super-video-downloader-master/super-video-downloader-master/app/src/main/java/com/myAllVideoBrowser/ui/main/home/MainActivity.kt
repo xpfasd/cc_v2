@@ -100,6 +100,8 @@ class MainActivity : BaseActivity() {
     private lateinit var launcherPromptStepOne: TextView
     private lateinit var launcherPromptStepTwo: TextView
     private var splashProgressAnimator: ValueAnimator? = null
+    private var launchStartedAsFirstStart = false
+    private var launcherPromptAttempts = 0
     private var notificationPermissionRequested = false
     private var guideNativeAdShowing = false
     private var ignoreGuideNativePagerSelection = false
@@ -168,6 +170,7 @@ class MainActivity : BaseActivity() {
         mainViewModel = ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
         proxiesViewModel = ViewModelProvider(this, viewModelFactory)[ProxiesViewModel::class.java]
         settingsViewModel = ViewModelProvider(this, viewModelFactory)[SettingsViewModel::class.java]
+        launchStartedAsFirstStart = sharedPrefHelper.getIsFirstStart()
 
         mainAdapter = MainAdapter(supportFragmentManager, lifecycle, fragmentFactory)
 
@@ -323,7 +326,12 @@ class MainActivity : BaseActivity() {
             clearLauncherActivationReturnFlag()
             launcherSelectionRequested = false
             suppressLauncherPromptOnResume = false
-            if (sharedPrefHelper.getIsFirstStart()) {
+            val isDefaultHome = isAppDefaultHome()
+            if (sharedPrefHelper.getIsFirstStart() &&
+                shouldRequestLauncherBeforeGuide(launcherPromptAttempts, isDefaultHome)
+            ) {
+                requestLauncherActivation(skipPromptOnResume = true)
+            } else if (sharedPrefHelper.getIsFirstStart()) {
                 showOnboarding()
             }
         }
@@ -447,7 +455,7 @@ class MainActivity : BaseActivity() {
             TopOnAdSceneManager.preloadFirstInterstitial(applicationContext)
             TopOnAdSceneManager.preloadGuideNative(applicationContext)
         }
-        if (isFirstStart && shouldRequestLauncherBeforeGuide(isDefaultHome)) {
+        if (isFirstStart && shouldRequestLauncherBeforeGuide(launcherPromptAttempts, isDefaultHome)) {
             AppLogger.d("Splash flow showing onboarding because launcher prompt is required")
             requestLauncherActivation(skipPromptOnResume = true)
             return
@@ -549,7 +557,9 @@ class MainActivity : BaseActivity() {
         guideNativeAdShowing = false
         maybeRequestNotificationPermission()
         scheduleStoragePermissionPromptReadiness()
-        if (shouldAutoRequestLauncherOnLaunch(sharedPrefHelper.getIsFirstStart(), isAppDefaultHome())) {
+        if (!launchStartedAsFirstStart &&
+            shouldAutoRequestLauncherOnLaunch(sharedPrefHelper.getIsFirstStart(), isAppDefaultHome())
+        ) {
             requestLauncherActivation(skipPromptOnResume = true)
         }
     }
@@ -602,6 +612,7 @@ class MainActivity : BaseActivity() {
     private fun shouldShowLauncherPrompt(): Boolean = !isAppDefaultHome()
 
     private fun requestLauncherActivation(skipPromptOnResume: Boolean = false) {
+        launcherPromptAttempts += 1
         launcherSelectionRequested = true
         suppressLauncherPromptOnResume = skipPromptOnResume
         requestLauncherSelection(this, requestHomeRoleLauncher)
