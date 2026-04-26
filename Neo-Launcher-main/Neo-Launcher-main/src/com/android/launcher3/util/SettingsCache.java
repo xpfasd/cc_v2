@@ -158,11 +158,17 @@ public class SettingsCache extends ContentObserver {
         String key = keyUri.getLastPathSegment();
         boolean newVal;
         if (keyUri.toString().startsWith(SYSTEM_URI_PREFIX)) {
-            newVal = Settings.System.getInt(mResolver, key, defaultValue) == 1;
+            newVal = SettingsValueReader.read((settingKey, settingDefaultValue) ->
+                    Settings.System.getInt(mResolver, settingKey, settingDefaultValue),
+                    key, defaultValue);
         } else if (keyUri.toString().startsWith(GLOBAL_URI_PREFIX)) {
-            newVal = Settings.Global.getInt(mResolver, key, defaultValue) == 1;
+            newVal = SettingsValueReader.read((settingKey, settingDefaultValue) ->
+                    Settings.Global.getInt(mResolver, settingKey, settingDefaultValue),
+                    key, defaultValue);
         } else { // SETTING_SECURE
-            newVal = Settings.Secure.getInt(mResolver, key, defaultValue) == 1;
+            newVal = SettingsValueReader.read((settingKey, settingDefaultValue) ->
+                    Settings.Secure.getInt(mResolver, settingKey, settingDefaultValue),
+                    key, defaultValue);
         }
 
         mKeyCache.put(keyUri, newVal);

@@ -142,13 +142,25 @@ object GraphicsUtils {
 
     /** Returns the color associated with the attribute */
     @JvmStatic
-    fun getAttrColor(context: Context, attr: Int): Int =
-        context.obtainStyledAttributes(intArrayOf(attr)).use { it.getColor(0, 0) }
+    fun getAttrColor(context: Context, attr: Int): Int {
+        val ta = context.obtainStyledAttributes(intArrayOf(attr))
+        try {
+            return ta.getColor(0, 0)
+        } finally {
+            ta.recycle()
+        }
+    }
 
     /** Returns the alpha corresponding to the theme attribute {@param attr} */
     @JvmStatic
-    fun getFloat(context: Context, attr: Int, defValue: Float): Float =
-        context.obtainStyledAttributes(intArrayOf(attr)).use { it.getFloat(0, defValue) }
+    fun getFloat(context: Context, attr: Int, defValue: Float): Float {
+        val ta = context.obtainStyledAttributes(intArrayOf(attr))
+        try {
+            return ta.getFloat(0, defValue)
+        } finally {
+            ta.recycle()
+        }
+    }
 
     /**
      * Canvas extension function which runs the [block] after preserving the canvas transform using
